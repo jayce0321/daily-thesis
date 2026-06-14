@@ -126,12 +126,52 @@ JSON 형식으로 응답:
         result = json.loads(r.read().decode("utf-8"))
 
     raw = result["content"][0]["text"].strip()
-    # JSON 블록 추출
     import re
-    m = re.search(r'\{[\s\S]*\}', raw)
+
+    # JSON 코드블록 우선 추출
+    m = re.search(r'```(?:json)?\s*(\{[\s\S]*?\})\s*```', raw)
     if m:
-        raw = m.group(0)
-    analysis = json.loads(raw)
+        raw = m.group(1)
+    else:
+        # 가장 바깥쪽 { } 추출
+        start = raw.find('{')
+        end = raw.rfind('}')
+        if start != -1 and end != -1:
+            raw = raw[start:end+1]
+
+    # 제어문자 제거 후 파싱
+    raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '', raw)
+    try:
+        analysis = json.loads(raw)
+    except json.JSONDecodeError:
+        # 마지막 수단: Claude에게 JSON만 다시 요청
+        log("JSON 파싱 실패 — 재시도 중...")
+        retry_data = json.dumps({
+            "model": "claude-sonnet-4-6",
+            "max_tokens": 2000,
+            "messages": [
+                {"role": "user", "content": prompt},
+                {"role": "assistant", "content": raw},
+                {"role": "user", "content": "위 응답을 유효한 JSON 형식으로만 다시 출력해줘. 설명 없이 JSON만."}
+            ]
+        }).encode("utf-8")
+        req2 = urllib.request.Request(
+            "https://api.anthropic.com/v1/messages",
+            data=retry_data,
+            headers={
+                "x-api-key": ANTHROPIC_API_KEY,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json",
+            }
+        )
+        with urllib.request.urlopen(req2, timeout=60) as r2:
+            result2 = json.loads(r2.read().decode("utf-8"))
+        raw2 = result2["content"][0]["text"].strip()
+        m2 = re.search(r'\{[\s\S]*\}', raw2)
+        if m2:
+            raw2 = m2.group(0)
+        analysis = json.loads(raw2)
+
     log("Claude 분석 완료")
     return analysis
 
