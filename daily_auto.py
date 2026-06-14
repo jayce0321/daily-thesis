@@ -17,8 +17,8 @@ from datetime import datetime, timezone, timedelta
 
 # ── 설정 ─────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "8962117729:AAE0P63U6ao_7RWW485-XGXLhBPUvhd689k")
-CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "5066621346")
+BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 IS_CI = os.environ.get("GITHUB_ACTIONS") == "true"
 
