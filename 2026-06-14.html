@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>데일리 테제 | 2026.06.14</title>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161a23;
+      --border: #252b3b;
+      --accent: #e8b84b;
+      --accent2: #5b8dee;
+      --red: #e05c5c;
+      --green: #4caf80;
+      --text: #e2e6f0;
+      --muted: #7a8299;
+      --tag-bg: #1e2435;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px 48px 48px;
+      background:
+        linear-gradient(160deg, #0d1a2e 0%, #0d0f14 60%),
+        radial-gradient(ellipse at 70% 30%, #1a3a5c 0%, transparent 60%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(232,184,75,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(91,141,238,0.1) 0%, transparent 50%);
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .hero-date {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.3;
+      position: relative;
+      max-width: 800px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      margin-top: 16px;
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 620px;
+      position: relative;
+    }
+
+    /* ── MARKET BANNER ── */
+    .market-banner {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      background: var(--surface);
+    }
+
+    .market-item {
+      flex: 1;
+      min-width: 140px;
+      padding: 14px 20px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .market-item:last-child { border-right: none; }
+
+    .market-label { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .market-value { font-size: 17px; font-weight: 700; }
+    .market-change { font-size: 12px; }
+    .up { color: var(--green); }
+    .down { color: var(--red); }
+    .warn { color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 32px;
+    }
+
+    /* ── THESIS BLOCK ── */
+    .thesis-block {
+      background: linear-gradient(135deg, #1a2235 0%, #161a23 100%);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+
+    .thesis-block .label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .thesis-block p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #c8cfe0;
+    }
+
+    .thesis-block strong { color: var(--text); }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 52px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      width: 28px; height: 28px;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #000;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-header h2 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-placeholder {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, #1a2235, #0d1525);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(232,184,75,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 50%, rgba(91,141,238,0.05) 0%, transparent 60%);
+    }
+
+    .img-placeholder span { position: relative; }
+
+    p { margin-bottom: 16px; color: #c0c8da; font-size: 15px; }
+
+    /* ── TABLE ── */
+    .data-table-wrap {
+      overflow-x: auto;
+      margin: 24px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+
+    thead tr { background: #1a2235; }
+    thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    tbody tr { border-top: 1px solid var(--border); transition: background 0.15s; }
+    tbody tr:hover { background: #1a2030; }
+    tbody td { padding: 13px 16px; font-size: 14px; }
+    tbody td:first-child { color: var(--muted); font-size: 13px; }
+    tbody td:nth-child(2) { font-weight: 700; font-size: 15px; }
+    tbody td:nth-child(3) { color: #8a9ab8; font-size: 13px; }
+
+    /* ── SCENARIO CARDS ── */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    @media (max-width: 600px) { .scenario-grid { grid-template-columns: 1fr; } }
+
+    .scenario-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 22px;
+    }
+
+    .scenario-card.green { border-top: 3px solid var(--green); }
+    .scenario-card.red { border-top: 3px solid var(--red); }
+
+    .scenario-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .scenario-card.green .scenario-label { color: var(--green); }
+    .scenario-card.red .scenario-label { color: var(--red); }
+
+    .scenario-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .scenario-card ul { padding-left: 16px; }
+    .scenario-card li { font-size: 13px; color: #8a9ab8; margin-bottom: 4px; }
+
+    /* ── CHECKLIST ── */
+    .checklist {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .checklist-item:last-child { border-bottom: none; }
+
+    .check-box {
+      width: 20px; height: 20px;
+      border-radius: 4px;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .checklist-item .title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .checklist-item .desc { font-size: 12px; color: var(--muted); }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: #0f1825;
+      border: 1px solid #2a3a50;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-top: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .callout::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 80px;
+      color: rgba(232,184,75,0.08);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .callout p {
+      font-size: 15px;
+      color: #b0bdd4;
+      font-style: italic;
+      position: relative;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 32px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="hero-date">2026년 6월 14일</span>
+      <span class="hero-dot"></span>
+      <span class="hero-label">Daily Thesis</span>
+    </div>
+    <div class="hero-tags">
+      <span class="tag">매크로</span>
+      <span class="tag">FOMC</span>
+      <span class="tag">이란 평화협정</span>
+      <span class="tag">유가</span>
+      <span class="tag">인플레이션</span>
+    </div>
+    <h1>
+      "인플레이션의 마지막<br>
+      <em>야생 변수</em>가 길들여지려 한다"
+    </h1>
+    <p class="hero-sub">
+      이란 평화협정 가시화 × Warsh 첫 FOMC — 72시간 안에 가설이 검증된다
+    </p>
+  </section>
+
+  <!-- MARKET BANNER -->
+  <div class="market-banner">
+    <div class="market-item">
+      <span class="market-label">WTI 유가</span>
+      <span class="market-value down">$85.00</span>
+      <span class="market-change down">▼ 2.0%</span>
+    </div>
+    <div class="market-item">
+      <span class="market-label">10년물 금리</span>
+      <span class="market-value warn">4.55%</span>
+      <span class="market-change warn">고점 유지</span>
+    </div>
+    <div class="market-item">
+      <span class="market-label">연준 금리인상 확률</span>
+      <span class="market-value warn">52%</span>
+      <span class="market-change warn">1주 전 25%</span>
+    </div>
+    <div class="market-item">
+      <span class="market-label">Q1 EPS 성장</span>
+      <span class="market-value up">+28.6%</span>
+      <span class="market-change up">기대치 2배</span>
+    </div>
+    <div class="market-item">
+      <span class="market-label">GS 첫 인하 시점</span>
+      <span class="market-value">2027</span>
+      <span class="market-change down">기존 2026H2</span>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- THESIS BLOCK -->
+    <div class="thesis-block">
+      <div class="label">오늘의 핵심 테제</div>
+      <p>
+        이란 평화협정 가시화로 유가라는 <strong>통제 불가능했던 변수</strong>가
+        처음으로 예측 가능한 경로에 들어섰다. 문제는 이것이 Fed의 긴축 명분을
+        약화시키기 전에, <strong>3일 뒤 Warsh가 먼저 점도표를 써버린다</strong>는 것이다.
+      </p>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <h2>왜 이게 중요한가 — 인플레이션 방정식</h2>
+      </div>
+
+      <div class="img-placeholder">
+        <span>📊 인플레이션 3대 동력 다이어그램</span>
+      </div>
+
+      <p>
+        2026년 내내 인플레이션을 3% 이상에 고착시킨 원인은 셋이었다.
+        <strong>관세 + 에너지 + AI 투자 수요.</strong> 지금까지 이 세 가지는
+        동시에 작동했다. 그런데 오늘 처음으로 에너지 항이 빠질 수 있다는
+        시나리오가 실제 협상문서 수준으로 올라왔다.
+      </p>
+      <p>
+        6월 12일, 미·이란 협상단이 호르무즈 해협 재개방과 이란 원유 제재 해제를
+        포함한 평화협정 초안을 사실상 타결했다. 이란 원유가 시장에 복귀하면
+        에너지發 인플레이션 압력은 구조적으로 꺾인다.
+      </p>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <h2>숫자로 보는 근거</h2>
+      </div>
+
+      <div class="data-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>지표</th>
+              <th>수치</th>
+              <th>의미</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>유가(WTI)</td>
+              <td class="down">$85 / -2%</td>
+              <td>협상 기대가 즉각 가격에 반영</td>
+            </tr>
+            <tr>
+              <td>연준 금리인상 확률</td>
+              <td class="warn">25% → 52%</td>
+              <td>시장이 인상 리스크를 가격에 담기 시작</td>
+            </tr>
+            <tr>
+              <td>미 10년물 국채 금리</td>
+              <td class="warn">4.55%</td>
+              <td>완화 기대가 없다는 채권시장의 판단</td>
+            </tr>
+            <tr>
+              <td>GS 첫 인하 시점</td>
+              <td class="down">2027년</td>
+              <td>에너지 빼도 관세·AI 수요는 남는다는 뷰</td>
+            </tr>
+            <tr>
+              <td>Q1 EPS 성장률</td>
+              <td class="up">+28.6%</td>
+              <td>기대치(13.1%)의 2배 — 기업이익은 견조</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <h2>Warsh 첫 FOMC — 72시간의 분기점</h2>
+      </div>
+
+      <div class="img-placeholder">
+        <span>🏛 FOMC 점도표 시나리오 분기 차트</span>
+      </div>
+
+      <p>
+        이란 협정이 성사되어도 <strong>관세와 AI 수요는 남는다.</strong>
+        인플레이션이 3%에서 2.5%로 내려앉는 정도이지, 2%대 초반으로
+        떨어지지 않는다. 그래서 Fed는 여전히 움직일 명분이 없다.
+      </p>
+      <p>
+        그런데 <strong>6월 17일 Warsh의 첫 FOMC</strong>가 변수다.
+        신임 의장이 첫 회의에서 점도표를 어떻게 쓰느냐에 따라 두 세계가 갈린다.
+      </p>
+
+      <div class="scenario-grid">
+        <div class="scenario-card green">
+          <div class="scenario-label">시나리오 A</div>
+          <h3>2026년 인하 창문을 남긴다</h3>
+          <ul>
+            <li>지정학 해빙 + 완화 기대 동시 랠리</li>
+            <li>성장주·이머징 쌍끌이 매수</li>
+            <li>달러 약세 전환 가능성</li>
+          </ul>
+        </div>
+        <div class="scenario-card red">
+          <div class="scenario-label">시나리오 B</div>
+          <h3>2026년 인하 가능성을 완전히 닫는다</h3>
+          <ul>
+            <li>에너지 하락은 일회성 호재로 소화</li>
+            <li>달러 재강세, 장기금리 재상승</li>
+            <li>성장주 밸류에이션 재압박</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">4</div>
+        <h2>이번 주 투자자 체크리스트</h2>
+      </div>
+
+      <div class="checklist">
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div>
+            <div class="title">6월 17일 FOMC 점도표</div>
+            <div class="desc">2026년 인하 점이 하나라도 남아 있는지 확인 — 있으면 랠리 명분, 전부 지워지면 매도 신호</div>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div>
+            <div class="title">이란 협정 공식 서명 여부</div>
+            <div class="desc">이란 측이 "아직 예비적 합의"라고 선을 긋는 중 — 서명 없으면 유가 반등, 에너지 내러티브 원점 복귀</div>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div>
+            <div class="title">Warsh 기자회견 톤</div>
+            <div class="desc">백악관 압력에 굴복 vs. 인플레이션 억제 우선 — 연준 독립성 신호를 시장이 즉각 반영</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <p>
+        오늘은 유가가 떨어진 날이 아니라, 인플레이션 방정식에서
+        에너지 항이 처음으로 빠질 수도 있다는 가설이 생긴 날이다.
+        그 가설의 검증은 72시간 안에 이루어진다.
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    데일리 테제 분석 · 2026.06.14 · 본 자료는 투자 권유가 아닙니다
+  </footer>
+
+</body>
+</html>

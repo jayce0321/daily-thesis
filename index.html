@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>데일리 테제 — Jayce</title>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161a23;
+      --border: #252b3b;
+      --accent: #e8b84b;
+      --text: #e2e6f0;
+      --muted: #7a8299;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+    }
+    header {
+      padding: 48px 40px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 { font-size: 22px; font-weight: 700; }
+    header p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .container { max-width: 760px; margin: 0 auto; padding: 40px 32px; }
+    .post-list { display: flex; flex-direction: column; gap: 1px; }
+    .post-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: color 0.15s;
+    }
+    .post-item:hover { color: var(--accent); }
+    .post-title { font-size: 15px; font-weight: 600; }
+    .post-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .post-date { font-size: 12px; color: var(--muted); white-space: nowrap; margin-left: 24px; }
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>데일리 테제</h1>
+    <p>시장을 관통하는 하나의 테제 — by Jayce</p>
+  </header>
+  <div class="container">
+    <div class="post-list">
+      <a class="post-item" href="2026-06-14.html">
+        <div>
+          <div class="post-title">"인플레이션의 마지막 야생 변수가 길들여지려 한다"</div>
+          <div class="post-sub">이란 평화협정 × Warsh 첫 FOMC — 이란·유가·연준</div>
+        </div>
+        <div class="post-date">2026.06.14</div>
+      </a>
+    </div>
+  </div>
+  <footer>데일리 테제 · 본 자료는 투자 권유가 아닙니다</footer>
+</body>
+</html>
