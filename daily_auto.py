@@ -164,85 +164,84 @@ def call_claude(news_headlines):
 
     raise ValueError(f"tool_use 응답 없음: {result}")
 
-# ── 2b. SVG 이미지 생성 (커버·차트 각각 독립 호출) ──────────
-def _svg_api_call(prompt_text, width, height):
-    tool_def = {
-        "name": "save_svg",
-        "description": "SVG 코드를 저장한다",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "svg_code": {
-                    "type": "string",
-                    "description": f"<svg viewBox='0 0 {width} {height}' xmlns='http://www.w3.org/2000/svg'>로 시작하고 </svg>로 끝나는 완전한 SVG 코드"
-                }
-            },
-            "required": ["svg_code"]
-        }
-    }
-    data = json.dumps({
-        "model": "claude-sonnet-4-6",
-        "max_tokens": 2000,
-        "tools": [tool_def],
-        "tool_choice": {"type": "tool", "name": "save_svg"},
-        "messages": [{"role": "user", "content": prompt_text}]
-    }).encode("utf-8")
-    req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages",
-        data=data,
-        headers={"x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"}
-    )
-    with urllib.request.urlopen(req, timeout=90) as r:
-        result = json.loads(r.read().decode("utf-8"))
-    for block in result["content"]:
-        if block.get("type") == "tool_use":
-            return block["input"].get("svg_code", "")
-    return ""
+# ── 2b. SVG 이미지 생성 (Python 직접 생성 — 100% 안정) ──────
+import html as _html
+import hashlib
 
 def generate_svgs(analysis):
     log("SVG 이미지 생성 중...")
-    metrics = analysis.get("metrics", [])
-    title = analysis.get("thesis_title", "")
-    bar_h, gap = 32, 14
-    chart_height = max(300, len(metrics) * (bar_h + gap) + 80)
-    colors = ["#e05c5c", "#e8b84b", "#4caf80", "#5b8dee", "#a78bfa"]
+    metrics  = analysis.get("metrics", [])
+    title    = analysis.get("thesis_title", "")
+    one_line = analysis.get("one_line", "")
 
-    cover_prompt = f"""900×360 히어로 커버 SVG를 만들어줘.
-테제: {title}
-- <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg"> 로 시작
-- <rect width="900" height="360" fill="#0d1a2e"/> 배경
-- 골든(#e8b84b)·블루(#5b8dee) 포인트 컬러로 추상 기하 도형 (원, 선, 다각형 여러 개)
-- 우상단 <text x="870" y="30" text-anchor="end" fill="#7a8299" font-size="14">{TODAY_KR}</text>
-- 좌하단 <text x="48" y="330" fill="#e8b84b" font-size="11" letter-spacing="3">DAILY THESIS</text>"""
+    # ── 커버 SVG ─────────────────────────────────────────────
+    # 제목 해시로 색상 시드 결정 (매일 다른 패턴)
+    seed = int(hashlib.md5(title.encode()).hexdigest()[:6], 16)
+    def _c(base, offset):
+        v = (base + offset) % 360
+        return v
 
-    rows = ""
+    safe_title = _html.escape(title[:34] + ("…" if len(title) > 34 else ""))
+    safe_oneline = _html.escape(one_line[:60] + ("…" if len(one_line) > 60 else ""))
+
+    # 도형 파라미터 (시드 기반)
+    cx1, cy1 = 650 + (seed % 80), 80 + (seed % 60)
+    cx2, cy2 = 750 + (seed % 50), 200 + (seed % 80)
+    cx3, cy3 = 500 + (seed % 100), 300 + (seed % 60)
+
+    cover_svg = f'''<svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <!-- 배경 광원 -->
+  <circle cx="{cx1}" cy="{cy1}" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="{cx2}" cy="{cy2}" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <!-- 기하 도형 -->
+  <circle cx="{cx1}" cy="{cy1}" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="{cx1}" cy="{cy1}" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="{cx2}" cy="{cy2}" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="{cx3}" cy="{cy3}" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="{cx1-100}" y1="{cy1+30}" x2="{cx2+50}" y2="{cy2-40}" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <!-- 텍스트 -->
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">{TODAY_KR}</text>
+  <text x="48" y="240" fill="#e2e6f0" font-size="22" font-weight="700" opacity="0.95">{safe_title}</text>
+  <text x="48" y="272" fill="#7a8299" font-size="13">{safe_oneline}</text>
+  <text x="48" y="332" fill="#e8b84b" font-size="10" letter-spacing="3" font-weight="600">DAILY THESIS</text>
+</svg>'''
+
+    # ── 차트 SVG ─────────────────────────────────────────────
+    colors  = ["#e05c5c", "#e8b84b", "#5b8dee", "#4caf80", "#a78bfa"]
+    bar_h   = 32
+    gap     = 16
+    pad_top = 40
+    pad_l   = 210
+    max_bar = 500
+    chart_h = pad_top + len(metrics) * (bar_h + gap) + 30
+
+    bars = ""
     for i, m in enumerate(metrics):
-        y = 50 + i * (bar_h + gap)
-        c = colors[i % len(colors)]
-        rows += f"  y={y} 레이블=\"{m['label']}\" 수치=\"{m['value']}\" 색={c}\n"
+        y   = pad_top + i * (bar_h + gap)
+        col = colors[i % len(colors)]
+        # 바 길이: 인덱스 기반 상대적 너비 (뒤로 갈수록 약간 줄어들어 자연스럽게)
+        w   = max(60, max_bar - i * (max_bar // (len(metrics) + 1)))
+        lbl = _html.escape(m.get("label", "")[:22])
+        val = _html.escape(m.get("value", ""))
+        bars += f'''  <text x="{pad_l - 10}" y="{y + bar_h//2 + 5}" text-anchor="end" fill="#7a8299" font-size="12">{lbl}</text>
+  <rect x="{pad_l}" y="{y}" width="{w}" height="{bar_h}" fill="{col}" rx="4" opacity="0.85"/>
+  <text x="{pad_l + w + 8}" y="{y + bar_h//2 + 5}" fill="#e2e6f0" font-size="13" font-weight="700">{val}</text>\n'''
 
-    chart_prompt = f"""800×{chart_height} 지표 가로 바 차트 SVG를 만들어줘.
-지표 데이터 (y좌표·레이블·수치·색상):
-{rows}
-- <svg viewBox="0 0 800 {chart_height}" xmlns="http://www.w3.org/2000/svg"> 로 시작
-- <rect width="800" height="{chart_height}" fill="#161a23"/> 배경
-- 좌측 여백 x=200 (레이블 텍스트 공간)
-- 각 행: <text x="190" y="y+22" text-anchor="end" fill="#7a8299" font-size="13">레이블</text>
-          <rect x="200" y="y" width="상대너비" height="{bar_h}" fill="색상" rx="4"/>
-          <text x="200+너비+8" y="y+22" fill="#e2e6f0" font-size="13" font-weight="bold">수치</text>
-- 바 최대 너비 500px, 길이는 시각적으로 자연스럽게 조정"""
+    chart_svg = f'''<svg viewBox="0 0 800 {chart_h}" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="{chart_h}" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+{bars}</svg>'''
 
-    cover_svg, chart_svg = "", ""
-    try:
-        cover_svg = _svg_api_call(cover_prompt, 900, 360)
-        log(f"커버 SVG 완료 ({len(cover_svg)}자)")
-    except Exception as e:
-        log(f"커버 SVG 실패: {e}")
-    try:
-        chart_svg = _svg_api_call(chart_prompt, 800, chart_height)
-        log(f"차트 SVG 완료 ({len(chart_svg)}자)")
-    except Exception as e:
-        log(f"차트 SVG 실패: {e}")
+    log(f"SVG 생성 완료 (커버:{len(cover_svg)}자, 차트:{len(chart_svg)}자)")
     return cover_svg, chart_svg
 
 # ── 3. HTML 생성 ─────────────────────────────────────────────
