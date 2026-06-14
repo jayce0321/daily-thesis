@@ -1,0 +1,44 @@
+name: 데일리 테제 자동 발행
+
+on:
+  schedule:
+    - cron: '0 23 * * 0-4'  # 매주 월~금 KST 08:00 (UTC 23:00 전날)
+  workflow_dispatch:          # 수동 실행 버튼
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 레포 체크아웃
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 의존성 설치
+        run: pip install anthropic requests beautifulsoup4
+
+      - name: 데일리 테제 생성 및 게시
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GIT_USER_NAME: jayce0321
+          GIT_USER_EMAIL: jaehoyi0321@gmail.com
+        run: python daily_auto.py
+
+      - name: 변경사항 커밋 & 푸시
+        run: |
+          git config user.name "jayce0321"
+          git config user.email "jaehoyi0321@gmail.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "데일리 테제 $(date +'%Y.%m.%d') [자동]"
+          git push
