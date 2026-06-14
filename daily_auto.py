@@ -421,7 +421,7 @@ def build_html(a, cover_svg="", chart_svg=""):
   </div>
 
   <div class="callout">
-    <p>{a['closing']}</p>
+    <p>{a.get('closing', a.get('one_line', ''))}</p>
   </div>
 
 </div>
@@ -498,7 +498,7 @@ type: daily-thesis
 {analysis['why_important']}
 
 ### 마무리
-{analysis['closing']}
+{analysis.get('closing', analysis.get('one_line', ''))}
 """)
     log(f"Obsidian 저장 완료: {md_path}")
 
