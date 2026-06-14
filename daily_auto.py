@@ -208,11 +208,8 @@ def generate_svgs(analysis):
   <circle cx="{cx3}" cy="{cy3}" r="40" fill="#e8b84b" opacity="0.06"/>
   <line x1="{cx1-100}" y1="{cy1+30}" x2="{cx2+50}" y2="{cy2-40}" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
   <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
-  <!-- 텍스트 -->
+  <!-- 날짜만 유지 (나머지 텍스트는 HTML에서 표시) -->
   <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">{TODAY_KR}</text>
-  <text x="48" y="240" fill="#e2e6f0" font-size="22" font-weight="700" opacity="0.95">{safe_title}</text>
-  <text x="48" y="272" fill="#7a8299" font-size="13">{safe_oneline}</text>
-  <text x="48" y="332" fill="#e8b84b" font-size="10" letter-spacing="3" font-weight="600">DAILY THESIS</text>
 </svg>'''
 
     # ── 차트 SVG ─────────────────────────────────────────────
@@ -285,7 +282,7 @@ def build_html(a, cover_svg="", chart_svg=""):
     }}
     *{{box-sizing:border-box;margin:0;padding:0}}
     body{{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}}
-    .hero{{position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}}
+    .hero{{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}}
     .hero::before{{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}}
     .hero-eyebrow{{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}}
     .hero-date{{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}}
@@ -323,7 +320,19 @@ def build_html(a, cover_svg="", chart_svg=""):
     tbody td:nth-child(2){{font-weight:700;font-size:15px}}
     tbody td:nth-child(3){{color:#8a9ab8;font-size:13px}}
     .scenario-grid{{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}}
-    @media(max-width:600px){{.scenario-grid{{grid-template-columns:1fr}}}}
+    @media(max-width:600px){{
+      .scenario-grid{{grid-template-columns:1fr}}
+      .hero{{min-height:260px;padding:40px 20px 36px}}
+      .hero h1{{font-size:clamp(18px,5.5vw,28px)}}
+      .container{{padding:36px 16px}}
+      .thesis-block{{padding:20px 18px}}
+      .market-item{{min-width:100px;padding:10px 12px}}
+      .market-value{{font-size:14px}}
+    }}
+    @media(min-width:601px) and (max-width:900px){{
+      .hero{{padding:48px 32px 40px}}
+      .container{{padding:44px 24px}}
+    }}
     .scenario-card{{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}}
     .scenario-card.green{{border-top:3px solid var(--green)}}.scenario-card.red{{border-top:3px solid var(--red)}}
     .scenario-label{{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}}
