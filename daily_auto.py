@@ -374,9 +374,17 @@ def publish(html_content, analysis):
     # git push (로컬 실행 시만 — Actions는 워크플로우에서 처리)
     if not IS_CI:
         os.chdir(REPO_DIR)
+        # 원격 최신 상태 동기화 후 커밋 (Actions와 충돌 방지)
+        subprocess.run(["git", "fetch", "origin"], check=True)
+        subprocess.run(["git", "reset", "--hard", "origin/main"], check=True)
+        # reset 후 파일 다시 저장
+        with open(os.path.join(REPO_DIR, f"{TODAY}.html"), "w", encoding="utf-8") as _f:
+            _f.write(html_content[0] if isinstance(html_content, tuple) else html_content)
         subprocess.run(["git", "add", f"{TODAY}.html", "index.html"], check=True)
-        subprocess.run(["git", "commit", "-m", f"데일리 테제 {TODAY_KR}"], check=True)
-        subprocess.run(["git", "push", "origin", "main"], check=True)
+        staged = subprocess.run(["git", "diff", "--staged", "--quiet"])
+        if staged.returncode != 0:
+            subprocess.run(["git", "commit", "-m", f"데일리 테제 {TODAY_KR}"], check=True)
+            subprocess.run(["git", "push", "origin", "main"], check=True)
     log("GitHub Pages 게시 완료")
     log(f"→ https://jayce0321.github.io/daily-thesis/{TODAY}.html")
 
