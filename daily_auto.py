@@ -164,8 +164,73 @@ def call_claude(news_headlines):
 
     raise ValueError(f"tool_use 응답 없음: {result}")
 
+# ── 2b. SVG 이미지 생성 ──────────────────────────────────────
+def generate_svgs(analysis):
+    log("SVG 이미지 생성 중...")
+    metrics = analysis.get("metrics", [])
+    metrics_desc = "\n".join(f"- {m['label']}: {m['value']} ({m['meaning']})" for m in metrics)
+    sa = analysis.get("scenario_a", {})
+    sb = analysis.get("scenario_b", {})
+
+    tool_def = {
+        "name": "save_svgs",
+        "description": "생성된 SVG 코드를 저장한다",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "cover_svg": {"type": "string", "description": "히어로 커버 SVG (viewBox='0 0 900 360'). 다크 배경 #0d1a2e, 골든 #e8b84b·블루 #5b8dee 포인트. 테제를 연상시키는 추상 기하 도형. <svg>~</svg> 완전한 코드."},
+                "chart_svg": {"type": "string", "description": "지표 바 차트 SVG (viewBox='0 0 800 300'). 다크 배경 #161a23. 지표값 가로 바 차트, 레이블+수치 텍스트 포함. <svg>~</svg> 완전한 코드."}
+            },
+            "required": ["cover_svg", "chart_svg"]
+        }
+    }
+
+    data = json.dumps({
+        "model": "claude-sonnet-4-6",
+        "max_tokens": 4000,
+        "tools": [tool_def],
+        "tool_choice": {"type": "tool", "name": "save_svgs"},
+        "messages": [{"role": "user", "content": f"""데일리 테제용 SVG 이미지 2개를 만들어줘.
+
+테제: {analysis.get('thesis_title','')}
+핵심: {analysis.get('one_line','')}
+지표:
+{metrics_desc}
+시나리오 A: {sa.get('title','')}
+시나리오 B: {sb.get('title','')}
+
+[cover_svg] 900×360 히어로 커버
+- 배경 #0d1a2e, 포인트 #e8b84b / #5b8dee
+- 테제 키워드를 연상시키는 추상/기하 도형
+- 우상단 날짜 텍스트: {TODAY_KR}
+- 전문적이고 세련된 느낌
+
+[chart_svg] 800×300 지표 바 차트
+- 배경 #161a23
+- 지표 {len(metrics)}개 가로 바 차트
+- 레이블(좌) + 수치(우) 텍스트
+- 색상: 위험/상승=#e05c5c, 완화/하락=#4caf80, 중립=#e8b84b"""}]
+    }).encode("utf-8")
+
+    try:
+        req = urllib.request.Request(
+            "https://api.anthropic.com/v1/messages",
+            data=data,
+            headers={"x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=90) as r:
+            result = json.loads(r.read().decode("utf-8"))
+        for block in result["content"]:
+            if block.get("type") == "tool_use":
+                svgs = block["input"]
+                log("SVG 생성 완료")
+                return svgs.get("cover_svg", ""), svgs.get("chart_svg", "")
+    except Exception as e:
+        log(f"SVG 생성 실패 (무시): {e}")
+    return "", ""
+
 # ── 3. HTML 생성 ─────────────────────────────────────────────
-def build_html(a):
+def build_html(a, cover_svg="", chart_svg=""):
     metrics_rows = ""
     for m in a.get("metrics", []):
         metrics_rows += f"""
@@ -261,11 +326,17 @@ def build_html(a):
     .callout::before{{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}}
     .callout p{{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}}
     footer{{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}}
+    .hero-cover{{position:absolute;inset:0;z-index:0;overflow:hidden}}
+    .hero-cover svg{{width:100%;height:100%;object-fit:cover}}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{{position:relative;z-index:1}}
+    .chart-wrap{{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}}
+    .chart-wrap svg{{width:100%;height:auto;display:block}}
   </style>
 </head>
 <body>
 
 <section class="hero">
+  {('<div class="hero-cover">' + cover_svg + '</div>') if cover_svg else ''}
   <div class="hero-eyebrow">
     <span class="hero-date">{TODAY_KR}</span>
     <span class="hero-dot"></span>
@@ -298,6 +369,7 @@ def build_html(a):
       <div class="section-number">2</div>
       <h2>숫자로 보는 근거</h2>
     </div>
+    {('<div class="chart-wrap">' + chart_svg + '</div>') if chart_svg else ''}
     <div class="data-table-wrap">
       <table>
         <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
@@ -460,7 +532,8 @@ def main():
         news = ["글로벌 금융시장 동향 분석 필요"]
 
     analysis = call_claude(news)
-    html = build_html(analysis)
+    cover_svg, chart_svg = generate_svgs(analysis)
+    html = build_html(analysis, cover_svg, chart_svg)
     publish(html, analysis)
 
     log("=== 완료 ===")
