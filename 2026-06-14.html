@@ -1,611 +1,196 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>데일리 테제 | 2026.06.14</title>
   <style>
     :root {
-      --bg: #0d0f14;
-      --surface: #161a23;
-      --border: #252b3b;
-      --accent: #e8b84b;
-      --accent2: #5b8dee;
-      --red: #e05c5c;
-      --green: #4caf80;
-      --text: #e2e6f0;
-      --muted: #7a8299;
-      --tag-bg: #1e2435;
+      --bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-      line-height: 1.75;
-      min-height: 100vh;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 56px 48px 48px;
-      background:
-        linear-gradient(160deg, #0d1a2e 0%, #0d0f14 60%),
-        radial-gradient(ellipse at 70% 30%, #1a3a5c 0%, transparent 60%);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 20% 80%, rgba(232,184,75,0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(91,141,238,0.1) 0%, transparent 50%);
-    }
-
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .hero-date {
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .hero-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .hero-label {
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .hero-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-      position: relative;
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .hero h1 {
-      font-size: clamp(24px, 4vw, 40px);
-      font-weight: 700;
-      line-height: 1.3;
-      position: relative;
-      max-width: 800px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      margin-top: 16px;
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 620px;
-      position: relative;
-    }
-
-    /* ── MARKET BANNER ── */
-    .market-banner {
-      display: flex;
-      gap: 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      overflow-x: auto;
-      background: var(--surface);
-    }
-
-    .market-item {
-      flex: 1;
-      min-width: 140px;
-      padding: 14px 20px;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .market-item:last-child { border-right: none; }
-
-    .market-label { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
-    .market-value { font-size: 17px; font-weight: 700; }
-    .market-change { font-size: 12px; }
-    .up { color: var(--green); }
-    .down { color: var(--red); }
-    .warn { color: var(--accent); }
-
-    /* ── LAYOUT ── */
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 56px 32px;
-    }
-
-    /* ── THESIS BLOCK ── */
-    .thesis-block {
-      background: linear-gradient(135deg, #1a2235 0%, #161a23 100%);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      border-radius: 8px;
-      padding: 28px 32px;
-      margin-bottom: 48px;
-    }
-
-    .thesis-block .label {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .thesis-block p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #c8cfe0;
-    }
-
-    .thesis-block strong { color: var(--text); }
-
-    /* ── SECTION ── */
-    .section { margin-bottom: 52px; }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-number {
-      width: 28px; height: 28px;
-      border-radius: 6px;
-      background: var(--accent);
-      color: #000;
-      font-size: 12px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .section-header h2 {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    /* ── IMAGE PLACEHOLDER ── */
-    .img-placeholder {
-      width: 100%;
-      height: 180px;
-      background: linear-gradient(135deg, #1a2235, #0d1525);
-      border: 1px dashed var(--border);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .img-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 30% 50%, rgba(232,184,75,0.05) 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 50%, rgba(91,141,238,0.05) 0%, transparent 60%);
-    }
-
-    .img-placeholder span { position: relative; }
-
-    p { margin-bottom: 16px; color: #c0c8da; font-size: 15px; }
-
-    /* ── TABLE ── */
-    .data-table-wrap {
-      overflow-x: auto;
-      margin: 24px 0;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    table { width: 100%; border-collapse: collapse; }
-
-    thead tr { background: #1a2235; }
-    thead th {
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    tbody tr { border-top: 1px solid var(--border); transition: background 0.15s; }
-    tbody tr:hover { background: #1a2030; }
-    tbody td { padding: 13px 16px; font-size: 14px; }
-    tbody td:first-child { color: var(--muted); font-size: 13px; }
-    tbody td:nth-child(2) { font-weight: 700; font-size: 15px; }
-    tbody td:nth-child(3) { color: #8a9ab8; font-size: 13px; }
-
-    /* ── SCENARIO CARDS ── */
-    .scenario-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    @media (max-width: 600px) { .scenario-grid { grid-template-columns: 1fr; } }
-
-    .scenario-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px 22px;
-    }
-
-    .scenario-card.green { border-top: 3px solid var(--green); }
-    .scenario-card.red { border-top: 3px solid var(--red); }
-
-    .scenario-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .scenario-card.green .scenario-label { color: var(--green); }
-    .scenario-card.red .scenario-label { color: var(--red); }
-
-    .scenario-card h3 {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .scenario-card ul { padding-left: 16px; }
-    .scenario-card li { font-size: 13px; color: #8a9ab8; margin-bottom: 4px; }
-
-    /* ── CHECKLIST ── */
-    .checklist {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .checklist-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .checklist-item:last-child { border-bottom: none; }
-
-    .check-box {
-      width: 20px; height: 20px;
-      border-radius: 4px;
-      border: 2px solid var(--border);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .checklist-item .title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-    .checklist-item .desc { font-size: 12px; color: var(--muted); }
-
-    /* ── CALLOUT ── */
-    .callout {
-      background: #0f1825;
-      border: 1px solid #2a3a50;
-      border-radius: 8px;
-      padding: 24px 28px;
-      margin-top: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .callout::before {
-      content: '"';
-      position: absolute;
-      top: -10px;
-      left: 20px;
-      font-size: 80px;
-      color: rgba(232,184,75,0.08);
-      font-family: Georgia, serif;
-      line-height: 1;
-    }
-
-    .callout p {
-      font-size: 15px;
-      color: #b0bdd4;
-      font-style: italic;
-      position: relative;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 32px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero h1 em{font-style:normal;color:var(--accent)}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .market-banner{display:flex;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow-x:auto;background:var(--surface)}
+    .market-item{flex:1;min-width:130px;padding:14px 18px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
+    .market-item:last-child{border-right:none}
+    .market-label{font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+    .market-value{font-size:17px;font-weight:700}
+    .market-change{font-size:12px}
+    .up{color:var(--green)}.down{color:var(--red)}.warn{color:var(--accent)}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-eyebrow">
-      <span class="hero-date">2026년 6월 14일</span>
-      <span class="hero-dot"></span>
-      <span class="hero-label">Daily Thesis</span>
-    </div>
-    <div class="hero-tags">
-      <span class="tag">매크로</span>
-      <span class="tag">FOMC</span>
-      <span class="tag">이란 평화협정</span>
-      <span class="tag">유가</span>
-      <span class="tag">인플레이션</span>
-    </div>
-    <h1>
-      "인플레이션의 마지막<br>
-      <em>야생 변수</em>가 길들여지려 한다"
-    </h1>
-    <p class="hero-sub">
-      이란 평화협정 가시화 × Warsh 첫 FOMC — 72시간 안에 가설이 검증된다
-    </p>
-  </section>
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.14</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">Daily Thesis</span>
+  </div>
+  <div class="hero-tags">
+    <span class="tag">매크로</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span>
+  </div>
+  <h1>"공포의 삼각형: 금리·전쟁·반도체가 동시에 흔든다"</h1>
+  <p class="hero-sub">FOMC·중동 리스크·CPI가 동시에 수렴하는 '결전의 주간', 시장은 공포와 기회 사이에서 방향을 탐색 중이다.</p>
+</section>
 
-  <!-- MARKET BANNER -->
-  <div class="market-banner">
-    <div class="market-item">
-      <span class="market-label">WTI 유가</span>
-      <span class="market-value down">$85.00</span>
-      <span class="market-change down">▼ 2.0%</span>
+<div class="container">
+
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>FOMC·중동 리스크·CPI가 동시에 수렴하는 '결전의 주간', 시장은 공포와 기회 사이에서 방향을 탐색 중이다.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>왜 이게 중요한가</h2>
     </div>
-    <div class="market-item">
-      <span class="market-label">10년물 금리</span>
-      <span class="market-value warn">4.55%</span>
-      <span class="market-change warn">고점 유지</span>
+    <p>현재 시장은 단일 변수가 아닌 세 가지 구조적 압력이 동시에 교차하는 복합 국면에 놓여 있다. ① 연준(Fed)의 금리 결정이 임박한 가운데 백악관은 인하를 압박하고 있으나 Warsh를 비롯한 연준 내부는 동결 기조를 유지할 가능성이 높다. ② 미·이란 접촉설이 부상하며 중동 리스크가 완화 기대와 재확전 우려 사이를 오가고 있고, 이는 유가와 금값에 상반된 신호를 보내고 있다. ③ 반도체 업황 불확실성 속에서도 AI 모멘텀이 소매 부진을 상쇄하며 지수를 지탱하고 있다. 이 세 축이 동시에 결론을 향해 수렴하는 이번 주는 향후 수개월 시장 방향의 분기점이 될 공산이 크다.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>숫자로 보는 근거</h2>
     </div>
-    <div class="market-item">
-      <span class="market-label">연준 금리인상 확률</span>
-      <span class="market-value warn">52%</span>
-      <span class="market-change warn">1주 전 25%</span>
-    </div>
-    <div class="market-item">
-      <span class="market-label">Q1 EPS 성장</span>
-      <span class="market-value up">+28.6%</span>
-      <span class="market-change up">기대치 2배</span>
-    </div>
-    <div class="market-item">
-      <span class="market-label">GS 첫 인하 시점</span>
-      <span class="market-value">2027</span>
-      <span class="market-change down">기존 2026H2</span>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody>
+            <tr>
+              <td>CPI / PCE 발표</td>
+              <td>6월 발표 임박 (전월비 +0.2% 컨센서스)</td>
+              <td>연준 동결 명분 강화 여부의 핵심 리트머스. 예상 상회 시 달러 강세·위험자산 압박</td>
+            </tr>
+            <tr>
+              <td>WTI 유가 경계선</td>
+              <td>93달러 (위험 임계치)</td>
+              <td>유가가 93달러를 돌파하면 인플레 재점화 → 연준 긴축 장기화 우려로 미국 증시에 치명적 충격 가능</td>
+            </tr>
+            <tr>
+              <td>달러 인덱스(DXY) 추세</td>
+              <td>FOMC 전까지 상승 기조 유지 (TD Securities)</td>
+              <td>달러 캐리 청산 압력 누적, 신흥국 자산 및 원자재 가격 하방 압력으로 작용</td>
+            </tr>
+            <tr>
+              <td>금 가격 방향</td>
+              <td>전쟁 리스크에도 하락 (기관 저가 매수 병행)</td>
+              <td>전통적 안전자산 공식 이탈 → 달러 강세와 실질금리 상승이 금 매력을 상쇄, 비트코인 헷지 수요 대두</td>
+            </tr>
+            <tr>
+              <td>뉴욕 증시 마감</td>
+              <td>미·이란 접촉설 + 경제지표 호조로 상승 마감</td>
+              <td>지정학 완화 기대가 단기 매수세를 자극했으나 구조적 불확실성은 미해소 → 상승의 지속성은 검증 필요</td>
+            </tr></tbody>
+      </table>
     </div>
   </div>
 
-  <div class="container">
-
-    <!-- THESIS BLOCK -->
-    <div class="thesis-block">
-      <div class="label">오늘의 핵심 테제</div>
-      <p>
-        이란 평화협정 가시화로 유가라는 <strong>통제 불가능했던 변수</strong>가
-        처음으로 예측 가능한 경로에 들어섰다. 문제는 이것이 Fed의 긴축 명분을
-        약화시키기 전에, <strong>3일 뒤 Warsh가 먼저 점도표를 써버린다</strong>는 것이다.
-      </p>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>시나리오 분기</h2>
     </div>
-
-    <!-- SECTION 1 -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-number">1</div>
-        <h2>왜 이게 중요한가 — 인플레이션 방정식</h2>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>✅ 긍정 시나리오: '연착륙 + 긴장 완화' 동시 달성</h3>
+        <ul><li>CPI·PCE가 컨센서스 이하로 발표되어 연준 동결이 '비둘기적 동결'로 해석, 연내 인하 기대 복원</li><li>미·이란 접촉이 실질적 협상으로 발전 → 유가 80달러대 안착, 인플레 압력 완화로 증시 안도 랠리</li><li>AI 모멘텀(반도체·빅테크)이 지수 상단을 열어주며 위험선호 심리 회복, 비트코인·XRP 등 디지털 자산도 동반 상승</li></ul>
       </div>
-
-      <div class="img-placeholder">
-        <span>📊 인플레이션 3대 동력 다이어그램</span>
-      </div>
-
-      <p>
-        2026년 내내 인플레이션을 3% 이상에 고착시킨 원인은 셋이었다.
-        <strong>관세 + 에너지 + AI 투자 수요.</strong> 지금까지 이 세 가지는
-        동시에 작동했다. 그런데 오늘 처음으로 에너지 항이 빠질 수 있다는
-        시나리오가 실제 협상문서 수준으로 올라왔다.
-      </p>
-      <p>
-        6월 12일, 미·이란 협상단이 호르무즈 해협 재개방과 이란 원유 제재 해제를
-        포함한 평화협정 초안을 사실상 타결했다. 이란 원유가 시장에 복귀하면
-        에너지發 인플레이션 압력은 구조적으로 꺾인다.
-      </p>
-    </div>
-
-    <!-- SECTION 2 -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-number">2</div>
-        <h2>숫자로 보는 근거</h2>
-      </div>
-
-      <div class="data-table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>지표</th>
-              <th>수치</th>
-              <th>의미</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>유가(WTI)</td>
-              <td class="down">$85 / -2%</td>
-              <td>협상 기대가 즉각 가격에 반영</td>
-            </tr>
-            <tr>
-              <td>연준 금리인상 확률</td>
-              <td class="warn">25% → 52%</td>
-              <td>시장이 인상 리스크를 가격에 담기 시작</td>
-            </tr>
-            <tr>
-              <td>미 10년물 국채 금리</td>
-              <td class="warn">4.55%</td>
-              <td>완화 기대가 없다는 채권시장의 판단</td>
-            </tr>
-            <tr>
-              <td>GS 첫 인하 시점</td>
-              <td class="down">2027년</td>
-              <td>에너지 빼도 관세·AI 수요는 남는다는 뷰</td>
-            </tr>
-            <tr>
-              <td>Q1 EPS 성장률</td>
-              <td class="up">+28.6%</td>
-              <td>기대치(13.1%)의 2배 — 기업이익은 견조</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>❌ 부정 시나리오: '스태그플레이션 공포 재점화'</h3>
+        <ul><li>CPI·PCE 예상 상회 + 연준 매파 발언 → 금리 인하 기대 완전 소멸, 달러 급등·주식 급락 동시 발생</li><li>중동 협상 결렬 또는 확전 신호 → 유가 93달러 돌파, 기업 마진 압박과 소비심리 위축의 이중고</li><li>반도체 업황 둔화 지표 추가 확인 시 AI 버블 우려 부상, 나스닥 중심의 차익실현 매물 집중</li></ul>
       </div>
     </div>
-
-    <!-- SECTION 3 -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-number">3</div>
-        <h2>Warsh 첫 FOMC — 72시간의 분기점</h2>
-      </div>
-
-      <div class="img-placeholder">
-        <span>🏛 FOMC 점도표 시나리오 분기 차트</span>
-      </div>
-
-      <p>
-        이란 협정이 성사되어도 <strong>관세와 AI 수요는 남는다.</strong>
-        인플레이션이 3%에서 2.5%로 내려앉는 정도이지, 2%대 초반으로
-        떨어지지 않는다. 그래서 Fed는 여전히 움직일 명분이 없다.
-      </p>
-      <p>
-        그런데 <strong>6월 17일 Warsh의 첫 FOMC</strong>가 변수다.
-        신임 의장이 첫 회의에서 점도표를 어떻게 쓰느냐에 따라 두 세계가 갈린다.
-      </p>
-
-      <div class="scenario-grid">
-        <div class="scenario-card green">
-          <div class="scenario-label">시나리오 A</div>
-          <h3>2026년 인하 창문을 남긴다</h3>
-          <ul>
-            <li>지정학 해빙 + 완화 기대 동시 랠리</li>
-            <li>성장주·이머징 쌍끌이 매수</li>
-            <li>달러 약세 전환 가능성</li>
-          </ul>
-        </div>
-        <div class="scenario-card red">
-          <div class="scenario-label">시나리오 B</div>
-          <h3>2026년 인하 가능성을 완전히 닫는다</h3>
-          <ul>
-            <li>에너지 하락은 일회성 호재로 소화</li>
-            <li>달러 재강세, 장기금리 재상승</li>
-            <li>성장주 밸류에이션 재압박</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- SECTION 4 -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-number">4</div>
-        <h2>이번 주 투자자 체크리스트</h2>
-      </div>
-
-      <div class="checklist">
-        <div class="checklist-item">
-          <div class="check-box"></div>
-          <div>
-            <div class="title">6월 17일 FOMC 점도표</div>
-            <div class="desc">2026년 인하 점이 하나라도 남아 있는지 확인 — 있으면 랠리 명분, 전부 지워지면 매도 신호</div>
-          </div>
-        </div>
-        <div class="checklist-item">
-          <div class="check-box"></div>
-          <div>
-            <div class="title">이란 협정 공식 서명 여부</div>
-            <div class="desc">이란 측이 "아직 예비적 합의"라고 선을 긋는 중 — 서명 없으면 유가 반등, 에너지 내러티브 원점 복귀</div>
-          </div>
-        </div>
-        <div class="checklist-item">
-          <div class="check-box"></div>
-          <div>
-            <div class="title">Warsh 기자회견 톤</div>
-            <div class="desc">백악관 압력에 굴복 vs. 인플레이션 억제 우선 — 연준 독립성 신호를 시장이 즉각 반영</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CALLOUT -->
-    <div class="callout">
-      <p>
-        오늘은 유가가 떨어진 날이 아니라, 인플레이션 방정식에서
-        에너지 항이 처음으로 빠질 수도 있다는 가설이 생긴 날이다.
-        그 가설의 검증은 72시간 안에 이루어진다.
-      </p>
-    </div>
-
   </div>
 
-  <footer>
-    데일리 테제 분석 · 2026.06.14 · 본 자료는 투자 권유가 아닙니다
-  </footer>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>이번 주 투자자 체크리스트</h2>
+    </div>
+    <div class="checklist">
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div>
+            <div class="title">📊 CPI·PCE 수치 즉시 확인</div>
+            <div class="desc">발표 직후 전월비·전년비 수치를 컨센서스와 대조하라. 0.1%p 차이도 연준 해석과 달러 방향을 바꿀 수 있다. 특히 '코어' 항목에 집중할 것.</div>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div>
+            <div class="title">🛢️ 유가 93달러 라인 모니터링</div>
+            <div class="desc">중동 뉴스 흐름에 따라 WTI가 93달러에 근접하는지 실시간 확인. 이 선을 넘으면 에너지·경기소비재 포지션 리스크 재점검 필요.</div>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div>
+            <div class="title">🔁 달러·금·비트코인 상관관계 재점검</div>
+            <div class="desc">전쟁 리스크에도 금이 하락하는 현재 구조는 '달러 강세 > 안전자산 금' 공식의 붕괴를 의미한다. 헷지 수단으로 비트코인을 부분 편입하는 기관 흐름을 포트폴리오 전략에 참고하라.</div>
+          </div>
+        </div></div>
+  </div>
 
+  <div class="callout">
+    <p>지금 시장은 '무엇이 오를까'가 아니라 '어떤 공포가 먼저 해소될까'를 묻고 있다 — 그 답이 이번 주 안에 윤곽을 드러낼 것이다.</p>
+  </div>
+
+</div>
+<footer>데일리 테제 분석 · 2026.06.14 · 본 자료는 투자 권유가 아닙니다</footer>
 </body>
 </html>
