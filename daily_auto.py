@@ -164,76 +164,86 @@ def call_claude(news_headlines):
 
     raise ValueError(f"tool_use 응답 없음: {result}")
 
-# ── 2b. SVG 이미지 생성 ──────────────────────────────────────
-def generate_svgs(analysis):
-    log("SVG 이미지 생성 중...")
-    metrics = analysis.get("metrics", [])
-    metrics_desc = "\n".join(f"- {m['label']}: {m['value']} ({m['meaning']})" for m in metrics)
-    sa = analysis.get("scenario_a", {})
-    sb = analysis.get("scenario_b", {})
-
+# ── 2b. SVG 이미지 생성 (커버·차트 각각 독립 호출) ──────────
+def _svg_api_call(prompt_text, width, height):
     tool_def = {
-        "name": "save_svgs",
-        "description": "생성된 SVG 코드를 저장한다",
+        "name": "save_svg",
+        "description": "SVG 코드를 저장한다",
         "input_schema": {
             "type": "object",
             "properties": {
-                "cover_svg": {
+                "svg_code": {
                     "type": "string",
-                    "description": "히어로 커버 SVG. 반드시 <svg viewBox='0 0 900 360' xmlns='http://www.w3.org/2000/svg'>로 시작하고 </svg>로 끝나는 완전한 SVG 코드. 배경 rect fill='#0d1a2e', 추상 기하 도형들(circle/polygon/line), 날짜 텍스트 포함."
-                },
-                "chart_svg": {
-                    "type": "string",
-                    "description": "지표 바 차트 SVG. 반드시 <svg viewBox='0 0 800 300' xmlns='http://www.w3.org/2000/svg'>로 시작하고 </svg>로 끝나는 완전한 SVG 코드. 배경 rect fill='#161a23'. 각 지표마다 가로 rect 바 + text 레이블 + text 수치. 절대로 빈 문자열 반환 금지."
+                    "description": f"<svg viewBox='0 0 {width} {height}' xmlns='http://www.w3.org/2000/svg'>로 시작하고 </svg>로 끝나는 완전한 SVG 코드"
                 }
             },
-            "required": ["cover_svg", "chart_svg"]
+            "required": ["svg_code"]
         }
     }
-
     data = json.dumps({
         "model": "claude-sonnet-4-6",
-        "max_tokens": 4000,
+        "max_tokens": 2000,
         "tools": [tool_def],
-        "tool_choice": {"type": "tool", "name": "save_svgs"},
-        "messages": [{"role": "user", "content": f"""데일리 테제용 SVG 이미지 2개를 만들어줘.
-
-테제: {analysis.get('thesis_title','')}
-핵심: {analysis.get('one_line','')}
-지표:
-{metrics_desc}
-시나리오 A: {sa.get('title','')}
-시나리오 B: {sb.get('title','')}
-
-[cover_svg] 900×360 히어로 커버
-- 배경 #0d1a2e, 포인트 #e8b84b / #5b8dee
-- 테제 키워드를 연상시키는 추상/기하 도형
-- 우상단 날짜 텍스트: {TODAY_KR}
-- 전문적이고 세련된 느낌
-
-[chart_svg] 800×300 지표 바 차트
-- 배경 #161a23
-- 지표 {len(metrics)}개 가로 바 차트
-- 레이블(좌) + 수치(우) 텍스트
-- 색상: 위험/상승=#e05c5c, 완화/하락=#4caf80, 중립=#e8b84b"""}]
+        "tool_choice": {"type": "tool", "name": "save_svg"},
+        "messages": [{"role": "user", "content": prompt_text}]
     }).encode("utf-8")
+    req = urllib.request.Request(
+        "https://api.anthropic.com/v1/messages",
+        data=data,
+        headers={"x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"}
+    )
+    with urllib.request.urlopen(req, timeout=90) as r:
+        result = json.loads(r.read().decode("utf-8"))
+    for block in result["content"]:
+        if block.get("type") == "tool_use":
+            return block["input"].get("svg_code", "")
+    return ""
 
+def generate_svgs(analysis):
+    log("SVG 이미지 생성 중...")
+    metrics = analysis.get("metrics", [])
+    title = analysis.get("thesis_title", "")
+    bar_h, gap = 32, 14
+    chart_height = max(300, len(metrics) * (bar_h + gap) + 80)
+    colors = ["#e05c5c", "#e8b84b", "#4caf80", "#5b8dee", "#a78bfa"]
+
+    cover_prompt = f"""900×360 히어로 커버 SVG를 만들어줘.
+테제: {title}
+- <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg"> 로 시작
+- <rect width="900" height="360" fill="#0d1a2e"/> 배경
+- 골든(#e8b84b)·블루(#5b8dee) 포인트 컬러로 추상 기하 도형 (원, 선, 다각형 여러 개)
+- 우상단 <text x="870" y="30" text-anchor="end" fill="#7a8299" font-size="14">{TODAY_KR}</text>
+- 좌하단 <text x="48" y="330" fill="#e8b84b" font-size="11" letter-spacing="3">DAILY THESIS</text>"""
+
+    rows = ""
+    for i, m in enumerate(metrics):
+        y = 50 + i * (bar_h + gap)
+        c = colors[i % len(colors)]
+        rows += f"  y={y} 레이블=\"{m['label']}\" 수치=\"{m['value']}\" 색={c}\n"
+
+    chart_prompt = f"""800×{chart_height} 지표 가로 바 차트 SVG를 만들어줘.
+지표 데이터 (y좌표·레이블·수치·색상):
+{rows}
+- <svg viewBox="0 0 800 {chart_height}" xmlns="http://www.w3.org/2000/svg"> 로 시작
+- <rect width="800" height="{chart_height}" fill="#161a23"/> 배경
+- 좌측 여백 x=200 (레이블 텍스트 공간)
+- 각 행: <text x="190" y="y+22" text-anchor="end" fill="#7a8299" font-size="13">레이블</text>
+          <rect x="200" y="y" width="상대너비" height="{bar_h}" fill="색상" rx="4"/>
+          <text x="200+너비+8" y="y+22" fill="#e2e6f0" font-size="13" font-weight="bold">수치</text>
+- 바 최대 너비 500px, 길이는 시각적으로 자연스럽게 조정"""
+
+    cover_svg, chart_svg = "", ""
     try:
-        req = urllib.request.Request(
-            "https://api.anthropic.com/v1/messages",
-            data=data,
-            headers={"x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"}
-        )
-        with urllib.request.urlopen(req, timeout=90) as r:
-            result = json.loads(r.read().decode("utf-8"))
-        for block in result["content"]:
-            if block.get("type") == "tool_use":
-                svgs = block["input"]
-                log("SVG 생성 완료")
-                return svgs.get("cover_svg", ""), svgs.get("chart_svg", "")
+        cover_svg = _svg_api_call(cover_prompt, 900, 360)
+        log(f"커버 SVG 완료 ({len(cover_svg)}자)")
     except Exception as e:
-        log(f"SVG 생성 실패 (무시): {e}")
-    return "", ""
+        log(f"커버 SVG 실패: {e}")
+    try:
+        chart_svg = _svg_api_call(chart_prompt, 800, chart_height)
+        log(f"차트 SVG 완료 ({len(chart_svg)}자)")
+    except Exception as e:
+        log(f"차트 SVG 실패: {e}")
+    return cover_svg, chart_svg
 
 # ── 3. HTML 생성 ─────────────────────────────────────────────
 def build_html(a, cover_svg="", chart_svg=""):
