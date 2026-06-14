@@ -178,8 +178,14 @@ def generate_svgs(analysis):
         "input_schema": {
             "type": "object",
             "properties": {
-                "cover_svg": {"type": "string", "description": "히어로 커버 SVG (viewBox='0 0 900 360'). 다크 배경 #0d1a2e, 골든 #e8b84b·블루 #5b8dee 포인트. 테제를 연상시키는 추상 기하 도형. <svg>~</svg> 완전한 코드."},
-                "chart_svg": {"type": "string", "description": "지표 바 차트 SVG (viewBox='0 0 800 300'). 다크 배경 #161a23. 지표값 가로 바 차트, 레이블+수치 텍스트 포함. <svg>~</svg> 완전한 코드."}
+                "cover_svg": {
+                    "type": "string",
+                    "description": "히어로 커버 SVG. 반드시 <svg viewBox='0 0 900 360' xmlns='http://www.w3.org/2000/svg'>로 시작하고 </svg>로 끝나는 완전한 SVG 코드. 배경 rect fill='#0d1a2e', 추상 기하 도형들(circle/polygon/line), 날짜 텍스트 포함."
+                },
+                "chart_svg": {
+                    "type": "string",
+                    "description": "지표 바 차트 SVG. 반드시 <svg viewBox='0 0 800 300' xmlns='http://www.w3.org/2000/svg'>로 시작하고 </svg>로 끝나는 완전한 SVG 코드. 배경 rect fill='#161a23'. 각 지표마다 가로 rect 바 + text 레이블 + text 수치. 절대로 빈 문자열 반환 금지."
+                }
             },
             "required": ["cover_svg", "chart_svg"]
         }
