@@ -78,132 +78,90 @@
 <body>
 
 <section class="hero">
-  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <div class="hero-cover"><svg viewBox='0 0 900 360' xmlns='http://www.w3.org/2000/svg'>
   <!-- Background -->
-  <rect width="900" height="360" fill="#0d1a2e"/>
+  <rect width='900' height='360' fill='#0d1a2e'/>
 
-  <!-- Subtle grid lines -->
-  <line x1="0" y1="120" x2="900" y2="120" stroke="#1a2a42" stroke-width="1"/>
-  <line x1="0" y1="240" x2="900" y2="240" stroke="#1a2a42" stroke-width="1"/>
-  <line x1="300" y1="0" x2="300" y2="360" stroke="#1a2a42" stroke-width="1"/>
-  <line x1="600" y1="0" x2="600" y2="360" stroke="#1a2a42" stroke-width="1"/>
+  <!-- Deep grid lines -->
+  <line x1='0' y1='60' x2='900' y2='60' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='0' y1='120' x2='900' y2='120' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='0' y1='180' x2='900' y2='180' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='0' y1='240' x2='900' y2='240' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='0' y1='300' x2='900' y2='300' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='150' y1='0' x2='150' y2='360' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='300' y1='0' x2='300' y2='360' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='450' y1='0' x2='450' y2='360' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='600' y1='0' x2='600' y2='360' stroke='#1a2a45' stroke-width='1'/>
+  <line x1='750' y1='0' x2='750' y2='360' stroke='#1a2a45' stroke-width='1'/>
 
-  <!-- Background glow blobs -->
-  <radialGradient id="glowGold" cx="50%" cy="50%" r="50%">
-    <stop offset="0%" stop-color="#e8b84b" stop-opacity="0.13"/>
-    <stop offset="100%" stop-color="#e8b84b" stop-opacity="0"/>
-  </radialGradient>
-  <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
-    <stop offset="0%" stop-color="#5b8dee" stop-opacity="0.15"/>
-    <stop offset="100%" stop-color="#5b8dee" stop-opacity="0"/>
-  </radialGradient>
-  <radialGradient id="glowRed" cx="50%" cy="50%" r="50%">
-    <stop offset="0%" stop-color="#e05c5c" stop-opacity="0.10"/>
-    <stop offset="100%" stop-color="#e05c5c" stop-opacity="0"/>
-  </radialGradient>
-  <ellipse cx="160" cy="200" rx="200" ry="160" fill="url(#glowBlue)"/>
-  <ellipse cx="750" cy="160" rx="180" ry="140" fill="url(#glowGold)"/>
-  <ellipse cx="460" cy="290" rx="160" ry="100" fill="url(#glowRed)"/>
+  <!-- Abstract geometric: large translucent circle left -->
+  <circle cx='120' cy='200' r='160' fill='none' stroke='#5b8dee' stroke-width='1.2' opacity='0.18'/>
+  <circle cx='120' cy='200' r='110' fill='none' stroke='#5b8dee' stroke-width='0.8' opacity='0.12'/>
+  <circle cx='120' cy='200' r='60' fill='none' stroke='#e8b84b' stroke-width='1.5' opacity='0.22'/>
+  <circle cx='120' cy='200' r='20' fill='#e8b84b' opacity='0.12'/>
 
-  <!-- === ABSTRACT TRIANGLE COMPOSITION (공포의 삼각형) === -->
+  <!-- Abstract geometric: hexagon-like polygon right side -->
+  <polygon points='780,40 830,70 830,130 780,160 730,130 730,70' fill='none' stroke='#5b8dee' stroke-width='1.4' opacity='0.25'/>
+  <polygon points='780,60 815,80 815,120 780,140 745,120 745,80' fill='none' stroke='#e8b84b' stroke-width='1' opacity='0.18'/>
+  <circle cx='780' cy='100' r='14' fill='#5b8dee' opacity='0.18'/>
 
-  <!-- Outer triangle outline — large, centered-right -->
-  <polygon points="480,42 720,298 240,298" fill="none" stroke="#e8b84b" stroke-width="1.5" stroke-opacity="0.45" stroke-dasharray="8 5"/>
+  <!-- Diagonal accent lines -->
+  <line x1='0' y1='360' x2='400' y2='0' stroke='#5b8dee' stroke-width='0.7' opacity='0.10'/>
+  <line x1='50' y1='360' x2='450' y2='0' stroke='#5b8dee' stroke-width='0.5' opacity='0.07'/>
+  <line x1='900' y1='0' x2='550' y2='360' stroke='#e8b84b' stroke-width='0.7' opacity='0.09'/>
 
-  <!-- Inner triangle — filled subtle -->
-  <polygon points="480,100 670,270 290,270" fill="#e8b84b" fill-opacity="0.04" stroke="#e8b84b" stroke-width="1" stroke-opacity="0.3"/>
+  <!-- Triangle accent bottom left -->
+  <polygon points='0,360 180,360 0,240' fill='#5b8dee' opacity='0.06'/>
 
-  <!-- Innermost triangle — solid accent -->
-  <polygon points="480,155 600,248 360,248" fill="none" stroke="#5b8dee" stroke-width="2" stroke-opacity="0.7"/>
+  <!-- Arc / partial ring center-right -->
+  <path d='M 560,280 A 130,130 0 0,1 760,180' stroke='#e8b84b' stroke-width='1.8' fill='none' opacity='0.28'/>
+  <path d='M 570,295 A 145,145 0 0,1 775,175' stroke='#e8b84b' stroke-width='0.7' fill='none' opacity='0.13'/>
 
-  <!-- Triangle center dot -->
-  <circle cx="480" cy="220" r="5" fill="#e8b84b" fill-opacity="0.9"/>
-  <circle cx="480" cy="220" r="12" fill="none" stroke="#e8b84b" stroke-width="1" stroke-opacity="0.4"/>
-  <circle cx="480" cy="220" r="22" fill="none" stroke="#e8b84b" stroke-width="0.6" stroke-opacity="0.2"/>
+  <!-- Small dot cluster -->
+  <circle cx='340' cy='310' r='3' fill='#e8b84b' opacity='0.35'/>
+  <circle cx='358' cy='318' r='2' fill='#5b8dee' opacity='0.35'/>
+  <circle cx='350' cy='298' r='2' fill='#e8b84b' opacity='0.25'/>
+  <circle cx='370' cy='308' r='1.5' fill='#5b8dee' opacity='0.28'/>
 
-  <!-- Vertex glow dots -->
-  <!-- Top vertex: Fed -->
-  <circle cx="480" cy="42" r="6" fill="#5b8dee" fill-opacity="0.9"/>
-  <circle cx="480" cy="42" r="14" fill="none" stroke="#5b8dee" stroke-width="1.2" stroke-opacity="0.4"/>
-  <!-- Bottom-right: 전쟁 -->
-  <circle cx="720" cy="298" r="6" fill="#e05c5c" fill-opacity="0.9"/>
-  <circle cx="720" cy="298" r="14" fill="none" stroke="#e05c5c" stroke-width="1.2" stroke-opacity="0.35"/>
-  <!-- Bottom-left: 인플레 -->
-  <circle cx="240" cy="298" r="6" fill="#e8b84b" fill-opacity="0.9"/>
-  <circle cx="240" cy="298" r="14" fill="none" stroke="#e8b84b" stroke-width="1.2" stroke-opacity="0.35"/>
+  <!-- Glowing horizontal rule -->
+  <rect x='60' y='155' width='480' height='2' fill='url(#glowLine)' rx='1' opacity='0.55'/>
+  <defs>
+    <linearGradient id='glowLine' x1='0%' y1='0%' x2='100%' y2='0%'>
+      <stop offset='0%' stop-color='#5b8dee' stop-opacity='0'/>
+      <stop offset='30%' stop-color='#5b8dee' stop-opacity='1'/>
+      <stop offset='70%' stop-color='#e8b84b' stop-opacity='1'/>
+      <stop offset='100%' stop-color='#e8b84b' stop-opacity='0'/>
+    </linearGradient>
+    <linearGradient id='titleGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+      <stop offset='0%' stop-color='#ffffff'/>
+      <stop offset='60%' stop-color='#e8b84b'/>
+    </linearGradient>
+  </defs>
 
-  <!-- Vertex labels -->
-  <text x="480" y="26" text-anchor="middle" fill="#5b8dee" font-size="11" font-weight="600" letter-spacing="1" opacity="0.9">FED</text>
-  <text x="735" y="318" text-anchor="middle" fill="#e05c5c" font-size="11" font-weight="600" letter-spacing="1" opacity="0.9">WAR</text>
-  <text x="225" y="318" text-anchor="middle" fill="#e8b84b" font-size="11" font-weight="600" letter-spacing="1" opacity="0.9">INFLATION</text>
-
-  <!-- Radiating lines from center -->
-  <line x1="480" y1="220" x2="480" y2="42" stroke="#5b8dee" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 4"/>
-  <line x1="480" y1="220" x2="720" y2="298" stroke="#e05c5c" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 4"/>
-  <line x1="480" y1="220" x2="240" y2="298" stroke="#e8b84b" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 4"/>
-
-  <!-- Floating geometric accents — left side -->
-  <rect x="60" y="80" width="40" height="40" fill="none" stroke="#5b8dee" stroke-width="1" stroke-opacity="0.3" transform="rotate(20,80,100)"/>
-  <rect x="70" y="90" width="20" height="20" fill="#5b8dee" fill-opacity="0.07" transform="rotate(20,80,100)"/>
-
-  <!-- Floating hexagon — right background -->
-  <polygon points="810,60 840,45 870,60 870,90 840,105 810,90" fill="none" stroke="#e8b84b" stroke-width="1" stroke-opacity="0.25"/>
-
-  <!-- Small decorative circles -->
-  <circle cx="110" cy="260" r="3" fill="#5b8dee" fill-opacity="0.5"/>
-  <circle cx="125" cy="260" r="3" fill="#5b8dee" fill-opacity="0.3"/>
-  <circle cx="140" cy="260" r="3" fill="#5b8dee" fill-opacity="0.15"/>
-  <circle cx="800" cy="280" r="3" fill="#e8b84b" fill-opacity="0.5"/>
-  <circle cx="815" cy="280" r="3" fill="#e8b84b" fill-opacity="0.3"/>
-  <circle cx="830" cy="280" r="3" fill="#e8b84b" fill-opacity="0.15"/>
-
-  <!-- Horizontal scan line accent -->
-  <line x1="0" y1="180" x2="180" y2="180" stroke="#5b8dee" stroke-width="0.8" stroke-opacity="0.25"/>
-  <line x1="760" y1="180" x2="900" y2="180" stroke="#e8b84b" stroke-width="0.8" stroke-opacity="0.25"/>
-
-  <!-- === TEXT BLOCK (left-aligned) === -->
-
-  <!-- Category tag -->
-  <rect x="44" y="44" width="120" height="22" rx="4" fill="#5b8dee" fill-opacity="0.18"/>
-  <text x="52" y="59" fill="#5b8dee" font-size="11" font-weight="700" letter-spacing="2">DAILY THESIS</text>
+  <!-- Tag: DAILY THESIS -->
+  <rect x='60' y='62' width='138' height='24' rx='4' fill='#5b8dee' opacity='0.22'/>
+  <text x='70' y='79' font-family="'Helvetica Neue', Arial, sans-serif" font-size='11.5' font-weight='700' fill='#5b8dee' letter-spacing='2.5' opacity='0.95'>DAILY THESIS</text>
 
   <!-- Main title -->
-  <text x="44" y="108" fill="#ffffff" font-size="26" font-weight="800" letter-spacing="-0.5">공포의 삼각형</text>
+  <text x='60' y='134' font-family="'Helvetica Neue', Arial, sans-serif" font-size='46' font-weight='900' fill='url(#titleGrad)' letter-spacing='-1'>"공포는 팔고,</text>
+  <text x='60' y='186' font-family="'Helvetica Neue', Arial, sans-serif" font-size='46' font-weight='900' fill='url(#titleGrad)' letter-spacing='-1'>구조는 산다"</text>
 
-  <!-- Sub-title line 1 -->
-  <text x="44" y="142" fill="#e8b84b" font-size="14.5" font-weight="700" letter-spacing="0.3">전쟁 · 인플레 · Fed</text>
-  <!-- Sub-title line 2 -->
-  <text x="44" y="162" fill="#aab8cc" font-size="13" font-weight="400">동시에 시장을 압박한다</text>
+  <!-- Subtitle / core sentence -->
+  <text x='62' y='222' font-family="'Helvetica Neue', Arial, sans-serif" font-size='13' fill='#8aaed6' opacity='0.85' letter-spacing='0.3'>중동 전쟁 · 인플레 · Fed 불확실성 속</text>
+  <text x='62' y='241' font-family="'Helvetica Neue', Arial, sans-serif" font-size='13' fill='#8aaed6' opacity='0.85' letter-spacing='0.3'>AI 수요 · 달러 캐리 청산 · 제도권 자산 재편이 저점 매수 논리를 만든다</text>
 
-  <!-- Divider -->
-  <rect x="44" y="178" width="160" height="2" rx="1" fill="#e8b84b" fill-opacity="0.6"/>
+  <!-- Scenario chips -->
+  <rect x='62' y='270' width='155' height='30' rx='6' fill='#1a3a1a' stroke='#4caf80' stroke-width='1.2' opacity='0.9'/>
+  <text x='76' y='290' font-family="'Helvetica Neue', Arial, sans-serif" font-size='12.5' font-weight='700' fill='#4caf80'>🟢 Bull Case · 구조 승리</text>
 
-  <!-- Body text -->
-  <text x="44" y="202" fill="#8899b0" font-size="11" font-weight="400">중동 전쟁發 인플레 재점화 우려</text>
-  <text x="44" y="218" fill="#8899b0" font-size="11" font-weight="400">Fed 금리 동결 기조 · 달러 강세</text>
-  <text x="44" y="234" fill="#8899b0" font-size="11" font-weight="400">전통 안전자산(금)마저 흔들리는</text>
+  <rect x='232' y='270' width='155' height='30' rx='6' fill='#3a1a1a' stroke='#e05c5c' stroke-width='1.2' opacity='0.9'/>
+  <text x='246' y='290' font-family="'Helvetica Neue', Arial, sans-serif" font-size='12.5' font-weight='700' fill='#e05c5c'>🔴 Bear Case · 공포 지속</text>
 
-  <!-- Highlight keyword -->
-  <rect x="44" y="248" width="210" height="26" rx="5" fill="#e8b84b" fill-opacity="0.10"/>
-  <text x="54" y="265" fill="#e8b84b" font-size="12" font-weight="700" letter-spacing="0.5">패러다임 전환의 변곡점</text>
+  <!-- Date top-right -->
+  <text x='852' y='32' font-family="'Helvetica Neue', Arial, sans-serif" font-size='13' font-weight='600' fill='#e8b84b' text-anchor='end' letter-spacing='1.5' opacity='0.88'>2026.06.14</text>
 
-  <!-- Scenario pills -->
-  <rect x="44" y="290" width="90" height="22" rx="11" fill="#e05c5c" fill-opacity="0.18" stroke="#e05c5c" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="89" y="305" text-anchor="middle" fill="#e05c5c" font-size="10.5" font-weight="700">🔴 시나리오 A</text>
-
-  <rect x="144" y="290" width="90" height="22" rx="11" fill="#4caf80" fill-opacity="0.18" stroke="#4caf80" stroke-width="1" stroke-opacity="0.5"/>
-  <text x="189" y="305" text-anchor="middle" fill="#4caf80" font-size="10.5" font-weight="700">🟢 시나리오 B</text>
-
-  <!-- Date — top right -->
-  <text x="868" y="28" text-anchor="end" fill="#aab8cc" font-size="12" font-weight="500" letter-spacing="1.5" opacity="0.75">2026.06.14</text>
-
-  <!-- Bottom border accent -->
-  <rect x="0" y="354" width="900" height="6" rx="0" fill="url(#bottomBar)"/>
-  <linearGradient id="bottomBar" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#5b8dee" stop-opacity="0.8"/>
-    <stop offset="50%" stop-color="#e8b84b" stop-opacity="0.8"/>
-    <stop offset="100%" stop-color="#e05c5c" stop-opacity="0.8"/>
-  </linearGradient>
+  <!-- Bottom rule -->
+  <rect x='0' y='352' width='900' height='2' fill='url(#glowLine)' opacity='0.4'/>
 </svg></div>
   <div class="hero-eyebrow">
     <span class="hero-date">2026.06.14</span>
@@ -213,15 +171,15 @@
   <div class="hero-tags">
     <span class="tag">매크로</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span>
   </div>
-  <h1>"공포의 삼각형: 전쟁·인플레·Fed가 동시에 시장을 압박한다"</h1>
-  <p class="hero-sub">중동 전쟁發 인플레 재점화 우려 + Fed 금리 동결 기조 + 달러 강세가 맞물리며, 전통 안전자산(금)마저 흔들리는 '패러다임 전환의 변곡점'에 시장이 서 있다.</p>
+  <h1>"공포는 팔고, 구조는 산다"</h1>
+  <p class="hero-sub">중동 전쟁·인플레·Fed 불확실성이 겹친 공포 속에서도, AI 수요·달러 캐리 청산·제도권 자산 재편이라는 구조적 변화가 시장 저점 매수 논리를 만들어내고 있다.</p>
 </section>
 
 <div class="container">
 
   <div class="thesis-block">
     <div class="label">오늘의 핵심 테제</div>
-    <p>중동 전쟁發 인플레 재점화 우려 + Fed 금리 동결 기조 + 달러 강세가 맞물리며, 전통 안전자산(금)마저 흔들리는 '패러다임 전환의 변곡점'에 시장이 서 있다.</p>
+    <p>중동 전쟁·인플레·Fed 불확실성이 겹친 공포 속에서도, AI 수요·달러 캐리 청산·제도권 자산 재편이라는 구조적 변화가 시장 저점 매수 논리를 만들어내고 있다.</p>
   </div>
 
   <div class="section">
@@ -229,7 +187,7 @@
       <div class="section-number">1</div>
       <h2>왜 이게 중요한가</h2>
     </div>
-    <p>중동 긴장이 고조되는 상황에서도 금값이 하락하는 이례적 현상이 나타나고 있다. 이는 단순한 지정학 리스크가 아니라, '전쟁→유가 급등→인플레 재가속→Fed 긴축 장기화→달러 강세→위험자산·안전자산 동반 압박'이라는 복합 매크로 회로가 작동하기 시작했음을 의미한다. 여기에 FOMC를 앞두고 Warsh 후보의 금리 동결 시사, 1,500원대 환율, CPI·PCE 발표가 겹치면서 오늘 시장은 단 하나의 질문으로 수렴된다: "인플레가 다시 통제 불능이 되는가?"</p>
+    <p>오늘 시장은 표면적으로 '삼중 공포(중동 리스크·CPI/PCE 불확실성·Fed 금리 동결)'에 눌려 투심이 얼어붙었다. 그러나 그 아래에서는 달러 캐리 청산 흐름, AI 인프라 수요의 폭발적 성장, 그리고 XRP·BTC 같은 디지털 자산의 금융 인프라化라는 구조적 재편이 조용히 진행되고 있다. 즉, 단기 공포와 중장기 구조 사이의 괴리가 극대화된 날이며, 이 괴리를 어떻게 읽느냐가 오늘 시장의 핵심이다.</p>
   </div>
 
   <div class="section">
@@ -243,29 +201,29 @@
         <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
         <tbody>
             <tr>
-              <td>USD/KRW 환율</td>
-              <td>1,500원대</td>
-              <td>전쟁發 인플레 우려로 달러 초강세, 신흥국 자본 이탈 신호</td>
-            </tr>
-            <tr>
-              <td>유가 위험 임계선</td>
-              <td>93달러 (WTI 기준)</td>
-              <td>이 선 돌파 시 미국 증시에 치명적 충격 가능성 경고</td>
-            </tr>
-            <tr>
               <td>Fed 금리 동결 확률</td>
-              <td>구조적 4가지 이유로 동결 유력</td>
-              <td>Warsh 후보, 백악관 인하 압력에도 독립성 고수 시사</td>
+              <td>동결 유력 (Warsh 4가지 구조적 근거 제시)</td>
+              <td>백악관의 인하 압박에도 Fed는 독립성 유지, 유동성 파티 종료 신호</td>
             </tr>
             <tr>
-              <td>비트코인 헷지 수요</td>
-              <td>달러 캐리 청산 사이클 진입</td>
-              <td>전통 헷지 자산(금) 약세 속 BTC로 자금 이동 조짐</td>
+              <td>금값 반응</td>
+              <td>전쟁 리스크에도 하락</td>
+              <td>전통적 안전자산 공식 붕괴 → 매크로 구조 재해석 필요</td>
             </tr>
             <tr>
-              <td>AI 섹터 vs 소매 부진</td>
-              <td>AI 붐이 소매 약세를 압도</td>
-              <td>실물경기 둔화에도 나스닥 기술주가 시장 하방을 방어 중</td>
+              <td>달러 인덱스</td>
+              <td>FOMC 앞두고 상승 추세 유지 (TD Securities)</td>
+              <td>달러 캐리 청산 가속 시 신흥국·위험자산 변동성 확대</td>
+            </tr>
+            <tr>
+              <td>AI 투자 수요</td>
+              <td>투자 규모를 압도하는 수요 (韓美증시 수혜)</td>
+              <td>소매지표 부진·지정학 악재를 AI 모멘텀이 상쇄 중</td>
+            </tr>
+            <tr>
+              <td>기관 매수 동향</td>
+              <td>금 하락에도 기관 저가 매집 확인 (TMGM)</td>
+              <td>공포 극대화 구간에서 스마트머니는 이미 움직이고 있음</td>
             </tr></tbody>
       </table>
     </div>
@@ -279,13 +237,13 @@
     <div class="scenario-grid">
       <div class="scenario-card green">
         <div class="scenario-label">시나리오 A</div>
-        <h3>🔴 시나리오 A — 인플레 재점화, 복합 긴축 충격</h3>
-        <ul><li>CPI·PCE가 예상치 상회 → Fed 금리 인하 기대 완전 소멸</li><li>유가 93달러 돌파 → 기업 마진 압박 + 소비 위축 동시 발생</li><li>달러 추가 강세 → 원화 1,520원+ 돌파, 외국인 국내 주식 매도 가속</li><li>금 추가 하락 + 비트코인 변동성 확대 → 안전자산 부재 상황 도래</li><li>다우·S&P500 조정 본격화, AI 버블 논쟁 재점화</li></ul>
+        <h3>🟢 시나리오 A: 구조가 공포를 이긴다 (Bull Case)</h3>
+        <ul><li>CPI·PCE 결과 예상치 부합 또는 하회 → 인플레 피크아웃 확인</li><li>미·이란 접촉설 현실화 → 중동 리스크 프리미엄 빠르게 축소</li><li>AI 수요 지속 확인 + 반도체 업황 반등 신호 → 韓美 증시 동반 상승</li><li>달러 캐리 청산 마무리 국면 진입 → 비트코인·XRP 등 디지털 자산 제도권 편입 가속</li></ul>
       </div>
       <div class="scenario-card red">
         <div class="scenario-label">시나리오 B</div>
-        <h3>🟢 시나리오 B — 지정학 완화 + 지표 안도, 일시적 반등</h3>
-        <ul><li>미·이란 접촉설 구체화 → 유가 급락, 인플레 우려 진정</li><li>CPI·PCE 둔화 확인 → Fed 9월 인하 기대 복원, 위험자산 랠리</li><li>Warsh 동결 유지하되 '인하 검토 시작' 발언 → 시장 안도</li><li>달러 캐리 청산 일단락 → 원화 안정, 신흥국 증시 반등</li><li>AI 수요 견조 + 매크로 안도 = 나스닥 신고가 재도전 시나리오</li></ul>
+        <h3>🔴 시나리오 B: 공포가 구조를 덮는다 (Bear Case)</h3>
+        <ul><li>PCE 서프라이즈 상승 → Fed 동결 장기화 기정사실화, 유동성 수축 현실화</li><li>중동 사태 확전 → 유가 급등, 인플레 재점화 우려로 리스크 자산 전방위 매도</li><li>Warsh 체제 Fed, 양적완화 부정 발언 강화 → 금융자산 보유자 타격 심화</li><li>달러 강세 지속 → 신흥국 자금 이탈 + 원화 약세 → 외국인 한국 증시 이탈</li></ul>
       </div>
     </div>
   </div>
@@ -299,28 +257,28 @@
         <div class="checklist-item">
           <div class="check-box"></div>
           <div>
-            <div class="title">① CPI·PCE 수치를 숫자 그대로 읽어라</div>
-            <div class="desc">헤드라인이 아닌 '근원 인플레이션(Core)'이 전월 대비 0.3% 이상이면 Fed 동결 장기화 확실시. 이 숫자 하나가 오늘 모든 자산 방향을 결정한다.</div>
+            <div class="title">📌 PCE·CPI 수치 직접 확인</div>
+            <div class="desc">오늘 밤 발표되는 PCE 결과가 예상 범위(전월比 +0.2% 이하) 안에 드는지 반드시 확인. 이 수치 하나가 시나리오 A/B 분기점이다.</div>
           </div>
         </div>
         <div class="checklist-item">
           <div class="check-box"></div>
           <div>
-            <div class="title">② 유가 90달러 선을 일별 종가 기준으로 모니터링하라</div>
-            <div class="desc">WTI 90달러 돌파 지속 여부가 '전쟁→인플레→긴축' 회로의 스위치. 90달러 아래 안착이면 매크로 우려 완화, 93달러 접근 시 포트폴리오 리스크 즉시 재검토 필요.</div>
+            <div class="title">📌 기관 매수 vs 개인 패닉셀 흐름 구분</div>
+            <div class="desc">금 하락·주가 조정 속에서도 기관이 저가 매집 중이라는 신호가 확인됐다. 나의 매도가 스마트머니에게 싸게 넘기는 행위는 아닌지 점검할 것.</div>
           </div>
         </div>
         <div class="checklist-item">
           <div class="check-box"></div>
           <div>
-            <div class="title">③ 달러 캐리 청산 속도 = 비트코인·금 자금 흐름으로 역추적하라</div>
-            <div class="desc">전통 안전자산(금)이 전쟁에도 하락한다면, 시장은 이미 달러 자체를 최종 피난처로 선택한 것. BTC 기관 매수 동향이 '달러 외 대안 헷지'의 바로미터가 된다.</div>
+            <div class="title">📌 AI 수혜 종목과 단순 테마주 구별</div>
+            <div class="desc">AI 수요가 투자를 압도한다는 건 인프라(반도체·전력·데이터센터) 실수요가 확인된 것. 단순 AI 테마 편승 종목과 실질 수혜 종목을 구분해야 한다.</div>
           </div>
         </div></div>
   </div>
 
   <div class="callout">
-    <p>오늘 시장의 본질은 '전쟁 리스크'가 아니라 '인플레 리스크의 귀환'이며, 그 심판관은 결국 Fed와 유가다.</p>
+    <p>공포는 뉴스 헤드라인이 만들지만, 수익은 그 헤드라인 아래 흐르는 구조를 읽는 사람이 가져간다.</p>
   </div>
 
 </div>
