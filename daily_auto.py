@@ -66,51 +66,81 @@ def fetch_news():
     log(f"뉴스 {len(unique)}건 수집 완료")
     return unique[:20]
 
-# ── 2. Claude API 호출 ───────────────────────────────────────
+# ── 2. Claude API 호출 (tool_use로 JSON 보장) ────────────────
 def call_claude(news_headlines):
     log("Claude API 호출 중...")
     headlines_text = "\n".join(f"- {h}" for h in news_headlines)
-    prompt = f"""오늘({TODAY_KR}) 수집된 뉴스 헤드라인을 바탕으로 데일리 테제 분석을 작성해줘.
 
-수집된 뉴스:
-{headlines_text}
-
-작성 요구사항:
-1. 단순 뉴스 나열 금지. 오늘 시장을 관통하는 핵심 테제 하나를 도출
-2. 테제 제목 (따옴표 포함, 20자 내외)
-3. 한 줄 핵심 요약
-4. 왜 중요한가 (배경 설명)
-5. 숫자 근거 (지표명 | 수치 | 의미 형식으로 3~5개)
-6. 시나리오 A/B (긍정/부정 갈림길)
-7. 투자자 체크리스트 (2~3개 항목)
-8. 마무리 한 줄 (오늘의 본질을 꿰뚫는 문장)
-
-JSON 형식으로 응답:
-{{
-  "thesis_title": "...",
-  "one_line": "...",
-  "why_important": "...",
-  "metrics": [
-    {{"label": "...", "value": "...", "meaning": "..."}}
-  ],
-  "scenario_a": {{
-    "title": "...",
-    "points": ["...", "...", "..."]
-  }},
-  "scenario_b": {{
-    "title": "...",
-    "points": ["...", "...", "..."]
-  }},
-  "checklist": [
-    {{"title": "...", "desc": "..."}}
-  ],
-  "closing": "..."
-}}"""
+    tool_def = {
+        "name": "save_thesis",
+        "description": "데일리 테제 분석 결과를 저장한다",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "thesis_title": {"type": "string", "description": "테제 제목 (따옴표 포함, 20자 내외)"},
+                "one_line": {"type": "string", "description": "한 줄 핵심 요약"},
+                "why_important": {"type": "string", "description": "왜 중요한가 (배경 설명 2~3문장)"},
+                "metrics": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "label": {"type": "string"},
+                            "value": {"type": "string"},
+                            "meaning": {"type": "string"}
+                        },
+                        "required": ["label", "value", "meaning"]
+                    },
+                    "description": "숫자 근거 3~5개"
+                },
+                "scenario_a": {
+                    "type": "object",
+                    "properties": {
+                        "title": {"type": "string"},
+                        "points": {"type": "array", "items": {"type": "string"}}
+                    },
+                    "required": ["title", "points"]
+                },
+                "scenario_b": {
+                    "type": "object",
+                    "properties": {
+                        "title": {"type": "string"},
+                        "points": {"type": "array", "items": {"type": "string"}}
+                    },
+                    "required": ["title", "points"]
+                },
+                "checklist": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "title": {"type": "string"},
+                            "desc": {"type": "string"}
+                        },
+                        "required": ["title", "desc"]
+                    },
+                    "description": "투자자 체크리스트 2~3개"
+                },
+                "closing": {"type": "string", "description": "마무리 한 줄"}
+            },
+            "required": ["thesis_title", "one_line", "why_important", "metrics",
+                         "scenario_a", "scenario_b", "checklist", "closing"]
+        }
+    }
 
     data = json.dumps({
         "model": "claude-sonnet-4-6",
         "max_tokens": 2000,
-        "messages": [{"role": "user", "content": prompt}]
+        "tools": [tool_def],
+        "tool_choice": {"type": "tool", "name": "save_thesis"},
+        "messages": [{
+            "role": "user",
+            "content": f"""오늘({TODAY_KR}) 뉴스를 바탕으로 시장을 관통하는 핵심 테제 하나를 도출해줘.
+단순 뉴스 나열 금지. 하나의 테제로 오늘 시장을 설명해야 한다.
+
+수집된 뉴스:
+{headlines_text}"""
+        }]
     }).encode("utf-8")
 
     req = urllib.request.Request(
@@ -122,58 +152,17 @@ JSON 형식으로 응답:
             "content-type": "application/json",
         }
     )
-    with urllib.request.urlopen(req, timeout=60) as r:
+    with urllib.request.urlopen(req, timeout=90) as r:
         result = json.loads(r.read().decode("utf-8"))
 
-    raw = result["content"][0]["text"].strip()
-    import re
+    # tool_use 블록에서 input 추출 — 항상 유효한 JSON
+    for block in result["content"]:
+        if block.get("type") == "tool_use":
+            analysis = block["input"]
+            log("Claude 분석 완료")
+            return analysis
 
-    # JSON 코드블록 우선 추출
-    m = re.search(r'```(?:json)?\s*(\{[\s\S]*?\})\s*```', raw)
-    if m:
-        raw = m.group(1)
-    else:
-        # 가장 바깥쪽 { } 추출
-        start = raw.find('{')
-        end = raw.rfind('}')
-        if start != -1 and end != -1:
-            raw = raw[start:end+1]
-
-    # 제어문자 제거 후 파싱
-    raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '', raw)
-    try:
-        analysis = json.loads(raw)
-    except json.JSONDecodeError:
-        # 마지막 수단: Claude에게 JSON만 다시 요청
-        log("JSON 파싱 실패 — 재시도 중...")
-        retry_data = json.dumps({
-            "model": "claude-sonnet-4-6",
-            "max_tokens": 2000,
-            "messages": [
-                {"role": "user", "content": prompt},
-                {"role": "assistant", "content": raw},
-                {"role": "user", "content": "위 응답을 유효한 JSON 형식으로만 다시 출력해줘. 설명 없이 JSON만."}
-            ]
-        }).encode("utf-8")
-        req2 = urllib.request.Request(
-            "https://api.anthropic.com/v1/messages",
-            data=retry_data,
-            headers={
-                "x-api-key": ANTHROPIC_API_KEY,
-                "anthropic-version": "2023-06-01",
-                "content-type": "application/json",
-            }
-        )
-        with urllib.request.urlopen(req2, timeout=60) as r2:
-            result2 = json.loads(r2.read().decode("utf-8"))
-        raw2 = result2["content"][0]["text"].strip()
-        m2 = re.search(r'\{[\s\S]*\}', raw2)
-        if m2:
-            raw2 = m2.group(0)
-        analysis = json.loads(raw2)
-
-    log("Claude 분석 완료")
-    return analysis
+    raise ValueError(f"tool_use 응답 없음: {result}")
 
 # ── 3. HTML 생성 ─────────────────────────────────────────────
 def build_html(a):
