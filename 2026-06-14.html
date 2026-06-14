@@ -68,11 +68,143 @@
     .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
     .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
     footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
   </style>
 </head>
 <body>
 
 <section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="900" height="360" fill="#0d1a2e"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="120" x2="900" y2="120" stroke="#1a2a42" stroke-width="1"/>
+  <line x1="0" y1="240" x2="900" y2="240" stroke="#1a2a42" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="360" stroke="#1a2a42" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="360" stroke="#1a2a42" stroke-width="1"/>
+
+  <!-- Background glow blobs -->
+  <radialGradient id="glowGold" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#e8b84b" stop-opacity="0.13"/>
+    <stop offset="100%" stop-color="#e8b84b" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#5b8dee" stop-opacity="0.15"/>
+    <stop offset="100%" stop-color="#5b8dee" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="glowRed" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#e05c5c" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#e05c5c" stop-opacity="0"/>
+  </radialGradient>
+  <ellipse cx="160" cy="200" rx="200" ry="160" fill="url(#glowBlue)"/>
+  <ellipse cx="750" cy="160" rx="180" ry="140" fill="url(#glowGold)"/>
+  <ellipse cx="460" cy="290" rx="160" ry="100" fill="url(#glowRed)"/>
+
+  <!-- === ABSTRACT TRIANGLE COMPOSITION (공포의 삼각형) === -->
+
+  <!-- Outer triangle outline — large, centered-right -->
+  <polygon points="480,42 720,298 240,298" fill="none" stroke="#e8b84b" stroke-width="1.5" stroke-opacity="0.45" stroke-dasharray="8 5"/>
+
+  <!-- Inner triangle — filled subtle -->
+  <polygon points="480,100 670,270 290,270" fill="#e8b84b" fill-opacity="0.04" stroke="#e8b84b" stroke-width="1" stroke-opacity="0.3"/>
+
+  <!-- Innermost triangle — solid accent -->
+  <polygon points="480,155 600,248 360,248" fill="none" stroke="#5b8dee" stroke-width="2" stroke-opacity="0.7"/>
+
+  <!-- Triangle center dot -->
+  <circle cx="480" cy="220" r="5" fill="#e8b84b" fill-opacity="0.9"/>
+  <circle cx="480" cy="220" r="12" fill="none" stroke="#e8b84b" stroke-width="1" stroke-opacity="0.4"/>
+  <circle cx="480" cy="220" r="22" fill="none" stroke="#e8b84b" stroke-width="0.6" stroke-opacity="0.2"/>
+
+  <!-- Vertex glow dots -->
+  <!-- Top vertex: Fed -->
+  <circle cx="480" cy="42" r="6" fill="#5b8dee" fill-opacity="0.9"/>
+  <circle cx="480" cy="42" r="14" fill="none" stroke="#5b8dee" stroke-width="1.2" stroke-opacity="0.4"/>
+  <!-- Bottom-right: 전쟁 -->
+  <circle cx="720" cy="298" r="6" fill="#e05c5c" fill-opacity="0.9"/>
+  <circle cx="720" cy="298" r="14" fill="none" stroke="#e05c5c" stroke-width="1.2" stroke-opacity="0.35"/>
+  <!-- Bottom-left: 인플레 -->
+  <circle cx="240" cy="298" r="6" fill="#e8b84b" fill-opacity="0.9"/>
+  <circle cx="240" cy="298" r="14" fill="none" stroke="#e8b84b" stroke-width="1.2" stroke-opacity="0.35"/>
+
+  <!-- Vertex labels -->
+  <text x="480" y="26" text-anchor="middle" fill="#5b8dee" font-size="11" font-weight="600" letter-spacing="1" opacity="0.9">FED</text>
+  <text x="735" y="318" text-anchor="middle" fill="#e05c5c" font-size="11" font-weight="600" letter-spacing="1" opacity="0.9">WAR</text>
+  <text x="225" y="318" text-anchor="middle" fill="#e8b84b" font-size="11" font-weight="600" letter-spacing="1" opacity="0.9">INFLATION</text>
+
+  <!-- Radiating lines from center -->
+  <line x1="480" y1="220" x2="480" y2="42" stroke="#5b8dee" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 4"/>
+  <line x1="480" y1="220" x2="720" y2="298" stroke="#e05c5c" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 4"/>
+  <line x1="480" y1="220" x2="240" y2="298" stroke="#e8b84b" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 4"/>
+
+  <!-- Floating geometric accents — left side -->
+  <rect x="60" y="80" width="40" height="40" fill="none" stroke="#5b8dee" stroke-width="1" stroke-opacity="0.3" transform="rotate(20,80,100)"/>
+  <rect x="70" y="90" width="20" height="20" fill="#5b8dee" fill-opacity="0.07" transform="rotate(20,80,100)"/>
+
+  <!-- Floating hexagon — right background -->
+  <polygon points="810,60 840,45 870,60 870,90 840,105 810,90" fill="none" stroke="#e8b84b" stroke-width="1" stroke-opacity="0.25"/>
+
+  <!-- Small decorative circles -->
+  <circle cx="110" cy="260" r="3" fill="#5b8dee" fill-opacity="0.5"/>
+  <circle cx="125" cy="260" r="3" fill="#5b8dee" fill-opacity="0.3"/>
+  <circle cx="140" cy="260" r="3" fill="#5b8dee" fill-opacity="0.15"/>
+  <circle cx="800" cy="280" r="3" fill="#e8b84b" fill-opacity="0.5"/>
+  <circle cx="815" cy="280" r="3" fill="#e8b84b" fill-opacity="0.3"/>
+  <circle cx="830" cy="280" r="3" fill="#e8b84b" fill-opacity="0.15"/>
+
+  <!-- Horizontal scan line accent -->
+  <line x1="0" y1="180" x2="180" y2="180" stroke="#5b8dee" stroke-width="0.8" stroke-opacity="0.25"/>
+  <line x1="760" y1="180" x2="900" y2="180" stroke="#e8b84b" stroke-width="0.8" stroke-opacity="0.25"/>
+
+  <!-- === TEXT BLOCK (left-aligned) === -->
+
+  <!-- Category tag -->
+  <rect x="44" y="44" width="120" height="22" rx="4" fill="#5b8dee" fill-opacity="0.18"/>
+  <text x="52" y="59" fill="#5b8dee" font-size="11" font-weight="700" letter-spacing="2">DAILY THESIS</text>
+
+  <!-- Main title -->
+  <text x="44" y="108" fill="#ffffff" font-size="26" font-weight="800" letter-spacing="-0.5">공포의 삼각형</text>
+
+  <!-- Sub-title line 1 -->
+  <text x="44" y="142" fill="#e8b84b" font-size="14.5" font-weight="700" letter-spacing="0.3">전쟁 · 인플레 · Fed</text>
+  <!-- Sub-title line 2 -->
+  <text x="44" y="162" fill="#aab8cc" font-size="13" font-weight="400">동시에 시장을 압박한다</text>
+
+  <!-- Divider -->
+  <rect x="44" y="178" width="160" height="2" rx="1" fill="#e8b84b" fill-opacity="0.6"/>
+
+  <!-- Body text -->
+  <text x="44" y="202" fill="#8899b0" font-size="11" font-weight="400">중동 전쟁發 인플레 재점화 우려</text>
+  <text x="44" y="218" fill="#8899b0" font-size="11" font-weight="400">Fed 금리 동결 기조 · 달러 강세</text>
+  <text x="44" y="234" fill="#8899b0" font-size="11" font-weight="400">전통 안전자산(금)마저 흔들리는</text>
+
+  <!-- Highlight keyword -->
+  <rect x="44" y="248" width="210" height="26" rx="5" fill="#e8b84b" fill-opacity="0.10"/>
+  <text x="54" y="265" fill="#e8b84b" font-size="12" font-weight="700" letter-spacing="0.5">패러다임 전환의 변곡점</text>
+
+  <!-- Scenario pills -->
+  <rect x="44" y="290" width="90" height="22" rx="11" fill="#e05c5c" fill-opacity="0.18" stroke="#e05c5c" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="89" y="305" text-anchor="middle" fill="#e05c5c" font-size="10.5" font-weight="700">🔴 시나리오 A</text>
+
+  <rect x="144" y="290" width="90" height="22" rx="11" fill="#4caf80" fill-opacity="0.18" stroke="#4caf80" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="189" y="305" text-anchor="middle" fill="#4caf80" font-size="10.5" font-weight="700">🟢 시나리오 B</text>
+
+  <!-- Date — top right -->
+  <text x="868" y="28" text-anchor="end" fill="#aab8cc" font-size="12" font-weight="500" letter-spacing="1.5" opacity="0.75">2026.06.14</text>
+
+  <!-- Bottom border accent -->
+  <rect x="0" y="354" width="900" height="6" rx="0" fill="url(#bottomBar)"/>
+  <linearGradient id="bottomBar" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#5b8dee" stop-opacity="0.8"/>
+    <stop offset="50%" stop-color="#e8b84b" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#e05c5c" stop-opacity="0.8"/>
+  </linearGradient>
+</svg></div>
   <div class="hero-eyebrow">
     <span class="hero-date">2026.06.14</span>
     <span class="hero-dot"></span>
@@ -81,15 +213,15 @@
   <div class="hero-tags">
     <span class="tag">매크로</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span>
   </div>
-  <h1>"공포의 삼중주 속, AI만이 홀로 버틴다"</h1>
-  <p class="hero-sub">중동 전쟁·인플레 재점화·Fed 긴축 장기화라는 세 겹의 매크로 역풍 속에서도 AI 수요 모멘텀이 시장의 유일한 버팀목으로 작동 중이다.</p>
+  <h1>"공포의 삼각형: 전쟁·인플레·Fed가 동시에 시장을 압박한다"</h1>
+  <p class="hero-sub">중동 전쟁發 인플레 재점화 우려 + Fed 금리 동결 기조 + 달러 강세가 맞물리며, 전통 안전자산(금)마저 흔들리는 '패러다임 전환의 변곡점'에 시장이 서 있다.</p>
 </section>
 
 <div class="container">
 
   <div class="thesis-block">
     <div class="label">오늘의 핵심 테제</div>
-    <p>중동 전쟁·인플레 재점화·Fed 긴축 장기화라는 세 겹의 매크로 역풍 속에서도 AI 수요 모멘텀이 시장의 유일한 버팀목으로 작동 중이다.</p>
+    <p>중동 전쟁發 인플레 재점화 우려 + Fed 금리 동결 기조 + 달러 강세가 맞물리며, 전통 안전자산(금)마저 흔들리는 '패러다임 전환의 변곡점'에 시장이 서 있다.</p>
   </div>
 
   <div class="section">
@@ -97,7 +229,7 @@
       <div class="section-number">1</div>
       <h2>왜 이게 중요한가</h2>
     </div>
-    <p>2026년 6월 14일 시장은 이란 리스크 확대, Kashkari의 추가 금리 인상 가능성 시사, PCE·CPI 발표를 앞둔 인플레 불확실성이 동시에 겹치며 투자심리가 극도로 위축됐다. 그럼에도 불구하고 뉴욕증시는 미·이란 접촉설과 AI 수요 모멘텀을 빌미로 상승 마감했는데, 이는 전통적 안전자산(금)조차 전쟁 리스크에 하락하는 이례적 구조 속에서 AI 테마가 사실상 유일한 리스크온 동력으로 기능하고 있음을 뜻한다. Fed 의장 후보 Warsh의 "양적완화는 금융자산 보유자에게만 이익"이라는 발언은 유동성 파티의 종언을 예고하며, 이 국면에서 무엇이 시장을 지탱할 수 있는지를 날카롭게 묻고 있다.</p>
+    <p>중동 긴장이 고조되는 상황에서도 금값이 하락하는 이례적 현상이 나타나고 있다. 이는 단순한 지정학 리스크가 아니라, '전쟁→유가 급등→인플레 재가속→Fed 긴축 장기화→달러 강세→위험자산·안전자산 동반 압박'이라는 복합 매크로 회로가 작동하기 시작했음을 의미한다. 여기에 FOMC를 앞두고 Warsh 후보의 금리 동결 시사, 1,500원대 환율, CPI·PCE 발표가 겹치면서 오늘 시장은 단 하나의 질문으로 수렴된다: "인플레가 다시 통제 불능이 되는가?"</p>
   </div>
 
   <div class="section">
@@ -105,34 +237,35 @@
       <div class="section-number">2</div>
       <h2>숫자로 보는 근거</h2>
     </div>
+    
     <div class="data-table-wrap">
       <table>
         <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
         <tbody>
             <tr>
-              <td>Kashkari 금리 발언</td>
-              <td>추가 인상 가능성 시사</td>
-              <td>Fed 내 매파 기류 재확인, 금리 인하 기대 후퇴</td>
+              <td>USD/KRW 환율</td>
+              <td>1,500원대</td>
+              <td>전쟁發 인플레 우려로 달러 초강세, 신흥국 자본 이탈 신호</td>
             </tr>
             <tr>
-              <td>금 가격</td>
-              <td>전쟁 리스크에도 하락</td>
-              <td>달러 강세·실질금리 상승이 전통 안전자산 수요를 압도</td>
+              <td>유가 위험 임계선</td>
+              <td>93달러 (WTI 기준)</td>
+              <td>이 선 돌파 시 미국 증시에 치명적 충격 가능성 경고</td>
             </tr>
             <tr>
-              <td>AI 투자 vs 소매 부진</td>
-              <td>AI 붐이 소매 지표 부진을 상쇄</td>
-              <td>섹터 간 디커플링 심화, AI 중심 쏠림 가속</td>
+              <td>Fed 금리 동결 확률</td>
+              <td>구조적 4가지 이유로 동결 유력</td>
+              <td>Warsh 후보, 백악관 인하 압력에도 독립성 고수 시사</td>
             </tr>
             <tr>
-              <td>달러 캐리 청산 압력</td>
-              <td>진행 중</td>
-              <td>신흥국 자금 이탈 및 비트코인 헷지 수요로 연결</td>
+              <td>비트코인 헷지 수요</td>
+              <td>달러 캐리 청산 사이클 진입</td>
+              <td>전통 헷지 자산(금) 약세 속 BTC로 자금 이동 조짐</td>
             </tr>
             <tr>
-              <td>PCE·CPI 발표 임박</td>
-              <td>당일·익일 발표 예정</td>
-              <td>결과에 따라 Fed 경로 재조정, 변동성 확대 분기점</td>
+              <td>AI 섹터 vs 소매 부진</td>
+              <td>AI 붐이 소매 약세를 압도</td>
+              <td>실물경기 둔화에도 나스닥 기술주가 시장 하방을 방어 중</td>
             </tr></tbody>
       </table>
     </div>
@@ -146,13 +279,13 @@
     <div class="scenario-grid">
       <div class="scenario-card green">
         <div class="scenario-label">시나리오 A</div>
-        <h3>🟢 강세 시나리오 — AI가 매크로를 이긴다</h3>
-        <ul><li>PCE·CPI가 예상치 하회 → 금리 인하 기대 복원, 위험자산 전반 반등</li><li>미·이란 협상 진전 → 중동 리스크 프리미엄 축소, 에너지 가격 안정</li><li>AI 빅테크 수요 서프라이즈 지속 → 반도체·인프라 섹터 주도 랠리</li><li>비트코인·XRP 등 디지털 자산, 금융 인프라 재평가로 추가 상승</li></ul>
+        <h3>🔴 시나리오 A — 인플레 재점화, 복합 긴축 충격</h3>
+        <ul><li>CPI·PCE가 예상치 상회 → Fed 금리 인하 기대 완전 소멸</li><li>유가 93달러 돌파 → 기업 마진 압박 + 소비 위축 동시 발생</li><li>달러 추가 강세 → 원화 1,520원+ 돌파, 외국인 국내 주식 매도 가속</li><li>금 추가 하락 + 비트코인 변동성 확대 → 안전자산 부재 상황 도래</li><li>다우·S&P500 조정 본격화, AI 버블 논쟁 재점화</li></ul>
       </div>
       <div class="scenario-card red">
         <div class="scenario-label">시나리오 B</div>
-        <h3>🔴 약세 시나리오 — 삼중 역풍이 AI를 덮는다</h3>
-        <ul><li>PCE·CPI 예상 상회 → Kashkari식 추가 인상론 현실화, 전 섹터 동반 조정</li><li>이란 긴장 재고조 → 유가 급등·달러 캐리 청산 가속, 신흥국 자금 이탈</li><li>Warsh 유동성 축소 발언 현실화 → AI 밸류에이션 버블 우려 부각</li><li>금·채권도 동반 약세 지속 → 안전자산 부재 속 현금 선호 극대화</li></ul>
+        <h3>🟢 시나리오 B — 지정학 완화 + 지표 안도, 일시적 반등</h3>
+        <ul><li>미·이란 접촉설 구체화 → 유가 급락, 인플레 우려 진정</li><li>CPI·PCE 둔화 확인 → Fed 9월 인하 기대 복원, 위험자산 랠리</li><li>Warsh 동결 유지하되 '인하 검토 시작' 발언 → 시장 안도</li><li>달러 캐리 청산 일단락 → 원화 안정, 신흥국 증시 반등</li><li>AI 수요 견조 + 매크로 안도 = 나스닥 신고가 재도전 시나리오</li></ul>
       </div>
     </div>
   </div>
@@ -166,28 +299,28 @@
         <div class="checklist-item">
           <div class="check-box"></div>
           <div>
-            <div class="title">PCE·CPI 수치를 직접 확인하라</div>
-            <div class="desc">오늘 밤~내일 발표되는 인플레 지표가 예상치 대비 얼마나 벗어나는지가 단기 포지션의 생사를 가른다. 서프라이즈 방향에 따라 즉각적인 포트폴리오 재조정이 필요하다.</div>
+            <div class="title">① CPI·PCE 수치를 숫자 그대로 읽어라</div>
+            <div class="desc">헤드라인이 아닌 '근원 인플레이션(Core)'이 전월 대비 0.3% 이상이면 Fed 동결 장기화 확실시. 이 숫자 하나가 오늘 모든 자산 방향을 결정한다.</div>
           </div>
         </div>
         <div class="checklist-item">
           <div class="check-box"></div>
           <div>
-            <div class="title">AI 수요의 '진짜 수혜주'인지 검증하라</div>
-            <div class="desc">AI 붐이 시장을 지탱하고 있지만 모든 AI 관련주가 동일하지 않다. 실제 매출·수주 데이터가 뒷받침되는 기업(반도체, 데이터센터 인프라)과 테마성 수혜주를 구분해야 한다.</div>
+            <div class="title">② 유가 90달러 선을 일별 종가 기준으로 모니터링하라</div>
+            <div class="desc">WTI 90달러 돌파 지속 여부가 '전쟁→인플레→긴축' 회로의 스위치. 90달러 아래 안착이면 매크로 우려 완화, 93달러 접근 시 포트폴리오 리스크 즉시 재검토 필요.</div>
           </div>
         </div>
         <div class="checklist-item">
           <div class="check-box"></div>
           <div>
-            <div class="title">달러 강세·캐리 청산 속도를 모니터링하라</div>
-            <div class="desc">달러 캐리 청산이 진행 중인 국면에서 신흥국 자산·원화 약세 여부를 점검하고, 환헷지 비율과 비트코인 등 대체 헷지 수단의 비중 조절 타이밍을 사전에 설정해둬야 한다.</div>
+            <div class="title">③ 달러 캐리 청산 속도 = 비트코인·금 자금 흐름으로 역추적하라</div>
+            <div class="desc">전통 안전자산(금)이 전쟁에도 하락한다면, 시장은 이미 달러 자체를 최종 피난처로 선택한 것. BTC 기관 매수 동향이 '달러 외 대안 헷지'의 바로미터가 된다.</div>
           </div>
         </div></div>
   </div>
 
   <div class="callout">
-    <p>공포가 시장을 지배할 때, 버티는 것의 이름이 곧 그 시장의 다음 테마가 된다 — 지금 그 이름은 AI다.</p>
+    <p>오늘 시장의 본질은 '전쟁 리스크'가 아니라 '인플레 리스크의 귀환'이며, 그 심판관은 결국 Fed와 유가다.</p>
   </div>
 
 </div>
