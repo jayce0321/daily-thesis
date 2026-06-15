@@ -34,42 +34,100 @@ def log(msg):
 # ── 1. 뉴스 수집 ─────────────────────────────────────────────
 def fetch_news():
     log("뉴스 수집 중...")
+    import re as _re
+
+    # 12개 쿼리 × 카테고리 분산 (글로벌/미국/채권환율/원자재/한국/섹터/지정학)
     queries = [
-        "글로벌 금융시장 오늘 뉴스 매크로",
-        "Federal Reserve FOMC market news today",
-        "미국 주식시장 경제지표 today",
+        # 글로벌 매크로
+        ("글로벌 금융시장 매크로 경제 오늘", "ko"),
+        ("Federal Reserve interest rate inflation economy today", "en"),
+        # 미국 시장
+        ("미국 주식시장 나스닥 S&P500 today", "ko"),
+        ("US stock market Wall Street earnings recession", "en"),
+        # 채권·금리·환율
+        ("미국 국채 수익률 채권 금리 today", "ko"),
+        ("달러 원달러 환율 외환시장 today", "ko"),
+        # 원자재
+        ("유가 WTI 원자재 금 시장 today", "ko"),
+        # 한국 시장
+        ("코스피 코스닥 한국주식 외국인 today", "ko"),
+        ("한국은행 기준금리 통화정책 물가", "ko"),
+        # 섹터·산업
+        ("반도체 AI 빅테크 실적 earnings today", "ko"),
+        # 중국·신흥국
+        ("중국 경제 위안화 증시 부동산 today", "ko"),
+        # 지정학·무역
+        ("관세 무역 공급망 지정학 경제 today", "ko"),
     ]
+
     articles = []
-    for q in queries:
+    seen = set()
+
+    for q, lang in queries:
         try:
             encoded = urllib.parse.quote(q)
-            url = f"https://news.google.com/rss/search?q={encoded}&hl=ko&gl=KR&ceid=KR:ko"
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            if lang == "en":
+                url = (f"https://news.google.com/rss/search"
+                       f"?q={encoded}&hl=en&gl=US&ceid=US:en")
+            else:
+                url = (f"https://news.google.com/rss/search"
+                       f"?q={encoded}&hl=ko&gl=KR&ceid=KR:ko")
+            req = urllib.request.Request(
+                url, headers={"User-Agent": "Mozilla/5.0"})
             with urllib.request.urlopen(req, timeout=10) as r:
-                content = r.read().decode("utf-8")
-            import re
-            items = re.findall(r'<item>(.*?)</item>', content, re.DOTALL)
-            for item in items[:5]:
-                title = re.search(r'<title><!\[CDATA\[(.*?)\]\]></title>', item)
-                if not title:
-                    title = re.search(r'<title>(.*?)</title>', item)
-                if title:
-                    articles.append(title.group(1).strip())
-        except Exception as e:
-            log(f"뉴스 수집 오류 (무시): {e}")
-    seen = set()
-    unique = []
-    for a in articles:
-        if a not in seen:
-            seen.add(a)
-            unique.append(a)
-    log(f"뉴스 {len(unique)}건 수집 완료")
-    return unique[:20]
+                raw = r.read().decode("utf-8")
 
-# ── 2. Claude API 호출 (tool_use로 JSON 보장) ────────────────
-def call_claude(news_headlines):
+            items = _re.findall(r'<item>(.*?)</item>', raw, _re.DOTALL)
+            count = 0
+            for item in items[:8]:
+                t_m = _re.search(
+                    r'<title><!\[CDATA\[(.*?)\]\]></title>', item)
+                if not t_m:
+                    t_m = _re.search(r'<title>(.*?)</title>', item)
+                d_m = _re.search(
+                    r'<description><!\[CDATA\[(.*?)\]\]></description>', item)
+                if not d_m:
+                    d_m = _re.search(
+                        r'<description>(.*?)</description>', item)
+
+                if t_m:
+                    title = t_m.group(1).strip()
+                    # 언론사 suffix 제거 (예: " - 한국경제")
+                    title = _re.sub(r'\s*-\s*[^-]{2,30}$', '', title).strip()
+                    if title in seen or len(title) < 10:
+                        continue
+                    seen.add(title)
+
+                    desc = ""
+                    if d_m:
+                        desc = _re.sub(
+                            r'<[^>]+>', '', d_m.group(1)).strip()[:100]
+
+                    articles.append({
+                        "title": title,
+                        "desc": desc,
+                        "cat": q[:15]
+                    })
+                    count += 1
+        except Exception as e:
+            log(f"  [{q[:18]}] 수집 오류: {e}")
+
+    log(f"뉴스 {len(articles)}건 수집 완료 (12개 카테고리 분산)")
+    return articles[:25]
+
+
+def call_claude(news):
     log("Claude API 호출 중...")
-    headlines_text = "\n".join(f"- {h}" for h in news_headlines)
+
+    # news: dict 리스트 {title, desc, cat} 또는 str 리스트 (하위 호환)
+    if news and isinstance(news[0], dict):
+        headlines_text = "\n".join(
+            f"[{i+1}] {a['title']}" +
+            (f"\n    └ {a['desc'][:90]}" if a.get('desc') else "")
+            for i, a in enumerate(news)
+        )
+    else:
+        headlines_text = "\n".join(f"- {h}" for h in news)
 
     tool_def = {
         "name": "save_thesis",
@@ -564,3 +622,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
