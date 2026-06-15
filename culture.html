@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>데일리 테제 — 컬처</title>
+  <style>
+    :root{{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;--accent:#e8b84b;--text:#e2e6f0;--muted:#7a8299;}}
+    *{{box-sizing:border-box;margin:0;padding:0}}
+    body{{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;min-height:100vh;}}
+    header{{padding:48px 40px 32px;border-bottom:1px solid var(--border);}}
+    header h1{{font-size:22px;font-weight:700;}}
+    header p{{font-size:13px;color:var(--muted);margin-top:6px;}}
+    .nav{{display:flex;gap:16px;padding:16px 40px;border-bottom:1px solid var(--border);font-size:13px;}}
+    .nav a{{color:var(--muted);text-decoration:none;}} .nav a:hover{{color:var(--accent)}}
+    .container{{max-width:760px;margin:0 auto;padding:40px 32px;}}
+    .post-list{{display:flex;flex-direction:column;gap:1px;}}
+    .post-item{{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .15s;}}
+    .post-item:hover{{color:var(--accent);}}
+    .post-title{{font-size:15px;font-weight:600;}}
+    .post-sub{{font-size:12px;color:var(--muted);margin-top:4px;}}
+    .post-date{{font-size:12px;color:var(--muted);white-space:nowrap;margin-left:24px;}}
+    footer{{text-align:center;padding:32px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎬 컬처 데일리 테제</h1>
+    <p>오늘의 문화 흐름을 읽는 하나의 테제 — by Jayce</p>
+  </header>
+  <nav class="nav">
+    <a href="index.html">📊 경제·투자</a>
+    <a href="politics.html">🏛️ 정치</a>
+    <a href="culture.html">🎬 컬처</a>
+  </nav>
+  <div class="container">
+    <div class="post-list">
+      <a class="post-item" href="2026-06-15-culture.html">
+        <div>
+          <div class="post-title">"K-컬처, 팬덤을 넘어 '교육·제도권'으로 진입하다"</div>
+          <div class="post-sub">K-팝·K-드라마·K-뷰티가 글로벌 팬덤 현상을 넘어 대학 강좌·교과서·...</div>
+        </div>
+        <div class="post-date">2026.06.15</div>
+      </a>
+    </div>
+  </div>
+  <footer>데일리 테제 · 컬처 · by Jayce</footer>
+</body>
+</html>
