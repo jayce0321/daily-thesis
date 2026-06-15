@@ -1,69 +1,125 @@
 #!/usr/bin/env python3
 """
-데일리 테제 자동화 파이프라인
-1. 오늘 주요 뉴스 수집
-2. Claude API로 테제 분석 생성
-3. HTML 파일 작성
-4. GitHub Pages 게시 + 텔레그램 알림
+데일리 테제 자동화 파이프라인 — 멀티 토픽 지원
+TOPIC env: economy (경제·투자) | politics (정치) | culture (컬처)
 """
 
 import os
 import sys
 import json
+import time
 import subprocess
 import urllib.request
 import urllib.parse
 from datetime import datetime, timezone, timedelta
 
-# ── 설정 ─────────────────────────────────────────────────────
+# ── 환경 변수 ─────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
-REPO_DIR = os.path.dirname(os.path.abspath(__file__))
-IS_CI = os.environ.get("GITHUB_ACTIONS") == "true"
+BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TOPIC             = os.environ.get("TOPIC", "economy").lower().strip()
+REPO_DIR          = os.path.dirname(os.path.abspath(__file__))
+IS_CI             = os.environ.get("GITHUB_ACTIONS") == "true"
 
-KST = timezone(timedelta(hours=9))
-TODAY = datetime.now(KST).strftime("%Y-%m-%d")
+KST      = timezone(timedelta(hours=9))
+TODAY    = datetime.now(KST).strftime("%Y-%m-%d")
 TODAY_KR = datetime.now(KST).strftime("%Y.%m.%d")
 
-# ─────────────────────────────────────────────────────────────
+# ── 주제 설정 ─────────────────────────────────────────────────
+TOPIC_CONFIG = {
+    "economy": {
+        "name": "경제·투자",
+        "icon": "📊",
+        "tags": ["매크로", "글로벌시장", "데일리테제"],
+        "queries": [
+            "글로벌 금융시장 오늘 뉴스 매크로",
+            "Federal Reserve FOMC market news today",
+            "미국 주식시장 경제지표 today",
+        ],
+        "channel_env": "TELEGRAM_CHANNEL_ECONOMY",
+        "html_name": f"{TODAY}.html",
+        "index_file": "index.html",
+        "claude_instruction": (
+            "오늘({today_kr}) 뉴스를 바탕으로 경제·투자 시장을 관통하는 핵심 테제 하나를 도출해줘.\n"
+            "단순 뉴스 나열 금지. 하나의 테제로 오늘 시장을 설명해야 한다.\n"
+            "투자자 관점에서 실질적으로 유용한 분석을 해줘."
+        ),
+        "index_title": "데일리 테제 — 경제·투자",
+        "index_subtitle": "시장을 관통하는 하나의 테제 — by Jayce",
+        "footer": "데일리 테제 분석 · 경제·투자 · 본 자료는 투자 권유가 아닙니다",
+        "tg_hashtag": "#경제투자 #데일리테제",
+    },
+    "politics": {
+        "name": "정치",
+        "icon": "🏛️",
+        "tags": ["한국정치", "글로벌정치", "데일리테제"],
+        "queries": [
+            "한국 정치 뉴스 오늘 국회 대통령",
+            "Korea politics government policy news",
+            "global politics international relations today",
+        ],
+        "channel_env": "TELEGRAM_CHANNEL_POLITICS",
+        "html_name": f"{TODAY}-politics.html",
+        "index_file": "politics.html",
+        "claude_instruction": (
+            "오늘({today_kr}) 뉴스를 바탕으로 정치 영역의 핵심 테제 하나를 도출해줘.\n"
+            "한국 정치 60% + 글로벌 정치 40% 비중으로 다뤄야 한다.\n"
+            "권력 구조, 정책 변화, 국제 관계의 흐름을 하나의 테제로 꿰어줘.\n"
+            "편향 없이 사실 중심으로 분석하되, 실질적 영향을 중심으로 서술해줘."
+        ),
+        "index_title": "데일리 테제 — 정치",
+        "index_subtitle": "오늘의 정치 흐름을 꿰는 하나의 테제 — by Jayce",
+        "footer": "데일리 테제 분석 · 정치 · 사실에 근거한 중립적 분석입니다",
+        "tg_hashtag": "#정치 #데일리테제",
+    },
+    "culture": {
+        "name": "컬처",
+        "icon": "🎬",
+        "tags": ["한국문화", "글로벌트렌드", "데일리테제"],
+        "queries": [
+            "한국 문화 연예 트렌드 오늘 K-pop",
+            "K-drama 한국 영화 뉴스",
+            "global culture trends entertainment today",
+        ],
+        "channel_env": "TELEGRAM_CHANNEL_CULTURE",
+        "html_name": f"{TODAY}-culture.html",
+        "index_file": "culture.html",
+        "claude_instruction": (
+            "오늘({today_kr}) 뉴스를 바탕으로 문화·트렌드 영역의 핵심 테제 하나를 도출해줘.\n"
+            "한국 문화/연예 60% + 글로벌 트렌드 40% 비중으로 다뤄야 한다.\n"
+            "지금 가장 주목해야 할 문화적 흐름을 하나의 테제로 제시해줘.\n"
+            "MZ 세대·팝컬처·콘텐츠 산업 관점에서 실질적 의미를 분석해줘."
+        ),
+        "index_title": "데일리 테제 — 컬처",
+        "index_subtitle": "오늘의 문화 흐름을 읽는 하나의 테제 — by Jayce",
+        "footer": "데일리 테제 분석 · 컬처 · 트렌드를 읽는 일상의 시각",
+        "tg_hashtag": "#컬처 #데일리테제",
+    },
+}
 
 def log(msg):
-    print(f"[{datetime.now(KST).strftime('%H:%M:%S')}] {msg}")
+    print(f"[{datetime.now(KST).strftime('%H:%M:%S')}] [{TOPIC.upper()}] {msg}", flush=True)
 
 # ── 1. 뉴스 수집 ─────────────────────────────────────────────
-def fetch_news():
+def fetch_news(cfg):
     log("뉴스 수집 중...")
     import re as _re
 
-    # 12개 쿼리 × 카테고리 분산 (글로벌/미국/채권환율/원자재/한국/섹터/지정학)
-    queries = [
-        # 글로벌 매크로
+    # 토픽별 전용 쿼리 + 공통 쿼리 병합
+    topic_queries = cfg.get("queries", [])
+
+    # 공통 글로벌 맥락 쿼리 (모든 토픽 공유)
+    common_queries = [
         ("글로벌 금융시장 매크로 경제 오늘", "ko"),
-        ("Federal Reserve interest rate inflation economy today", "en"),
-        # 미국 시장
-        ("미국 주식시장 나스닥 S&P500 today", "ko"),
-        ("US stock market Wall Street earnings recession", "en"),
-        # 채권·금리·환율
-        ("미국 국채 수익률 채권 금리 today", "ko"),
-        ("달러 원달러 환율 외환시장 today", "ko"),
-        # 원자재
-        ("유가 WTI 원자재 금 시장 today", "ko"),
-        # 한국 시장
-        ("코스피 코스닥 한국주식 외국인 today", "ko"),
-        ("한국은행 기준금리 통화정책 물가", "ko"),
-        # 섹터·산업
-        ("반도체 AI 빅테크 실적 earnings today", "ko"),
-        # 중국·신흥국
-        ("중국 경제 위안화 증시 부동산 today", "ko"),
-        # 지정학·무역
-        ("관세 무역 공급망 지정학 경제 today", "ko"),
+        ("Federal Reserve interest rate economy today", "en"),
     ]
+
+    # 토픽 전용 쿼리를 (query, lang) 형식으로 변환
+    all_queries = [(q, "ko") for q in topic_queries] + common_queries
 
     articles = []
     seen = set()
 
-    for q, lang in queries:
+    for q, lang in all_queries:
         try:
             encoded = urllib.parse.quote(q)
             if lang == "en":
@@ -78,7 +134,6 @@ def fetch_news():
                 raw = r.read().decode("utf-8")
 
             items = _re.findall(r'<item>(.*?)</item>', raw, _re.DOTALL)
-            count = 0
             for item in items[:8]:
                 t_m = _re.search(
                     r'<title><!\[CDATA\[(.*?)\]\]></title>', item)
@@ -92,42 +147,34 @@ def fetch_news():
 
                 if t_m:
                     title = t_m.group(1).strip()
-                    # 언론사 suffix 제거 (예: " - 한국경제")
                     title = _re.sub(r'\s*-\s*[^-]{2,30}$', '', title).strip()
-                    if title in seen or len(title) < 10:
+                    if title in seen or len(title) < 8:
                         continue
                     seen.add(title)
-
                     desc = ""
                     if d_m:
                         desc = _re.sub(
                             r'<[^>]+>', '', d_m.group(1)).strip()[:100]
-
-                    articles.append({
-                        "title": title,
-                        "desc": desc,
-                        "cat": q[:15]
-                    })
-                    count += 1
+                    articles.append({"title": title, "desc": desc})
         except Exception as e:
             log(f"  [{q[:18]}] 수집 오류: {e}")
 
-    log(f"뉴스 {len(articles)}건 수집 완료 (12개 카테고리 분산)")
+    log(f"뉴스 {len(articles)}건 수집 완료")
     return articles[:25]
 
 
-def call_claude(news):
+def call_claude(news_headlines, cfg):
     log("Claude API 호출 중...")
-
-    # news: dict 리스트 {title, desc, cat} 또는 str 리스트 (하위 호환)
-    if news and isinstance(news[0], dict):
+    # news_headlines: dict 리스트 {title, desc} 또는 str 리스트
+    if news_headlines and isinstance(news_headlines[0], dict):
         headlines_text = "\n".join(
             f"[{i+1}] {a['title']}" +
             (f"\n    └ {a['desc'][:90]}" if a.get('desc') else "")
-            for i, a in enumerate(news)
+            for i, a in enumerate(news_headlines)
         )
     else:
-        headlines_text = "\n".join(f"- {h}" for h in news)
+        headlines_text = "\n".join(f"- {h}" for h in news_headlines)
+    instruction = cfg["claude_instruction"].format(today_kr=TODAY_KR)
 
     tool_def = {
         "name": "save_thesis",
@@ -136,25 +183,25 @@ def call_claude(news):
             "type": "object",
             "properties": {
                 "thesis_title": {"type": "string", "description": "테제 제목 (따옴표 포함, 20자 내외)"},
-                "one_line": {"type": "string", "description": "한 줄 핵심 요약"},
-                "why_important": {"type": "string", "description": "왜 중요한가 (배경 설명 2~3문장)"},
+                "one_line":     {"type": "string", "description": "한 줄 핵심 요약"},
+                "why_important":{"type": "string", "description": "왜 중요한가 (배경 설명 2~3문장)"},
                 "metrics": {
                     "type": "array",
                     "items": {
                         "type": "object",
                         "properties": {
-                            "label": {"type": "string"},
-                            "value": {"type": "string"},
+                            "label":   {"type": "string"},
+                            "value":   {"type": "string"},
                             "meaning": {"type": "string"}
                         },
                         "required": ["label", "value", "meaning"]
                     },
-                    "description": "숫자 근거 3~5개"
+                    "description": "숫자 근거 3~4개"
                 },
                 "scenario_a": {
                     "type": "object",
                     "properties": {
-                        "title": {"type": "string"},
+                        "title":  {"type": "string"},
                         "points": {"type": "array", "items": {"type": "string"}}
                     },
                     "required": ["title", "points"]
@@ -162,7 +209,7 @@ def call_claude(news):
                 "scenario_b": {
                     "type": "object",
                     "properties": {
-                        "title": {"type": "string"},
+                        "title":  {"type": "string"},
                         "points": {"type": "array", "items": {"type": "string"}}
                     },
                     "required": ["title", "points"]
@@ -173,11 +220,11 @@ def call_claude(news):
                         "type": "object",
                         "properties": {
                             "title": {"type": "string"},
-                            "desc": {"type": "string"}
+                            "desc":  {"type": "string"}
                         },
                         "required": ["title", "desc"]
                     },
-                    "description": "투자자 체크리스트 2~3개"
+                    "description": "체크리스트 2~3개"
                 },
                 "closing": {"type": "string", "description": "마무리 한 줄"}
             },
@@ -188,16 +235,12 @@ def call_claude(news):
 
     data = json.dumps({
         "model": "claude-sonnet-4-6",
-        "max_tokens": 2000,
+        "max_tokens": 1400,
         "tools": [tool_def],
         "tool_choice": {"type": "tool", "name": "save_thesis"},
         "messages": [{
             "role": "user",
-            "content": f"""오늘({TODAY_KR}) 뉴스를 바탕으로 시장을 관통하는 핵심 테제 하나를 도출해줘.
-단순 뉴스 나열 금지. 하나의 테제로 오늘 시장을 설명해야 한다.
-
-수집된 뉴스:
-{headlines_text}"""
+            "content": f"{instruction}\n\n수집된 뉴스:\n{headlines_text}"
         }]
     }).encode("utf-8")
 
@@ -213,36 +256,23 @@ def call_claude(news):
     with urllib.request.urlopen(req, timeout=90) as r:
         result = json.loads(r.read().decode("utf-8"))
 
-    # tool_use 블록에서 input 추출 — 항상 유효한 JSON
     for block in result["content"]:
         if block.get("type") == "tool_use":
-            analysis = block["input"]
             log("Claude 분석 완료")
-            return analysis
+            return block["input"]
 
     raise ValueError(f"tool_use 응답 없음: {result}")
 
-# ── 2b. SVG 이미지 생성 (Python 직접 생성 — 100% 안정) ──────
+# ── 2b. SVG 생성 ──────────────────────────────────────────────
 import html as _html
 import hashlib
 
 def generate_svgs(analysis):
-    log("SVG 이미지 생성 중...")
+    log("SVG 생성 중...")
     metrics  = analysis.get("metrics", [])
     title    = analysis.get("thesis_title", "")
-    one_line = analysis.get("one_line", "")
 
-    # ── 커버 SVG ─────────────────────────────────────────────
-    # 제목 해시로 색상 시드 결정 (매일 다른 패턴)
     seed = int(hashlib.md5(title.encode()).hexdigest()[:6], 16)
-    def _c(base, offset):
-        v = (base + offset) % 360
-        return v
-
-    safe_title = _html.escape(title[:34] + ("…" if len(title) > 34 else ""))
-    safe_oneline = _html.escape(one_line[:60] + ("…" if len(one_line) > 60 else ""))
-
-    # 도형 파라미터 (시드 기반)
     cx1, cy1 = 650 + (seed % 80), 80 + (seed % 60)
     cx2, cy2 = 750 + (seed % 50), 200 + (seed % 80)
     cx3, cy3 = 500 + (seed % 100), 300 + (seed % 60)
@@ -256,21 +286,17 @@ def generate_svgs(analysis):
     <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
   </defs>
   <rect width="900" height="360" fill="url(#bg)"/>
-  <!-- 배경 광원 -->
   <circle cx="{cx1}" cy="{cy1}" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
   <circle cx="{cx2}" cy="{cy2}" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
-  <!-- 기하 도형 -->
   <circle cx="{cx1}" cy="{cy1}" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
   <circle cx="{cx1}" cy="{cy1}" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
   <circle cx="{cx2}" cy="{cy2}" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
   <circle cx="{cx3}" cy="{cy3}" r="40" fill="#e8b84b" opacity="0.06"/>
   <line x1="{cx1-100}" y1="{cy1+30}" x2="{cx2+50}" y2="{cy2-40}" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
   <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
-  <!-- 날짜만 유지 (나머지 텍스트는 HTML에서 표시) -->
   <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">{TODAY_KR}</text>
 </svg>'''
 
-    # ── 차트 SVG ─────────────────────────────────────────────
     colors  = ["#e05c5c", "#e8b84b", "#5b8dee", "#4caf80", "#a78bfa"]
     bar_h   = 32
     gap     = 16
@@ -283,8 +309,7 @@ def generate_svgs(analysis):
     for i, m in enumerate(metrics):
         y   = pad_top + i * (bar_h + gap)
         col = colors[i % len(colors)]
-        # 바 길이: 인덱스 기반 상대적 너비 (뒤로 갈수록 약간 줄어들어 자연스럽게)
-        w   = max(60, max_bar - i * (max_bar // (len(metrics) + 1)))
+        w   = max(60, max_bar - i * (max_bar // max(len(metrics), 1) // 2 + 40))
         lbl = _html.escape(m.get("label", "")[:22])
         val = _html.escape(m.get("value", ""))
         bars += f'''  <text x="{pad_l - 10}" y="{y + bar_h//2 + 5}" text-anchor="end" fill="#7a8299" font-size="12">{lbl}</text>
@@ -296,48 +321,34 @@ def generate_svgs(analysis):
   <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
 {bars}</svg>'''
 
-    log(f"SVG 생성 완료 (커버:{len(cover_svg)}자, 차트:{len(chart_svg)}자)")
     return cover_svg, chart_svg
 
 # ── 3. HTML 생성 ─────────────────────────────────────────────
-def build_html(a, cover_svg="", chart_svg=""):
-    metrics_rows = ""
-    for m in a.get("metrics", []):
-        metrics_rows += f"""
-            <tr>
-              <td>{m['label']}</td>
-              <td>{m['value']}</td>
-              <td>{m['meaning']}</td>
-            </tr>"""
-
-    checklist_items = ""
-    for c in a.get("checklist", []):
-        checklist_items += f"""
-        <div class="checklist-item">
-          <div class="check-box"></div>
-          <div>
-            <div class="title">{c['title']}</div>
-            <div class="desc">{c['desc']}</div>
-          </div>
-        </div>"""
-
-    sa = a.get("scenario_a", {})
-    sb = a.get("scenario_b", {})
+def build_html(a, cfg, cover_svg="", chart_svg=""):
+    metrics_rows = "".join(
+        f"<tr><td>{m['label']}</td><td>{m['value']}</td><td>{m['meaning']}</td></tr>"
+        for m in a.get("metrics", [])
+    )
+    checklist_items = "".join(
+        f'<div class="checklist-item"><div class="check-box"></div>'
+        f'<div><div class="title">{c["title"]}</div><div class="desc">{c["desc"]}</div></div></div>'
+        for c in a.get("checklist", [])
+    )
+    sa = a.get("scenario_a", {}); sb = a.get("scenario_b", {})
     sa_points = "".join(f"<li>{p}</li>" for p in sa.get("points", []))
     sb_points = "".join(f"<li>{p}</li>" for p in sb.get("points", []))
+    tags_html = "".join(f'<span class="tag">{t}</span>' for t in cfg["tags"])
 
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>데일리 테제 | {TODAY_KR}</title>
+  <title>데일리 테제 | {cfg['name']} | {TODAY_KR}</title>
   <style>
-    :root {{
-      --bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+    :root{{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
       --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
-      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;
-    }}
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}}
     *{{box-sizing:border-box;margin:0;padding:0}}
     body{{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}}
     .hero{{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}}
@@ -349,15 +360,7 @@ def build_html(a, cover_svg="", chart_svg=""):
     .hero-tags{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}}
     .tag{{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}}
     .hero h1{{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}}
-    .hero h1 em{{font-style:normal;color:var(--accent)}}
     .hero-sub{{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}}
-    .market-banner{{display:flex;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow-x:auto;background:var(--surface)}}
-    .market-item{{flex:1;min-width:130px;padding:14px 18px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:4px}}
-    .market-item:last-child{{border-right:none}}
-    .market-label{{font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}}
-    .market-value{{font-size:17px;font-weight:700}}
-    .market-change{{font-size:12px}}
-    .up{{color:var(--green)}}.down{{color:var(--red)}}.warn{{color:var(--accent)}}
     .container{{max-width:860px;margin:0 auto;padding:56px 32px}}
     .thesis-block{{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}}
     .thesis-block .label{{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}}
@@ -378,19 +381,7 @@ def build_html(a, cover_svg="", chart_svg=""):
     tbody td:nth-child(2){{font-weight:700;font-size:15px}}
     tbody td:nth-child(3){{color:#8a9ab8;font-size:13px}}
     .scenario-grid{{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}}
-    @media(max-width:600px){{
-      .scenario-grid{{grid-template-columns:1fr}}
-      .hero{{min-height:260px;padding:40px 20px 36px}}
-      .hero h1{{font-size:clamp(18px,5.5vw,28px)}}
-      .container{{padding:36px 16px}}
-      .thesis-block{{padding:20px 18px}}
-      .market-item{{min-width:100px;padding:10px 12px}}
-      .market-value{{font-size:14px}}
-    }}
-    @media(min-width:601px) and (max-width:900px){{
-      .hero{{padding:48px 32px 40px}}
-      .container{{padding:44px 24px}}
-    }}
+    @media(max-width:600px){{.scenario-grid{{grid-template-columns:1fr}}.hero{{min-height:260px;padding:40px 20px 36px}}.container{{padding:36px 16px}}}}
     .scenario-card{{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}}
     .scenario-card.green{{border-top:3px solid var(--green)}}.scenario-card.red{{border-top:3px solid var(--red)}}
     .scenario-label{{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}}
@@ -413,44 +404,34 @@ def build_html(a, cover_svg="", chart_svg=""):
     .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{{position:relative;z-index:1}}
     .chart-wrap{{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}}
     .chart-wrap svg{{width:100%;height:auto;display:block}}
+    .back-link{{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}}
+    .back-link:hover{{color:var(--accent)}}
   </style>
 </head>
 <body>
-
+<a class="back-link" href="{cfg['index_file']}">← {cfg['name']} 목록</a>
 <section class="hero">
   {('<div class="hero-cover">' + cover_svg + '</div>') if cover_svg else ''}
   <div class="hero-eyebrow">
     <span class="hero-date">{TODAY_KR}</span>
     <span class="hero-dot"></span>
-    <span class="hero-label">Daily Thesis</span>
+    <span class="hero-label">{cfg['icon']} {cfg['name']} Daily Thesis</span>
   </div>
-  <div class="hero-tags">
-    <span class="tag">매크로</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span>
-  </div>
+  <div class="hero-tags">{tags_html}</div>
   <h1>{a['thesis_title']}</h1>
   <p class="hero-sub">{a['one_line']}</p>
 </section>
-
 <div class="container">
-
   <div class="thesis-block">
     <div class="label">오늘의 핵심 테제</div>
     <p>{a['one_line']}</p>
   </div>
-
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">1</div>
-      <h2>왜 이게 중요한가</h2>
-    </div>
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
     <p>{a['why_important']}</p>
   </div>
-
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">2</div>
-      <h2>숫자로 보는 근거</h2>
-    </div>
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
     {('<div class="chart-wrap">' + chart_svg + '</div>') if chart_svg else ''}
     <div class="data-table-wrap">
       <table>
@@ -459,167 +440,204 @@ def build_html(a, cover_svg="", chart_svg=""):
       </table>
     </div>
   </div>
-
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">3</div>
-      <h2>시나리오 분기</h2>
-    </div>
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
     <div class="scenario-grid">
       <div class="scenario-card green">
         <div class="scenario-label">시나리오 A</div>
-        <h3>{sa.get('title','')}</h3>
-        <ul>{sa_points}</ul>
+        <h3>{sa.get('title','')}</h3><ul>{sa_points}</ul>
       </div>
       <div class="scenario-card red">
         <div class="scenario-label">시나리오 B</div>
-        <h3>{sb.get('title','')}</h3>
-        <ul>{sb_points}</ul>
+        <h3>{sb.get('title','')}</h3><ul>{sb_points}</ul>
       </div>
     </div>
   </div>
-
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">4</div>
-      <h2>이번 주 투자자 체크리스트</h2>
-    </div>
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
     <div class="checklist">{checklist_items}</div>
   </div>
-
-  <div class="callout">
-    <p>{a.get('closing', a.get('one_line', ''))}</p>
-  </div>
-
+  <div class="callout"><p>{a.get('closing', a.get('one_line', ''))}</p></div>
 </div>
-<footer>데일리 테제 분석 · {TODAY_KR} · 본 자료는 투자 권유가 아닙니다</footer>
+<footer>{cfg['footer']}</footer>
 </body>
 </html>"""
 
+# ── index 페이지 보장 ─────────────────────────────────────────
+INDEX_TEMPLATE = """<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{index_title}}</title>
+  <style>
+    :root{{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;--accent:#e8b84b;--text:#e2e6f0;--muted:#7a8299;}}
+    *{{box-sizing:border-box;margin:0;padding:0}}
+    body{{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;min-height:100vh;}}
+    header{{padding:48px 40px 32px;border-bottom:1px solid var(--border);}}
+    header h1{{font-size:22px;font-weight:700;}}
+    header p{{font-size:13px;color:var(--muted);margin-top:6px;}}
+    .nav{{display:flex;gap:16px;padding:16px 40px;border-bottom:1px solid var(--border);font-size:13px;}}
+    .nav a{{color:var(--muted);text-decoration:none;}} .nav a:hover{{color:var(--accent)}}
+    .container{{max-width:760px;margin:0 auto;padding:40px 32px;}}
+    .post-list{{display:flex;flex-direction:column;gap:1px;}}
+    .post-item{{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .15s;}}
+    .post-item:hover{{color:var(--accent);}}
+    .post-title{{font-size:15px;font-weight:600;}}
+    .post-sub{{font-size:12px;color:var(--muted);margin-top:4px;}}
+    .post-date{{font-size:12px;color:var(--muted);white-space:nowrap;margin-left:24px;}}
+    footer{{text-align:center;padding:32px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{{icon}} {{topic_name}} 데일리 테제</h1>
+    <p>{{subtitle}}</p>
+  </header>
+  <nav class="nav">
+    <a href="index.html">📊 경제·투자</a>
+    <a href="politics.html">🏛️ 정치</a>
+    <a href="culture.html">🎬 컬처</a>
+  </nav>
+  <div class="container">
+    <div class="post-list">
+    </div>
+  </div>
+  <footer>데일리 테제 · {{topic_name}} · by Jayce</footer>
+</body>
+</html>"""
+
+def ensure_index(cfg):
+    index_path = os.path.join(REPO_DIR, cfg["index_file"])
+    if not os.path.exists(index_path):
+        content = (INDEX_TEMPLATE
+            .replace("{{index_title}}", cfg["index_title"])
+            .replace("{{icon}}", cfg["icon"])
+            .replace("{{topic_name}}", cfg["name"])
+            .replace("{{subtitle}}", cfg["index_subtitle"]))
+        with open(index_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        log(f"인덱스 페이지 생성: {cfg['index_file']}")
+
 # ── 4. 게시 + 알림 ───────────────────────────────────────────
-def publish(html_content, analysis):
-    html_path = os.path.join(REPO_DIR, f"{TODAY}.html")
+def publish(html_content, analysis, cfg):
+    ensure_index(cfg)
+
+    html_path = os.path.join(REPO_DIR, cfg["html_name"])
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(html_content)
     log(f"HTML 저장: {html_path}")
 
-    # index.html 업데이트
-    index_path = os.path.join(REPO_DIR, "index.html")
+    index_path = os.path.join(REPO_DIR, cfg["index_file"])
     with open(index_path, "r", encoding="utf-8") as f:
         index = f.read()
 
-    if f'href="{TODAY}.html"' not in index:
-        title = analysis['thesis_title']
-        new_entry = f"""      <a class="post-item" href="{TODAY}.html">
-        <div>
-          <div class="post-title">{title}</div>
-          <div class="post-sub">{analysis['one_line'][:40]}...</div>
-        </div>
-        <div class="post-date">{TODAY_KR}</div>
-      </a>"""
+    if f'href="{cfg["html_name"]}"' not in index:
+        title     = analysis['thesis_title']
+        sub_text  = analysis['one_line'][:40]
+        new_entry = (
+            f'      <a class="post-item" href="{cfg["html_name"]}">\n'
+            f'        <div>\n'
+            f'          <div class="post-title">{title}</div>\n'
+            f'          <div class="post-sub">{sub_text}...</div>\n'
+            f'        </div>\n'
+            f'        <div class="post-date">{TODAY_KR}</div>\n'
+            f'      </a>'
+        )
         index = index.replace(
             '<div class="post-list">',
             '<div class="post-list">\n' + new_entry
         )
         with open(index_path, "w", encoding="utf-8") as f:
             f.write(index)
-        log("index.html 업데이트 완료")
+        log(f"인덱스 업데이트: {cfg['index_file']}")
 
-    # git push (로컬 실행 시만 — Actions는 워크플로우에서 처리)
     if not IS_CI:
         os.chdir(REPO_DIR)
-        # 원격 최신 상태 동기화 후 커밋 (Actions와 충돌 방지)
         subprocess.run(["git", "fetch", "origin"], check=True)
         subprocess.run(["git", "reset", "--hard", "origin/main"], check=True)
-        # reset 후 파일 다시 저장
-        with open(os.path.join(REPO_DIR, f"{TODAY}.html"), "w", encoding="utf-8") as _f:
-            _f.write(html_content[0] if isinstance(html_content, tuple) else html_content)
-        subprocess.run(["git", "add", f"{TODAY}.html", "index.html"], check=True)
+        # 리셋 후 파일 재저장
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        ensure_index(cfg)
+        with open(index_path, "r", encoding="utf-8") as f:
+            idx = f.read()
+        if f'href="{cfg["html_name"]}"' not in idx:
+            idx = idx.replace('<div class="post-list">', '<div class="post-list">\n' + new_entry)
+            with open(index_path, "w", encoding="utf-8") as f:
+                f.write(idx)
+        subprocess.run(["git", "add", cfg["html_name"], cfg["index_file"]], check=True)
         staged = subprocess.run(["git", "diff", "--staged", "--quiet"])
         if staged.returncode != 0:
-            subprocess.run(["git", "commit", "-m", f"데일리 테제 {TODAY_KR}"], check=True)
+            subprocess.run(["git", "commit", "-m", f"{cfg['name']} 데일리 테제 {TODAY_KR}"], check=True)
             subprocess.run(["git", "push", "origin", "main"], check=True)
+
     log("GitHub Pages 게시 완료")
-    log(f"→ https://jayce0321.github.io/daily-thesis/{TODAY}.html")
+    page_url = f"https://jayce0321.github.io/daily-thesis/{cfg['html_name']}"
+    log(f"→ {page_url}")
 
-    # Obsidian 저장
-    obs_dir = os.path.expanduser("~/Documents/Obsidian/데일리분석/테제")
-    os.makedirs(obs_dir, exist_ok=True)
-    md_path = os.path.join(obs_dir, f"{TODAY}.md")
-    with open(md_path, "w", encoding="utf-8") as f:
-        f.write(f"""---
-date: {TODAY}
-tags: [데일리테제, 매크로]
-type: daily-thesis
----
+    # Telegram 알림
+    channel_id = os.environ.get(cfg["channel_env"], os.environ.get("TELEGRAM_CHAT_ID", ""))
+    if not (BOT_TOKEN and channel_id):
+        log("텔레그램 채널 미설정 — 알림 생략")
+        return
 
-# 데일리 테제 | {TODAY_KR}
-
-## {analysis['thesis_title']}
-
-{analysis['one_line']}
-
----
-
-### 왜 중요한가
-{analysis['why_important']}
-
-### 마무리
-{analysis.get('closing', analysis.get('one_line', ''))}
-""")
-    log(f"Obsidian 저장 완료: {md_path}")
-
-    # 텔레그램
-    text = f"""📊 데일리 테제 | {TODAY_KR}
-
-{analysis['thesis_title']}
-
-{analysis['one_line']}
-
-━━━━━━━━━━━━
-✅ 체크리스트
-""" + "\n".join(f"• {c['title']}" for c in analysis.get('checklist', [])) + f"""
-
-🔗 https://jayce0321.github.io/daily-thesis/{TODAY}.html
-
-본 자료는 투자 권유가 아닙니다."""
+    text = (
+        f"{cfg['icon']} <b>데일리 테제 | {cfg['name']}</b>  {TODAY_KR}\n\n"
+        f"<b>{analysis['thesis_title']}</b>\n\n"
+        f"{analysis['one_line']}\n\n"
+        "━━━━━━━━━━━━\n"
+        "✅ 체크리스트\n"
+        + "\n".join(f"• {c['title']}" for c in analysis.get("checklist", []))
+        + f"\n\n🔗 {page_url}\n\n"
+        f"{cfg['tg_hashtag']}"
+    )
 
     data = json.dumps({
-        "chat_id": CHAT_ID,
-        "text": text
+        "chat_id": channel_id,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": False,
     }).encode("utf-8")
     req = urllib.request.Request(
         f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
         data=data,
         headers={"Content-Type": "application/json"}
     )
-    with urllib.request.urlopen(req, timeout=10) as r:
-        result = json.loads(r.read())
-    if result.get("ok"):
-        log("텔레그램 알림 전송 완료")
-    else:
-        log(f"텔레그램 오류: {result}")
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            result = json.loads(r.read())
+        if result.get("ok"):
+            log("텔레그램 알림 전송 완료")
+        else:
+            log(f"텔레그램 오류: {result}")
+    except Exception as e:
+        log(f"텔레그램 알림 실패 (무시): {e}")
 
 # ── 메인 ─────────────────────────────────────────────────────
 def main():
-    log(f"=== 데일리 테제 자동화 시작 ({TODAY_KR}) ===")
+    log(f"=== 데일리 테제 시작 ({TODAY_KR}) topic={TOPIC} ===")
+
+    if TOPIC not in TOPIC_CONFIG:
+        print(f"❌ 알 수 없는 TOPIC: {TOPIC}. 사용 가능: {', '.join(TOPIC_CONFIG)}")
+        sys.exit(1)
 
     if not ANTHROPIC_API_KEY:
         print("❌ ANTHROPIC_API_KEY 환경변수가 없습니다.")
         sys.exit(1)
 
-    news = fetch_news()
+    cfg  = TOPIC_CONFIG[TOPIC]
+    news = fetch_news(cfg)
     if not news:
         log("⚠️ 뉴스 수집 실패 — 기본 프롬프트로 진행")
-        news = ["글로벌 금융시장 동향 분석 필요"]
+        news = [f"{cfg['name']} 오늘의 주요 동향 분석 필요"]
 
-    analysis = call_claude(news)
+    analysis = call_claude(news, cfg)
     cover_svg, chart_svg = generate_svgs(analysis)
-    html = build_html(analysis, cover_svg, chart_svg)
-    publish(html, analysis)
+    html = build_html(analysis, cfg, cover_svg, chart_svg)
+    publish(html, analysis, cfg)
 
-    log("=== 완료 ===")
+    log(f"=== {cfg['name']} 완료 ===")
 
 if __name__ == "__main__":
     main()
-
