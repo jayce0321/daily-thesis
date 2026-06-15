@@ -55,6 +55,7 @@ TOPIC_CONFIG = {
             "미국 주식시장 경제지표 today",
         ],
         "channel_env": "TELEGRAM_CHANNEL_ECONOMY",
+        "channel_id": "-1004433738632",
         "html_name": f"{TODAY}.html",
         "index_file": "index.html",
         "claude_instruction": (
@@ -77,6 +78,7 @@ TOPIC_CONFIG = {
             "global politics international relations today",
         ],
         "channel_env": "TELEGRAM_CHANNEL_POLITICS",
+        "channel_id": "-1003583468243",
         "html_name": f"{TODAY}-politics.html",
         "index_file": "politics.html",
         "claude_instruction": (
@@ -100,6 +102,7 @@ TOPIC_CONFIG = {
             "global culture trends entertainment today",
         ],
         "channel_env": "TELEGRAM_CHANNEL_CULTURE",
+        "channel_id": "-1004400600348",
         "html_name": f"{TODAY}-culture.html",
         "index_file": "culture.html",
         "claude_instruction": (
@@ -596,7 +599,11 @@ def publish(html_content, analysis, cfg):
     log(f"→ {page_url}")
 
     # Telegram 알림
-    channel_id = os.environ.get(cfg["channel_env"], os.environ.get("TELEGRAM_CHAT_ID", ""))
+    channel_id = (
+        os.environ.get(cfg["channel_env"])
+        or cfg.get("channel_id", "")
+        or os.environ.get("TELEGRAM_CHAT_ID", "")
+    )
     if not (BOT_TOKEN and channel_id):
         log("텔레그램 채널 미설정 — 알림 생략")
         return
