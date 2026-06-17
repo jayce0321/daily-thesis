@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 컬처 | 2026.06.17</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="culture.html">← 컬처 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="659" cy="89" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="769" cy="209" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="659" cy="89" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="659" cy="89" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="769" cy="209" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="569" cy="309" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="559" y1="119" x2="819" y2="169" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.17</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.17</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">🎬 컬처 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">한국문화</span><span class="tag">글로벌트렌드</span><span class="tag">데일리테제</span></div>
+  <h1>"한류, 팝컬처를 넘어 '문명 표준'이 되다"</h1>
+  <p class="hero-sub">K팝·드라마·뷰티를 넘어 문학·교과서·글로벌 차트까지 침투한 한류는 이제 하나의 글로벌 문화 인프라로 제도화되고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>K팝·드라마·뷰티를 넘어 문학·교과서·글로벌 차트까지 침투한 한류는 이제 하나의 글로벌 문화 인프라로 제도화되고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>2026년 현재 한류는 '소비되는 콘텐츠'에서 '학습·참조되는 문화 기준'으로 질적 전환을 맞이하고 있다. 정국이 미국 교과서에 등재되고, 멜론이 글로벌 K차트를 론칭하며, 멧 갈라에 K팝 스타들이 줄줄이 입성하는 현상은 한류가 단순한 유행이 아닌 글로벌 팝컬처의 표준 언어로 자리잡고 있음을 보여준다. 동시에 바가지 논란·불법 유통·성형국가 편견 등 부작용도 동반 확대되며, '문화 강국'의 명암이 동시에 부각되는 변곡점에 서 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">외국인 한국 호감도</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">역대 최고 — 외국인 10명 중 8명(80%+)</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">TWS &#x27;OVERDRIVE&#x27; TikTok</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">230만 건 돌파</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">넷플릭스 글로벌 TOP10 내 K드라마 </text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">복수 작품 동시 진입(지속적 상위권)</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">지드래곤 &#x27;2025 하입비스트 100&#x27; </text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">글로벌 문화 아이콘 TOP100 재진입</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>외국인 한국 호감도</td><td>역대 최고 — 외국인 10명 중 8명(80%+)</td><td>K콘텐츠가 국가 브랜드를 견인하는 소프트파워 효과가 수치로 검증됨</td></tr><tr><td>TWS 'OVERDRIVE' TikTok 게시물</td><td>230만 건 돌파</td><td>K팝 챌린지 문화가 글로벌 숏폼 플랫폼의 핵심 트래픽 엔진임을 증명</td></tr><tr><td>넷플릭스 글로벌 TOP10 내 K드라마 점유</td><td>복수 작품 동시 진입(지속적 상위권)</td><td>K드라마가 특정 이벤트가 아닌 구조적·정기적 글로벌 흥행 장르로 안착</td></tr><tr><td>지드래곤 '2025 하입비스트 100' 선정</td><td>글로벌 문화 아이콘 TOP100 재진입</td><td>K팝 아티스트가 음악을 넘어 글로벌 패션·라이프스타일 기준 인물로 인정받음</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>🟢 강세 시나리오 — '한류 제도화'의 완성</h3><ul><li>멜론 'Global-K Chart' 론칭이 빌보드처럼 글로벌 음악 지표로 자리잡으며 K팝이 국제 음악 산업의 표준 척도로 기능</li><li>미국 교과서 K팝 등재 → 유럽·아시아 교육 과정으로 확산되며 '한류 리터러시'가 세대 교육 콘텐츠화</li><li>CJ ENM·문체부의 한류 산업화 전략이 맞물려 K콘텐츠가 OTT·공연·뷰티·푸드를 아우르는 복합 수출 생태계로 진화</li><li>MZ 세대의 '갓생(Gat-saeng)' 마이크로 플래닝 문화가 글로벌 자기계발 트렌드로 역수출되며 라이프스타일 한류 개막</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3></h3><ul></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"></div>
+  </div>
+  <div class="callout"><p>K팝·드라마·뷰티를 넘어 문학·교과서·글로벌 차트까지 침투한 한류는 이제 하나의 글로벌 문화 인프라로 제도화되고 있다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 컬처 · 트렌드를 읽는 일상의 시각</footer>
+</body>
+</html>
