@@ -121,42 +121,146 @@ TOPIC_CONFIG = {
 def log(msg):
     print(f"[{datetime.now(KST).strftime('%H:%M:%S')}] [{TOPIC.upper()}] {msg}", flush=True)
 
+# ── 신뢰 RSS 소스 (직접 URL 제공 → 본문 크롤링 가능) ────────
+_DIRECT_RSS = {
+    "economy": [
+        ("연합뉴스 경제", "https://www.yna.co.kr/rss/economy.xml",  6),
+        ("연합뉴스 국제", "https://www.yna.co.kr/rss/international.xml", 3),
+        ("CNBC Markets",  "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664", 5),
+        ("CNBC Economy",  "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258", 4),
+    ],
+    "politics": [
+        ("연합뉴스 정치", "https://www.yna.co.kr/rss/politics.xml",    6),
+        ("연합뉴스 국제", "https://www.yna.co.kr/rss/international.xml", 5),
+        ("CNBC Politics", "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000113", 4),
+    ],
+    "culture": [
+        ("연합뉴스 문화", "https://www.yna.co.kr/rss/culture.xml",      6),
+        ("연합뉴스 연예", "https://www.yna.co.kr/rss/entertainment.xml", 5),
+    ],
+}
+
+_CRAWL_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/124.0.0.0 Safari/537.36",
+    "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+}
+
+
+def _fetch_body(url, max_chars=600):
+    """기사 URL 본문 추출. 실패 시 빈 문자열."""
+    if not url or "news.google.com" in url:
+        return ""
+    try:
+        from bs4 import BeautifulSoup
+        import re as _re
+        req = urllib.request.Request(url, headers=_CRAWL_HEADERS)
+        with urllib.request.urlopen(req, timeout=8) as r:
+            raw = r.read()
+        enc = r.headers.get_content_charset() or "utf-8"
+        html = raw.decode(enc, errors="replace")
+        soup = BeautifulSoup(html, "html.parser")
+        for tag in soup(["script", "style", "nav", "header", "footer",
+                          "aside", "figure", "noscript", "iframe", "form"]):
+            tag.decompose()
+        body = soup.find("article") or soup.find("main") or soup.body
+        if not body:
+            return ""
+        text = _re.sub(r"\s+", " ", body.get_text(separator=" ")).strip()
+        return text[:max_chars]
+    except Exception:
+        return ""
+
+
+def _parse_direct_rss(rss_url, limit):
+    """직접 URL RSS 파싱 → [{title, url, body}] 반환."""
+    import re as _re
+    results = []
+    try:
+        req = urllib.request.Request(
+            rss_url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            raw = r.read().decode("utf-8", errors="replace")
+        items = _re.findall(r'<item>(.*?)</item>', raw, _re.DOTALL)
+        for item in items:
+            t = _re.search(
+                r'<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>',
+                item, _re.DOTALL)
+            if not t:
+                continue
+            title = t.group(1).strip()
+            url = ""
+            for pat in [r'<link>([^<]+)</link>',
+                        r'<link[^>]+href=["\']([^"\']+)["\']',
+                        r'<guid[^>]*>([^<]+)</guid>']:
+                m = _re.search(pat, item)
+                if m and m.group(1).strip().startswith("http"):
+                    url = m.group(1).strip()
+                    break
+            results.append({"title": title, "url": url, "body": ""})
+            if len(results) >= limit:
+                break
+    except Exception as e:
+        log(f"  직접 RSS 오류: {e}")
+    return results
+
+
 # ── 1. 뉴스 수집 ─────────────────────────────────────────────
 def fetch_news(cfg):
     log("뉴스 수집 중...")
     import re as _re
 
-    # 토픽별 전용 쿼리 + 공통 쿼리 병합
-    topic_queries = cfg.get("queries", [])
+    seen = set()
+    articles = []   # {title, url, body, desc}
 
-    # 공통 글로벌 맥락 쿼리 (모든 토픽 공유)
+    # ① 신뢰 RSS (직접 URL → 본문 크롤링)
+    topic_key = TOPIC  # "economy" | "politics" | "culture"
+    for source_name, rss_url, limit in _DIRECT_RSS.get(topic_key, []):
+        items = _parse_direct_rss(rss_url, limit)
+        added = 0
+        for art in items:
+            if art["title"] in seen or len(art["title"]) < 6:
+                continue
+            seen.add(art["title"])
+            articles.append(art)
+            added += 1
+        log(f"  [{source_name}] {added}건")
+
+    # 본문 크롤링
+    log(f"  → 본문 크롤링 ({len(articles)}건)...")
+    ok = 0
+    for art in articles:
+        art["body"] = _fetch_body(art["url"])
+        if art["body"]:
+            ok += 1
+    log(f"  → 본문 확보: {ok}/{len(articles)}건")
+
+    # ② Google News RSS (토픽별 쿼리 → 제목+desc 보완)
+    topic_queries = cfg.get("queries", [])
     common_queries = [
         ("글로벌 금융시장 매크로 경제 오늘", "ko"),
         ("Federal Reserve interest rate economy today", "en"),
     ]
-
-    # 토픽 전용 쿼리를 (query, lang) 형식으로 변환
     all_queries = [(q, "ko") for q in topic_queries] + common_queries
-
-    articles = []
-    seen = set()
 
     for q, lang in all_queries:
         try:
             encoded = urllib.parse.quote(q)
             if lang == "en":
-                url = (f"https://news.google.com/rss/search"
-                       f"?q={encoded}&hl=en&gl=US&ceid=US:en")
+                rss_url = (f"https://news.google.com/rss/search"
+                           f"?q={encoded}&hl=en&gl=US&ceid=US:en")
             else:
-                url = (f"https://news.google.com/rss/search"
-                       f"?q={encoded}&hl=ko&gl=KR&ceid=KR:ko")
+                rss_url = (f"https://news.google.com/rss/search"
+                           f"?q={encoded}&hl=ko&gl=KR&ceid=KR:ko")
             req = urllib.request.Request(
-                url, headers={"User-Agent": "Mozilla/5.0"})
+                rss_url, headers={"User-Agent": "Mozilla/5.0"})
             with urllib.request.urlopen(req, timeout=10) as r:
                 raw = r.read().decode("utf-8")
 
             items = _re.findall(r'<item>(.*?)</item>', raw, _re.DOTALL)
-            for item in items[:8]:
+            for item in items[:6]:
                 t_m = _re.search(
                     r'<title><!\[CDATA\[(.*?)\]\]></title>', item)
                 if not t_m:
@@ -166,37 +270,53 @@ def fetch_news(cfg):
                 if not d_m:
                     d_m = _re.search(
                         r'<description>(.*?)</description>', item)
-
                 if t_m:
                     title = t_m.group(1).strip()
-                    title = _re.sub(r'\s*-\s*[^-]{2,30}$', '', title).strip()
+                    title = _re.sub(
+                        r'\s*-\s*[^-]{2,30}$', '', title).strip()
                     if title in seen or len(title) < 8:
                         continue
                     seen.add(title)
                     desc = ""
                     if d_m:
                         desc = _re.sub(
-                            r'<[^>]+>', '', d_m.group(1)).strip()[:100]
-                    articles.append({"title": title, "desc": desc})
+                            r'<[^>]+>', '', d_m.group(1)).strip()[:120]
+                    articles.append({"title": title, "url": "", "body": "", "desc": desc})
         except Exception as e:
             log(f"  [{q[:18]}] 수집 오류: {e}")
 
-    log(f"뉴스 {len(articles)}건 수집 완료")
-    return articles[:25]
+    log(f"뉴스 총 {len(articles)}건 수집 완료")
+    return articles[:28]
 
 
 def call_claude(news_headlines, cfg):
     log("Claude API 호출 중...")
-    # news_headlines: dict 리스트 {title, desc} 또는 str 리스트
-    if news_headlines and isinstance(news_headlines[0], dict):
-        headlines_text = "\n".join(
-            f"[{i+1}] {a['title']}" +
-            (f"\n    └ {a['desc'][:90]}" if a.get('desc') else "")
-            for i, a in enumerate(news_headlines)
-        )
-    else:
-        headlines_text = "\n".join(f"- {h}" for h in news_headlines)
+    parts = []
+    for i, a in enumerate(news_headlines):
+        if isinstance(a, dict):
+            title = a.get("title", "")
+            body  = a.get("body", "")
+            desc  = a.get("desc", "")
+            if body:
+                parts.append(f"[{i+1}] {title}\n    본문: {body}")
+            elif desc:
+                parts.append(f"[{i+1}] {title}\n    요약: {desc}")
+            else:
+                parts.append(f"[{i+1}] {title}")
+        else:
+            parts.append(f"[{i+1}] {a}")
+    headlines_text = "\n\n".join(parts)
+
     instruction = cfg["claude_instruction"].format(today_kr=TODAY_KR)
+    # 본문 확보 기사가 있으면 숫자 신뢰도 강조
+    body_count = sum(1 for a in news_headlines
+                     if isinstance(a, dict) and a.get("body"))
+    if body_count > 0:
+        instruction += (
+            f"\n\n※ {body_count}개 기사는 본문이 포함되어 있습니다. "
+            "metrics의 수치는 반드시 본문에서 확인된 것만 사용하고, "
+            "없으면 '확인 필요'로 표기하세요."
+        )
 
     tool_def = {
         "name": "save_thesis",
