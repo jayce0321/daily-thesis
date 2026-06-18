@@ -16,7 +16,7 @@ from datetime import datetime, timezone, timedelta
 
 # ── 환경 변수 ─────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "REDACTED")
+BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 def _resolve_topic():
     # 1순위: 환경변수 (daily.yml inputs 방식)
     env_t = os.environ.get("TOPIC", "").lower().strip()
