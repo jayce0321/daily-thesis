@@ -15,7 +15,7 @@ from datetime import datetime, timezone, timedelta
 
 # ── 환경 변수 ─────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "REDACTED")
 def _resolve_topic():
     # 1순위: 환경변수 (daily.yml inputs 방식)
     env_t = os.environ.get("TOPIC", "").lower().strip()
@@ -55,7 +55,7 @@ TOPIC_CONFIG = {
             "미국 주식시장 경제지표 today",
         ],
         "channel_env": "TELEGRAM_CHANNEL_ECONOMY",
-        "channel_id": "-1004433738632",
+        "channel_id": "5066621346",
         "html_name": f"{TODAY}.html",
         "index_file": "index.html",
         "claude_instruction": (
@@ -78,7 +78,7 @@ TOPIC_CONFIG = {
             "global politics international relations today",
         ],
         "channel_env": "TELEGRAM_CHANNEL_POLITICS",
-        "channel_id": "-1003583468243",
+        "channel_id": "5066621346",
         "html_name": f"{TODAY}-politics.html",
         "index_file": "politics.html",
         "claude_instruction": (
@@ -102,7 +102,7 @@ TOPIC_CONFIG = {
             "global culture trends entertainment today",
         ],
         "channel_env": "TELEGRAM_CHANNEL_CULTURE",
-        "channel_id": "-1004400600348",
+        "channel_id": "5066621346",
         "html_name": f"{TODAY}-culture.html",
         "index_file": "culture.html",
         "claude_instruction": (
