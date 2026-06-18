@@ -2,8 +2,13 @@ name: 데일리 테제 자동 발행
 
 on:
   schedule:
-    - cron: '0 23 * * 0-4'  # 매주 월~금 KST 08:00 (UTC 23:00 전날)
-  workflow_dispatch:          # 수동 실행 버튼
+    - cron: '0 23 * * 0-4'   # 매주 월~금 KST 08:00 (UTC 23:00 전날)
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: '발행할 토픽 (economy / politics / culture / all)'
+        required: false
+        default: 'all'
 
 permissions:
   contents: write
@@ -17,32 +22,63 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
       - name: Python 설정
         uses: actions/setup-python@v5
-        env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           python-version: '3.11'
 
       - name: 의존성 설치
-        run: pip install anthropic requests beautifulsoup4
+        run: pip install requests beautifulsoup4
 
-      - name: 데일리 테제 생성 및 게시
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          GIT_USER_NAME: jayce0321
-          GIT_USER_EMAIL: jaehoyi0321@gmail.com
-        run: python daily_auto.py
-
-      - name: 변경사항 커밋 & 푸시
+      - name: git 사용자 설정
         run: |
           git config user.name "jayce0321"
           git config user.email "jaehoyi0321@gmail.com"
+
+      - name: 경제·투자 테제 생성
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'economy' || github.event.inputs.topic == '' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TOPIC: economy
+        run: python daily_auto.py
+
+      - name: 경제·투자 커밋
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'economy' || github.event.inputs.topic == '' }}
+        run: |
           git add -A
-          git diff --staged --quiet || git commit -m "데일리 테제 $(date +'%Y.%m.%d') [자동]"
+          git diff --staged --quiet || git commit -m "경제·투자 데일리 테제 $(date +'%Y.%m.%d') [자동]"
+          git push
+
+      - name: 정치 테제 생성
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'politics' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TOPIC: politics
+        run: python daily_auto.py
+
+      - name: 정치 커밋
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'politics' }}
+        run: |
+          git pull --rebase origin main
+          git add -A
+          git diff --staged --quiet || git commit -m "정치 데일리 테제 $(date +'%Y.%m.%d') [자동]"
+          git push
+
+      - name: 컬처 테제 생성
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'culture' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TOPIC: culture
+        run: python daily_auto.py
+
+      - name: 컬처 커밋
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'culture' }}
+        run: |
+          git pull --rebase origin main
+          git add -A
+          git diff --staged --quiet || git commit -m "컬처 데일리 테제 $(date +'%Y.%m.%d') [자동]"
           git push

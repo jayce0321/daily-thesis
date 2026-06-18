@@ -7,10 +7,11 @@ TOPIC env: economy (경제·투자) | politics (정치) | culture (컬처)
 import os
 import sys
 import json
-import time
 import subprocess
 import urllib.request
 import urllib.parse
+import html as _html
+import hashlib
 from datetime import datetime, timezone, timedelta
 
 # ── 환경 변수 ─────────────────────────────────────────────────
@@ -149,7 +150,7 @@ _CRAWL_HEADERS = {
 }
 
 
-def _fetch_body(url, max_chars=600):
+def _fetch_body(url, max_chars=900):
     """기사 URL 본문 추출. 실패 시 빈 문자열."""
     if not url or "news.google.com" in url:
         return ""
@@ -377,7 +378,7 @@ def call_claude(news_headlines, cfg):
 
     data = json.dumps({
         "model": "claude-sonnet-4-6",
-        "max_tokens": 1400,
+        "max_tokens": 2800,
         "tools": [tool_def],
         "tool_choice": {"type": "tool", "name": "save_thesis"},
         "messages": [{
@@ -406,9 +407,6 @@ def call_claude(news_headlines, cfg):
     raise ValueError(f"tool_use 응답 없음: {result}")
 
 # ── 2b. SVG 생성 ──────────────────────────────────────────────
-import html as _html
-import hashlib
-
 def generate_svgs(analysis):
     log("SVG 생성 중...")
     metrics  = analysis.get("metrics", [])
@@ -466,19 +464,31 @@ def generate_svgs(analysis):
     return cover_svg, chart_svg
 
 # ── 3. HTML 생성 ─────────────────────────────────────────────
+def _safe(val):
+    return _html.escape(str(val)) if val is not None else ""
+
 def build_html(a, cfg, cover_svg="", chart_svg=""):
     metrics_rows = "".join(
-        f"<tr><td>{m['label']}</td><td>{m['value']}</td><td>{m['meaning']}</td></tr>"
-        for m in a.get("metrics", [])
+        f"<tr><td>{_safe(m.get('label',''))}</td>"
+        f"<td>{_safe(m.get('value',''))}</td>"
+        f"<td>{_safe(m.get('meaning',''))}</td></tr>"
+        for m in a.get("metrics", []) if isinstance(m, dict)
     )
     checklist_items = "".join(
         f'<div class="checklist-item"><div class="check-box"></div>'
-        f'<div><div class="title">{c["title"]}</div><div class="desc">{c["desc"]}</div></div></div>'
+        f'<div><div class="title">{_safe(c.get("title","") if isinstance(c, dict) else c)}</div>'
+        f'<div class="desc">{_safe(c.get("desc","") if isinstance(c, dict) else "")}</div>'
+        f'</div></div>'
         for c in a.get("checklist", [])
     )
-    sa = a.get("scenario_a", {}); sb = a.get("scenario_b", {})
-    sa_points = "".join(f"<li>{p}</li>" for p in sa.get("points", []))
-    sb_points = "".join(f"<li>{p}</li>" for p in sb.get("points", []))
+    sa = a.get("scenario_a", {})
+    sb = a.get("scenario_b", {})
+    if isinstance(sa, str): sa = {"title": sa, "points": []}
+    if isinstance(sb, str): sb = {"title": sb, "points": []}
+    if not isinstance(sa, dict): sa = {}
+    if not isinstance(sb, dict): sb = {}
+    sa_points = "".join(f"<li>{_safe(p)}</li>" for p in sa.get("points", []))
+    sb_points = "".join(f"<li>{_safe(p)}</li>" for p in sb.get("points", []))
     tags_html = "".join(f'<span class="tag">{t}</span>' for t in cfg["tags"])
 
     return f"""<!DOCTYPE html>
@@ -674,21 +684,23 @@ def publish(html_content, analysis, cfg):
     with open(index_path, "r", encoding="utf-8") as f:
         index = f.read()
 
-    if f'href="{cfg["html_name"]}"' not in index:
-        title     = analysis['thesis_title']
-        sub_text  = analysis['one_line'][:40]
-        new_entry = (
+    def _make_entry():
+        t = _safe(analysis.get('thesis_title', ''))
+        s = _safe(analysis.get('one_line', '')[:40])
+        return (
             f'      <a class="post-item" href="{cfg["html_name"]}">\n'
             f'        <div>\n'
-            f'          <div class="post-title">{title}</div>\n'
-            f'          <div class="post-sub">{sub_text}...</div>\n'
+            f'          <div class="post-title">{t}</div>\n'
+            f'          <div class="post-sub">{s}...</div>\n'
             f'        </div>\n'
             f'        <div class="post-date">{TODAY_KR}</div>\n'
             f'      </a>'
         )
+
+    if f'href="{cfg["html_name"]}"' not in index:
         index = index.replace(
             '<div class="post-list">',
-            '<div class="post-list">\n' + new_entry
+            '<div class="post-list">\n' + _make_entry()
         )
         with open(index_path, "w", encoding="utf-8") as f:
             f.write(index)
@@ -698,14 +710,13 @@ def publish(html_content, analysis, cfg):
         os.chdir(REPO_DIR)
         subprocess.run(["git", "fetch", "origin"], check=True)
         subprocess.run(["git", "reset", "--hard", "origin/main"], check=True)
-        # 리셋 후 파일 재저장
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(html_content)
         ensure_index(cfg)
         with open(index_path, "r", encoding="utf-8") as f:
             idx = f.read()
         if f'href="{cfg["html_name"]}"' not in idx:
-            idx = idx.replace('<div class="post-list">', '<div class="post-list">\n' + new_entry)
+            idx = idx.replace('<div class="post-list">', '<div class="post-list">\n' + _make_entry())
             with open(index_path, "w", encoding="utf-8") as f:
                 f.write(idx)
         subprocess.run(["git", "add", cfg["html_name"], cfg["index_file"]], check=True)
@@ -734,7 +745,10 @@ def publish(html_content, analysis, cfg):
         f"{analysis['one_line']}\n\n"
         "━━━━━━━━━━━━\n"
         "✅ 체크리스트\n"
-        + "\n".join(f"• {c['title']}" for c in analysis.get("checklist", []))
+        + "\n".join(
+            f"• {c['title'] if isinstance(c, dict) else c}"
+            for c in analysis.get("checklist", [])
+        )
         + f"\n\n🔗 {page_url}\n\n"
         f"{cfg['tg_hashtag']}"
     )
