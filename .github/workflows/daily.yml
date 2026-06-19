@@ -66,6 +66,7 @@ jobs:
         run: |
           git add -A
           git diff --staged --quiet || git commit -m "정치 데일리 테제 $(date +'%Y.%m.%d') [자동]"
+          git pull --rebase origin main
           git push
 
       # ── 컬처 ───────────────────────────────────────────────────
@@ -82,4 +83,5 @@ jobs:
         run: |
           git add -A
           git diff --staged --quiet || git commit -m "컬처 데일리 테제 $(date +'%Y.%m.%d') [자동]"
+          git pull --rebase origin main
           git push
