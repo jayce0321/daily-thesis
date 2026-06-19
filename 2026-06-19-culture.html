@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 컬처 | 2026.06.19</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="culture.html">← 컬처 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="654" cy="124" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="784" cy="204" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="654" cy="124" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="654" cy="124" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="784" cy="204" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="584" cy="344" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="554" y1="154" x2="834" y2="164" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.19</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.19</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">🎬 컬처 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">한국문화</span><span class="tag">글로벌트렌드</span><span class="tag">데일리테제</span></div>
+  <h1>"AI와 인간 창작 사이, 콘텐츠 산업의 정체성 전쟁"</h1>
+  <p class="hero-sub">AI가 K-콘텐츠 생태계 전반을 흔드는 지금, '누가 만들었는가'라는 질문이 문화 권력의 새 기준이 되고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>AI가 K-콘텐츠 생태계 전반을 흔드는 지금, '누가 만들었는가'라는 질문이 문화 권력의 새 기준이 되고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>제79회 칸 영화제에서 기예르모 델 토로가 "Fuck AI"를 외친 무대를 AI 기업(메타·클링 AI)이 후원하고 있었다는 역설은 전 세계 콘텐츠 산업이 처한 구조적 모순을 상징적으로 드러냈다. 국내에서는 한국케이블TV방송협회가 생성형 AI를 활용한 뉴스·숏폼 콘텐츠 제작 실습 과정을 개설하며 현업의 AI 전환(AX)을 공식화하는 한편, 독립영화 진영은 OTT·IPTV 송출을 거부하고 '슬로우 시네마 운동'으로 맞서며 인간 창작의 가치를 극장 스크린에 붙들어 두려 하고 있다. K-콘텐츠 수출 149억 달러(2025년 역대 최고)라는 외형적 성장과 AI 창작 규범의 공백이 동시에 존재하는 지금, 창작자·플랫폼·팬덤 모두가 '진정성의 기준'을 새로 써야 하는 변곡점에 서 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">K-콘텐츠 수출액 (2025년)</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">149억 달러</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">독립·예술영화 스크린 점유율</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">전체 스크린의 2%</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">마산 지혜의 바다도서관 리모델링 투자비</text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">19억 6천만 원</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">칸 영화제 AI 후원사</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">메타 + 클링 AI(콰이쇼우 산하)</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>K-콘텐츠 수출액 (2025년)</td><td>149억 달러</td><td>역대 최고치 — K-콘텐츠가 글로벌 문화 권력으로 부상했음을 방증 (기사 [8] 편집자 주)</td></tr><tr><td>독립·예술영화 스크린 점유율</td><td>전체 스크린의 2%</td><td>독립영화는 편수 기준 18%이나 스크린은 2% 수준, 슬로우 시네마 운동의 배경 (기사 [7])</td></tr><tr><td>마산 지혜의 바다도서관 리모델링 투자비</td><td>19억 6천만 원</td><td>폐교 공간의 문화 복합 공간 재창출 — 오프라인 문화 인프라 투자가 계속되고 있음을 보여주는 사례 (기사 [3])</td></tr><tr><td>칸 영화제 AI 후원사</td><td>메타 + 클링 AI(콰이쇼우 산하)</td><td>반(反)AI 선언이 울려 퍼진 무대를 AI 기업이 스폰서한 구조적 모순 — 규범 공백의 상징 (기사 [8])</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>🟢 AI 공존 시나리오 — '도구로서의 AI' 수용 가속</h3><ul><li>케이블TV 업계의 AI 실무역량 강화 과정(기사 [10])처럼 제작 현장이 생성형 AI를 공식 워크플로로 통합, 콘텐츠 생산 비용과 속도 모두 혁신됨</li><li>K-콘텐츠 플랫폼이 AI 보조 제작물에 명확한 라벨링 기준을 선제적으로 도입해 글로벌 신뢰도를 유지하며 수출 149억 달러를 방어·확대</li><li>MZ 세대 팬덤은 AI로 생성된 아이돌 콘텐츠(쇼츠·이미지)에 빠르게 적응, 세븐틴 신유닛 V8처럼 &#x27;기획된 세계관+AI 비주얼&#x27;의 하이브리드 팬 경험이 새 표준이 됨</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>🔴 인간 창작 반격 시나리오 — '진정성 프리미엄' 시장 분화</h3><ul><li>칸의 경쟁부문 AI 배제 원칙이 국내 영화제·OTT 콘텐츠 기준으로 확산, 인간 감독·배우 중심의 작품이 프리미엄 레이어로 분류되며 독립영화 &#x27;슬로우 시네마 운동&#x27;이 틈새 팬덤을 흡수</li><li>중앙일보·JTBC 등 레거시 미디어의 유동성 위기(기사 [4])가 AI 대체 공포와 맞물려 저널리즘·콘텐츠 신뢰 생태계 전반의 재편을 촉발, 플랫폼 권력이 더욱 집중됨</li><li>MZ 세대가 AI 생성물에 &#x27;진품 피로감(authenticity fatigue)&#x27;을 느끼며 라이브 공연·소규모 극장 관람 등 오프라인 경험에 지갑을 여는 역설적 소비 패턴이 강화됨</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ 내가 소비하는 콘텐츠, AI 개입 여부를 확인했는가?</div><div class="desc">스트리밍·숏폼·앨범 비주얼 등에서 AI 생성 표기 여부를 확인하는 습관을 들이자. 창작자의 노동과 AI 보조를 구분하는 능력이 &#x27;미디어 리터러시 2.0&#x27;의 핵심이다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ 독립·예술 콘텐츠에 직접 참여하거나 후원하고 있는가?</div><div class="desc">&#x27;슬로우 시네마 운동&#x27;처럼 스크린 2%에 갇힌 인간 창작물은 팬덤의 직접 후원 없이는 생존이 어렵다. 티켓 구매·대관 참여 한 번이 생태계 다양성을 지키는 행동이다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ K-콘텐츠의 글로벌 성장이 창작자에게도 공정하게 돌아가고 있는지 묻고 있는가?</div><div class="desc">수출액 149억 달러의 과실이 스타 에이전시와 플랫폼에 집중되는 구조라면 지속 가능하지 않다. AI 시대일수록 창작자 수익 배분·저작권 규범에 관심을 가져야 한다.</div></div></div></div>
+  </div>
+  <div class="callout"><p>지금 문화의 전장은 스크린이 아니라 '누가 만들었는가'라는 질문 위에 그어진 선(線)이다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 컬처 · 트렌드를 읽는 일상의 시각</footer>
+</body>
+</html>
