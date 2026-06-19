@@ -36,6 +36,7 @@ jobs:
           git config user.name "jayce0321"
           git config user.email "jaehoyi0321@gmail.com"
 
+      # ── 경제·투자 ──────────────────────────────────────────────
       - name: 경제·투자 테제 생성
         if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'economy' || github.event.inputs.topic == '' }}
         env:
@@ -44,13 +45,14 @@ jobs:
           TOPIC: economy
         run: python daily_auto.py
 
-      - name: 경제·투자 커밋
+      - name: 경제·투자 커밋 & 푸시
         if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'economy' || github.event.inputs.topic == '' }}
         run: |
           git add -A
           git diff --staged --quiet || git commit -m "경제·투자 데일리 테제 $(date +'%Y.%m.%d') [자동]"
           git push
 
+      # ── 정치 ───────────────────────────────────────────────────
       - name: 정치 테제 생성
         if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'politics' }}
         env:
@@ -59,14 +61,14 @@ jobs:
           TOPIC: politics
         run: python daily_auto.py
 
-      - name: 정치 커밋
+      - name: 정치 커밋 & 푸시
         if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'politics' }}
         run: |
-          git pull --rebase origin main
           git add -A
           git diff --staged --quiet || git commit -m "정치 데일리 테제 $(date +'%Y.%m.%d') [자동]"
           git push
 
+      # ── 컬처 ───────────────────────────────────────────────────
       - name: 컬처 테제 생성
         if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'culture' }}
         env:
@@ -75,10 +77,9 @@ jobs:
           TOPIC: culture
         run: python daily_auto.py
 
-      - name: 컬처 커밋
+      - name: 컬처 커밋 & 푸시
         if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'culture' }}
         run: |
-          git pull --rebase origin main
           git add -A
           git diff --staged --quiet || git commit -m "컬처 데일리 테제 $(date +'%Y.%m.%d') [자동]"
           git push
