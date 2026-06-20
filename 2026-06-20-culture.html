@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 컬처 | 2026.06.20</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="culture.html">← 컬처 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="688" cy="138" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="798" cy="238" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="688" cy="138" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="688" cy="138" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="798" cy="238" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="598" cy="358" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="588" y1="168" x2="848" y2="198" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.20</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.20</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">🎬 컬처 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">한국문화</span><span class="tag">글로벌트렌드</span><span class="tag">데일리테제</span></div>
+  <h1>"K-컬처, 팝에서 유산(Heritage)으로 진화 중"</h1>
+  <p class="hero-sub">K-팝이 글로벌 차트를 석권하는 동시에, 한국 전통문화·문학·영화로 한류의 스펙트럼이 폭발적으로 확장되고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>K-팝이 글로벌 차트를 석권하는 동시에, 한국 전통문화·문학·영화로 한류의 스펙트럼이 폭발적으로 확장되고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>2026년 6월 현재, 한류는 더 이상 아이돌 음악 중심의 단일 현상이 아니다. BTS RM이 국립중앙박물관 글로벌 홍보대사로 위촉되고, 코르티스·르세라핌 등 4~5세대 아티스트가 영국·글로벌 차트를 점령하는 한편, 스탠퍼드 대학이 K-팝 온라인 강좌를 개설하고 프랑스에서는 K-드라마·화장품을 넘어선 새로운 한국 문화 콘텐츠가 열풍을 일으키는 흐름이 동시다발적으로 포착된다. 이는 K-컬처가 '엔터테인먼트 소비'에서 '문화적 정체성과 유산의 글로벌 전파'로 레이어를 한 단계 올리고 있음을 의미한다. MZ 세대는 이 흐름의 소비자이자 생산자로서, 숏폼·스트리밍·SNS를 통해 콘텐츠의 확산 속도와 방식을 근본적으로 바꾸고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">르세라핌·아일릿·캣츠아이 협업곡 英 싱글</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">22위</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">코르티스 &#x27;그린그린&#x27; 스포티파이 누적 스</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">2억 회 (발매 45일 만)</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">BTS &#x27;아리랑&#x27; 英 오피셜 앨범 차트 </text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">13주 연속 31위</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">RM의 국외소재문화유산재단 기부 횟수·금</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">2회, 총 2억 원 (2021·2022년)</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>르세라핌·아일릿·캣츠아이 협업곡 英 싱글 차트 데뷔 순위</td><td>22위</td><td>하이브 멀티-걸그룹 프로젝트가 영국 주류 팝 시장에 즉시 안착, K-팝의 글로벌 상업성 입증</td></tr><tr><td>코르티스 &#x27;그린그린&#x27; 스포티파이 누적 스트리밍</td><td>2억 회 (발매 45일 만)</td><td>신인 그룹이 45일 만에 2억 스트리밍 돌파—Z세대 중심 숏폼 바이럴이 스트리밍 속도를 극단적으로 가속</td></tr><tr><td>BTS &#x27;아리랑&#x27; 英 오피셜 앨범 차트 연속 진입</td><td>13주 연속 31위</td><td>앨범 발매 후에도 13주 이상 차트 유지—K-팝 팬덤의 지속적 소비력과 롱테일 충성도 확인</td></tr><tr><td>RM의 국외소재문화유산재단 기부 횟수·금액</td><td>2회, 총 2억 원 (2021·2022년)</td><td>아티스트 개인이 문화유산 보전에 직접 투자—K-팝 스타의 &#x27;문화 외교관&#x27; 역할 전환을 상징하는 수치</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>🟢 낙관 시나리오 — 'K-헤리티지' 브랜드화 성공</h3><ul><li>BTS RM의 국립중앙박물관 홍보대사 활동이 해외 팬들의 한국 역사·전통문화 관심으로 직결, 박물관 외국인 방문자 및 온라인 콘텐츠 조회수 급증</li><li>스탠퍼드 K-팝 강좌 개설을 기점으로 UCLA·하버드 등 주요 대학으로 K-컬처 정규 커리큘럼 확산, 학문적 정당성 확보</li><li>코르티스·르세라핌 등 4~5세대 아티스트가 영국·미국 팝 차트에 정착하며, K-팝이 &#x27;아시안 팝의 하위장르&#x27;가 아닌 글로벌 팝의 주류 플레이어로 재정의됨</li><li>문체부 한류 트렌드 보고서 기반 정책 지원으로 K-문학·K-영화까지 체계적 해외 진출 인프라 구축 → 한류 2.0에서 3.0으로 도약</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>🔴 비관 시나리오 — 과잉 상업화·피로도 누적</h3><ul><li>BTS 부산 공연 바가지 논란(기사 10)처럼 K-컬처 관련 이벤트의 상업적 과잉이 글로벌 팬들의 피로도와 반감을 키워 브랜드 이미지 훼손</li><li>하이브 멀티-그룹 전략(르세라핌·아일릿·캣츠아이 동시 협업)이 팬덤 희석과 아이덴티티 혼란을 야기, 중장기적 충성도 약화</li><li>숏폼 중심의 소비 구조가 음악·콘텐츠의 깊이보다 자극성을 강화해, K-컬처가 &#x27;미적 유산&#x27;이 아닌 &#x27;소모성 밈(meme)&#x27;으로 전락할 위험</li><li>북한의 한국 드라마·영화 접촉 주민 153명 처형(기사 15) 등 지정학적 긴장이 K-컬처의 보편적 확산에 잠재적 외교 리스크로 작용</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">아티스트-기관 협업의 진정성 vs. 마케팅 여부 모니터링</div><div class="desc">RM-국립중앙박물관 사례처럼 K-팝 스타와 공공 문화기관의 협업이 일회성 홍보 이벤트에 그치는지, 실질적인 콘텐츠와 교육 프로그램으로 이어지는지 지속 추적 필요</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">4~5세대 K-팝의 해외 차트 안착 지속성 검증</div><div class="desc">코르티스·르세라핌의 영국·글로벌 차트 성과가 팬덤 총공(스트리밍 집중 운동)에 의존한 것인지, 현지 일반 청취자의 자발적 소비로 확장되는지를 구분하는 데이터 분석 요구</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">MZ 세대의 &#x27;한류 소비→한국 문화 학습&#x27; 전환율 측정</div><div class="desc">스탠퍼드 K-팝 강좌 수강생 규모, 국립중앙박물관 해외 디지털 콘텐츠 조회수, 한국어 학습자 증가율 등 지표를 통해 팝컬처 소비가 심층 문화 관심으로 이어지는 비율을 정량화해야 함</div></div></div></div>
+  </div>
+  <div class="callout"><p>K-컬처는 지금 '팬이 좋아하는 것'에서 '세계가 배우고 싶은 것'으로 무게중심을 이동하는 결정적 변곡점에 서 있다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 컬처 · 트렌드를 읽는 일상의 시각</footer>
+</body>
+</html>
