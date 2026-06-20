@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 컬처 | 2026.06.21</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="culture.html">← 컬처 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="676" cy="126" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="796" cy="226" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="676" cy="126" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="676" cy="126" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="796" cy="226" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="546" cy="346" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="576" y1="156" x2="846" y2="186" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.21</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.21</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">🎬 컬처 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">한국문화</span><span class="tag">글로벌트렌드</span><span class="tag">데일리테제</span></div>
+  <h1>"J팝의 역습: K팝 피로감이 만든 새 물결"</h1>
+  <p class="hero-sub">K팝 중심의 국내 음악 소비 지형이 흔들리며, J팝·토이스토리5·가성비 뷰티 등 '감성 다변화' 트렌드가 MZ세대의 새로운 문화 소비 코드로 부상하고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>K팝 중심의 국내 음악 소비 지형이 흔들리며, J팝·토이스토리5·가성비 뷰티 등 '감성 다변화' 트렌드가 MZ세대의 새로운 문화 소비 코드로 부상하고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>2026년 상반기, 국내 J팝 스트리밍이 전년 대비 약 30% 급증하며 K팝 절대 우위 시대에 균열이 생기고 있다. 동시에 '토이스토리 5'의 글로벌 흥행, 편의점·다이소 가성비 뷰티 폭발적 성장, 한류의 K팝 너머 문학·영화·관광으로의 확산까지 — MZ세대의 문화 소비가 단일 장르·단일 국적에 묶이지 않고 '감성의 다변화'를 향해 빠르게 이동하고 있다. 이는 단순한 취향 변화가 아니라, 콘텐츠 과잉 시대에 진정성과 감수성을 찾는 세대적 반응으로 읽힌다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 310" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="310" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">J팝 스트리밍 증가율 (2026 상반기 </text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">29.5%</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">J팝 스트리밍 증가율 (2024년 대비 </text>
+  <rect x="210" y="88" width="410" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="628" y="109" fill="#e2e6f0" font-size="13" font-weight="700">57.5%</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">토이스토리5 글로벌 오프닝 수익 (48개</text>
+  <rect x="210" y="136" width="320" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="538" y="157" fill="#e2e6f0" font-size="13" font-weight="700">1억 2,930만 달러(약 1,977억 원)</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">다이소 뷰티 매출 증가율 (2026년 1</text>
+  <rect x="210" y="184" width="230" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="448" y="205" fill="#e2e6f0" font-size="13" font-weight="700">약 30%</text>
+  <text x="200" y="253" text-anchor="end" fill="#7a8299" font-size="12">GS25 소용량 뷰티 제품 일평균 매출 </text>
+  <rect x="210" y="232" width="140" height="32" fill="#a78bfa" rx="4" opacity="0.85"/>
+  <text x="358" y="253" fill="#e2e6f0" font-size="13" font-weight="700">596.7%</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>J팝 스트리밍 증가율 (2026 상반기 YoY)</td><td>29.5%</td><td>K팝 일변도였던 국내 음악 소비 지형에서 J팝이 대안 감성으로 급부상</td></tr><tr><td>J팝 스트리밍 증가율 (2024년 대비 2년치)</td><td>57.5%</td><td>일시적 유행이 아닌 2년간 지속된 구조적 성장임을 방증</td></tr><tr><td>토이스토리5 글로벌 오프닝 수익 (48개국)</td><td>1억 2,930만 달러(약 1,977억 원)</td><td>디지털 네이티브 세대도 &#x27;아날로그 감성 IP&#x27;에 지갑을 여는 레트로 감성 소비 확인</td></tr><tr><td>다이소 뷰티 매출 증가율 (2026년 1~5월 YoY)</td><td>약 30%</td><td>고물가 속 MZ세대의 가성비 뷰티 소비가 새로운 문화 소비 기준으로 자리잡음</td></tr><tr><td>GS25 소용량 뷰티 제품 일평균 매출 증가율</td><td>596.7%</td><td>편의점 채널이 MZ세대 뷰티 접점으로 완전히 전환됨을 보여주는 폭발적 수치</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>🟢 감성 다변화 가속 — 한국 문화 소비의 '멀티버스화'</h3><ul><li>J팝·서구 애니·가성비 뷰티 등 다양한 채널에서 동시에 MZ 취향이 분산·다층화됨</li><li>K팝 기획사들이 숏폼 바이럴에 집중하는 사이, 감성 가사·서사 중심의 J팝이 그 공백을 파고드는 구조 심화</li><li>한류가 K팝 너머 문학·영화·관광·소비재로 확장되며, 한국 자체가 &#x27;감성 브랜드&#x27;로 격상 — 글로벌 셀럽의 K컬처 팬덤이 이를 뒷받침</li><li>토이스토리5의 흥행은 AI·디지털 과잉 시대에 &#x27;따뜻한 아날로그 서사&#x27;에 대한 전 세대적 갈증을 재확인시켜 줌</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>🔴 K팝 피로감 심화 — 콘텐츠 공급 과잉의 역풍</h3><ul><li>K팝 아이돌 숏폼·바이럴 과잉 전략이 &#x27;감동 결핍&#x27;을 낳아, 이탈한 MZ 팬덤이 J팝·인디·글로벌 팝으로 이동하는 흐름 가속</li><li>BTS 부산 공연 바가지 논란(기사 10) 등 K팝 산업의 상업화 피로감이 팬덤 결속력을 약화시킬 리스크 존재</li><li>가성비 뷰티 폭발 성장이 &#x27;소비 양극화&#x27;를 드러내며, 프리미엄 K뷰티 브랜드의 국내 입지가 상대적으로 약화될 수 있음</li><li>한류 확산이 K팝 중심에서 탈피하는 현상은 기회인 동시에, K팝 단일 의존 콘텐츠 기업에는 구조적 위협</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">J팝 급성장의 구조적 원인 점검</div><div class="desc">애니메이션 IP 연계, 내한 공연 증가, K팝 감성 공백 등 복합 요인을 구분해 파악할 것 — 단순 유행인지, 장르 재편인지 판단의 기준이 됨</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">가성비 뷰티 트렌드의 지속성 검증</div><div class="desc">다이소·편의점 뷰티 성장이 고물가 일시 현상인지, MZ세대의 소비 가치관 변화(탈브랜드·실용주의)인지 분기별 매출 추이로 추적 필요</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">한류 &#x27;탈K팝&#x27; 다변화의 산업적 수혜자 확인</div><div class="desc">문학·영화·관광·소비재로 한류가 확산될 때, 실질적 수익을 가져가는 주체(플랫폼·IP홀더·지자체)가 누구인지 파악해야 전략적 베팅 가능</div></div></div></div>
+  </div>
+  <div class="callout"><p>2026년의 MZ 문화 소비 키워드는 '선택의 다변화'— K팝이 세계를 정복하는 동안, 정작 국내 MZ세대는 J팝의 감성, 픽사의 서사, 3,000원짜리 립스틱에서 새로운 위로를 찾고 있다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 컬처 · 트렌드를 읽는 일상의 시각</footer>
+</body>
+</html>
