@@ -724,6 +724,18 @@ def publish(html_content, analysis, cfg):
         if staged.returncode != 0:
             subprocess.run(["git", "commit", "-m", f"{cfg['name']} 데일리 테제 {TODAY_KR}"], check=True)
             subprocess.run(["git", "push", "origin", "main"], check=True)
+    else:
+        # CI 환경: 이전 토픽 push 반영 후 현재 파일 직접 커밋
+        # → daily.yml의 git pull --rebase 도달 시 이미 committed 상태라 충돌 없음
+        os.chdir(REPO_DIR)
+        subprocess.run(["git", "pull", "--rebase", "origin", "main"],
+                       capture_output=True, check=False)
+        subprocess.run(["git", "add", cfg["html_name"], cfg["index_file"]], check=False)
+        staged = subprocess.run(["git", "diff", "--staged", "--quiet"])
+        if staged.returncode != 0:
+            subprocess.run(["git", "commit", "-m", f"{cfg['name']} 데일리 테제 {TODAY_KR} [자동]"],
+                           capture_output=True, check=False)
+            subprocess.run(["git", "push", "origin", "main"], check=False)
 
     log("GitHub Pages 게시 완료")
     page_url = f"https://jayce0321.github.io/daily-thesis/{cfg['html_name']}"
