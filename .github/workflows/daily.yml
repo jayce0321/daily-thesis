@@ -2,7 +2,8 @@ name: 데일리 테제 자동 발행
 
 on:
   schedule:
-    - cron: '0 23 * * 0-4'   # 매주 월~금 KST 08:00 (UTC 23:00 전날)
+    - cron: '0 23 * * 0-4'  # KST 08:00 월~금 (경제+정치+컬처)
+    - cron: '0 6 * * 1-5'   # KST 15:00 월~금 (경제만)
   workflow_dispatch:
     inputs:
       topic:
@@ -36,9 +37,15 @@ jobs:
           git config user.name "jayce0321"
           git config user.email "jaehoyi0321@gmail.com"
 
-      # ── 경제·투자 ──────────────────────────────────────────────
+      # ── 경제·투자 (08:00 + 15:00 모두 실행) ───────────────────
       - name: 경제·투자 테제 생성
-        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'economy' || github.event.inputs.topic == '' }}
+        if: >
+          github.event_name == 'workflow_dispatch' && (
+            github.event.inputs.topic == 'all' ||
+            github.event.inputs.topic == 'economy' ||
+            github.event.inputs.topic == ''
+          ) ||
+          github.event_name == 'schedule'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -46,15 +53,26 @@ jobs:
         run: python daily_auto.py
 
       - name: 경제·투자 커밋 & 푸시
-        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'economy' || github.event.inputs.topic == '' }}
+        if: >
+          github.event_name == 'workflow_dispatch' && (
+            github.event.inputs.topic == 'all' ||
+            github.event.inputs.topic == 'economy' ||
+            github.event.inputs.topic == ''
+          ) ||
+          github.event_name == 'schedule'
         run: |
           git add -A
-          git diff --staged --quiet || git commit -m "경제·투자 데일리 테제 $(date +'%Y.%m.%d') [자동]"
+          git diff --staged --quiet || git commit -m "경제·투자 데일리 테제 $(date +'%Y.%m.%d %H:%M') [자동]"
           git push
 
-      # ── 정치 ───────────────────────────────────────────────────
+      # ── 정치 (08:00만 실행) ────────────────────────────────────
       - name: 정치 테제 생성
-        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'politics' }}
+        if: >
+          github.event_name == 'workflow_dispatch' && (
+            github.event.inputs.topic == 'all' ||
+            github.event.inputs.topic == 'politics'
+          ) ||
+          github.event.schedule == '0 23 * * 0-4'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -62,16 +80,26 @@ jobs:
         run: python daily_auto.py
 
       - name: 정치 커밋 & 푸시
-        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'politics' }}
+        if: >
+          github.event_name == 'workflow_dispatch' && (
+            github.event.inputs.topic == 'all' ||
+            github.event.inputs.topic == 'politics'
+          ) ||
+          github.event.schedule == '0 23 * * 0-4'
         run: |
           git add -A
           git diff --staged --quiet || git commit -m "정치 데일리 테제 $(date +'%Y.%m.%d') [자동]"
           git pull --rebase origin main
           git push
 
-      # ── 컬처 ───────────────────────────────────────────────────
+      # ── 컬처 (08:00만 실행) ────────────────────────────────────
       - name: 컬처 테제 생성
-        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'culture' }}
+        if: >
+          github.event_name == 'workflow_dispatch' && (
+            github.event.inputs.topic == 'all' ||
+            github.event.inputs.topic == 'culture'
+          ) ||
+          github.event.schedule == '0 23 * * 0-4'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -79,7 +107,12 @@ jobs:
         run: python daily_auto.py
 
       - name: 컬처 커밋 & 푸시
-        if: ${{ github.event_name == 'schedule' || github.event.inputs.topic == 'all' || github.event.inputs.topic == 'culture' }}
+        if: >
+          github.event_name == 'workflow_dispatch' && (
+            github.event.inputs.topic == 'all' ||
+            github.event.inputs.topic == 'culture'
+          ) ||
+          github.event.schedule == '0 23 * * 0-4'
         run: |
           git add -A
           git diff --staged --quiet || git commit -m "컬처 데일리 테제 $(date +'%Y.%m.%d') [자동]"
