@@ -18,11 +18,8 @@ from datetime import datetime, timezone, timedelta
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 def _resolve_topic():
-    # 1순위: 환경변수 (daily.yml inputs 방식)
-    env_t = os.environ.get("TOPIC", "").lower().strip()
-    if env_t in ("economy", "economy_pm", "politics", "culture"):
-        return env_t
-    # 2순위: 파일 큐 (_pending_topic.txt) — Railway→GitHub API로 미리 생성
+    _VALID = ("economy", "economy_pm", "politics", "culture")
+    # 1순위: 파일 큐 (_pending_topic.txt) — Railway가 economy_pm 등 세부 topic 지정 시 사용
     queue_file = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "_pending_topic.txt")
     if os.path.exists(queue_file):
@@ -30,10 +27,14 @@ def _resolve_topic():
             with open(queue_file) as _f:
                 queued = _f.read().strip().lower()
             os.remove(queue_file)
-            if queued in ("economy", "economy_pm", "politics", "culture"):
+            if queued in _VALID:
                 return queued
         except Exception:
             pass
+    # 2순위: 환경변수 (daily.yml의 TOPIC env — 일반 스케줄 발행 시)
+    env_t = os.environ.get("TOPIC", "").lower().strip()
+    if env_t in _VALID:
+        return env_t
     return "economy"
 
 TOPIC             = _resolve_topic()
