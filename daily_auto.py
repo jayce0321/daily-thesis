@@ -20,7 +20,7 @@ BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 def _resolve_topic():
     # 1순위: 환경변수 (daily.yml inputs 방식)
     env_t = os.environ.get("TOPIC", "").lower().strip()
-    if env_t in ("economy", "politics", "culture"):
+    if env_t in ("economy", "economy_pm", "politics", "culture"):
         return env_t
     # 2순위: 파일 큐 (_pending_topic.txt) — Railway→GitHub API로 미리 생성
     queue_file = os.path.join(
@@ -30,7 +30,7 @@ def _resolve_topic():
             with open(queue_file) as _f:
                 queued = _f.read().strip().lower()
             os.remove(queue_file)
-            if queued in ("economy", "politics", "culture"):
+            if queued in ("economy", "economy_pm", "politics", "culture"):
                 return queued
         except Exception:
             pass
@@ -68,6 +68,31 @@ TOPIC_CONFIG = {
         "index_subtitle": "시장을 관통하는 하나의 테제 — by Jayce",
         "footer": "데일리 테제 분석 · 경제·투자 · 본 자료는 투자 권유가 아닙니다",
         "tg_hashtag": "#경제투자 #데일리테제",
+    },
+    "economy_pm": {
+        "name": "경제·투자 (오후)",
+        "icon": "📊",
+        "tags": ["매크로", "오후마감", "글로벌시장", "데일리테제"],
+        "queries": [
+            "코스피 코스닥 오늘 마감 증시",
+            "미국 증시 뉴욕 오늘 개장 전망",
+            "달러 환율 원 오후 금리",
+        ],
+        "channel_env": "TELEGRAM_CHANNEL_ECONOMY",
+        "channel_id": "5066621346",
+        "html_name": f"{TODAY}-pm.html",
+        "index_file": "index.html",
+        "claude_instruction": (
+            "오늘({today_kr}) 오후 기준으로 국내 증시 마감 흐름과 미국 시장 개장 전망을 바탕으로 "
+            "경제·투자 핵심 테제 하나를 도출해줘.\n"
+            "단순 뉴스 나열 금지. 오전 시황과 달라진 점·심화된 흐름에 주목해 "
+            "오후 시장을 하나의 테제로 설명해야 한다.\n"
+            "투자자가 오늘 저녁과 내일 포지션을 잡는 데 실질적으로 유용한 분석을 해줘."
+        ),
+        "index_title": "데일리 테제 — 경제·투자",
+        "index_subtitle": "시장을 관통하는 하나의 테제 — by Jayce",
+        "footer": "데일리 테제 분석 · 경제·투자 (오후) · 본 자료는 투자 권유가 아닙니다",
+        "tg_hashtag": "#경제투자 #오후테제 #데일리테제",
     },
     "politics": {
         "name": "정치",
@@ -125,6 +150,12 @@ def log(msg):
 # ── 신뢰 RSS 소스 (직접 URL 제공 → 본문 크롤링 가능) ────────
 _DIRECT_RSS = {
     "economy": [
+        ("연합뉴스 경제", "https://www.yna.co.kr/rss/economy.xml",  6),
+        ("연합뉴스 국제", "https://www.yna.co.kr/rss/international.xml", 3),
+        ("CNBC Markets",  "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664", 5),
+        ("CNBC Economy",  "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258", 4),
+    ],
+    "economy_pm": [
         ("연합뉴스 경제", "https://www.yna.co.kr/rss/economy.xml",  6),
         ("연합뉴스 국제", "https://www.yna.co.kr/rss/international.xml", 3),
         ("CNBC Markets",  "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664", 5),
