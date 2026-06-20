@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 경제·투자 | 2026.06.21</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="index.html">← 경제·투자 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="714" cy="104" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="794" cy="264" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="714" cy="104" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="714" cy="104" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="794" cy="264" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="544" cy="324" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="614" y1="134" x2="844" y2="224" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.21</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.21</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">📊 경제·투자 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">매크로</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span></div>
+  <h1>"호르무즈 봉쇄 해제 이후에도 인플레이션은 끝나지 않았다"</h1>
+  <p class="hero-sub">지정학적 리스크가 일시 완화됐지만, 워시 Fed의 매파 선회와 '이미 고착된 인플레이션'이 시장의 새로운 지배 변수로 부상했다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>지정학적 리스크가 일시 완화됐지만, 워시 Fed의 매파 선회와 '이미 고착된 인플레이션'이 시장의 새로운 지배 변수로 부상했다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>미국과 이란이 호르무즈 해협 봉쇄 해제 각서에 서명하며 약 4개월간의 지정학 리스크가 일단락됐다. 시장은 이를 '리스크 오프' 해소로 받아들였지만, 애널리스트들은 전쟁이 촉발한 에너지 가격 상승과 공급망 충격의 경제적 피해는 수개월간 풀리지 않는다고 경고한다. 설상가상으로 신임 Fed 의장 케빈 워시는 첫 FOMC에서 시장의 '완화 기대'를 정면으로 뒤집으며 금리 인상 가능성을 시사했고, 영국 중앙은행도 3.75%로 동결하며 연내 인상 기대를 유지했다. '지정학 완화 = 금리 인하 = 위험자산 랠리'라는 시장의 공식이 한꺼번에 흔들리는 날이다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">코스피 연간 상승률</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">115%</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">영란은행 기준금리</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">3.75% (동결)</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">에볼라 확진·사망 현황</text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">확진 900명 초과 / 사망 200명 이상</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">SpaceX IPO 후 주가 VWAP</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">$181.71 (IPO가 $135)</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>코스피 연간 상승률</td><td>115%</td><td>반도체 이익 모멘텀 등에 힘입어 올해 코스피가 급등, 1월 5,000선 돌파 후 6월 18일 9,000선 마저 돌파</td></tr><tr><td>영란은행 기준금리</td><td>3.75% (동결)</td><td>호르무즈 전쟁발 에너지 인플레이션 압력 속에 금리 동결, 연내 인상 가능성 시장에서 유지</td></tr><tr><td>에볼라 확진·사망 현황</td><td>확진 900명 초과 / 사망 200명 이상</td><td>4주 만에 민주콩고 3개 주 + 우간다로 확산, 글로벌 보건 리스크가 신흥국 자산에 추가 불확실성 제공</td></tr><tr><td>SpaceX IPO 후 주가 VWAP</td><td>$181.71 (IPO가 $135)</td><td>상장 후 급등했으나 이틀 급락(-3.6%)으로 공개시장 평균 매수자 손익 거의 0, 레버리지 ETF 11개가 동시 출시되며 투기적 거래 과열 경고</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>{"title": "🔴 시나리오 A — '워시의 배신'이 현실화: 금리 인상 사이클 재개", "points": ["워시 Fed가 수개월 내 금리 인상을 단행할 경우, 코스피 9,000선 돌파로 고평가된 성장주·반도체 밸류에이션 급격히 압축", "호르무즈 재봉쇄 가능성(이란 군부 재선언) 현실화 시 에너지 가격 재급등 → 인플레이션 2차 파동", "원·달러 환율 NDF 급등(기사 [27])이 시사하듯 달러 강세 지속 → 신흥국 자본 이탈, 한국 외국인 수급 악화", "SpaceX·비트코인 등 유동성 파티 수혜 자산에서 자금 이탈 가속"]}]}</h3><ul></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>{"title": "🟢 시나리오 B — 지정학 완화가 인플레 완충재로 작동: 연착륙 경로 유지", "points": ["호르무즈 60일 협상 기간 동안 유가 안정 → 에너지발 인플레 압력 점진적 완화, 워시 Fed도 인상 카드 유보", "에너지 비용 하락 수혜를 받는 제조·물류 기업 이익 회복, 코스피 추가 상승 여력 확인", "LG에너지솔루션 특허 10만 건 등 기술 자산 기반의 한국 배터리·방산·건설주(대우건설 목표가 673% 상향) 구조적 상승 지속", "SpaceX 상장과 비트코인 ETF 확대로 대체자산 시장에서 기관 수요가 꾸준히 유입되며 변동성 완충"]}]}</h3><ul></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ 워시 Fed 발언 강도 추적</div><div class="desc">다음 FOMC 의사록 및 연설에서 &#x27;금리 인상 타임라인&#x27;이 구체화되는지 확인. 점도표 상 인상 신호가 강화되면 성장주·고PER 자산 비중을 즉시 점검해야 한다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ 호르무즈 60일 협상 진행 상황 모니터링</div><div class="desc">미·이란 협상이 교착될 경우 이란 군부의 재봉쇄 선언이 언제든 나올 수 있다. 유가(WTI·브렌트) 주간 흐름과 해협 통과 선박 수를 주시하라.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ 국내 소비·고용 지표 교차 점검</div><div class="desc">소상공인 87%가 최저임금 부담을 호소하고 38%가 고용 축소로 대응 중. 내수 소비 둔화 신호가 나타나면 내수 소비재·유통주 비중 축소를 고려해야 한다.</div></div></div></div>
+  </div>
+  <div class="callout"><p>호르무즈 봉쇄 해제는 '총성'은 멈췄지만 '경제적 후폭풍'과 '매파 Fed'라는 두 번째 탄환은 이제 막 발사됐다 — 리스크 온(ON)을 외치기 전에 인플레이션의 잔불부터 확인하라.</p></div>
+</div>
+<footer>데일리 테제 분석 · 경제·투자 · 본 자료는 투자 권유가 아닙니다</footer>
+</body>
+</html>
