@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 정치 | 2026.06.20</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="politics.html">← 정치 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="668" cy="118" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="758" cy="218" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="668" cy="118" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="668" cy="118" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="758" cy="218" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="558" cy="338" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="568" y1="148" x2="808" y2="178" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.20</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.20</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">🏛️ 정치 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">한국정치</span><span class="tag">글로벌정치</span><span class="tag">데일리테제</span></div>
+  <h1>"사법 정치화와 동맹 균열: 권력의 정당성 재편"</h1>
+  <p class="hero-sub">한국의 사법-정치 공방과 글로벌 동맹 이탈이 동시에 가속화되며, '제도 신뢰'가 새로운 권력 정당성의 핵심 변수로 부상하고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>한국의 사법-정치 공방과 글로벌 동맹 이탈이 동시에 가속화되며, '제도 신뢰'가 새로운 권력 정당성의 핵심 변수로 부상하고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>2026년 6월 20일, 한국 정치는 '연어 술파티' 위증 판결을 기점으로 여야의 사법 프레임 전쟁이 전환점을 맞이했다. 이재명 정부의 검찰 해체·공소청 신설 추진, 야권의 보수 재건 움직임이 맞물리며 권력 구조 자체가 재설계되는 국면이다. 동시에 글로벌 무대에서는 미국이 주요 동맹국인 이탈리아·독일과 충돌하고, 이스라엘이 미-이란 종전 합의에 역행하는 등 전통적 동맹 질서가 흔들리고 있으며, 중국은 이를 '다극 질서'의 근거로 적극 활용 중이다. 두 흐름은 공통적으로 '제도와 규칙에 기반한 정당성'이 도전받는 현상을 보여준다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">이화영 위증 선고</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">징역 4개월 (배심원 유죄 4 : 무죄 3)</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">G7 경제 비중 변화</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">2005년 세계 GDP의 60% → 최근 약 40%</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">미국 DOJ &#x27;반무기화&#x27; 기금</text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">18억 달러(약 1.8 billion USD)</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">정이한 후보 득표율</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">1.56% (2만 7,418표, 6·3 지방선거 부산시장)</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>이화영 위증 선고</td><td>징역 4개월 (배심원 유죄 4 : 무죄 3)</td><td>연어 술파티 의혹 제기 후 2년 2개월 만의 첫 사법 판단으로, 조작기소 특검·박상용 검사 징계의 추진 동력 약화 직접 근거</td></tr><tr><td>G7 경제 비중 변화</td><td>2005년 세계 GDP의 60% → 최근 약 40%</td><td>중국 관영매체 차이나데일리가 IMF 자료를 인용해 G7 주도 질서의 퇴조와 다극화를 주장하는 핵심 수치</td></tr><tr><td>미국 DOJ &#x27;반무기화&#x27; 기금</td><td>18억 달러(약 1.8 billion USD)</td><td>바이든 정부 시절 기소 피해자 보상 명목 기금으로, 1·6 폭동 관련자 지급 우려 속 법원이 서면 확약을 요구하는 등 사법-행정 갈등의 상징</td></tr><tr><td>정이한 후보 득표율</td><td>1.56% (2만 7,418표, 6·3 지방선거 부산시장)</td><td>피습 자작극 의혹 수사로 소수 후보의 선거 질서 훼손 문제가 제도 신뢰와 직결됨을 보여주는 사례</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>시나리오 A: 제도 복원 — 사법·동맹 규범이 버텨낸다</h3><ul><li>이화영 위증 유죄 판결이 대법원에서도 유지되면, 조작기소 특검법·공소 취소 추진의 명분이 소멸되고 이재명 정부의 사법 개혁 속도가 조절 압력을 받는다.</li><li>미-이탈리아 갈등이 표면적 봉합으로 마무리되고, 이스라엘이 레바논 철군 일정에 합의할 경우 미-이란 종전 MOU가 안정화되며 중동 긴장이 단기 완화된다.</li><li>일본 중도 야권 통합이 참의원 회기 내 마무리되면 자민당 견제 세력이 가시화되고, 한국·일본 동시에 야권 재편이 제도권 내에서 진행되는 형태로 수렴한다.</li><li>G7이 내부 조율보다 대중국 전선 유지에 집중하며 경제 비중 감소에도 안보 규범 측면의 정당성을 유지한다.</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>시나리오 B: 제도 이탈 — 정치가 사법·동맹을 압도한다</h3><ul><li>여권이 이화영 판결에도 불구하고 공소청 신설·검찰 폐지를 예정대로 10월 강행하면, 야권은 &#x27;재판 취소 저지&#x27;를 명분으로 탄핵·파국 시나리오를 공론화하며 한국 정치는 또다른 헌정 위기 국면에 진입한다.</li><li>네타냐후가 가을 총선을 앞두고 레바논 철군을 거부해 헤즈볼라와 적대 행위가 재개되면, 미-이란 종전 MOU가 파기되고 트럼프 중동 외교의 최대 성과가 무산된다.</li><li>트럼프의 독일 제약 관세 조사, 멜로니 공개 모욕이 지속되면 EU 내 반미 정서가 결집되고, 중국·러시아는 이를 활용해 G7 규범 질서를 가속 해체하는 외교 공세를 강화한다.</li><li>한국 야당 보수 재건(한동훈 복당론)과 국민의힘 지도부 갈등이 해소되지 않으면 2028년 총선까지 야권은 분열 상태를 유지하며 여당 1당 구도가 고착된다.</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">이화영 판결 항소심 결과 모니터링</div><div class="desc">1심 유죄가 항소심에서도 유지될 경우 조작기소 특검법과 박상용 검사 징계 추진의 공식 철회 여부를 확인. 반전 판결 시 여권의 역공 재개 가능성을 점검해야 한다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">10월 검찰 해체·공소청 신설 입법 일정 추적</div><div class="desc">이재명 정부의 핵심 권력 구조 재편 일정으로, 국회 통과 여부와 헌법재판소 권한쟁의 청구 가능성이 한국 권력 지형의 최대 변수. 야권의 탄핵 카드 병행 여부도 함께 관찰해야 한다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">미국-유럽 동맹 균열 수위 점검</div><div class="desc">이탈리아 외무장관 방미 취소, 독일 제약 관세 조사 개시가 일시적 갈등인지 구조적 이탈인지 판단하려면 7월 NATO 정상회의와 G7 후속 외교 일정에서의 공식 성명을 확인해야 한다.</div></div></div></div>
+  </div>
+  <div class="callout"><p>제도가 정치를 규율하는가, 정치가 제도를 설계하는가 — 그 답이 한국과 세계 질서의 다음 판을 결정한다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 정치 · 사실에 근거한 중립적 분석입니다</footer>
+</body>
+</html>
