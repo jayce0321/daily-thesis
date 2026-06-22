@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 정치 | 2026.06.23</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="politics.html">← 정치 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="661" cy="111" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="791" cy="211" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="661" cy="111" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="661" cy="111" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="791" cy="211" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="591" cy="331" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="561" y1="141" x2="841" y2="171" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.23</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.23</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">🏛️ 정치 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">한국정치</span><span class="tag">글로벌정치</span><span class="tag">데일리테제</span></div>
+  <h1>"권력의 재편: 내부 균열과 외부 도전의 교차"</h1>
+  <p class="hero-sub">한국 정치의 여야 권력 재배치와 북핵 고도화·영국 리더십 교체·이란 핵협상이 동시에 맞물리며, 기존 질서의 '다중 균열'이 본격화되고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>한국 정치의 여야 권력 재배치와 북핵 고도화·영국 리더십 교체·이란 핵협상이 동시에 맞물리며, 기존 질서의 '다중 균열'이 본격화되고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>이재명 정부 출범 이후 여야는 국회 원 구성(법사위·정무위 주도권)을 놓고 극한 대치를 이어가고 있으며, 이는 단순한 의석 배분을 넘어 검찰 통제·경제 정책 기조를 둘러싼 실질적 권력 전쟁으로 비화하고 있다. 동시에 김정은이 당 전원회의에서 '세계 압도' 수준의 핵무력 강화와 한국을 '가장 적대적 국가'로 공인하는 대적 원칙을 재확인함으로써, 한반도 안보 방정식이 새 정부의 대북 유화 제스처(교황 방북 추진)와 정면 충돌하는 구도가 형성됐다. 글로벌 차원에서도 영국의 전격적인 총리 교체, 이란-미국 핵 MOU 후속 협상, 알바니아 반(反)쿠슈너 시위 등이 동시다발적으로 전개되며 서방 동맹 내부와 중동 질서 모두에서 리더십 공백과 재조정 압력이 중첩되고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">북한 당 전원회의 핵 강화 결의</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">제9기 제2차 전원회의 (6.20~22, 3일간)</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">영국 상원 주택법안 통과 표결</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">85대 5 (초당파 가결)</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">이란-미국 MOU 호르무즈 조항</text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">60일간 통항료 없는 안전 통항 보장</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">알바니아 쿠슈너 개발 반대 시위</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">수천 명 규모 (6.20 티라나, &#x27;플라밍고 혁명&#x27;)</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>북한 당 전원회의 핵 강화 결의</td><td>제9기 제2차 전원회의 (6.20~22, 3일간)</td><td>북한이 당 최고 의사결정 기구에서 핵무력 &#x27;가속 확대&#x27; 및 1만t급 전략유도탄순양함 건조를 공식화—한반도 비핵화 협상 복귀 가능성 사실상 차단</td></tr><tr><td>영국 상원 주택법안 통과 표결</td><td>85대 5 (초당파 가결)</td><td>키어 스타머 총리 사임 직전 입법 성과이지만, 후임(앤디 버넘 유력) 체제에서 경제 정책 연속성 불확실—영국 정치 리스크 부각</td></tr><tr><td>이란-미국 MOU 호르무즈 조항</td><td>60일간 통항료 없는 안전 통항 보장</td><td>오만 중재로 잠정 합의됐으나 &#x27;수수료·보험료&#x27; 명목 우회 부과 우려 지속—중동 에너지 통로 안정성 확인 필요</td></tr><tr><td>알바니아 쿠슈너 개발 반대 시위</td><td>수천 명 규모 (6.20 티라나, &#x27;플라밍고 혁명&#x27;)</td><td>트럼프 사위 연계 수십억 유로 관광 개발 프로젝트에 대한 민심 폭발—미국 정치 자본의 해외 사업 리스크 가시화</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>시나리오 A: 다중 균열의 관리 가능한 수렴</h3><ul><li>국민의힘이 법사위 협상에서 부분 양보를 얻어내고 원 구성이 타결되면, 여야 대치가 제도권 내 입법 경쟁으로 전환되어 정책 불확실성이 일시 완화된다.</li><li>이재명 대통령의 교황 방북 카드가 북-미 간접 채널로 이어질 경우, 북한의 강경 발언에도 불구하고 대화 모멘텀이 소폭 복원될 수 있다.</li><li>영국의 버넘 체제가 스타머의 친미·친NATO 노선을 계승하면 서방 동맹 내 리더십 교체 충격이 최소화되고, 이란 핵 MOU 60일 유예 기간 내 후속 협상이 진전될 경우 호르무즈 리스크도 단기 안정된다.</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>시나리오 B: 균열의 동시 확산과 구조적 불안정</h3><ul><li>국민의힘이 원 구성 협조를 거부하고 선관위 국정조사·법사위 투쟁을 연동시키면, 국회 공전이 장기화되어 경제 입법 공백이 발생하고 이재명 정부의 국정 동력이 조기에 약화된다.</li><li>북한이 1만t급 순양함 건조와 핵 고도화를 예고대로 이행하면 한미 확장억제 협의가 강화되고, 교황 방북 등 남북 대화 채널 시도는 실효성 없는 외교 이벤트로 소비되며 국내 정치적 역풍을 맞는다.</li><li>영국 리더십 공백·이란 MOU 이행 불확실·알바니아 정정 불안이 동시에 지속되면 유럽과 중동에서 미국 주도 질서에 대한 신뢰 균열이 가속화되고, 한국의 통상·에너지 안보 변수(호르무즈 의존도, 한화큐셀 관세 분쟁 등)도 동반 악화될 수 있다.</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">국회 원 구성 협상 데드라인 확인</div><div class="desc">조정식 국회의장이 제시한 6월 24일 상임위 명단 제출 기한을 여야가 어떻게 처리하는지 추적할 것. 법사위·정무위 귀속 결과가 향후 입법 지형의 분수령이 된다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">북한 전략유도탄순양함 건조 착수 여부 모니터링</div><div class="desc">당 중앙군사위 4월 4일 결정 이후 실제 공사 착수 징후(위성사진, 관영 매체 보도)를 점검할 것. 착수 확인 시 한미 확장억제 협의체의 대응 수위가 핵심 변수가 된다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">이란-미국 MOU 60일 카운트다운 및 호르무즈 실질 통항 조건 추적</div><div class="desc">오만 중재 하에 확인된 &#x27;통항료 없는 통항&#x27; 원칙이 이란 내부에서 어떻게 해석·이행되는지 확인 필요. 해운업계의 보험료 부과 움직임이 신호탄이 될 수 있다.</div></div></div></div>
+  </div>
+  <div class="callout"><p>권력은 외부의 적보다 내부의 균열에 먼저 무너진다—서울의 국회 복도와 평양의 전원회의장, 런던의 총리실이 동시에 그 진실을 시험받고 있다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 정치 · 사실에 근거한 중립적 분석입니다</footer>
+</body>
+</html>
