@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 경제·투자 (오후) | 2026.06.22</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="index.html">← 경제·투자 (오후) 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="729" cy="99" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="799" cy="279" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="729" cy="99" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="729" cy="99" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="799" cy="279" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="599" cy="319" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="629" y1="129" x2="849" y2="239" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.22</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.22</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">📊 경제·투자 (오후) Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">매크로</span><span class="tag">오후마감</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span></div>
+  <h1>"호르무즈 봉합 + SK하이닉스 왕좌 등극: 에너지 리스크 해소가 AI 반도체 랠리를 재점화한다"</h1>
+  <p class="hero-sub">미·이란 종전 MOU로 호르무즈 리스크가 꺾이는 순간, 시장은 그 에너지를 고스란히 AI 반도체·빅테크 랠리 연료로 전환하고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>미·이란 종전 MOU로 호르무즈 리스크가 꺾이는 순간, 시장은 그 에너지를 고스란히 AI 반도체·빅테크 랠리 연료로 전환하고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>오전까지만 해도 카타르 라스라판 폭발 사고와 호르무즈 재폐쇄 주장이 뒤섞이며 에너지 불안이 시장의 발목을 잡는 구도였다. 그러나 오후 들어 미·이란 스위스 1차 회담 종료와 60일 최종 합의 로드맵·호르무즈 관리체계 합의가 확인되면서 '에너지 꼬리 리스크'가 급속히 축소됐다. 이 리스크 해소 모멘텀이 국내에서는 SK하이닉스의 25년 7개월 만의 코스피 시총 1위 등극으로, 미국 선물시장에서는 반도체 랠리 재개와 나스닥 상승 기대로 즉각 연결되고 있어 오늘 저녁과 내일 포지션의 핵심 변수가 됐다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 310" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="310" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">SK하이닉스 시총(12:51 기준)</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">2,084조 6,544억 원</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">미·이란 합의 기한</text>
+  <rect x="210" y="88" width="410" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="628" y="109" fill="#e2e6f0" font-size="13" font-weight="700">60일 이내 최종 합의 목표</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">카타르 라스라판 사고 규모</text>
+  <rect x="210" y="136" width="320" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="538" y="157" fill="#e2e6f0" font-size="13" font-weight="700">실종 18명·부상 최소 54명, 바르잔 가스시설 일일 처리량 약 14억 SCF</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">SpaceX IPO 후 VWAP</text>
+  <rect x="210" y="184" width="230" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="448" y="205" fill="#e2e6f0" font-size="13" font-weight="700">$181.71 (5일 VWAP), 목요일 종가 $184.98</text>
+  <text x="200" y="253" text-anchor="end" fill="#7a8299" font-size="12">영란은행 기준금리</text>
+  <rect x="210" y="232" width="140" height="32" fill="#a78bfa" rx="4" opacity="0.85"/>
+  <text x="358" y="253" fill="#e2e6f0" font-size="13" font-weight="700">3.75% 동결</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>SK하이닉스 시총(12:51 기준)</td><td>2,084조 6,544억 원</td><td>삼성전자 보통주를 추월, 25년 7개월 만의 코스피 시총 1위 교체 — AI 반도체 쏠림이 구조적 전환점에 진입했음을 시사</td></tr><tr><td>미·이란 합의 기한</td><td>60일 이내 최종 합의 목표</td><td>호르무즈 불확실성의 &#x27;유효기간&#x27;이 60일로 설정됨 — 그 기간 에너지 리스크 프리미엄 축소는 위험자산 선호로 이어질 가능성이 높음</td></tr><tr><td>카타르 라스라판 사고 규모</td><td>실종 18명·부상 최소 54명, 바르잔 가스시설 일일 처리량 약 14억 SCF</td><td>세계 최대 LNG 허브 일부 손상으로 천연가스·LNG 가격 단기 상방 압력 존재 — 에너지 완전 정상화까지는 시간 필요</td></tr><tr><td>SpaceX IPO 후 VWAP</td><td>$181.71 (5일 VWAP), 목요일 종가 $184.98</td><td>공모 후 평균 매수자가 사실상 손익분기 — IPO 열기 냉각이 단기 기술주 변동성 확대 요인으로 작용 가능</td></tr><tr><td>영란은행 기준금리</td><td>3.75% 동결</td><td>이란전쟁발 에너지 인플레이션 압력을 이유로 동결 유지 — 글로벌 중앙은행의 &#x27;에너지→인플레이션→금리&#x27; 연결고리가 아직 살아있음을 재확인</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>🟢 강세 시나리오 — '호르무즈 봉합 + AI 반도체 동반 랠리'</h3><ul><li>미·이란 60일 로드맵이 순조롭게 진행된다는 신뢰가 유지될 경우 국제 유가·LNG 가격 추가 하락 → 인플레이션 피크아웃 기대 재부상</li><li>에너지 리스크 프리미엄 축소 → Fed 금리 인하 기대 소폭 복원 → 나스닥·반도체 섹터 추가 상승 동력 확보</li><li>SK하이닉스 시총 1위 등극이 외국인 수급 신호탄이 될 경우 코스피 AI 반도체(HBM 밸류체인) 동반 강세, 코스닥 전력 인프라 섹터로 순환 가능</li><li>뉴욕 개장 시 반도체 랠리 재개(기사 [25] 참조)가 확인되면 국내 시장 익일 갭 상승 가능성 존재</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>🔴 약세 시나리오 — '봉합 불완전 + 인플레이션 꼬리 리스크 재발'</h3><ul><li>이란의 호르무즈 재폐쇄 주장(기사 [11])과 카타르 라스라판 추가 생산 차질이 겹치면 LNG·유가 재반등 → 영란은행식 &#x27;동결 장기화&#x27; 우려 글로벌 확산</li><li>60일 협상 내 최종 합의 실패 시 트럼프의 호르무즈 통행료 부과 발언(기사 [11]) 현실화 → 공급망 비용 재차 급등</li><li>SpaceX VWAP 손익분기 도달 후 추가 하락 시 기술주 전반 투자심리 냉각, 나스닥 단기 변동성 확대</li><li>영란은행 동결 + 에너지발 인플레이션 지속이 확인될 경우 &#x27;금리 인하 기대 약화&#x27;(기사 [28]) 테마 재부상 → 성장주 밸류에이션 압박</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ 호르무즈 협상 진행 상황 모니터링 (60일 카운트다운)</div><div class="desc">매일 저녁 미·이란 협상 관련 헤드라인 체크 필수. 트럼프의 &#x27;통행료 부과&#x27; 발언 현실화 여부가 에너지 가격과 인플레이션 기대의 핵심 변수. 라스라판 복구 속도도 함께 추적해야 LNG 단기 수급 판단 가능.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ SK하이닉스發 수급 구조 변화 확인 (외국인·기관 순매수 방향)</div><div class="desc">시총 1위 교체가 단순 장중 이벤트로 끝날지, 외국인 패시브 자금의 코스피 리밸런싱(SK하이닉스 비중 확대)을 유발할지 확인이 핵심. MSCI·KOSPI200 리밸런싱 일정과 연동해 수급 방향 점검 필요.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">✅ 나스닥 선물 및 반도체 지수(SOX) 장 초반 흐름 확인</div><div class="desc">뉴욕 개장 후 30분 SOX 방향이 내일 국내 장 갭의 가장 강력한 선행지표. SpaceX 추가 하락 여부도 기술주 심리의 단기 리트머스 역할.</div></div></div></div>
+  </div>
+  <div class="callout"><p>호르무즈 봉합은 에너지 리스크의 '종료'가 아니라 60일 유효기간이 붙은 '일시 정지'다 — 그 창(窓) 안에서 AI 반도체 랠리의 탄약을 최대한 소진하되, 60일 시계를 항상 곁에 두어야 한다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 경제·투자 (오후) · 본 자료는 투자 권유가 아닙니다</footer>
+</body>
+</html>
