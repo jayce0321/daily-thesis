@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 컬처 | 2026.06.23</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="culture.html">← 컬처 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="669" cy="119" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="769" cy="219" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="669" cy="119" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="669" cy="119" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="769" cy="219" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="519" cy="339" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="569" y1="149" x2="819" y2="179" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.23</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.23</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">🎬 컬처 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">한국문화</span><span class="tag">글로벌트렌드</span><span class="tag">데일리테제</span></div>
+  <h1>"K-콘텐츠 IP, 국가 인프라가 되다"</h1>
+  <p class="hero-sub">K-팝·K-드라마를 넘어 K-게임·K-공연 인프라까지, 정부-빅테크-글로벌 자본이 동시에 'K-콘텐츠 IP 생태계'에 베팅하는 구조적 전환점이 도래했다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>K-팝·K-드라마를 넘어 K-게임·K-공연 인프라까지, 정부-빅테크-글로벌 자본이 동시에 'K-콘텐츠 IP 생태계'에 베팅하는 구조적 전환점이 도래했다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>2026년 6월 23일, 문체부는 하루 만에 ①K-게임 IP 전용 1,200억 원 펀드 결성 ②지역 체육시설의 K-팝 공연장 전환을 위한 120억 원 지원 사업을 동시에 발표했다. 같은 날 구글·알파벳 딥마인드는 독립 영화사 A24에 7,500만 달러를 투자하며 AI×창작 파트너십을 공식화했다. 이는 단순한 콘텐츠 소비 트렌드가 아니라, 국가 정책자금·글로벌 빅테크·민간 대기업(넥슨)이 'K-콘텐츠 IP'를 미래 핵심 자산으로 인정하고 동시에 인프라를 구축하는 구조적 전환을 의미한다. MZ 세대가 소비하는 팝컬처가 이제 산업 생태계의 설계도 자체를 바꾸고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">K-게임 IP 펀드 규모</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">1,200억 원</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">구글→A24 투자액</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">7,500만 달러(약 1,153억 원)</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">K-팝 공연장 전환 지원 예산</text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">총 120억 원(시설당 최대 20억 원)</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">티빙 개인정보 유출 피해자 수</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">1,953만 명</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>K-게임 IP 펀드 규모</td><td>1,200억 원</td><td>모태펀드 문화계정 자펀드 역대 최대 규모 (문체부 600억 + 넥슨 588억 + 운용사 12억)</td></tr><tr><td>구글→A24 투자액</td><td>7,500만 달러(약 1,153억 원)</td><td>구글이 영화 스튜디오 지분을 취득한 첫 사례로, AI×창작 파트너십의 상징적 수치</td></tr><tr><td>K-팝 공연장 전환 지원 예산</td><td>총 120억 원(시설당 최대 20억 원)</td><td>전국 6개 권역 체육·다목적 시설을 대중음악 공연장으로 전환, 공연 인프라 부족 해소 목적</td></tr><tr><td>티빙 개인정보 유출 피해자 수</td><td>1,953만 명</td><td>초기 추산(1,300만 명) 대비 650만 명 추가 확인, K-OTT 플랫폼 신뢰 위기의 규모를 방증</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>🟢 Bull 시나리오 — 'K-IP 슈퍼사이클' 개막</h3><ul><li>정부 1,200억 펀드가 마중물이 되어 민간 VC·글로벌 자본의 K-게임 IP 후속 투자가 연쇄적으로 유입된다.</li><li>120억 원 공연 인프라 지원으로 지방 도시에서도 K-팝 대형 콘서트가 정례화되고, 해외 팬의 지방 방문(지역 관광 연계) 수요가 창출된다.</li><li>구글-A24 모델처럼 글로벌 빅테크가 K-콘텐츠 스튜디오에 AI 파트너십을 제안하는 흐름이 확산되어, K-드라마·K-웹툰 IP의 글로벌 제작 단가와 완성도가 동시에 상승한다.</li><li>스탠퍼드 K-팝 강좌·넷플릭스 TOP10 K-드라마 열풍이 IP 수요를 아카데믹·학술 영역까지 확장하며 &#x27;K-콘텐츠 = 글로벌 표준 팝컬처&#x27;로 자리매김한다.</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>🔴 Bear 시나리오 — 인프라 과잉·신뢰 균열</h3><ul><li>티빙 개인정보 유출(1,953만 명) 사태가 K-OTT 전반에 대한 글로벌 이용자 신뢰를 훼손하고, 유료 구독 이탈 및 해외 파트너십 협상에서 불리한 선례가 된다.</li><li>잠실 개표소 봉쇄 시위 장기화로 박서진 콘서트 취소·하이브 위버스콘 동선 조정 등 공연 생태계가 외부 변수에 취약함이 노출되어, 인프라 투자 대비 실제 가동률이 저조할 수 있다.</li><li>정부 펀드 주도의 K-게임 IP 투자가 소수 대형 IP에 집중되어 중소 개발사의 다양성이 오히려 감소하는 역설적 결과를 낳을 수 있다.</li><li>K-팝 BTS 부산 공연 바가지 논란(기사 12)처럼, 인프라 확장 속도보다 수익 극대화 욕구가 앞서면서 팬덤 피로도와 글로벌 이미지 훼손이 동시에 발생할 수 있다.</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">K-게임 펀드 투자 포트폴리오 다양성 모니터링</div><div class="desc">1,200억 원 펀드가 넥슨 연계 IP에 편중되는지, 실제로 초기 중소 개발사에 분산 투자되는지를 분기별로 점검해야 한다. IP 다양성이 확보돼야 K-게임의 글로벌 경쟁력이 유지된다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">티빙 사태 이후 K-OTT 개인정보 보호 체계 재정비 여부</div><div class="desc">1,953만 명 유출 규모(국내 역대 4위)는 단순 사고가 아니라 K-OTT 플랫폼 전반의 보안 거버넌스 문제다. 넷플릭스·디즈니+ 등 글로벌 경쟁사 대비 보안 투자 수준과 법적 책임 기준을 점검해야 한다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">공연 인프라 전환 사업의 실질 가동률 추적</div><div class="desc">체육시설 6곳에 최대 120억 원을 투입해 공연장으로 전환하더라도, 선정 후 의무 유료 공연 유치 조건이 실제로 이행되는지, 지역 공연 시장의 수요가 공급을 뒷받침하는지를 사업 완료 후 1년 시점에 반드시 검증해야 한다.</div></div></div></div>
+  </div>
+  <div class="callout"><p>K-콘텐츠는 이제 MZ 세대의 취향이 아니라, 국가 인프라와 글로벌 자본이 동시에 설계하는 '산업 아키텍처'다 — 그 구조가 탄탄한지, 오늘의 투자가 증명해야 한다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 컬처 · 트렌드를 읽는 일상의 시각</footer>
+</body>
+</html>
