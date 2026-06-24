@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 경제·투자 (오후) | 2026.06.24</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="index.html">← 경제·투자 (오후) 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="709" cy="119" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="779" cy="259" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="709" cy="119" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="709" cy="119" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="779" cy="259" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="579" cy="339" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="609" y1="149" x2="829" y2="219" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.24</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.24</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">📊 경제·투자 (오후) Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">매크로</span><span class="tag">오후마감</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span></div>
+  <h1>"코스피 -10% 충격 후 9,100 회복 — 반등인가, 함정인가"</h1>
+  <p class="hero-sub">전일 서킷브레이커 발동 이후 SK하이닉스 주도로 기술적 반등에 성공했지만, 외국인 7조 원 순매도와 미국 제조업 고용 악화가 공존하는 '불완전한 회복' 국면이다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>전일 서킷브레이커 발동 이후 SK하이닉스 주도로 기술적 반등에 성공했지만, 외국인 7조 원 순매도와 미국 제조업 고용 악화가 공존하는 '불완전한 회복' 국면이다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>6월 23일 코스피가 하루 만에 10% 급락하며 서킷브레이커가 발동됐고, 24일 오후 SK하이닉스 등 반도체주 반등에 힘입어 9,100선을 회복했다. 그러나 외국인은 단 하루 만에 약 7조 원을 순매도하며 수급 불안이 여전히 해소되지 않았음을 드러냈다. 동시에 미국에서는 제조업 고용 감축이 금융위기·코로나 수준에 근접했다는 S&P 글로벌 데이터가 나왔고, 호르무즈 해협 재개방으로 에너지 가격 하방 압력이 커지는 등 매크로 변수가 복잡하게 교차하고 있어 오늘 저녁 미국 시장 흐름이 내일 코스피 방향성을 결정지을 분기점이 된다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 358" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="358" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">코스피 전일 하락폭</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">-10%</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">코스피 24일 오후 반등 수준</text>
+  <rect x="210" y="88" width="419" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="637" y="109" fill="#e2e6f0" font-size="13" font-weight="700">9,100선 회복</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">외국인 순매도 규모</text>
+  <rect x="210" y="136" width="338" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="556" y="157" fill="#e2e6f0" font-size="13" font-weight="700">약 7조 원</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">모건스탠리 코스피 강세 목표</text>
+  <rect x="210" y="184" width="257" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="475" y="205" fill="#e2e6f0" font-size="13" font-weight="700">10,500</text>
+  <text x="200" y="253" text-anchor="end" fill="#7a8299" font-size="12">미국 제조업 PMI(6월 플래시)</text>
+  <rect x="210" y="232" width="176" height="32" fill="#a78bfa" rx="4" opacity="0.85"/>
+  <text x="394" y="253" fill="#e2e6f0" font-size="13" font-weight="700">55.7</text>
+  <text x="200" y="301" text-anchor="end" fill="#7a8299" font-size="12">SpaceX IPO 후 주가 하락률</text>
+  <rect x="210" y="280" width="95" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="313" y="301" fill="#e2e6f0" font-size="13" font-weight="700">약 28%</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>코스피 전일 하락폭</td><td>-10%</td><td>서킷브레이커 발동을 유발한 단일 거래일 낙폭, 모건스탠리 보고서에서 확인</td></tr><tr><td>코스피 24일 오후 반등 수준</td><td>9,100선 회복</td><td>SK하이닉스 주도 기술적 반등으로 전일 충격의 일부 되돌림</td></tr><tr><td>외국인 순매도 규모</td><td>약 7조 원</td><td>수급 주체 이탈이 지속되고 있어 반등의 지속성에 의문</td></tr><tr><td>모건스탠리 코스피 강세 목표</td><td>10,500</td><td>단기 조정을 숨 고르기로 보고 중기 강세 시나리오 유지</td></tr><tr><td>미국 제조업 PMI(6월 플래시)</td><td>55.7</td><td>예상치(54.8) 상회했으나 공장 고용 감축은 금융위기·코로나 수준에 근접</td></tr><tr><td>SpaceX IPO 후 주가 하락률</td><td>약 28%</td><td>6월 16일 고점 대비 급락, 기술주 과열 우려를 상징하는 지표</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>✅ 시나리오 A — 반등 연장: '숨 고르기 완료' 해석이 우세해지는 경우</h3><ul><li>호르무즈 재개방에 따른 유가 안정이 미국 인플레이션 우려를 완화, 나스닥·필라델피아 반도체지수 동반 상승</li><li>FedEx 실적 쇼크(-6%)가 이미 선반영되고 마이크론·엔비디아 주주총회 이후 반도체 공급 병목 재확인 발언 나올 경우</li><li>외국인 순매도 규모가 오늘 저녁 미국 선물 상승과 맞물려 축소 전환 → 내일 코스피 9,300~9,500 재도전</li><li>전략: 삼성전자·SK하이닉스 등 낙폭 과대 반도체주 단기 비중 확대, 코스닥 AI 관련주 추격 매수 검토</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>❌ 시나리오 B — 재하락: '데드캣 바운스'로 전락하는 경우</h3><ul><li>미국 제조업 고용 악화(금융위기·코로나 수준)가 경기침체 신호로 재해석되며 뉴욕증시 추가 하락</li><li>SpaceX 28% 급락 등 기술주 버블 붕괴 내러티브 확산 → 외국인 추가 이탈로 코스피 9,000 재이탈</li><li>이란 제재 60일 한시 완화로 유가 급락 → 에너지·방산 낙폭 심화, 반도체 반등 모멘텀도 상쇄</li><li>전략: 현금 비중 유지·추격 매수 자제, 풋옵션 또는 인버스 ETF로 헤지, 마이크론 주총 결과 확인 후 대응</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">📡 미국 반도체 지표 확인</div><div class="desc">오늘 저녁 필라델피아 반도체지수(SOX) 흐름과 마이크론·엔비디아 관련 코멘트를 최우선 모니터링. 코스피 반도체 비중이 절대적이므로 SOX -2% 이상 하락 시 내일 추가 하락 경계 필요.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">💱 외국인 수급 방향 전환 여부</div><div class="desc">24일 외국인 7조 원 순매도가 저점 매도인지 추세 이탈인지는 25일 장 초반 외국인 동향으로 확인. 순매수 전환 신호 없이 코스피 9,000선 하향 시 손절 기준으로 활용.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">🛢️ 유가 및 이란 변수 모니터링</div><div class="desc">미국의 이란 석유 제재 60일 한시 완화로 공급 증가 기대가 유가 하락 요인. 에너지주 비중이 있다면 축소 검토, 반면 항공·소비재 등 유가 수혜주 단기 관심 가능.</div></div></div></div>
+  </div>
+  <div class="callout"><p>오늘 저녁 뉴욕증시가 '반도체 펀더멘털 재확인'을 해주느냐 아니면 '고용 악화·기술주 버블 경고'를 심화시키느냐에 따라, 코스피의 9,100 회복이 진짜 반등의 시작인지 함정인지가 판가름 난다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 경제·투자 (오후) · 본 자료는 투자 권유가 아닙니다</footer>
+</body>
+</html>
