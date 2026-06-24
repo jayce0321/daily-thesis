@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 정치 | 2026.06.25</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="politics.html">← 정치 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="705" cy="135" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="775" cy="255" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="705" cy="135" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="705" cy="135" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="775" cy="255" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="575" cy="355" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="605" y1="165" x2="825" y2="215" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.25</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.25</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">🏛️ 정치 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">한국정치</span><span class="tag">글로벌정치</span><span class="tag">데일리테제</span></div>
+  <h1>"동맹 재편과 한국 정치의 이중 시험대"</h1>
+  <p class="hero-sub">미국의 이란 전쟁 후속 처리가 나토 균열을 심화시키는 가운데, 한국은 총리 인준·개헌 논쟁·남북 대화 재개 구상을 동시에 감당하며 신(新)권력 구조의 안정성을 검증받고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>미국의 이란 전쟁 후속 처리가 나토 균열을 심화시키는 가운데, 한국은 총리 인준·개헌 논쟁·남북 대화 재개 구상을 동시에 감당하며 신(新)권력 구조의 안정성을 검증받고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>트럼프 행정부가 이란 전쟁 비용 명목으로 877억 달러 규모의 추가 예산을 의회에 요청하고 나토 동맹국들의 '충성심 부재'를 공개 비판하면서, 글로벌 안보 비용 분담 구조가 급격히 재편되고 있다. 이 흐름은 주한미군 방위비 협상과 한반도 안보 지형에도 직접적 파장을 예고한다. 국내에서는 이재명 정부 2기 체제의 핵심 인사인 한성숙 국무총리 후보자 인사청문회가 개시되고, 국민의힘은 헌법 전문에 '윤석열 복권' 취지 문구 삽입을 주장하며 개헌 논의를 정쟁화하는 등 정치 갈등이 입법·헌정 영역으로 확전되고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">미 백악관 이란전쟁 추가예산 요청액</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">877억 6,000만 달러(약 87.6 billion USD)</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">브렌트유 선물 종가(8월물)</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">배럴당 73.74달러(전장 대비 -4.33%)</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">나스닥 종합지수 종가</text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">25,476.64(-0.43%)</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">6·25전쟁 제76주년 부산 기념식 참석</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">700여 명(참전용사 110여 명·현역 장병 100여 명 포함)</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>미 백악관 이란전쟁 추가예산 요청액</td><td>877억 6,000만 달러(약 87.6 billion USD)</td><td>전쟁 비용·농업지원·에볼라 대응 등 포함, 의회 승인 시 동맹국 분담 압박 가중</td></tr><tr><td>브렌트유 선물 종가(8월물)</td><td>배럴당 73.74달러(전장 대비 -4.33%)</td><td>호르무즈 해협 통항 재개 기대로 4일 연속 하락, 미-이란 전쟁 전 수준 회복</td></tr><tr><td>나스닥 종합지수 종가</td><td>25,476.64(-0.43%)</td><td>기술주 매도세 지속, S&amp;P500도 소폭 하락해 글로벌 위험 회피 심리 반영</td></tr><tr><td>6·25전쟁 제76주년 부산 기념식 참석 규모</td><td>700여 명(참전용사 110여 명·현역 장병 100여 명 포함)</td><td>안보 기억의 공식화로 현 정부의 한미동맹 유지 메시지 강조</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>✅ 시나리오 A — 질서 재편 속 한국의 안정적 포지셔닝</h3><ul><li>한성숙 총리 후보자 청문회 통과 → 이재명 정부 2기 내각 완성, 정책 추진력 확보</li><li>정동영 통일부 장관의 남북미중 4자 대화 구상이 몽골·교황 방북 카드와 맞물려 대화 모멘텀 형성</li><li>트럼프의 나토 압박이 유럽 방위비 증액으로 귀결되면서 한국의 방위비 협상 부담은 상대적으로 완화</li><li>국제유가 안정세가 지속되어 한국 경제의 수입 물가 부담 경감, 집권 여당 지지율 방어에 기여</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>⚠️ 시나리오 B — 동맹 비용 전가와 국내 정쟁 심화</h3><ul><li>트럼프가 &#x27;충성심&#x27; 논리를 아시아 동맹에도 적용 → 한국에 추가 방위비·대(對)이란 제재 동참 압박 강화</li><li>국민의힘의 &#x27;헌법 전문 윤석열 복권&#x27; 주장이 개헌 논의를 사실상 마비시키고, 여야 청문회 공방이 입법 교착으로 이어짐</li><li>남북 대화 구상이 북한의 무반응 속에 공허한 선언에 그칠 경우 이재명 정부의 대북 외교 레버리지 소진</li><li>이란 전쟁 추가 예산 논쟁이 미 의회 내 공화당 균열을 부추기면서 미국의 동아시아 안보 공약 신뢰도 하락</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">한성숙 청문회 결과 추적</div><div class="desc">25~26일 이틀간 진행되는 특위 청문회에서 낙마 요인(도덕성·자질 논란)이 가시화될 경우, 이재명 정부 2기 출범 일정 전체가 지연될 수 있어 결과를 즉시 확인해야 한다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">미 의회의 877억 달러 추가예산 승인 여부 모니터링</div><div class="desc">민주당 반대와 공화당 내부 이견이 맞물린 상황에서 승인 여부와 규모 조정 결과는 미국의 글로벌 군사 개입 지속성과 한국 방위비 협상 환경에 직접 영향을 준다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">국민의힘 개헌안 공론화 수위 점검</div><div class="desc">헌법 전문에 특정 전직 대통령 복권 취지를 삽입하자는 주장이 당론으로 격상될 경우, 여야 개헌 협상 테이블 자체가 붕괴될 위험이 있어 당내 논의 흐름을 지속 추적해야 한다.</div></div></div></div>
+  </div>
+  <div class="callout"><p>동맹의 언어가 '의무'에서 '충성심'으로 바뀌는 순간, 작은 나라의 외교는 원칙보다 민첩함을 요구받는다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 정치 · 사실에 근거한 중립적 분석입니다</footer>
+</body>
+</html>
