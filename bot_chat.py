@@ -349,36 +349,51 @@ def classify_intent(text: str) -> tuple[str, str]:
     """질문 의도 분류. (intent, extracted_query) 반환."""
     t = text.lower()
 
-    # 주가/코인 관련
-    stock_keywords = ["주가", "주식", "코인", "비트코인", "이더리움", "etf",
-                      "나스닥", "s&p", "kospi", "코스피", "달러", "환율",
-                      "aapl", "tsla", "nvda", "googl", "amzn"]
-    if any(k in t for k in stock_keywords):
-        # 티커/종목 추출 시도
-        ticker_m = re.search(r"\b([A-Z]{1,5})\b", text)
-        kr_name  = next((k for k in ["삼성전자", "하이닉스", "카카오", "네이버", "현대차",
-                                      "비트코인", "이더리움"] if k in text), None)
-        query = kr_name or (ticker_m.group(1) if ticker_m else text)
-        return "stock", query
-
-    # URL 분석
+    # URL 분석 (최우선)
     if re.search(r"https?://\S+", text):
         url = re.search(r"https?://\S+", text).group(0)
         return "url", url
 
-    # 뉴스 요청
-    news_keywords = ["뉴스", "최신", "오늘", "어제", "최근", "동향", "현황",
-                     "what happened", "latest", "today"]
-    if any(k in t for k in news_keywords) and len(text) < 50:
-        return "news", text
+    # 의견/분석 요청어가 포함된 경우 → chat/research 우선 (stock보다 앞)
+    opinion_words = ["의견", "생각", "어때", "어떻게", "맞는지", "맞아", "틀렸",
+                     "알려줘", "설명", "왜", "이유", "원인", "분석", "전망",
+                     "예측", "영향", "파급", "리서치", "체크", "확인", "검토"]
+    has_opinion = any(k in t for k in opinion_words)
+
+    # 짧고 명확한 주가 조회 (의견 단어 없는 경우만)
+    stock_keywords = ["주가", "주식", "코인", "비트코인", "이더리움", "etf",
+                      "나스닥", "s&p", "kospi", "코스피", "달러", "환율",
+                      "aapl", "tsla", "nvda", "googl", "amzn", "얼마"]
+    kr_tickers = ["삼성전자", "삼성", "하이닉스", "카카오", "네이버", "현대차",
+                  "비트코인", "이더리움", "솔라나", "리플", "기아", "포스코"]
+    # 영문 티커: 2~5자 대문자, 흔한 약어(AI, IT, TV 등) 제외
+    NON_TICKER = {"AI", "IT", "TV", "PR", "CEO", "GDP", "ESG", "IPO", "ETF",
+                  "Fed", "FED", "IMF", "WHO", "UN", "EU", "US", "UK", "QE"}
+    ticker_m = re.search(r"\b([A-Z]{2,5})\b", text)
+    ticker_ok = ticker_m and ticker_m.group(1) not in NON_TICKER
+    kr_name  = next((k for k in kr_tickers if k in text), None)
+
+    if not has_opinion and any(k in t for k in stock_keywords):
+        query = kr_name or (ticker_m.group(1) if ticker_ok else text)
+        return "stock", query
+
+    # 명확한 티커/종목명 단독 조회
+    if not has_opinion and (kr_name or (ticker_ok and len(text) < 20)):
+        query = kr_name or ticker_m.group(1)
+        return "stock", query
 
     # 리서치 요청
     research_keywords = ["분석", "전망", "예측", "리서치", "조사", "연구",
-                         "어떻게 될", "왜", "이유", "원인", "영향", "파급"]
+                         "어떻게 될", "영향", "파급", "동향"]
     if any(k in t for k in research_keywords):
         return "research", text
 
-    # 기본: 테제 기반 Q&A
+    # 뉴스 요청 (짧은 쿼리)
+    news_keywords = ["뉴스", "최신", "최근", "what happened", "latest", "today"]
+    if any(k in t for k in news_keywords) and len(text) < 50:
+        return "news", text
+
+    # 기본: 테제 + 컨텍스트 기반 Q&A
     return "chat", text
 
 
