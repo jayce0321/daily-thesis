@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 경제·투자 | 2026.06.29</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="index.html">← 경제·투자 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="705" cy="135" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="755" cy="255" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="705" cy="135" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="705" cy="135" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="755" cy="255" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="555" cy="355" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="605" y1="165" x2="805" y2="215" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.29</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.29</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">📊 경제·투자 Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">매크로</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span></div>
+  <h1>"AI 빚더미 위의 랠리 — 자본비용의 역습"</h1>
+  <p class="hero-sub">AI 인프라 투자의 재무적 지속가능성에 시장이 의문을 품기 시작했고, 여기에 Fed 금리인상 재개 신호와 호르무즈 지정학 리스크가 겹치며 '성장 내러티브'에서 '자본비용 현실'로 시장의 무게중심이 이동하고 있다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>AI 인프라 투자의 재무적 지속가능성에 시장이 의문을 품기 시작했고, 여기에 Fed 금리인상 재개 신호와 호르무즈 지정학 리스크가 겹치며 '성장 내러티브'에서 '자본비용 현실'로 시장의 무게중심이 이동하고 있다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>오라클이 25년 만에 최악의 주간 낙폭을 기록한 것은 단순한 실적 쇼크가 아니다. CAPEX 162% 급증에도 잉여현금흐름이 -237억 달러로 곤두박질친 구조는, AI 인프라 투자 사이클 전체가 '수요 내러티브'가 아닌 '자금조달 한계'에 직면했음을 상징적으로 보여준다. 동시에 미니애폴리스 연준 총재 카시카리가 연내 금리인상 전망으로 선회하고, 5월 핵심 PCE가 3.4%로 2023년 10월 이후 최고치를 기록하면서, AI 투자를 떠받치던 '저금리 유동성' 전제가 흔들리고 있다. 여기에 호르무즈 해협 불안 재연으로 에너지 비용 상승 압력까지 더해지며 기업 원가구조 전반에 경고등이 켜졌다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">오라클 주간 낙폭</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">-18.4%</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">오라클 CAPEX 증가율</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">+162% (YoY, 557억 달러)</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">오라클 총부채</text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">~1,300억 달러 (5월 말 기준)</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">미국 핵심 PCE (5월)</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">3.4% (전년 대비)</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>오라클 주간 낙폭</td><td>-18.4%</td><td>닷컴 버블 붕괴(2001년 8월) 이후 25년 만에 최대 주간 하락폭으로, AI 인프라 투자 피로감의 상징적 신호</td></tr><tr><td>오라클 CAPEX 증가율</td><td>+162% (YoY, 557억 달러)</td><td>전년 대비 설비투자가 2.6배 급증했으나 잉여현금흐름은 -237억 달러로 역전, 투자 대비 수익 회수 구조에 심각한 균열</td></tr><tr><td>오라클 총부채</td><td>~1,300억 달러 (5월 말 기준)</td><td>부채 규모가 시가총액에 육박하며, 내년 추가 400억 달러 조달 계획은 희석 리스크로 직결</td></tr><tr><td>미국 핵심 PCE (5월)</td><td>3.4% (전년 대비)</td><td>2023년 10월 이후 최고치로, 카시카리 연준 총재의 &#x27;연내 금리인상 전환&#x27; 발언과 맞물려 긴축 재가속 시나리오 현실화 중</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>🔴 시나리오 A — 자본비용 역습의 본격화 (Bear Case)</h3><ul><li>카시카리 금리인상 전망이 FOMC 내 다수 의견으로 확산 → 10년물 국채금리 재상승, AI·성장주 밸류에이션 일괄 재조정</li><li>오라클 쇼크가 AWS·Azure 의존도 낮은 &#x27;순수 AI 인프라 플레이&#x27;에 대한 신뢰를 전반적으로 훼손 → 데이터센터 관련주 멀티플 압축</li><li>호르무즈 운항 재개 불확실성으로 에너지 비용 상승 → 데이터센터 전력비·냉각비 원가 추가 압박</li><li>SpaceX의 나스닥100 편입(7월 6일)은 패시브 매수 수요를 일부 지지하겠으나, 전반적인 센티멘트 하락을 역전시키기엔 역부족</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>🟢 시나리오 B — 인프라 수요 견고함이 재차 확인 (Bull Case)</h3><ul><li>삼성전자·SK하이닉스 등 한국發 메가프로젝트 투자 발표(이재명 대통령 &#x27;3대 메가프로젝트&#x27; 보고회)로 AI 반도체 수요 기대감 재점화 → 반도체 섹터 반등 모멘텀</li><li>미-이란 공격 중단 합의 및 회담 재개로 호르무즈 운항 정상화 속도가 빨라질 경우 에너지 가격 안정 → AI 인프라 원가 부담 완화</li><li>오라클의 부진이 &#x27;자체 클라우드 인프라 미비&#x27;에서 비롯된 개별 리스크임을 시장이 재인식 → 버티컬 통합 강자(MS, 구글, 아마존)로 수혜 차별화</li><li>단일종목 레버리지 ETF의 하락 시 매수 패턴이 삼성전자·SK하이닉스 주가 하방을 지지, 국내 반도체 낙폭 제한</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">🔎 카시카리 발언의 FOMC 내 파급력 확인</div><div class="desc">카시카리 단독 의견인지, 아니면 6월 FOMC 내 &#x27;금리인상파&#x27;가 다수로 확산 중인지 점검하라. 7월 FOMC 전 발언 흐름과 CME FedWatch의 인상 확률 변화가 핵심 선행지표다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">📡 오라클·데이터센터주 자금조달 구조 재점검</div><div class="desc">AI 인프라 투자 종목의 잉여현금흐름(FCF) 전환 시점과 부채/EBITDA 비율을 재확인하라. &#x27;수요 강하다 → 주가 오른다&#x27;는 단순 논리에서 벗어나, 조달 비용과 희석 리스크를 반드시 병행 모니터링해야 한다.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">🚢 호르무즈 통항 정상화 속도 추적</div><div class="desc">IMO의 선박 대피 계획 재개 여부와 에버그린 컨테이너선 공격 후속 상황을 주시하라. 에너지 가격과 해운 비용은 AI 데이터센터 전력비 및 글로벌 공급망 비용에 연쇄적으로 영향을 미친다.</div></div></div></div>
+  </div>
+  <div class="callout"><p>AI 빅사이클의 종말이 아니라 '공짜 자본' 시대의 종막이다 — 이제 투자자는 수요 스토리보다 현금흐름표를 먼저 봐야 한다.</p></div>
+</div>
+<footer>데일리 테제 분석 · 경제·투자 · 본 자료는 투자 권유가 아닙니다</footer>
+</body>
+</html>
