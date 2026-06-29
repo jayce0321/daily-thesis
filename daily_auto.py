@@ -18,7 +18,7 @@ from datetime import datetime, timezone, timedelta
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 def _resolve_topic():
-    _VALID = ("economy", "economy_pm", "politics", "culture")
+    _VALID = ("economy", "economy_pm", "politics", "culture", "weekly")
     # 1순위: 파일 큐 (_pending_topic.txt) — Railway가 economy_pm 등 세부 topic 지정 시 사용
     queue_file = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "_pending_topic.txt")
@@ -150,6 +150,21 @@ TOPIC_CONFIG = {
         "index_subtitle": "오늘의 문화 흐름을 읽는 하나의 테제 — by Jayce",
         "footer": "데일리 테제 분석 · 컬처 · 트렌드를 읽는 일상의 시각",
         "tg_hashtag": "#컬처 #데일리테제",
+    },
+    "weekly": {
+        "name": "주간 다이제스트",
+        "icon": "📅",
+        "tags": ["주간분석", "위클리", "데일리테제"],
+        "queries": [],
+        "channel_env": "TELEGRAM_CHANNEL_ECONOMY",
+        "channel_id": "5066621346",
+        "html_name": f"weekly-{datetime.now(KST).strftime('%Y-W%V')}.html",
+        "index_file": "weekly.html",
+        "claude_instruction": "",
+        "index_title": "주간 다이제스트 — JAYCE 데일리 테제",
+        "index_subtitle": "이번 주 시장을 관통한 흐름 — by Jayce",
+        "footer": "데일리 테제 주간 다이제스트 · by Jayce",
+        "tg_hashtag": "#주간다이제스트 #데일리테제",
     },
 }
 
@@ -1399,6 +1414,237 @@ def ensure_index(cfg):
         log(f"인덱스 페이지 생성: {cfg['index_file']}")
 
 # ── 4. 게시 + 알림 ───────────────────────────────────────────
+def _collect_weekly_articles():
+    """이번 주(월~금) 발행된 HTML 파일에서 테제 정보 추출"""
+    import re as _re
+    kst_now  = datetime.now(KST)
+    monday   = kst_now - timedelta(days=kst_now.weekday())
+    monday   = monday.replace(hour=0, minute=0, second=0, microsecond=0)
+    results  = []
+    _suffix_map = {"": "경제·투자", "-politics": "정치", "-culture": "컬처", "-pm": "경제·투자 (오후)"}
+
+    for fname in sorted(os.listdir(REPO_DIR)):
+        m = _re.match(r'^(\d{4}-\d{2}-\d{2})(|-politics|-culture|-pm)\.html$', fname)
+        if not m:
+            continue
+        try:
+            file_date = datetime.strptime(m.group(1), "%Y-%m-%d").replace(tzinfo=KST)
+        except ValueError:
+            continue
+        if file_date < monday:
+            continue
+        try:
+            with open(os.path.join(REPO_DIR, fname), encoding="utf-8") as f:
+                raw = f.read()
+            h1 = _re.search(r'<h1[^>]*>(.*?)</h1>', raw, _re.DOTALL)
+            title = _re.sub(r'<[^>]+>', '', h1.group(1)).strip() if h1 else ""
+            tblock = _re.search(r'id="thesis-text"[^>]*>(.*?)</p>', raw, _re.DOTALL)
+            if not tblock:
+                tblock = _re.search(r'id="direct-answer".*?<p[^>]*>(.*?)</p>', raw, _re.DOTALL)
+            one_line = _re.sub(r'<[^>]+>', '', tblock.group(1)).strip() if tblock else ""
+            results.append({
+                "date":     m.group(1),
+                "topic":    _suffix_map.get(m.group(2), "기타"),
+                "title":    title,
+                "one_line": one_line,
+                "url":      f"{_PAGES_URL}/{fname}",
+            })
+        except Exception as e:
+            log(f"  주간 파싱 스킵 ({fname}): {e}")
+
+    log(f"주간 수집: {len(results)}개 테제")
+    return results
+
+
+def _call_claude_weekly(articles):
+    """이번 주 테제들을 종합 → 주간 다이제스트 분석"""
+    articles_text = "\n\n".join(
+        f"[{a['date']} {a['topic']}] {a['title']}\n  → {a['one_line']}"
+        for a in articles
+    )
+    kst_now  = datetime.now(KST)
+    week_num = kst_now.strftime("W%V")
+
+    tool_def = {
+        "name": "save_weekly",
+        "description": "주간 다이제스트 저장",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "weekly_title":    {"type": "string", "description": "이번 주를 관통한 핵심 테마 (20자 내외)"},
+                "narrative":       {"type": "string", "description": "이번 주 경제·정치·문화를 연결하는 서사 (3~4문장)"},
+                "key_insight":     {"type": "string", "description": "이번 주 가장 중요한 인사이트 1줄"},
+                "next_week_watch": {"type": "string", "description": "다음 주 주목할 포인트 1~2줄"},
+                "highlights": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "date":     {"type": "string"},
+                            "topic":    {"type": "string"},
+                            "title":    {"type": "string"},
+                            "one_line": {"type": "string"},
+                            "url":      {"type": "string"},
+                            "pick_reason": {"type": "string", "description": "이 테제를 이번 주 하이라이트로 꼽은 이유 1줄"}
+                        },
+                        "required": ["date", "topic", "title", "one_line", "url", "pick_reason"]
+                    },
+                    "description": "이번 주 가장 중요한 테제 3~5개 (모두 나열 말고 선별)"
+                },
+            },
+            "required": ["weekly_title", "narrative", "key_insight", "next_week_watch", "highlights"]
+        }
+    }
+
+    data = json.dumps({
+        "model": "claude-sonnet-4-6",
+        "max_tokens": 2400,
+        "tools": [tool_def],
+        "tool_choice": {"type": "tool", "name": "save_weekly"},
+        "messages": [{
+            "role": "user",
+            "content": (
+                f"이번 주({TODAY_KR}, {week_num}) 발행된 데일리 테제들을 종합해서 주간 다이제스트를 작성해줘.\n"
+                "단순 나열 금지. 이번 주 경제·정치·문화를 관통하는 하나의 서사를 만들어줘.\n"
+                "가장 중요한 테제 3~5개를 선별하고, 다음 주 독자가 주목해야 할 포인트를 짚어줘.\n\n"
+                f"이번 주 테제 전체:\n{articles_text}"
+            )
+        }]
+    }).encode("utf-8")
+
+    req = urllib.request.Request(
+        "https://api.anthropic.com/v1/messages",
+        data=data,
+        headers={
+            "x-api-key": ANTHROPIC_API_KEY,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        }
+    )
+    with urllib.request.urlopen(req, timeout=90) as r:
+        result = json.loads(r.read().decode("utf-8"))
+
+    for block in result["content"]:
+        if block.get("type") == "tool_use":
+            analysis = block["input"]
+            if not analysis.get("highlights"):
+                analysis["highlights"] = articles[:5]
+            log("주간 Claude 분석 완료")
+            return analysis
+    raise ValueError(f"weekly tool_use 응답 없음: {result}")
+
+
+def build_weekly_html(a, cfg):
+    """주간 다이제스트 HTML 생성"""
+    week_num  = datetime.now(KST).strftime("W%V")
+    year_str  = datetime.now(KST).strftime("%Y")
+    page_url  = f"{_PAGES_URL}/{cfg['html_name']}"
+    _seo_title = _safe(f"주간 다이제스트 {year_str} {week_num} | JAYCE 데일리 테제")
+    _seo_desc  = _safe(a.get("key_insight", "")[:150])
+
+    # GA4
+    _ga4 = ""
+    if _GA4_ID:
+        _ga4 = (
+            f'<script async src="https://www.googletagmanager.com/gtag/js?id={_GA4_ID}"></script>'
+            '<script>window.dataLayer=window.dataLayer||[];'
+            'function gtag(){dataLayer.push(arguments);}'
+            'gtag("js",new Date());'
+            f'gtag("config","{_GA4_ID}");</script>'
+        )
+
+    # 하이라이트 카드
+    cards = ""
+    for h in a.get("highlights", []):
+        if not isinstance(h, dict):
+            continue
+        cards += (
+            f'<a class="w-card" href="{_safe(h.get("url","#"))}">'
+            f'<div class="w-card-top">'
+            f'<span class="w-date">{_safe(h.get("date",""))}</span>'
+            f'<span class="w-topic">{_safe(h.get("topic",""))}</span>'
+            f'</div>'
+            f'<div class="w-title">{_safe(h.get("title",""))}</div>'
+            f'<div class="w-oneline">{_safe(h.get("one_line",""))}</div>'
+            f'<div class="w-pick">{_safe(h.get("pick_reason",""))}</div>'
+            f'</a>'
+        )
+
+    return f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{_seo_title}</title>
+  <meta name="description" content="{_seo_desc}"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="{page_url}"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="{_seo_title}"/>
+  <meta property="og:description" content="{_seo_desc}"/>
+  <meta property="og:url" content="{page_url}"/>
+  <meta name="author" content="Jayce"/>
+  {_ga4}
+  <style>
+    :root{{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;--accent:#e8b84b;--accent2:#5b8dee;--text:#e2e6f0;--muted:#7a8299;}}
+    *{{box-sizing:border-box;margin:0;padding:0}}
+    body{{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}}
+    .hero{{padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%);border-bottom:1px solid var(--border);}}
+    .hero-eyebrow{{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}}
+    .hero h1{{font-size:clamp(22px,4vw,36px);font-weight:700;line-height:1.3;max-width:760px;}}
+    .hero-sub{{margin-top:14px;font-size:15px;color:var(--muted);max-width:620px;}}
+    .container{{max-width:860px;margin:0 auto;padding:48px 32px 80px;}}
+    .narrative-block{{background:linear-gradient(135deg,#1a2235,#161a23);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:24px 28px;margin-bottom:40px;font-size:15px;color:#c8cfe0;line-height:1.85;}}
+    .section-label{{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:16px;}}
+    .w-cards{{display:flex;flex-direction:column;gap:12px;margin-bottom:40px;}}
+    .w-card{{display:block;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 22px;text-decoration:none;color:var(--text);transition:border-color .15s;}}
+    .w-card:hover{{border-color:var(--accent2);}}
+    .w-card-top{{display:flex;gap:10px;align-items:center;margin-bottom:8px;}}
+    .w-date{{font-size:11px;color:var(--muted);font-family:'SF Mono','Consolas',monospace;}}
+    .w-topic{{font-size:11px;padding:2px 8px;border-radius:12px;background:#1e2435;border:1px solid var(--border);color:var(--muted);}}
+    .w-title{{font-size:15px;font-weight:700;margin-bottom:5px;}}
+    .w-oneline{{font-size:13px;color:#8a9ab8;margin-bottom:6px;}}
+    .w-pick{{font-size:12px;color:var(--accent);border-top:1px solid var(--border);padding-top:8px;margin-top:6px;}}
+    .insight-block{{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:22px 26px;margin-bottom:28px;}}
+    .insight-block .label{{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}}
+    .insight-block p{{font-size:15px;color:#b0bdd4;font-style:italic;}}
+    .next-block{{background:rgba(91,141,238,.05);border:1px solid rgba(91,141,238,.2);border-radius:8px;padding:18px 22px;}}
+    .next-block .label{{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;}}
+    .next-block p{{font-size:14px;color:#8a9ab8;}}
+    .back-link{{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}}
+    .back-link:hover{{color:var(--accent)}}
+    footer{{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted);}}
+    @media(max-width:600px){{.hero{{padding:40px 20px 36px}}.container{{padding:32px 16px 60px}}}}
+  </style>
+</head>
+<body>
+<a class="back-link" href="index.html">← 경제·투자 목록</a>
+<section class="hero">
+  <div class="hero-eyebrow">📅 {year_str} {week_num} · 주간 다이제스트</div>
+  <h1>{_safe(a.get('weekly_title','이번 주 데일리 테제 요약'))}</h1>
+  <p class="hero-sub">{_safe(a.get('key_insight',''))}</p>
+</section>
+<div class="container">
+  <div class="narrative-block">{_safe(a.get('narrative',''))}</div>
+
+  <div class="section-label">이번 주 주요 테제</div>
+  <div class="w-cards">{cards}</div>
+
+  <div class="insight-block">
+    <div class="label">핵심 인사이트</div>
+    <p>{_safe(a.get('key_insight',''))}</p>
+  </div>
+
+  <div class="next-block">
+    <div class="label">다음 주 Watch</div>
+    <p>{_safe(a.get('next_week_watch',''))}</p>
+  </div>
+</div>
+<footer>{cfg['footer']}</footer>
+</body>
+</html>"""
+
+
 def _ping_indexnow(page_url):
     """IndexNow API 핑 — 발행 즉시 Bing·Naver에 URL 알림 (키 없으면 스킵)"""
     if not _INDEXNOW_KEY:
@@ -1571,7 +1817,21 @@ def main():
         print("❌ ANTHROPIC_API_KEY 환경변수가 없습니다.")
         sys.exit(1)
 
-    cfg              = TOPIC_CONFIG[TOPIC]
+    cfg = TOPIC_CONFIG[TOPIC]
+
+    # ── 주간 다이제스트 전용 흐름 ─────────────────────────────
+    if TOPIC == "weekly":
+        articles = _collect_weekly_articles()
+        if not articles:
+            log("⚠️ 이번 주 발행된 테제 없음 — 주간 다이제스트 건너뜀")
+            return
+        analysis = _call_claude_weekly(articles)
+        html = build_weekly_html(analysis, cfg)
+        publish(html, analysis, cfg)
+        log(f"=== {cfg['name']} 완료 ===")
+        return
+
+    # ── 일반 토픽 흐름 ───────────────────────────────────────
     news, source_log = fetch_news(cfg)
     if not news:
         log("⚠️ 뉴스 수집 실패 — 기본 프롬프트로 진행")
