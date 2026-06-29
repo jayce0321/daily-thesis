@@ -794,6 +794,7 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
+  <meta name="google-site-verification" content="LqVw-ScH1iEw7FKHSwyzzlYH2CZnQ_1TOmVCP8PHxMw"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{_seo_title}</title>
   <meta name="description" content="{_seo_desc}"/>
@@ -931,6 +932,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="LqVw-ScH1iEw7FKHSwyzzlYH2CZnQ_1TOmVCP8PHxMw"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{index_title}}</title>
   <style>
