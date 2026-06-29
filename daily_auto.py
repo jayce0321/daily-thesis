@@ -1924,8 +1924,8 @@ def publish(html_content, analysis, cfg):
 
     text = (
         f"{cfg['icon']} <b>데일리 테제 | {cfg['name']}</b>  {TODAY_KR}\n\n"
-        f"<b>{analysis['thesis_title']}</b>\n\n"
-        f"{analysis['one_line']}\n\n"
+        f"<b>{analysis.get('thesis_title', analysis.get('weekly_title', ''))}</b>\n\n"
+        f"{analysis.get('one_line', analysis.get('key_insight', ''))}\n\n"
         "━━━━━━━━━━━━\n"
         "✅ 체크리스트\n"
         + "\n".join(
