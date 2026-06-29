@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>데일리 테제 | 경제·투자 (오후) | 2026.06.29</title>
+  <style>
+    :root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
+      --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
+      --green:#4caf80;--text:#e2e6f0;--muted:#7a8299;--tag-bg:#1e2435;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;line-height:1.75}
+    .hero{position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px 48px;background:linear-gradient(160deg,#0d1a2e 0%,#0d0f14 60%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(232,184,75,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(91,141,238,.1) 0%,transparent 50%)}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative}
+    .hero-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .hero-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted)}
+    .hero h1{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.3;position:relative;max-width:800px}
+    .hero-sub{margin-top:16px;font-size:15px;color:var(--muted);max-width:620px;position:relative}
+    .container{max-width:860px;margin:0 auto;padding:56px 32px}
+    .thesis-block{background:linear-gradient(135deg,#1a2235 0%,#161a23 100%);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:28px 32px;margin-bottom:48px}
+    .thesis-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+    .thesis-block p{font-size:16px;line-height:1.8;color:#c8cfe0}
+    .section{margin-bottom:52px}
+    .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .section-number{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .section-header h2{font-size:17px;font-weight:700}
+    p{margin-bottom:16px;color:#c0c8da;font-size:15px}
+    .data-table-wrap{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#1a2235}
+    thead th{padding:12px 16px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+    tbody tr{border-top:1px solid var(--border)}
+    tbody tr:hover{background:#1a2030}
+    tbody td{padding:13px 16px;font-size:14px}
+    tbody td:first-child{color:var(--muted);font-size:13px}
+    tbody td:nth-child(2){font-weight:700;font-size:15px}
+    tbody td:nth-child(3){color:#8a9ab8;font-size:13px}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}.hero{min-height:260px;padding:40px 20px 36px}.container{padding:36px 16px}}
+    .scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .scenario-card.green{border-top:3px solid var(--green)}.scenario-card.red{border-top:3px solid var(--red)}
+    .scenario-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    .scenario-card.green .scenario-label{color:var(--green)}.scenario-card.red .scenario-label{color:var(--red)}
+    .scenario-card h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .scenario-card ul{padding-left:16px}
+    .scenario-card li{font-size:13px;color:#8a9ab8;margin-bottom:4px}
+    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .checklist-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+    .checklist-item:last-child{border-bottom:none}
+    .check-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:1px}
+    .checklist-item .title{font-size:14px;font-weight:600;margin-bottom:2px}
+    .checklist-item .desc{font-size:12px;color:var(--muted)}
+    .callout{background:#0f1825;border:1px solid #2a3a50;border-radius:8px;padding:24px 28px;margin-top:40px;position:relative;overflow:hidden}
+    .callout::before{content:'"';position:absolute;top:-10px;left:20px;font-size:80px;color:rgba(232,184,75,.08);font-family:Georgia,serif;line-height:1}
+    .callout p{font-size:15px;color:#b0bdd4;font-style:italic;position:relative}
+    footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:var(--muted)}
+    .hero-cover{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-cover svg{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow,.hero-tags,.hero h1,.hero-sub{position:relative;z-index:1}
+    .chart-wrap{margin:0 0 20px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .chart-wrap svg{width:100%;height:auto;display:block}
+    .back-link{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}
+    .back-link:hover{color:var(--accent)}
+  </style>
+</head>
+<body>
+<a class="back-link" href="index.html">← 경제·투자 (오후) 목록</a>
+<section class="hero">
+  <div class="hero-cover"><svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0d2040"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#bg)"/>
+  <circle cx="691" cy="121" r="160" fill="#1a3a5c" filter="url(#blur)" opacity="0.6"/>
+  <circle cx="751" cy="241" r="120" fill="#1a2a10" filter="url(#blur)" opacity="0.4"/>
+  <circle cx="691" cy="121" r="90" fill="none" stroke="#e8b84b" stroke-width="1" opacity="0.25"/>
+  <circle cx="691" cy="121" r="50" fill="none" stroke="#e8b84b" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="751" cy="241" r="70" fill="none" stroke="#5b8dee" stroke-width="1" opacity="0.3"/>
+  <circle cx="501" cy="341" r="40" fill="#e8b84b" opacity="0.06"/>
+  <line x1="591" y1="151" x2="801" y2="201" stroke="#e8b84b" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="310" x2="900" y2="310" stroke="#252b3b" stroke-width="1"/>
+  <text x="870" y="32" text-anchor="end" fill="#4a5269" font-size="12" letter-spacing="1">2026.06.29</text>
+</svg></div>
+  <div class="hero-eyebrow">
+    <span class="hero-date">2026.06.29</span>
+    <span class="hero-dot"></span>
+    <span class="hero-label">📊 경제·투자 (오후) Daily Thesis</span>
+  </div>
+  <div class="hero-tags"><span class="tag">매크로</span><span class="tag">오후마감</span><span class="tag">글로벌시장</span><span class="tag">데일리테제</span></div>
+  <h1>"반도체 블랙홀 해소 후 코스닥 순환매 vs. 미국 금리 인상 공포의 충돌"</h1>
+  <p class="hero-sub">오전 반도체 대형주 쏠림이 오후 들어 코스닥 순환매로 전환됐으나, 미국發 금리 인상 시그널(카슈카리 발언 + 핵심 PCE 3.4%)이 밤사이 증시의 천장을 누를 핵심 변수다.</p>
+</section>
+<div class="container">
+  <div class="thesis-block">
+    <div class="label">오늘의 핵심 테제</div>
+    <p>오전 반도체 대형주 쏠림이 오후 들어 코스닥 순환매로 전환됐으나, 미국發 금리 인상 시그널(카슈카리 발언 + 핵심 PCE 3.4%)이 밤사이 증시의 천장을 누를 핵심 변수다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
+    <p>오늘 오전 코스피는 반도체 대형주 매수세에도 외국인 순매도 압박으로 하락세를 이어갔고, 변동성 지수는 사상 최고치를 기록했다. 그러나 오후 들어 코스닥이 장중 6~7%대 급등하며 자금의 방향이 바뀌었다는 신호가 포착됐다. 동시에 미국에서는 미니애폴리스 연은 카슈카리 총재가 연내 '금리 인상' 전망으로 선회하고, 5월 핵심 PCE가 2023년 10월 이후 최고치인 3.4%를 기록했다는 소식이 유입되고 있어, 국내 순환매 기대와 미국 긴축 재개 공포가 정면 충돌하는 국면이다.</p>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">2</div><h2>숫자로 보는 근거</h2></div>
+    <div class="chart-wrap"><svg viewBox="0 0 800 262" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <rect width="800" height="262" fill="#161a23"/>
+  <text x="20" y="26" fill="#4a5269" font-size="11" letter-spacing="2">KEY METRICS</text>
+  <text x="200" y="61" text-anchor="end" fill="#7a8299" font-size="12">코스피 오전 11:30 기준 하락률</text>
+  <rect x="210" y="40" width="500" height="32" fill="#e05c5c" rx="4" opacity="0.85"/>
+  <text x="718" y="61" fill="#e2e6f0" font-size="13" font-weight="700">-1.75% (8,264.20pt)</text>
+  <text x="200" y="109" text-anchor="end" fill="#7a8299" font-size="12">코스닥 장중 급등폭</text>
+  <rect x="210" y="88" width="398" height="32" fill="#e8b84b" rx="4" opacity="0.85"/>
+  <text x="616" y="109" fill="#e2e6f0" font-size="13" font-weight="700">6~7%대 급등</text>
+  <text x="200" y="157" text-anchor="end" fill="#7a8299" font-size="12">미국 5월 핵심 PCE(근원 개인소비지출</text>
+  <rect x="210" y="136" width="296" height="32" fill="#5b8dee" rx="4" opacity="0.85"/>
+  <text x="514" y="157" fill="#e2e6f0" font-size="13" font-weight="700">3.4% (2023년 10월 이후 최고)</text>
+  <text x="200" y="205" text-anchor="end" fill="#7a8299" font-size="12">카슈카리 연내 전망 변화</text>
+  <rect x="210" y="184" width="194" height="32" fill="#4caf80" rx="4" opacity="0.85"/>
+  <text x="412" y="205" fill="#e2e6f0" font-size="13" font-weight="700">2026년 3월 &#x27;1회 인하&#x27; → 6월 &#x27;1회 인상&#x27;으로 전환</text>
+</svg></div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>의미</th></tr></thead>
+        <tbody><tr><td>코스피 오전 11:30 기준 하락률</td><td>-1.75% (8,264.20pt)</td><td>반도체 대형주 중심 쏠림 완화에도 외국인 매도로 2거래일째 하락</td></tr><tr><td>코스닥 장중 급등폭</td><td>6~7%대 급등</td><td>코스피 자금이 정책 수혜 기대 코스닥으로 이동하는 순환매 시그널</td></tr><tr><td>미국 5월 핵심 PCE(근원 개인소비지출) 연간 상승률</td><td>3.4% (2023년 10월 이후 최고)</td><td>Fed 긴축 장기화 또는 금리 인상 재개 압력의 핵심 근거</td></tr><tr><td>카슈카리 연내 전망 변화</td><td>2026년 3월 &#x27;1회 인하&#x27; → 6월 &#x27;1회 인상&#x27;으로 전환</td><td>Fed 내 매파 목소리 강화, 글로벌 위험자산 전반에 밸류에이션 압박 예고</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">3</div><h2>시나리오 분기</h2></div>
+    <div class="scenario-grid">
+      <div class="scenario-card green">
+        <div class="scenario-label">시나리오 A</div>
+        <h3>🟢 시나리오 A: 순환매 지속 + 미국 금리 우려 제한적 반영</h3><ul><li>코스닥 6~7% 급등이 단순 수급 이벤트가 아닌 정책 수혜 기대(AI·방산·바이오 중소형)의 구조적 전환으로 해석될 경우</li><li>호르무즈 해협 운항 부분 재개로 국제유가 급등세가 진정되며 인플레 추가 악화 우려 완화</li><li>미국 나스닥 선물이 SpaceX의 나스닥-100 편입(7월 6일 이후 패시브 매수 집중) 기대로 낙폭 제한</li><li>전략: 코스닥 AI 인프라·방산 중소형주 단기 모멘텀 포지션 유지, 단 익일 변동성 확대 대비 손절선 설정 필수</li></ul>
+      </div>
+      <div class="scenario-card red">
+        <div class="scenario-label">시나리오 B</div>
+        <h3>🔴 시나리오 B: PCE·카슈카리 충격 → 미국 하락 + 국내 순환매 되돌림</h3><ul><li>핵심 PCE 3.4%(2023년 10월 이후 최고) + 카슈카리의 &#x27;연내 금리 인상&#x27; 발언이 뉴욕 개장 후 채권 금리 급등, 나스닥 하락으로 연결될 경우</li><li>호르무즈 해협 UN 대피 계획 중단·추가 선박 공격 가능성으로 유가 재상승 → 인플레 우려 재점화</li><li>코스닥 6~7% 급등이 외국인 7조원 순매도 속 코스피 하락의 반사이익에 불과할 경우, 밤사이 뉴욕 하락 시 내일 코스닥 상승분 반납 가능</li><li>전략: 미국 장전 오후 4~5시 코스닥 포지션 익절 또는 비중 축소 고려, 달러 강세 전환 대비 환헤지 점검</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
+    <div class="checklist"><div class="checklist-item"><div class="check-box"></div><div><div class="title">📌 오늘 밤 필수 확인: 미국 10년물 국채 금리 방향</div><div class="desc">카슈카리 발언 + 핵심 PCE 3.4% 충격이 채권 시장에 선반영됐는지 확인. 10년물이 4.5%를 재돌파하면 내일 코스닥 순환매 되돌림 가능성 급등.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">📌 호르무즈 상황 모니터링: 유가 재급등 여부</div><div class="desc">IMO가 선박 대피 계획을 중단했고 추가 공격 우려가 남아 있음. 국제유가(WTI)가 전일 대비 3% 이상 급등하면 글로벌 인플레 우려 재점화로 위험자산 전반 부정적.</div></div></div><div class="checklist-item"><div class="check-box"></div><div><div class="title">📌 SpaceX 나스닥-100 편입 수급 확인</div><div class="desc">7월 6일 시장 마감 후 QQQ 등 패시브 펀드의 SpaceX 매수 집중 예정. 나스닥 기술주 섹터 단기 수급 이벤트로 활용 가능하나 편입 비중 1% 미만으로 시장 전체 영향은 제한적.</div></div></div></div>
+  </div>
+  <div class="callout"><p>오늘의 핵심 판단: 코스닥 순환매는 '기회'지만, 미국 금리 인상 재개 공포는 그 기회의 유효기간을 오늘 밤 뉴욕 장이 결정한다 — 포지션보다 '출구 전략'을 먼저 설계하라.</p></div>
+</div>
+<footer>데일리 테제 분석 · 경제·투자 (오후) · 본 자료는 투자 권유가 아닙니다</footer>
+</body>
+</html>
