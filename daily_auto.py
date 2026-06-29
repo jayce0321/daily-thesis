@@ -40,10 +40,9 @@ def _resolve_topic():
 TOPIC             = _resolve_topic()
 REPO_DIR          = os.path.dirname(os.path.abspath(__file__))
 IS_CI             = os.environ.get("GITHUB_ACTIONS") == "true"
-# ── 네이버 블로그 환경 변수 ─────────────────────────────────────
-_NAVER_CLIENT_ID     = os.environ.get("NAVER_CLIENT_ID", "")
-_NAVER_CLIENT_SECRET = os.environ.get("NAVER_CLIENT_SECRET", "")
-_NAVER_REFRESH_TOKEN = os.environ.get("NAVER_REFRESH_TOKEN", "")
+# ── 티스토리 블로그 환경 변수 ────────────────────────────────────
+_TISTORY_ACCESS_TOKEN = os.environ.get("TISTORY_ACCESS_TOKEN", "")
+_TISTORY_BLOG_NAME    = os.environ.get("TISTORY_BLOG_NAME", "")
 
 
 KST      = timezone(timedelta(hours=9))
@@ -629,39 +628,11 @@ def _update_sitemap():
     log("sitemap.xml 업데이트")
     return sitemap_path
 
-# ── 네이버 블로그 통합 ───────────────────────────────────────────
-def _naver_get_access_token():
-    """Refresh Token으로 Naver Access Token 발급 (1회 실행당 1번 호출)."""
-    if not (_NAVER_CLIENT_ID and _NAVER_CLIENT_SECRET and _NAVER_REFRESH_TOKEN):
-        return None
-    try:
-        params = urllib.parse.urlencode({
-            "grant_type":    "refresh_token",
-            "client_id":     _NAVER_CLIENT_ID,
-            "client_secret": _NAVER_CLIENT_SECRET,
-            "refresh_token": _NAVER_REFRESH_TOKEN,
-        }).encode("utf-8")
-        req = urllib.request.Request(
-            "https://nid.naver.com/oauth2.0/token",
-            data=params,
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=15) as r:
-            data = json.loads(r.read().decode("utf-8"))
-        if "error" in data:
-            log(f"[NAVER] 토큰 갱신 오류: {data.get('error_description', data.get('error'))}")
-            return None
-        return data.get("access_token")
-    except Exception as e:
-        log(f"[NAVER] 토큰 갱신 실패: {e}")
-        return None
-
-
-def _naver_blog_html(analysis: dict, cfg: dict, page_url: str) -> str:
-    """네이버 블로그용 HTML 본문 생성 (body 내용만, 완전한 페이지 HTML 아님).
-    - XSS 방지: 모든 값 html.escape() 처리
-    - 네이버 블로그 렌더러 호환 태그만 사용 (h2/h3/p/ul/li/table/blockquote/hr)
+# ── 티스토리 블로그 통합 ─────────────────────────────────────────
+def _tistory_blog_html(analysis: dict, cfg: dict, page_url: str) -> str:
+    """티스토리 블로그용 HTML 본문 생성 (body 내용만).
+    - 인라인 스타일로 티스토리 테마와 충돌 방지
+    - 모든 사용자 데이터 html.escape() 처리 (XSS 방지)
     """
     def esc(v):
         return _html.escape(str(v)) if v else ""
@@ -681,100 +652,111 @@ def _naver_blog_html(analysis: dict, cfg: dict, page_url: str) -> str:
 
     # 메트릭 테이블
     rows = "".join(
-        f"<tr><td><b>{esc(m.get('label',''))}</b></td>"
-        f"<td>{esc(m.get('value',''))}</td>"
-        f"<td>{esc(m.get('meaning',''))}</td></tr>"
+        f"<tr><td style='padding:8px 12px;border:1px solid #ddd;'><b>{esc(m.get('label',''))}</b></td>"
+        f"<td style='padding:8px 12px;border:1px solid #ddd;font-weight:700;'>{esc(m.get('value',''))}</td>"
+        f"<td style='padding:8px 12px;border:1px solid #ddd;color:#555;'>{esc(m.get('meaning',''))}</td></tr>"
         for m in metrics if isinstance(m, dict)
     )
     metrics_html = (
-        "<table border=\"1\" style=\"border-collapse:collapse;width:100%;font-size:14px;\">"
-        "<thead><tr style=\"background:#f5f5f5;\"><th>지표</th><th>수치</th><th>의미</th></tr></thead>"
+        "<table style='width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;'>"
+        "<thead><tr style='background:#f8f8f8;'>"
+        "<th style='padding:8px 12px;border:1px solid #ddd;text-align:left;'>지표</th>"
+        "<th style='padding:8px 12px;border:1px solid #ddd;text-align:left;'>수치</th>"
+        "<th style='padding:8px 12px;border:1px solid #ddd;text-align:left;'>의미</th></tr></thead>"
         f"<tbody>{rows}</tbody></table>"
     ) if rows else ""
 
-    sa_pts = "".join(f"<li>{esc(p)}</li>" for p in sa.get("points", []))
-    sb_pts = "".join(f"<li>{esc(p)}</li>" for p in sb.get("points", []))
+    sa_pts = "".join(f"<li style='margin:4px 0;color:#333;'>{esc(p)}</li>" for p in sa.get("points", []))
+    sb_pts = "".join(f"<li style='margin:4px 0;color:#333;'>{esc(p)}</li>" for p in sb.get("points", []))
     cl_items = "".join(
-        f"<li><b>{esc(c.get('title','') if isinstance(c,dict) else c)}</b>"
-        f"{(' — ' + esc(c['desc'])) if isinstance(c,dict) and c.get('desc') else ''}</li>"
+        f"<li style='margin:6px 0;'><b>{esc(c.get('title','') if isinstance(c,dict) else c)}</b>"
+        f"{(' — <span style=\'color:#666;font-size:13px;\'>' + esc(c['desc']) + '</span>') if isinstance(c,dict) and c.get('desc') else ''}</li>"
         for c in checklist
     )
 
-    pages_url_esc = _html.escape(_PAGES_URL)
     page_url_esc  = _html.escape(page_url)
+    pages_url_esc = _html.escape(_PAGES_URL)
 
     return (
-        f"<p><b>{cfg['icon']} {cfg['name']} 데일리 테제 | {TODAY_KR}</b></p>\n"
-        f"<p>※ 이 글은 <a href=\"{page_url_esc}\" target=\"_blank\">JAYCE 데일리 테제</a>에서 자동 발행됩니다.</p>\n"
-        "<hr/>\n"
-        f"<h2>{thesis}</h2>\n"
-        f"<p>{one_ln}</p>\n"
-        "<hr/>\n"
-        "<h3>왜 이게 중요한가</h3>\n"
-        f"<p>{why}</p>\n"
-        "<hr/>\n"
-        "<h3>숫자로 보는 근거</h3>\n"
-        f"{metrics_html}\n"
-        "<hr/>\n"
-        "<h3>시나리오 분기</h3>\n"
-        f"<h4>✅ 시나리오 A: {esc(sa.get('title',''))}</h4>\n"
-        f"<ul>{sa_pts}</ul>\n"
-        f"<h4>⚠️ 시나리오 B: {esc(sb.get('title',''))}</h4>\n"
-        f"<ul>{sb_pts}</ul>\n"
-        "<hr/>\n"
-        "<h3>체크리스트</h3>\n"
-        f"<ul>{cl_items}</ul>\n"
-        "<hr/>\n"
-        f"<blockquote><p><i>{closing}</i></p></blockquote>\n"
-        f"<p>🔗 <a href=\"{page_url_esc}\" target=\"_blank\">전체 분석 보기 (차트·데이터 포함)</a></p>\n"
-        f"<p><a href=\"{pages_url_esc}\" target=\"_blank\">JAYCE 데일리 테제 아카이브</a></p>\n"
-        f"<p>{cfg.get('tg_hashtag','').replace('#','#')}</p>\n"
+        f"<div style='background:#f0f4ff;border-left:4px solid #2367d7;padding:16px 20px;margin:0 0 24px;border-radius:4px;'>"
+        f"<p style='margin:0;font-size:13px;color:#666;'>{cfg['icon']} {cfg['name']} 데일리 테제 | {TODAY_KR}</p>"
+        f"<p style='margin:4px 0 0;font-size:12px;color:#999;'>※ <a href='{page_url_esc}' target='_blank'>JAYCE 데일리 테제</a>에서 자동 발행됩니다.</p>"
+        f"</div>"
+        f"<h2 style='font-size:22px;margin:0 0 12px;line-height:1.4;'>{thesis}</h2>"
+        f"<p style='font-size:16px;color:#333;line-height:1.7;margin:0 0 28px;padding:16px;background:#fafafa;border-radius:4px;'>{one_ln}</p>"
+        f"<h3 style='font-size:16px;border-bottom:2px solid #2367d7;padding-bottom:8px;margin:28px 0 12px;'>왜 이게 중요한가</h3>"
+        f"<p style='font-size:15px;color:#333;line-height:1.8;'>{why}</p>"
+        f"<h3 style='font-size:16px;border-bottom:2px solid #2367d7;padding-bottom:8px;margin:28px 0 12px;'>숫자로 보는 근거</h3>"
+        f"{metrics_html}"
+        f"<h3 style='font-size:16px;border-bottom:2px solid #2367d7;padding-bottom:8px;margin:28px 0 12px;'>시나리오 분기</h3>"
+        f"<div style='display:flex;gap:16px;margin:12px 0;'>"
+        f"<div style='flex:1;border:1px solid #ddd;border-top:3px solid #4caf80;border-radius:4px;padding:16px;'>"
+        f"<p style='margin:0 0 8px;font-size:11px;font-weight:700;color:#4caf80;text-transform:uppercase;letter-spacing:.05em;'>시나리오 A</p>"
+        f"<h4 style='margin:0 0 8px;font-size:14px;'>{esc(sa.get('title',''))}</h4>"
+        f"<ul style='margin:0;padding-left:16px;'>{sa_pts}</ul></div>"
+        f"<div style='flex:1;border:1px solid #ddd;border-top:3px solid #e05c5c;border-radius:4px;padding:16px;'>"
+        f"<p style='margin:0 0 8px;font-size:11px;font-weight:700;color:#e05c5c;text-transform:uppercase;letter-spacing:.05em;'>시나리오 B</p>"
+        f"<h4 style='margin:0 0 8px;font-size:14px;'>{esc(sb.get('title',''))}</h4>"
+        f"<ul style='margin:0;padding-left:16px;'>{sb_pts}</ul></div>"
+        f"</div>"
+        f"<h3 style='font-size:16px;border-bottom:2px solid #2367d7;padding-bottom:8px;margin:28px 0 12px;'>체크리스트</h3>"
+        f"<ul style='margin:0;padding-left:20px;'>{cl_items}</ul>"
+        f"<blockquote style='border-left:3px solid #ccc;margin:24px 0;padding:12px 20px;color:#555;font-style:italic;'>"
+        f"<p style='margin:0;'>{closing}</p></blockquote>"
+        f"<p style='margin:24px 0 8px;'>"
+        f"🔗 <a href='{page_url_esc}' target='_blank' style='color:#2367d7;'>전체 분석 보기 (차트·상세 데이터 포함)</a></p>"
+        f"<p style='margin:0;'><a href='{pages_url_esc}' target='_blank' style='color:#2367d7;'>JAYCE 데일리 테제 아카이브</a></p>"
+        f"<p style='margin:16px 0 0;color:#888;font-size:13px;'>{cfg.get('tg_hashtag','')}</p>"
     )
 
 
-def _post_to_naver_blog(analysis: dict, cfg: dict, page_url: str) -> bool:
-    """네이버 블로그에 포스팅.
-    - 실패해도 예외를 올리지 않음 (텔레그램·GitHub 발행은 이미 완료)
-    - Refresh Token 방식으로 Access Token 자동 갱신
+def _post_to_tistory(analysis: dict, cfg: dict, page_url: str) -> bool:
+    """티스토리 블로그에 포스팅.
+    - Access Token은 만료 없음 (앱 삭제 전까지 유효)
+    - 실패해도 예외를 올리지 않음 (텔레그램·GitHub 발행 이미 완료)
     """
-    access_token = _naver_get_access_token()
-    if not access_token:
-        log("[NAVER] 자격증명 없음 — 블로그 포스팅 스킵 (NAVER_CLIENT_ID/SECRET/REFRESH_TOKEN 설정 필요)")
+    if not (_TISTORY_ACCESS_TOKEN and _TISTORY_BLOG_NAME):
+        log("[TISTORY] 설정 없음 — 포스팅 스킵 (TISTORY_ACCESS_TOKEN/BLOG_NAME 설정 필요)")
         return False
     try:
-        title_str = f"{cfg['icon']} {cfg['name']} 데일리 테제 | {TODAY_KR} — {analysis.get('thesis_title','')}"
-        contents  = _naver_blog_html(analysis, cfg, page_url)
-        # 네이버 태그: 최대 10개, 각 15자 이내
-        raw_tags  = [t[:15] for t in cfg.get("tags", [])][:9] + ["데일리테제"]
-        tags_str  = ",".join(dict.fromkeys(raw_tags))  # 중복 제거
+        title_str = (
+            f"{cfg['icon']} {cfg['name']} 데일리 테제 | {TODAY_KR}"
+            f" — {analysis.get('thesis_title','')}"
+        )
+        contents = _tistory_blog_html(analysis, cfg, page_url)
+        tags_str = ",".join(
+            dict.fromkeys([t[:10] for t in cfg.get("tags", [])][:9] + ["데일리테제"])
+        )
 
         body = urllib.parse.urlencode({
-            "title":    title_str,
-            "contents": contents,
-            "tags":     tags_str,
+            "access_token": _TISTORY_ACCESS_TOKEN,
+            "output":       "json",
+            "blogName":     _TISTORY_BLOG_NAME,
+            "title":        title_str,
+            "content":      contents,
+            "visibility":   "3",   # 3=공개, 0=비공개, 1=보호
+            "tag":          tags_str,
         }).encode("utf-8")
 
         req = urllib.request.Request(
-            "https://openapi.naver.com/blog/writePost.json",
+            "https://www.tistory.com/apis/post/write",
             data=body,
-            headers={
-                "Authorization":  f"Bearer {access_token}",
-                "Content-Type":   "application/x-www-form-urlencoded",
-            },
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
             method="POST",
         )
         with urllib.request.urlopen(req, timeout=20) as r:
             resp = json.loads(r.read().decode("utf-8"))
 
-        if resp.get("resultcode") == "00":
-            blog_url = resp.get("blogUrl", "")
-            log(f"[NAVER] 블로그 포스팅 완료: {blog_url}")
+        ts = resp.get("tistory", {})
+        if str(ts.get("status")) == "200":
+            post_url = ts.get("url", "")
+            log(f"[TISTORY] 포스팅 완료: {post_url}")
             return True
         else:
-            log(f"[NAVER] 포스팅 실패: {resp}")
+            log(f"[TISTORY] 포스팅 실패: {resp}")
             return False
     except Exception as e:
-        log(f"[NAVER] 포스팅 오류 (무시): {e}")
+        log(f"[TISTORY] 포스팅 오류 (무시): {e}")
         return False
 
 
@@ -1131,7 +1113,7 @@ def publish(html_content, analysis, cfg):
 
     # 네이버 블로그 (신규 발행 시만 — _did_push=False면 중복이므로 스킵)
     if _did_push:
-        _post_to_naver_blog(analysis, cfg, page_url)
+        _post_to_tistory(analysis, cfg, page_url)
 
 # ── 메인 ─────────────────────────────────────────────────────
 def main():
