@@ -43,6 +43,9 @@ IS_CI             = os.environ.get("GITHUB_ACTIONS") == "true"
 # ── 티스토리 블로그 환경 변수 ────────────────────────────────────
 _TISTORY_ACCESS_TOKEN = os.environ.get("TISTORY_ACCESS_TOKEN", "")
 _TISTORY_BLOG_NAME    = os.environ.get("TISTORY_BLOG_NAME", "")
+_FRED_API_KEY         = os.environ.get("FRED_API_KEY", "")
+_ECOS_API_KEY         = os.environ.get("ECOS_API_KEY", "")
+_INDEXNOW_KEY         = os.environ.get("INDEXNOW_KEY", "")
 
 
 KST      = timezone(timedelta(hours=9))
@@ -314,7 +317,50 @@ def fetch_news(cfg):
     return articles[:28], source_log
 
 
-def call_claude(news_headlines, cfg):
+def fetch_live_data():
+    """FRED + ECOS 공개 API에서 실시간 경제 수치 수집 (API 키 없으면 빈 리스트 반환)"""
+    results = []
+
+    def _get(url, label):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": _BOT_UA})
+            with urllib.request.urlopen(req, timeout=8) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except Exception as e:
+            log(f"  live_data 스킵 ({label}): {e}")
+            return None
+
+    if _FRED_API_KEY:
+        base = "https://api.stlouisfed.org/fred/series/observations"
+        params = f"&file_type=json&limit=1&sort_order=desc&api_key={_FRED_API_KEY}"
+        for series, label in [("DGS10", "미 10년 국채"), ("EFFR", "연방기금금리"), ("DEXKOUS", "원달러 환율")]:
+            d = _get(f"{base}?series_id={series}{params}", label)
+            if d:
+                obs = (d.get("observations") or [{}])[-1]
+                val = obs.get("value", ".")
+                if val != ".":
+                    results.append(f"{label}: {val} ({obs.get('date','')})")
+
+    if _ECOS_API_KEY:
+        # 한국은행 기준금리 (722Y001 / 0101000)
+        ym = TODAY.replace("-", "")
+        url = (
+            f"https://ecos.bok.or.kr/api/StatisticSearch/{_ECOS_API_KEY}"
+            f"/json/kr/1/1/722Y001/D/{ym[:6]}01/{ym[:6]}31/0101000"
+        )
+        d = _get(url, "ECOS 기준금리")
+        if d:
+            rows = d.get("StatisticSearch", {}).get("row", [])
+            if rows:
+                r = rows[-1]
+                results.append(f"한국 기준금리: {r.get('DATA_VALUE','?')}% ({r.get('TIME','?')})")
+
+    if results:
+        log(f"실시간 데이터 {len(results)}개 수집: {', '.join(results)}")
+    return results
+
+
+def call_claude(news_headlines, cfg, live_data=None):
     log("Claude API 호출 중...")
     parts = []
     for i, a in enumerate(news_headlines):
@@ -393,10 +439,29 @@ def call_claude(news_headlines, cfg):
                     },
                     "description": "체크리스트 2~3개"
                 },
-                "closing": {"type": "string", "description": "마무리 한 줄"}
+                "closing": {"type": "string", "description": "마무리 한 줄"},
+                "confidence": {
+                    "type": "string",
+                    "enum": ["high", "medium", "low"],
+                    "description": "분석 확신도 — high: 뉴스 10건+ 수치 검증 완료, medium: 5~9건 일부 추정, low: 5건 미만 정보 제한적"
+                },
+                "watch_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "date":  {"type": "string", "description": "날짜 또는 '이번 주', '다음 주', '~일' 등"},
+                            "event": {"type": "string", "description": "이벤트명 (예: FOMC 회의, 미 CPI 발표)"},
+                            "why":   {"type": "string", "description": "왜 주목해야 하는가 (1줄)"}
+                        },
+                        "required": ["date", "event", "why"]
+                    },
+                    "description": "다음으로 주목할 이벤트 2~3개 (FOMC·경제지표·국회일정 등)"
+                }
             },
             "required": ["thesis_title", "one_line", "why_important", "metrics",
-                         "scenario_a", "scenario_b", "checklist", "closing"]
+                         "scenario_a", "scenario_b", "checklist", "closing",
+                         "confidence", "watch_list"]
         }
     }
 
@@ -407,7 +472,10 @@ def call_claude(news_headlines, cfg):
         "tool_choice": {"type": "tool", "name": "save_thesis"},
         "messages": [{
             "role": "user",
-            "content": f"{instruction}\n\n수집된 뉴스:\n{headlines_text}"
+            "content": (
+            f"{instruction}\n\n수집된 뉴스:\n{headlines_text}"
+            + (f"\n\n실시간 공식 경제 수치 (FRED/ECOS API):\n" + "\n".join(live_data) if live_data else "")
+        )
         }]
     }).encode("utf-8")
 
@@ -904,6 +972,142 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
     _faq_html        = _build_faq_html(a, cfg)
     _seo_keywords    = _safe(", ".join(cfg["tags"] + [cfg["name"], "데일리테제", "Jayce"]))
 
+    # ── 확신도 배너 ──────────────────────────────────────────────
+    _confidence = a.get("confidence", "high")
+    _confidence_banner = ""
+    if _confidence == "medium":
+        _confidence_banner = (
+            '<div class="conf-banner medium">'
+            '📊 오늘은 뉴스 정보가 <strong>보통 수준</strong>입니다 — 수치 해석에 유의하세요.</div>'
+        )
+    elif _confidence == "low":
+        _confidence_banner = (
+            '<div class="conf-banner low">'
+            '⚠ 오늘은 뉴스 정보가 <strong>제한적</strong>입니다 — 테제는 참고용으로만 활용하세요.</div>'
+        )
+
+    # ── Watch List ───────────────────────────────────────────────
+    _watch_rows = "".join(
+        '<div class="watch-item">'
+        f'<span class="watch-date">{_safe(w.get("date",""))}</span>'
+        '<div class="watch-main">'
+        f'<span class="watch-event">{_safe(w.get("event",""))}</span>'
+        f'<span class="watch-why">{_safe(w.get("why",""))}</span>'
+        '</div></div>'
+        for w in a.get("watch_list", []) if isinstance(w, dict)
+    )
+    _watch_html = (
+        '<div class="section" id="watch-list">'
+        '<div class="section-header">'
+        '<div class="section-number" style="background:var(--accent2)">5</div>'
+        '<h2>Watch List — 다음 주목 포인트</h2></div>'
+        f'<div class="watch-list-wrap">{_watch_rows}</div>'
+        '</div>'
+    ) if _watch_rows else ""
+
+    # ── 읽기 시간 ────────────────────────────────────────────────
+    _char_count = sum(len(str(v)) for v in [
+        a.get("why_important", ""), a.get("one_line", ""), a.get("closing", ""),
+        " ".join(m.get("meaning", "") for m in a.get("metrics", []) if isinstance(m, dict)),
+    ])
+    _read_min = max(1, round(_char_count / 400))
+
+    # ── 소셜 공유 버튼 ───────────────────────────────────────────
+    _enc_url   = urllib.parse.quote(page_url, safe="")
+    _enc_title = urllib.parse.quote(
+        f"데일리 테제 | {_safe(a.get('thesis_title',''))} | {TODAY_KR}", safe="")
+    _share_html = (
+        '<div class="share-row">'
+        '<span class="share-label">공유</span>'
+        f'<a class="share-btn" href="https://twitter.com/intent/tweet?url={_enc_url}&text={_enc_title}"'
+        ' target="_blank" rel="noopener">𝕏 공유</a>'
+        '<button class="share-btn" id="share-native-btn"'
+        ' onclick="shareNative()" style="display:none">공유하기</button>'
+        '</div>'
+    )
+
+    # ── 교차 링크 (오늘의 다른 테제) ────────────────────────────
+    _cross_topics = [
+        ("경제·투자", f"{TODAY}.html", "📊"),
+        ("정치", f"{TODAY}-politics.html", "🏛️"),
+        ("컬처", f"{TODAY}-culture.html", "🎬"),
+        ("경제 (오후)", f"{TODAY}-pm.html", "📊"),
+    ]
+    _cross_cards = "".join(
+        f'<a class="cross-card" href="{fname}">{icon} {name}</a>'
+        for name, fname, icon in _cross_topics
+        if fname != cfg["html_name"]
+    )
+    _cross_html = (
+        '<div class="cross-section">'
+        '<div class="cross-label">오늘의 다른 테제</div>'
+        f'<div class="cross-grid">{_cross_cards}</div>'
+        '</div>'
+    ) if _cross_cards else ""
+
+    # ── 추가 CSS ─────────────────────────────────────────────────
+    _extra_css = (
+        ".conf-banner{display:flex;align-items:flex-start;gap:10px;border-radius:6px;"
+        "padding:12px 18px;margin-bottom:24px;font-size:13px;line-height:1.6;}"
+        ".conf-banner.medium{background:rgba(232,150,58,.07);border:1px solid rgba(232,150,58,.22);color:#b89060;}"
+        ".conf-banner.medium strong{color:#e8963a;}"
+        ".conf-banner.low{background:rgba(224,92,92,.07);border:1px solid rgba(224,92,92,.22);color:#b06060;}"
+        ".conf-banner.low strong{color:#e05c5c;}"
+        ".thesis-meta{display:flex;align-items:center;justify-content:space-between;"
+        "margin-bottom:12px;flex-wrap:wrap;gap:8px;}"
+        ".read-time{font-size:11px;color:var(--muted);}"
+        ".copy-btn{font-size:11px;color:var(--accent2);background:none;border:1px solid var(--border);"
+        "border-radius:4px;padding:4px 10px;cursor:pointer;font-family:inherit;transition:all .15s;}"
+        ".copy-btn:hover{background:var(--surface);}"
+        ".copy-success{color:#4caf80!important;border-color:#4caf80!important;}"
+        ".watch-list-wrap{display:flex;flex-direction:column;background:var(--surface);"
+        "border:1px solid var(--border);border-radius:8px;overflow:hidden;}"
+        ".watch-item{display:flex;align-items:flex-start;gap:16px;padding:14px 20px;"
+        "border-bottom:1px solid var(--border);}"
+        ".watch-item:last-child{border-bottom:none;}"
+        ".watch-date{font-size:11px;font-weight:700;color:var(--accent2);white-space:nowrap;"
+        "min-width:72px;padding-top:2px;font-family:'SF Mono','Consolas',monospace;}"
+        ".watch-main{display:flex;flex-direction:column;gap:3px;}"
+        ".watch-event{font-size:14px;font-weight:600;color:var(--text);}"
+        ".watch-why{font-size:12px;color:var(--muted);}"
+        ".share-row{display:flex;align-items:center;gap:8px;margin-top:28px;flex-wrap:wrap;}"
+        ".share-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-right:4px;}"
+        ".share-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:5px 14px;"
+        "border-radius:4px;text-decoration:none;border:1px solid var(--border);color:var(--text);"
+        "background:var(--surface);cursor:pointer;font-family:inherit;transition:border-color .15s;}"
+        ".share-btn:hover{border-color:var(--muted);}"
+        ".cross-section{margin-top:36px;padding-top:24px;border-top:1px solid var(--border);}"
+        ".cross-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;"
+        "color:var(--muted);margin-bottom:12px;}"
+        ".cross-grid{display:flex;flex-wrap:wrap;gap:8px;}"
+        ".cross-card{display:flex;align-items:center;gap:6px;padding:9px 14px;background:var(--surface);"
+        "border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);"
+        "font-size:13px;transition:border-color .15s;}"
+        ".cross-card:hover{border-color:var(--accent2);color:var(--accent2);}"
+    )
+
+    # ── JS 블록 ──────────────────────────────────────────────────
+    _js_block = (
+        "<script>"
+        "function copyThesis(){"
+        "var el=document.getElementById('thesis-text');"
+        "var t=el?el.innerText:'';"
+        "navigator.clipboard.writeText('「오늘의 테제」 '+t+' — '+location.href)"
+        ".then(function(){"
+        "var b=document.getElementById('copy-btn');"
+        "b.textContent='✓ 복사됨';b.classList.add('copy-success');"
+        "setTimeout(function(){b.textContent='\U0001f4cb 테제 복사';"
+        "b.classList.remove('copy-success');},2000);"
+        "}).catch(function(){});}"
+        "window.addEventListener('DOMContentLoaded',function(){"
+        "if(navigator.share){"
+        "var nb=document.getElementById('share-native-btn');"
+        "if(nb)nb.style.display='inline-flex';}});"
+        "function shareNative(){"
+        "navigator.share({title:document.title,url:location.href}).catch(function(){});}"
+        "</script>"
+    )
+
     # ── 투자 면책 조항 (경제 토픽 상단 표시) ───────────────────
     _disclaimer_html = ""
     if cfg.get("name", "").startswith("경제"):
@@ -1049,7 +1253,9 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
     .source-badges{{display:flex;flex-wrap:wrap;gap:6px;}}
     .src-badge{{font-size:12px;padding:3px 10px;background:var(--surface);border:1px solid var(--border);border-radius:20px;color:var(--muted);}}
     .src-badge em{{font-style:normal;color:var(--accent2);font-weight:600;margin-left:4px;}}
+    {_extra_css}
   </style>
+  {_js_block}
 </head>
 <body>
 <a class="back-link" href="{cfg['index_file']}">← {cfg['name']} 목록</a>
@@ -1065,10 +1271,15 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
   <p class="hero-sub">{a['one_line']}</p>
 </section>
 <div class="container">
+  {_confidence_banner}
   {_disclaimer_html}
+  <div class="thesis-meta">
+    <span class="read-time">약 {_read_min}분 읽기</span>
+    <button class="copy-btn" id="copy-btn" onclick="copyThesis()">📋 테제 복사</button>
+  </div>
   <div class="thesis-block" id="direct-answer">
     <div class="label">오늘의 핵심 테제</div>
-    <p>{a['one_line']}</p>
+    <p id="thesis-text">{a['one_line']}</p>
   </div>
   <div class="section">
     <div class="section-header"><div class="section-number">1</div><h2>왜 이게 중요한가</h2></div>
@@ -1101,9 +1312,12 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
     <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
     <div class="checklist">{checklist_items}</div>
   </div>
+  {_watch_html}
   {_faq_html}
   <div class="callout"><p>{a.get('closing', a.get('one_line', ''))}</p></div>
+  {_share_html}
   {_source_html}
+  {_cross_html}
 </div>
 <footer>{cfg['footer']}</footer>
 </body>
@@ -1170,6 +1384,30 @@ def ensure_index(cfg):
         log(f"인덱스 페이지 생성: {cfg['index_file']}")
 
 # ── 4. 게시 + 알림 ───────────────────────────────────────────
+def _ping_indexnow(page_url):
+    """IndexNow API 핑 — 발행 즉시 Bing·Naver에 URL 알림 (키 없으면 스킵)"""
+    if not _INDEXNOW_KEY:
+        return
+    host = "jayce0321.github.io"
+    body = json.dumps({
+        "host": host,
+        "key": _INDEXNOW_KEY,
+        "keyLocation": f"https://{host}/{_INDEXNOW_KEY}.txt",
+        "urlList": [page_url],
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        "https://api.indexnow.org/indexnow",
+        data=body,
+        headers={"Content-Type": "application/json", "User-Agent": _BOT_UA},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=10) as r:
+            log(f"IndexNow 핑 완료 (HTTP {r.status})")
+    except Exception as e:
+        log(f"IndexNow 핑 실패 (무시): {e}")
+
+
 def publish(html_content, analysis, cfg):
     ensure_index(cfg)
 
@@ -1253,6 +1491,10 @@ def publish(html_content, analysis, cfg):
     log("GitHub Pages 게시 완료")
     log(f"→ {page_url}")
 
+    # IndexNow 핑 (새 발행 시만)
+    if _did_push:
+        _ping_indexnow(page_url)
+
     # Telegram 알림
     channel_id = (
         os.environ.get(cfg["channel_env"])
@@ -1320,8 +1562,15 @@ def main():
         log("⚠️ 뉴스 수집 실패 — 기본 프롬프트로 진행")
         news       = [f"{cfg['name']} 오늘의 주요 동향 분석 필요"]
         source_log = []
+    elif len(news) < 5:
+        log(f"⚠️ 품질 게이트: 뉴스 {len(news)}건 (기준 5건) — Claude가 low 확신도를 반환할 수 있음")
 
-    analysis = call_claude(news, cfg)
+    # 실시간 경제 수치 수집 (경제 토픽만, FRED/ECOS 키 있을 때만)
+    live_data = []
+    if cfg.get("name", "").startswith("경제"):
+        live_data = fetch_live_data()
+
+    analysis = call_claude(news, cfg, live_data=live_data)
     cover_svg, chart_svg = generate_svgs(analysis)
     _page_url = f"{_PAGES_URL}/{cfg['html_name']}"
     html = build_html(analysis, cfg, cover_svg, chart_svg,
