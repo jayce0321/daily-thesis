@@ -1826,6 +1826,10 @@ def main():
             log("⚠️ 이번 주 발행된 테제 없음 — 주간 다이제스트 건너뜀")
             return
         analysis = _call_claude_weekly(articles)
+        # publish() 공통 인터페이스 정규화
+        analysis.setdefault("thesis_title", analysis.get("weekly_title", "주간 다이제스트"))
+        analysis.setdefault("one_line",     analysis.get("key_insight", ""))
+        analysis.setdefault("checklist",    [])
         html = build_weekly_html(analysis, cfg)
         publish(html, analysis, cfg)
         log(f"=== {cfg['name']} 완료 ===")
