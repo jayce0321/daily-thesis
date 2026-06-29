@@ -46,6 +46,7 @@ _TISTORY_BLOG_NAME    = os.environ.get("TISTORY_BLOG_NAME", "")
 _FRED_API_KEY         = os.environ.get("FRED_API_KEY", "")
 _ECOS_API_KEY         = os.environ.get("ECOS_API_KEY", "")
 _INDEXNOW_KEY         = os.environ.get("INDEXNOW_KEY", "")
+_GA4_ID               = os.environ.get("GA4_ID", "")
 
 
 KST      = timezone(timedelta(hours=9))
@@ -1086,6 +1087,19 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
         ".cross-card:hover{border-color:var(--accent2);color:var(--accent2);}"
     )
 
+    # ── GA4 스크립트 ─────────────────────────────────────────────
+    _ga4_script = ""
+    if _GA4_ID:
+        _ga4_script = (
+            f'<script async src="https://www.googletagmanager.com/gtag/js?id={_GA4_ID}"></script>'
+            '<script>'
+            'window.dataLayer=window.dataLayer||[];'
+            'function gtag(){dataLayer.push(arguments);}'
+            'gtag("js",new Date());'
+            f'gtag("config","{_GA4_ID}");'
+            '</script>'
+        )
+
     # ── JS 블록 ──────────────────────────────────────────────────
     _js_block = (
         "<script>"
@@ -1255,6 +1269,7 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
     .src-badge em{{font-style:normal;color:var(--accent2);font-weight:600;margin-left:4px;}}
     {_extra_css}
   </style>
+  {_ga4_script}
   {_js_block}
 </head>
 <body>
