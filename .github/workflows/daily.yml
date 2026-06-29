@@ -4,10 +4,11 @@ on:
   schedule:
     - cron: '0 23 * * 0-4'  # KST 08:00 월~금 (경제+정치+컬처)
     - cron: '0 6 * * 1-5'   # KST 15:00 월~금 (경제만)
+    - cron: '0 9 * * 5'     # KST 18:00 금요일 (주간 다이제스트)
   workflow_dispatch:
     inputs:
       topic:
-        description: '발행할 토픽 (economy / politics / culture / all)'
+        description: '발행할 토픽 (economy / politics / culture / all / weekly)'
         required: false
         default: 'all'
 
@@ -45,10 +46,14 @@ jobs:
             github.event.inputs.topic == 'economy' ||
             github.event.inputs.topic == ''
           ) ||
-          github.event_name == 'schedule'
+          github.event_name == 'schedule' && github.event.schedule != '0 9 * * 5'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          GA4_ID: ${{ secrets.GA4_ID }}
           TOPIC: economy
         run: python daily_auto.py
 
@@ -59,7 +64,7 @@ jobs:
             github.event.inputs.topic == 'economy' ||
             github.event.inputs.topic == ''
           ) ||
-          github.event_name == 'schedule'
+          github.event_name == 'schedule' && github.event.schedule != '0 9 * * 5'
         run: |
           git add -A
           git diff --staged --quiet || git commit -m "경제·투자 데일리 테제 $(date +'%Y.%m.%d %H:%M') [자동]"
@@ -76,6 +81,8 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          GA4_ID: ${{ secrets.GA4_ID }}
           TOPIC: politics
         run: python daily_auto.py
 
@@ -103,6 +110,8 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          GA4_ID: ${{ secrets.GA4_ID }}
           TOPIC: culture
         run: python daily_auto.py
 
@@ -116,5 +125,28 @@ jobs:
         run: |
           git add -A
           git diff --staged --quiet || git commit -m "컬처 데일리 테제 $(date +'%Y.%m.%d') [자동]"
+          git pull --rebase origin main
+          git push
+
+      # ── 주간 다이제스트 (금요일 18:00 KST) ───────────────────
+      - name: 주간 다이제스트 생성
+        if: >
+          github.event_name == 'workflow_dispatch' && github.event.inputs.topic == 'weekly' ||
+          github.event.schedule == '0 9 * * 5'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          GA4_ID: ${{ secrets.GA4_ID }}
+          TOPIC: weekly
+        run: python daily_auto.py
+
+      - name: 주간 다이제스트 커밋 & 푸시
+        if: >
+          github.event_name == 'workflow_dispatch' && github.event.inputs.topic == 'weekly' ||
+          github.event.schedule == '0 9 * * 5'
+        run: |
+          git add -A
+          git diff --staged --quiet || git commit -m "주간 다이제스트 $(date +'%Y-W%V') [자동]"
           git pull --rebase origin main
           git push
