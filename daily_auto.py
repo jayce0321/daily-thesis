@@ -177,47 +177,23 @@ _DIRECT_RSS = {
     ],
 }
 
+_BOT_UA = "JAYCE-ThesisBot/1.0 (+https://jayce0321.github.io/daily-thesis)"
+
 _CRAWL_HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                  "AppleWebKit/537.36 (KHTML, like Gecko) "
-                  "Chrome/124.0.0.0 Safari/537.36",
+    "User-Agent": _BOT_UA,
     "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept": "application/rss+xml, application/xml, text/xml, */*",
 }
 
 
-def _fetch_body(url, max_chars=900):
-    """기사 URL 본문 추출. 실패 시 빈 문자열."""
-    if not url or "news.google.com" in url:
-        return ""
-    try:
-        from bs4 import BeautifulSoup
-        import re as _re
-        req = urllib.request.Request(url, headers=_CRAWL_HEADERS)
-        with urllib.request.urlopen(req, timeout=8) as r:
-            raw = r.read()
-        enc = r.headers.get_content_charset() or "utf-8"
-        html = raw.decode(enc, errors="replace")
-        soup = BeautifulSoup(html, "html.parser")
-        for tag in soup(["script", "style", "nav", "header", "footer",
-                          "aside", "figure", "noscript", "iframe", "form"]):
-            tag.decompose()
-        body = soup.find("article") or soup.find("main") or soup.body
-        if not body:
-            return ""
-        text = _re.sub(r"\s+", " ", body.get_text(separator=" ")).strip()
-        return text[:max_chars]
-    except Exception:
-        return ""
-
-
 def _parse_direct_rss(rss_url, limit):
-    """직접 URL RSS 파싱 → [{title, url, body}] 반환."""
+    """직접 URL RSS 파싱 → [{title, url, desc}] 반환.
+    RSS 피드가 명시적으로 제공하는 description만 사용 (본문 크롤링 없음).
+    """
     import re as _re
     results = []
     try:
-        req = urllib.request.Request(
-            rss_url, headers={"User-Agent": "Mozilla/5.0"})
+        req = urllib.request.Request(rss_url, headers={"User-Agent": _BOT_UA})
         with urllib.request.urlopen(req, timeout=10) as r:
             raw = r.read().decode("utf-8", errors="replace")
         items = _re.findall(r'<item>(.*?)</item>', raw, _re.DOTALL)
@@ -236,7 +212,14 @@ def _parse_direct_rss(rss_url, limit):
                 if m and m.group(1).strip().startswith("http"):
                     url = m.group(1).strip()
                     break
-            results.append({"title": title, "url": url, "body": ""})
+            # RSS 피드가 제공하는 description (저작권 문제 없는 공개 데이터)
+            d = _re.search(
+                r'<description>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</description>',
+                item, _re.DOTALL)
+            desc = ""
+            if d:
+                desc = _re.sub(r'<[^>]+>', '', d.group(1)).strip()[:200]
+            results.append({"title": title, "url": url, "desc": desc})
             if len(results) >= limit:
                 break
     except Exception as e:
@@ -246,14 +229,20 @@ def _parse_direct_rss(rss_url, limit):
 
 # ── 1. 뉴스 수집 ─────────────────────────────────────────────
 def fetch_news(cfg):
+    """RSS 피드 공개 데이터만 수집 (기사 본문 크롤링 없음).
+    반환: (articles, source_log)
+      articles   — [{title, url, desc}] 최대 28건
+      source_log — [(source_name, count), ...] 출처별 건수
+    """
     log("뉴스 수집 중...")
     import re as _re
 
     seen = set()
-    articles = []   # {title, url, body, desc}
+    articles   = []
+    source_log = []   # (source_name, count)
 
-    # ① 신뢰 RSS (직접 URL → 본문 크롤링)
-    topic_key = TOPIC  # "economy" | "politics" | "culture"
+    # ① 신뢰 RSS (언론사가 직접 배포하는 피드 — 제목+description 사용)
+    topic_key = TOPIC
     for source_name, rss_url, limit in _DIRECT_RSS.get(topic_key, []):
         items = _parse_direct_rss(rss_url, limit)
         added = 0
@@ -263,16 +252,12 @@ def fetch_news(cfg):
             seen.add(art["title"])
             articles.append(art)
             added += 1
+        if added:
+            source_log.append((source_name, added))
         log(f"  [{source_name}] {added}건")
 
-    # 본문 크롤링
-    log(f"  → 본문 크롤링 ({len(articles)}건)...")
-    ok = 0
-    for art in articles:
-        art["body"] = _fetch_body(art["url"])
-        if art["body"]:
-            ok += 1
-    log(f"  → 본문 확보: {ok}/{len(articles)}건")
+    desc_count = sum(1 for a in articles if a.get("desc"))
+    log(f"  → RSS description 확보: {desc_count}/{len(articles)}건")
 
     # ② Google News RSS (토픽별 쿼리 → 제목+desc 보완)
     topic_queries = cfg.get("queries", [])
@@ -282,6 +267,7 @@ def fetch_news(cfg):
     ]
     all_queries = [(q, "ko") for q in topic_queries] + common_queries
 
+    gnews_added = 0
     for q, lang in all_queries:
         try:
             encoded = urllib.parse.quote(q)
@@ -291,8 +277,7 @@ def fetch_news(cfg):
             else:
                 rss_url = (f"https://news.google.com/rss/search"
                            f"?q={encoded}&hl=ko&gl=KR&ceid=KR:ko")
-            req = urllib.request.Request(
-                rss_url, headers={"User-Agent": "Mozilla/5.0"})
+            req = urllib.request.Request(rss_url, headers={"User-Agent": _BOT_UA})
             with urllib.request.urlopen(req, timeout=10) as r:
                 raw = r.read().decode("utf-8")
 
@@ -309,8 +294,7 @@ def fetch_news(cfg):
                         r'<description>(.*?)</description>', item)
                 if t_m:
                     title = t_m.group(1).strip()
-                    title = _re.sub(
-                        r'\s*-\s*[^-]{2,30}$', '', title).strip()
+                    title = _re.sub(r'\s*-\s*[^-]{2,30}$', '', title).strip()
                     if title in seen or len(title) < 8:
                         continue
                     seen.add(title)
@@ -318,12 +302,16 @@ def fetch_news(cfg):
                     if d_m:
                         desc = _re.sub(
                             r'<[^>]+>', '', d_m.group(1)).strip()[:120]
-                    articles.append({"title": title, "url": "", "body": "", "desc": desc})
+                    articles.append({"title": title, "url": "", "desc": desc})
+                    gnews_added += 1
         except Exception as e:
             log(f"  [{q[:18]}] 수집 오류: {e}")
 
-    log(f"뉴스 총 {len(articles)}건 수집 완료")
-    return articles[:28]
+    if gnews_added:
+        source_log.append(("Google News", gnews_added))
+
+    log(f"뉴스 총 {len(articles)}건 수집 완료 (소스 {len(source_log)}개)")
+    return articles[:28], source_log
 
 
 def call_claude(news_headlines, cfg):
@@ -345,13 +333,13 @@ def call_claude(news_headlines, cfg):
     headlines_text = "\n\n".join(parts)
 
     instruction = cfg["claude_instruction"].format(today_kr=TODAY_KR)
-    # 본문 확보 기사가 있으면 숫자 신뢰도 강조
-    body_count = sum(1 for a in news_headlines
-                     if isinstance(a, dict) and a.get("body"))
-    if body_count > 0:
+    # RSS description이 있는 기사는 수치 신뢰도 강조
+    desc_count = sum(1 for a in news_headlines
+                     if isinstance(a, dict) and a.get("desc"))
+    if desc_count > 0:
         instruction += (
-            f"\n\n※ {body_count}개 기사는 본문이 포함되어 있습니다. "
-            "metrics의 수치는 반드시 본문에서 확인된 것만 사용하고, "
+            f"\n\n※ {desc_count}개 기사는 RSS 요약문이 포함되어 있습니다. "
+            "metrics의 수치는 반드시 기사 정보에서 확인된 것만 사용하고, "
             "없으면 '확인 필요'로 표기하세요."
         )
 
@@ -906,7 +894,7 @@ def _build_faq_html(a: dict, cfg: dict) -> str:
     )
 
 
-def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
+def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None):
     if not page_url:
         page_url = f"https://jayce0321.github.io/daily-thesis/{cfg['html_name']}"
     _seo_desc = _safe(a.get("one_line", "")[:150])
@@ -914,6 +902,32 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
     _json_ld_scripts = _build_json_ld(a, cfg, page_url)
     _faq_html        = _build_faq_html(a, cfg)
     _seo_keywords    = _safe(", ".join(cfg["tags"] + [cfg["name"], "데일리테제", "Jayce"]))
+
+    # ── 투자 면책 조항 (경제 토픽 상단 표시) ───────────────────
+    _disclaimer_html = ""
+    if cfg.get("name", "").startswith("경제"):
+        _disclaimer_html = (
+            '<div class="disclaimer">'
+            '<span class="disclaimer-icon">⚠</span>'
+            '<span>본 분석은 공개 뉴스 정보를 바탕으로 한 <strong>참고 자료</strong>이며, '
+            '<strong>투자 권유가 아닙니다.</strong> '
+            '투자 결정에 따른 책임은 투자자 본인에게 있습니다.</span>'
+            '</div>'
+        )
+
+    # ── 분석 기반 소스 섹션 ─────────────────────────────────────
+    _source_html = ""
+    if source_log:
+        badges = "".join(
+            f'<span class="src-badge">{_safe(name)} <em>{cnt}건</em></span>'
+            for name, cnt in source_log
+        )
+        _source_html = (
+            f'<div class="source-section">'
+            f'<span class="source-label">분석 기반 소스</span>'
+            f'<div class="source-badges">{badges}</div>'
+            f'</div>'
+        )
     metrics_rows = "".join(
         f"<tr><td>{_safe(m.get('label',''))}</td>"
         f"<td>{_safe(m.get('value',''))}</td>"
@@ -1026,6 +1040,14 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
     .faq-q{{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:8px;display:block;}}
     .faq-a{{font-size:13px;color:#8a9ab8;line-height:1.75;margin:0;display:block;}}
     .section-number.q-badge{{background:var(--accent2);font-size:11px;font-weight:800;}}
+    .disclaimer{{display:flex;align-items:flex-start;gap:10px;background:rgba(232,150,58,.07);border:1px solid rgba(232,150,58,.22);border-radius:6px;padding:12px 18px;margin-bottom:28px;font-size:13px;color:#b89060;line-height:1.6;}}
+    .disclaimer strong{{color:#e8963a;}}
+    .disclaimer-icon{{flex-shrink:0;font-size:15px;margin-top:1px;}}
+    .source-section{{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:16px 0;border-top:1px solid var(--border);margin-top:40px;}}
+    .source-label{{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap;}}
+    .source-badges{{display:flex;flex-wrap:wrap;gap:6px;}}
+    .src-badge{{font-size:12px;padding:3px 10px;background:var(--surface);border:1px solid var(--border);border-radius:20px;color:var(--muted);}}
+    .src-badge em{{font-style:normal;color:var(--accent2);font-weight:600;margin-left:4px;}}
   </style>
 </head>
 <body>
@@ -1042,6 +1064,7 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
   <p class="hero-sub">{a['one_line']}</p>
 </section>
 <div class="container">
+  {_disclaimer_html}
   <div class="thesis-block" id="direct-answer">
     <div class="label">오늘의 핵심 테제</div>
     <p>{a['one_line']}</p>
@@ -1079,6 +1102,7 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
   </div>
   {_faq_html}
   <div class="callout"><p>{a.get('closing', a.get('one_line', ''))}</p></div>
+  {_source_html}
 </div>
 <footer>{cfg['footer']}</footer>
 </body>
@@ -1289,16 +1313,18 @@ def main():
         print("❌ ANTHROPIC_API_KEY 환경변수가 없습니다.")
         sys.exit(1)
 
-    cfg  = TOPIC_CONFIG[TOPIC]
-    news = fetch_news(cfg)
+    cfg              = TOPIC_CONFIG[TOPIC]
+    news, source_log = fetch_news(cfg)
     if not news:
         log("⚠️ 뉴스 수집 실패 — 기본 프롬프트로 진행")
-        news = [f"{cfg['name']} 오늘의 주요 동향 분석 필요"]
+        news       = [f"{cfg['name']} 오늘의 주요 동향 분석 필요"]
+        source_log = []
 
     analysis = call_claude(news, cfg)
     cover_svg, chart_svg = generate_svgs(analysis)
     _page_url = f"{_PAGES_URL}/{cfg['html_name']}"
-    html = build_html(analysis, cfg, cover_svg, chart_svg, page_url=_page_url)
+    html = build_html(analysis, cfg, cover_svg, chart_svg,
+                      page_url=_page_url, source_log=source_log)
     publish(html, analysis, cfg)
 
     log(f"=== {cfg['name']} 완료 ===")
