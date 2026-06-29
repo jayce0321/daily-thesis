@@ -762,11 +762,158 @@ def _post_to_tistory(analysis: dict, cfg: dict, page_url: str) -> bool:
 
 
 
+# ── AEO/GEO 구조화 데이터 ────────────────────────────────────────
+def _build_json_ld(a: dict, cfg: dict, page_url: str) -> str:
+    """Article + FAQPage + BreadcrumbList JSON-LD 생성 (GEO-16 표준)"""
+    thesis_title = a.get("thesis_title", "")
+    one_line     = a.get("one_line", "")
+    why          = a.get("why_important", "")
+    metrics      = a.get("metrics", [])
+    sa           = a.get("scenario_a", {}) or {}
+    sb           = a.get("scenario_b", {}) or {}
+    checklist    = a.get("checklist", [])
+    if isinstance(sa, str): sa = {}
+    if isinstance(sb, str): sb = {}
+
+    faq_items = [{
+        "@type": "Question",
+        "name": f"오늘의 {cfg['name']} 핵심 테제는 무엇인가?",
+        "acceptedAnswer": {"@type": "Answer", "text": one_line},
+    }]
+    if why:
+        faq_items.append({
+            "@type": "Question",
+            "name": "왜 이 분석이 중요한가?",
+            "acceptedAnswer": {"@type": "Answer", "text": why[:500]},
+        })
+    if metrics:
+        m_text = " | ".join(
+            f"{m.get('label','')}: {m.get('value','')} ({m.get('meaning','')})"
+            for m in metrics[:4] if isinstance(m, dict)
+        )
+        faq_items.append({
+            "@type": "Question",
+            "name": "오늘의 핵심 지표와 수치는 무엇인가?",
+            "acceptedAnswer": {"@type": "Answer", "text": m_text},
+        })
+    if isinstance(sa, dict) and sa.get("title"):
+        pts = "; ".join(sa.get("points", [])[:2])
+        faq_items.append({
+            "@type": "Question",
+            "name": "상승(긍정) 시나리오의 조건은 무엇인가?",
+            "acceptedAnswer": {"@type": "Answer",
+                               "text": sa["title"] + (f" — {pts}" if pts else "")},
+        })
+    if isinstance(sb, dict) and sb.get("title"):
+        pts = "; ".join(sb.get("points", [])[:2])
+        faq_items.append({
+            "@type": "Question",
+            "name": "하락(리스크) 시나리오의 위험 요인은 무엇인가?",
+            "acceptedAnswer": {"@type": "Answer",
+                               "text": sb["title"] + (f" — {pts}" if pts else "")},
+        })
+    for c in checklist[:2]:
+        if isinstance(c, dict) and c.get("title") and c.get("desc"):
+            faq_items.append({
+                "@type": "Question",
+                "name": f"{c['title']}을(를) 어떻게 확인해야 하나?",
+                "acceptedAnswer": {"@type": "Answer", "text": c["desc"]},
+            })
+
+    article_ld = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": thesis_title,
+        "description": one_line[:160],
+        "datePublished": TODAY,
+        "dateModified": TODAY,
+        "author": {"@type": "Person", "name": "Jayce"},
+        "publisher": {"@type": "Organization", "name": "JAYCE 데일리 테제", "url": _PAGES_URL},
+        "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
+        "about": [{"@type": "Thing", "name": t} for t in cfg.get("tags", [])],
+        "speakable": {"@type": "SpeakableSpecification",
+                      "cssSelector": ["#direct-answer", "#faq-section"]},
+        "inLanguage": "ko",
+    }
+    faq_ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq_items}
+    breadcrumb_ld = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1,
+             "name": "JAYCE 데일리 테제", "item": _PAGES_URL},
+            {"@type": "ListItem", "position": 2,
+             "name": cfg["name"], "item": f"{_PAGES_URL}/{cfg['index_file']}"},
+            {"@type": "ListItem", "position": 3,
+             "name": thesis_title, "item": page_url},
+        ],
+    }
+
+    def _ld(obj):
+        return (f'<script type="application/ld+json">\n'
+                f'{json.dumps(obj, ensure_ascii=False, indent=2)}\n'
+                f'</script>')
+
+    return "\n".join([_ld(article_ld), _ld(faq_ld), _ld(breadcrumb_ld)])
+
+
+def _build_faq_html(a: dict, cfg: dict) -> str:
+    """AEO/GEO 노출용 FAQ 섹션 HTML (AI 엔진 직접 인용 최적화)"""
+    one_line  = a.get("one_line", "")
+    why       = a.get("why_important", "")
+    metrics   = a.get("metrics", [])
+    sa        = a.get("scenario_a", {}) or {}
+    sb        = a.get("scenario_b", {}) or {}
+    checklist = a.get("checklist", [])
+    if isinstance(sa, str): sa = {}
+    if isinstance(sb, str): sb = {}
+
+    faqs = [(f"오늘의 {cfg['name']} 핵심 테제는?", one_line)]
+    if why:
+        faqs.append(("왜 이 분석이 중요한가?", why[:250]))
+    if metrics:
+        m_text = " · ".join(
+            f"{m.get('label','')}: {m.get('value','')}"
+            for m in metrics[:3] if isinstance(m, dict)
+        )
+        faqs.append(("오늘의 핵심 수치는?", m_text))
+    if isinstance(sa, dict) and sa.get("title"):
+        pts = "; ".join(sa.get("points", [])[:2])
+        faqs.append(("상승 시나리오는?",
+                     sa["title"] + (f" — {pts}" if pts else "")))
+    if isinstance(sb, dict) and sb.get("title"):
+        pts = "; ".join(sb.get("points", [])[:2])
+        faqs.append(("리스크 시나리오는?",
+                     sb["title"] + (f" — {pts}" if pts else "")))
+    for c in checklist[:2]:
+        if isinstance(c, dict) and c.get("title") and c.get("desc"):
+            faqs.append((f"{c['title']}은 왜 중요한가?", c["desc"]))
+
+    items_html = "".join(
+        f'<div class="faq-item">'
+        f'<dt class="faq-q">{_safe(q)}</dt>'
+        f'<dd class="faq-a">{_safe(ans)}</dd>'
+        f'</div>'
+        for q, ans in faqs
+    )
+    return (
+        f'<div id="faq-section" class="section">\n'
+        f'  <div class="section-header">'
+        f'<div class="section-number">Q</div>'
+        f'<h2>자주 묻는 질문</h2></div>\n'
+        f'  <dl class="faq-list">{items_html}</dl>\n'
+        f'</div>'
+    )
+
+
 def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
     if not page_url:
         page_url = f"https://jayce0321.github.io/daily-thesis/{cfg['html_name']}"
     _seo_desc = _safe(a.get("one_line", "")[:150])
     _seo_title = _safe(f"데일리 테제 | {cfg['name']} | {TODAY_KR}")
+    _json_ld_scripts = _build_json_ld(a, cfg, page_url)
+    _faq_html        = _build_faq_html(a, cfg)
+    _seo_keywords    = _safe(", ".join(cfg["tags"] + [cfg["name"], "데일리테제", "Jayce"]))
     metrics_rows = "".join(
         f"<tr><td>{_safe(m.get('label',''))}</td>"
         f"<td>{_safe(m.get('value',''))}</td>"
@@ -809,6 +956,9 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="{_seo_title}"/>
   <meta name="twitter:description" content="{_seo_desc}"/>
+  <meta name="keywords" content="{_seo_keywords}"/>
+  <meta name="author" content="Jayce"/>
+  {_json_ld_scripts}
   <style>
     :root{{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
       --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
@@ -870,6 +1020,12 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
     .chart-wrap svg{{width:100%;height:auto;display:block}}
     .back-link{{display:inline-block;margin:24px 32px 0;font-size:13px;color:var(--muted);text-decoration:none;}}
     .back-link:hover{{color:var(--accent)}}
+    .faq-list{{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:0;padding:0;list-style:none;}}
+    .faq-item{{padding:18px 22px;border-bottom:1px solid var(--border);}}
+    .faq-item:last-child{{border-bottom:none;}}
+    .faq-q{{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:8px;display:block;}}
+    .faq-a{{font-size:13px;color:#8a9ab8;line-height:1.75;margin:0;display:block;}}
+    .section-number.q-badge{{background:var(--accent2);font-size:11px;font-weight:800;}}
   </style>
 </head>
 <body>
@@ -886,7 +1042,7 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
   <p class="hero-sub">{a['one_line']}</p>
 </section>
 <div class="container">
-  <div class="thesis-block">
+  <div class="thesis-block" id="direct-answer">
     <div class="label">오늘의 핵심 테제</div>
     <p>{a['one_line']}</p>
   </div>
@@ -921,6 +1077,7 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
     <div class="section-header"><div class="section-number">4</div><h2>체크리스트</h2></div>
     <div class="checklist">{checklist_items}</div>
   </div>
+  {_faq_html}
   <div class="callout"><p>{a.get('closing', a.get('one_line', ''))}</p></div>
 </div>
 <footer>{cfg['footer']}</footer>
@@ -935,6 +1092,9 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
   <meta name="google-site-verification" content="LqVw-ScH1iEw7FKHSwyzzlYH2CZnQ_1TOmVCP8PHxMw"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{index_title}}</title>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"JAYCE 데일리 테제","url":"https://jayce0321.github.io/daily-thesis","description":"경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce","inLanguage":"ko","publisher":{"@type":"Person","name":"Jayce"}}
+  </script>
   <style>
     :root{{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;--accent:#e8b84b;--text:#e2e6f0;--muted:#7a8299;}}
     *{{box-sizing:border-box;margin:0;padding:0}}
