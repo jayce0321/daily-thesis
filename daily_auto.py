@@ -689,6 +689,20 @@ def _update_sitemap():
             f"  </url>"
         )
 
+    # 태그 인덱스 페이지
+    tag_dir_path = os.path.join(REPO_DIR, "tag")
+    if os.path.isdir(tag_dir_path):
+        for tf in sorted(os.listdir(tag_dir_path)):
+            if tf.endswith(".html"):
+                url_entries.append(
+                    f"  <url>\n"
+                    f"    <loc>{_PAGES_URL}/tag/{_html.escape(tf)}</loc>\n"
+                    f"    <lastmod>{TODAY}</lastmod>\n"
+                    f"    <changefreq>weekly</changefreq>\n"
+                    f"    <priority>0.6</priority>\n"
+                    f"  </url>"
+                )
+
     sitemap_xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -1645,6 +1659,144 @@ def build_weekly_html(a, cfg):
 </html>"""
 
 
+def _update_tag_pages():
+    """태그별 인덱스 페이지 자동 생성 → tag/{태그명}.html + tag/index.html"""
+    import re as _re
+
+    _suffix_to_topic = {"": "경제·투자", "-politics": "정치", "-culture": "컬처", "-pm": "경제·투자 (오후)"}
+    tag_map = {}  # {tag: [article_dict, ...]}
+
+    for fname in sorted(os.listdir(REPO_DIR), reverse=True):
+        m = _re.match(r'^(\d{4}-\d{2}-\d{2})(|-politics|-culture|-pm)\.html$', fname)
+        if not m:
+            continue
+        try:
+            with open(os.path.join(REPO_DIR, fname), encoding="utf-8") as f:
+                raw = f.read()
+            tags = _re.findall(r'<span class="tag">([^<]+)</span>', raw)
+            if not tags:
+                continue
+            h1 = _re.search(r'<h1[^>]*>(.*?)</h1>', raw, _re.DOTALL)
+            title = _re.sub(r'<[^>]+>', '', h1.group(1)).strip() if h1 else ""
+            tblock = _re.search(r'id="thesis-text"[^>]*>(.*?)</p>', raw, _re.DOTALL)
+            one_line = (_re.sub(r'<[^>]+>', '', tblock.group(1)).strip()[:60] + "…") if tblock else ""
+            art = {
+                "date":     m.group(1),
+                "topic":    _suffix_to_topic.get(m.group(2), "기타"),
+                "title":    title,
+                "one_line": one_line,
+                "url":      f"../{fname}",
+            }
+            for tag in tags:
+                tag = tag.strip()
+                tag_map.setdefault(tag, []).append(art)
+        except Exception as e:
+            log(f"  태그 스캔 스킵 ({fname}): {e}")
+
+    if not tag_map:
+        return []
+
+    tag_dir = os.path.join(REPO_DIR, "tag")
+    os.makedirs(tag_dir, exist_ok=True)
+
+    def _ga4():
+        if not _GA4_ID:
+            return ""
+        return (
+            f'<script async src="https://www.googletagmanager.com/gtag/js?id={_GA4_ID}"></script>'
+            '<script>window.dataLayer=window.dataLayer||[];'
+            'function gtag(){dataLayer.push(arguments);}'
+            'gtag("js",new Date());'
+            f'gtag("config","{_GA4_ID}");</script>'
+        )
+
+    _common_css = (
+        ":root{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;--accent:#e8b84b;--text:#e2e6f0;--muted:#7a8299;}"
+        "*{box-sizing:border-box;margin:0;padding:0}"
+        "body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;min-height:100vh;}"
+        "header{padding:48px 40px 32px;border-bottom:1px solid var(--border);}"
+        "header h1{font-size:22px;font-weight:700;}"
+        "header p{font-size:13px;color:var(--muted);margin-top:6px;}"
+        ".eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}"
+        ".back-link{display:inline-block;margin:24px 40px 0;font-size:13px;color:var(--muted);text-decoration:none;}"
+        ".back-link:hover{color:var(--accent)}"
+        ".container{max-width:760px;margin:0 auto;padding:40px 32px;}"
+        ".post-list{display:flex;flex-direction:column;gap:1px;}"
+        ".post-item{display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .15s;}"
+        ".post-item:hover{color:var(--accent);}"
+        ".post-title{font-size:15px;font-weight:600;}"
+        ".post-sub{font-size:12px;color:var(--muted);margin-top:4px;}"
+        ".post-date{font-size:12px;color:var(--muted);white-space:nowrap;margin-left:24px;}"
+        ".tag-grid{display:flex;flex-wrap:wrap;gap:10px;}"
+        ".tag-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--surface);border:1px solid var(--border);border-radius:20px;text-decoration:none;color:var(--text);font-size:13px;transition:border-color .15s;}"
+        ".tag-chip:hover{border-color:var(--accent);color:var(--accent);}"
+        ".tag-chip em{font-style:normal;color:var(--muted);font-size:11px;}"
+        "footer{text-align:center;padding:32px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}"
+    )
+
+    # ── 태그별 개별 페이지 ───────────────────────────────────────
+    for tag, arts in tag_map.items():
+        items = "".join(
+            f'<a class="post-item" href="{a["url"]}">'
+            f'<div><div class="post-title">{_safe(a["title"])}</div>'
+            f'<div class="post-sub">{_safe(a["topic"])} · {_safe(a["one_line"])}</div></div>'
+            f'<div class="post-date">{_safe(a["date"])}</div></a>'
+            for a in arts
+        )
+        html = (
+            "<!DOCTYPE html><html lang='ko'><head>"
+            "<meta charset='UTF-8'/>"
+            "<meta name='viewport' content='width=device-width, initial-scale=1.0'/>"
+            f"<title>#{_safe(tag)} — JAYCE 데일리 테제</title>"
+            f"<meta name='description' content='#{_safe(tag)} 태그가 붙은 데일리 테제 모음'/>"
+            f"<link rel='canonical' href='{_PAGES_URL}/tag/{_safe(tag)}.html'/>"
+            f"{_ga4()}"
+            f"<style>{_common_css}</style>"
+            "</head><body>"
+            "<a class='back-link' href='../index.html'>← 경제·투자 목록</a>"
+            "<header>"
+            "<div class='eyebrow'>태그 아카이브</div>"
+            f"<h1>#{_safe(tag)}</h1>"
+            f"<p>{len(arts)}개 테제</p>"
+            "</header>"
+            f"<div class='container'><div class='post-list'>{items}</div></div>"
+            f"<footer>JAYCE 데일리 테제 · #{_safe(tag)} · by Jayce</footer>"
+            "</body></html>"
+        )
+        with open(os.path.join(tag_dir, f"{tag}.html"), "w", encoding="utf-8") as f:
+            f.write(html)
+
+    # ── tag/index.html — 전체 태그 목록 ─────────────────────────
+    chips = "".join(
+        f'<a class="tag-chip" href="{_safe(t)}.html">#{_safe(t)} <em>{len(a)}</em></a>'
+        for t, a in sorted(tag_map.items(), key=lambda x: -len(x[1]))
+    )
+    idx_html = (
+        "<!DOCTYPE html><html lang='ko'><head>"
+        "<meta charset='UTF-8'/>"
+        "<meta name='viewport' content='width=device-width, initial-scale=1.0'/>"
+        "<title>태그 목록 — JAYCE 데일리 테제</title>"
+        "<meta name='description' content='JAYCE 데일리 테제 전체 태그 목록'/>"
+        f"<link rel='canonical' href='{_PAGES_URL}/tag/'/>"
+        f"{_ga4()}"
+        f"<style>{_common_css}</style>"
+        "</head><body>"
+        "<a class='back-link' href='../index.html'>← 경제·투자 목록</a>"
+        "<header>"
+        "<h1>태그 목록</h1>"
+        f"<p>{len(tag_map)}개 태그 · JAYCE 데일리 테제</p>"
+        "</header>"
+        f"<div class='container'><div class='tag-grid'>{chips}</div></div>"
+        "<footer>JAYCE 데일리 테제 · 태그 아카이브 · by Jayce</footer>"
+        "</body></html>"
+    )
+    with open(os.path.join(tag_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(idx_html)
+
+    log(f"태그 인덱스 생성: {len(tag_map)}개 태그")
+    return True  # git add tag/ 로 일괄 처리
+
+
 def _ping_indexnow(page_url):
     """IndexNow API 핑 — 발행 즉시 Bing·Naver에 URL 알림 (키 없으면 스킵)"""
     if not _INDEXNOW_KEY:
@@ -1706,11 +1858,14 @@ def publish(html_content, analysis, cfg):
     # page_url은 피드/sitemap에도 사용하므로 git 처리 전에 확정
     page_url = f"{_PAGES_URL}/{cfg['html_name']}"
 
-    # RSS 피드 + sitemap 업데이트 (git add 전에 파일 생성)
+    # RSS 피드 + sitemap + 태그 인덱스 업데이트 (git add 전에 파일 생성)
     _update_feed(analysis, cfg, page_url)
+    _tag_updated = _update_tag_pages()
     _update_sitemap()
 
     _extra_files = ["feed.xml", "sitemap.xml"]
+    if _tag_updated:
+        _extra_files.append("tag/")
 
     _did_push = False  # 실제로 새 커밋이 push됐는지 추적 (Naver 중복 방지)
 
@@ -1728,6 +1883,7 @@ def publish(html_content, analysis, cfg):
             with open(index_path, "w", encoding="utf-8") as f:
                 f.write(idx)
         _update_feed(analysis, cfg, page_url)
+        _update_tag_pages()
         _update_sitemap()
         subprocess.run(["git", "add", cfg["html_name"], cfg["index_file"]] + _extra_files, check=True)
         staged = subprocess.run(["git", "diff", "--staged", "--quiet"])
