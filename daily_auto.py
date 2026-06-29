@@ -499,7 +499,137 @@ def generate_svgs(analysis):
 def _safe(val):
     return _html.escape(str(val)) if val is not None else ""
 
-def build_html(a, cfg, cover_svg="", chart_svg=""):
+_PAGES_URL = "https://jayce0321.github.io/daily-thesis"
+
+def _update_feed(analysis, cfg, page_url):
+    """RSS 2.0 피드 업데이트.
+    - CDATA로 특수문자 안전 처리 (XML 인젝션 방지)
+    - description은 요약 텍스트만 포함 (민감정보 제외)
+    - 최대 30개 아이템 유지
+    """
+    import re as _re
+    from email.utils import formatdate
+    import time as _time
+
+    feed_path = os.path.join(REPO_DIR, "feed.xml")
+
+    # 기존 피드에서 아이템 추출 (최대 29개 보존)
+    existing_items, existing_guids = [], set()
+    if os.path.exists(feed_path):
+        with open(feed_path, "r", encoding="utf-8") as _f:
+            _raw = _f.read()
+        for _item in _re.findall(r'<item>.*?</item>', _raw, _re.DOTALL):
+            _g = _re.search(r'<guid[^>]*>(.*?)</guid>', _item)
+            if _g:
+                existing_guids.add(_g.group(1))
+            existing_items.append(_item)
+    existing_items = existing_items[:29]
+
+    items_xml = ""
+    if page_url not in existing_guids:
+        _title_raw   = f"{cfg['icon']} {cfg['name']} 데일리 테제 | {TODAY_KR}"
+        _desc_raw    = (
+            f"{analysis.get('thesis_title','').strip()} — "
+            f"{analysis.get('one_line','').strip()}"
+        )[:200]
+        items_xml = (
+            "  <item>\n"
+            f"    <title><![CDATA[{_title_raw}]]></title>\n"
+            f"    <link>{page_url}</link>\n"
+            f"    <description><![CDATA[{_desc_raw}]]></description>\n"
+            f"    <pubDate>{formatdate(_time.time())}</pubDate>\n"
+            f"    <guid isPermaLink=\"true\">{page_url}</guid>\n"
+            f"    <category><![CDATA[{cfg['name']}]]></category>\n"
+            "  </item>\n"
+        )
+    for _i in existing_items:
+        items_xml += _i + "\n"
+
+    feed_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0"\n'
+        '  xmlns:atom="http://www.w3.org/2005/Atom"\n'
+        '  xmlns:dc="http://purl.org/dc/elements/1.1/">\n'
+        "  <channel>\n"
+        "    <title>JAYCE 데일리 테제</title>\n"
+        f"    <link>{_PAGES_URL}</link>\n"
+        "    <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>\n"
+        "    <language>ko</language>\n"
+        f"    <lastBuildDate>{formatdate(_time.time())}</lastBuildDate>\n"
+        "    <ttl>60</ttl>\n"
+        f"    <atom:link href=\"{_PAGES_URL}/feed.xml\" rel=\"self\" type=\"application/rss+xml\"/>\n"
+        f"{items_xml}"
+        "  </channel>\n"
+        "</rss>"
+    )
+    with open(feed_path, "w", encoding="utf-8") as _f:
+        _f.write(feed_xml)
+    log("RSS feed.xml 업데이트")
+    return feed_path
+
+
+def _update_sitemap():
+    """sitemap.xml 업데이트.
+    - URL은 html.escape()로 안전 처리
+    - 인덱스 페이지 + 전체 아티클 포함
+    """
+    import re as _re
+
+    sitemap_path = os.path.join(REPO_DIR, "sitemap.xml")
+    skip = {"404.html"}
+    index_pages = {"index.html", "politics.html", "culture.html"}
+
+    html_files = sorted(
+        [f for f in os.listdir(REPO_DIR)
+         if f.endswith(".html") and f not in skip],
+        reverse=True,
+    )
+
+    url_entries = []
+    # 인덱스 페이지
+    for idx in ["index.html", "politics.html", "culture.html"]:
+        if os.path.exists(os.path.join(REPO_DIR, idx)):
+            priority = "1.0" if idx == "index.html" else "0.9"
+            url_entries.append(
+                f"  <url>\n"
+                f"    <loc>{_PAGES_URL}/{_html.escape(idx)}</loc>\n"
+                f"    <changefreq>daily</changefreq>\n"
+                f"    <priority>{priority}</priority>\n"
+                f"    <lastmod>{TODAY}</lastmod>\n"
+                f"  </url>"
+            )
+    # 아티클 페이지
+    for f in html_files:
+        if f in index_pages:
+            continue
+        date_m = _re.match(r'(\d{4}-\d{2}-\d{2})', f)
+        lastmod = date_m.group(1) if date_m else TODAY
+        url_entries.append(
+            f"  <url>\n"
+            f"    <loc>{_PAGES_URL}/{_html.escape(f)}</loc>\n"
+            f"    <lastmod>{lastmod}</lastmod>\n"
+            f"    <changefreq>never</changefreq>\n"
+            f"    <priority>0.8</priority>\n"
+            f"  </url>"
+        )
+
+    sitemap_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(url_entries)
+        + "\n</urlset>"
+    )
+    with open(sitemap_path, "w", encoding="utf-8") as _f:
+        _f.write(sitemap_xml)
+    log("sitemap.xml 업데이트")
+    return sitemap_path
+
+
+def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
+    if not page_url:
+        page_url = f"https://jayce0321.github.io/daily-thesis/{cfg['html_name']}"
+    _seo_desc = _safe(a.get("one_line", "")[:150])
+    _seo_title = _safe(f"데일리 테제 | {cfg['name']} | {TODAY_KR}")
     metrics_rows = "".join(
         f"<tr><td>{_safe(m.get('label',''))}</td>"
         f"<td>{_safe(m.get('value',''))}</td>"
@@ -528,7 +658,19 @@ def build_html(a, cfg, cover_svg="", chart_svg=""):
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>데일리 테제 | {cfg['name']} | {TODAY_KR}</title>
+  <title>{_seo_title}</title>
+  <meta name="description" content="{_seo_desc}"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="{page_url}"/>
+  <link rel="alternate" type="application/rss+xml" title="JAYCE 데일리 테제" href="https://jayce0321.github.io/daily-thesis/feed.xml"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="{_seo_title}"/>
+  <meta property="og:description" content="{_seo_desc}"/>
+  <meta property="og:url" content="{page_url}"/>
+  <meta property="og:site_name" content="JAYCE 데일리 테제"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="{_seo_title}"/>
+  <meta name="twitter:description" content="{_seo_desc}"/>
   <style>
     :root{{--bg:#0d0f14;--surface:#161a23;--border:#252b3b;
       --accent:#e8b84b;--accent2:#5b8dee;--red:#e05c5c;
@@ -738,6 +880,15 @@ def publish(html_content, analysis, cfg):
             f.write(index)
         log(f"인덱스 업데이트: {cfg['index_file']}")
 
+    # page_url은 피드/sitemap에도 사용하므로 git 처리 전에 확정
+    page_url = f"{_PAGES_URL}/{cfg['html_name']}"
+
+    # RSS 피드 + sitemap 업데이트 (git add 전에 파일 생성)
+    _update_feed(analysis, cfg, page_url)
+    _update_sitemap()
+
+    _extra_files = ["feed.xml", "sitemap.xml"]
+
     if not IS_CI:
         os.chdir(REPO_DIR)
         subprocess.run(["git", "fetch", "origin"], check=True)
@@ -751,7 +902,9 @@ def publish(html_content, analysis, cfg):
             idx = idx.replace('<div class="post-list">', '<div class="post-list">\n' + _make_entry())
             with open(index_path, "w", encoding="utf-8") as f:
                 f.write(idx)
-        subprocess.run(["git", "add", cfg["html_name"], cfg["index_file"]], check=True)
+        _update_feed(analysis, cfg, page_url)
+        _update_sitemap()
+        subprocess.run(["git", "add", cfg["html_name"], cfg["index_file"]] + _extra_files, check=True)
         staged = subprocess.run(["git", "diff", "--staged", "--quiet"])
         if staged.returncode != 0:
             subprocess.run(["git", "commit", "-m", f"{cfg['name']} 데일리 테제 {TODAY_KR}"], check=True)
@@ -762,7 +915,7 @@ def publish(html_content, analysis, cfg):
         os.chdir(REPO_DIR)
         subprocess.run(["git", "pull", "--rebase", "origin", "main"],
                        capture_output=True, check=False)
-        subprocess.run(["git", "add", cfg["html_name"], cfg["index_file"]], check=False)
+        subprocess.run(["git", "add", cfg["html_name"], cfg["index_file"]] + _extra_files, check=False)
         staged = subprocess.run(["git", "diff", "--staged", "--quiet"])
         if staged.returncode != 0:
             subprocess.run(["git", "commit", "-m", f"{cfg['name']} 데일리 테제 {TODAY_KR} [자동]"],
@@ -770,7 +923,6 @@ def publish(html_content, analysis, cfg):
             subprocess.run(["git", "push", "origin", "main"], check=False)
 
     log("GitHub Pages 게시 완료")
-    page_url = f"https://jayce0321.github.io/daily-thesis/{cfg['html_name']}"
     log(f"→ {page_url}")
 
     # Telegram 알림
@@ -838,7 +990,8 @@ def main():
 
     analysis = call_claude(news, cfg)
     cover_svg, chart_svg = generate_svgs(analysis)
-    html = build_html(analysis, cfg, cover_svg, chart_svg)
+    _page_url = f"{_PAGES_URL}/{cfg['html_name']}"
+    html = build_html(analysis, cfg, cover_svg, chart_svg, page_url=_page_url)
     publish(html, analysis, cfg)
 
     log(f"=== {cfg['name']} 완료 ===")
