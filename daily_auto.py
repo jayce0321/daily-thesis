@@ -656,11 +656,12 @@ def _tistory_blog_html(analysis: dict, cfg: dict, page_url: str) -> str:
 
     sa_pts = "".join(f"<li style='margin:4px 0;color:#333;'>{esc(p)}</li>" for p in sa.get("points", []))
     sb_pts = "".join(f"<li style='margin:4px 0;color:#333;'>{esc(p)}</li>" for p in sb.get("points", []))
-    cl_items = "".join(
-        f"<li style='margin:6px 0;'><b>{esc(c.get('title','') if isinstance(c,dict) else c)}</b>"
-        f"{(' — <span style=\'color:#666;font-size:13px;\'>' + esc(c['desc']) + '</span>') if isinstance(c,dict) and c.get('desc') else ''}</li>"
-        for c in checklist
-    )
+    _cl_parts = []
+    for c in checklist:
+        _t = esc(c.get("title", "") if isinstance(c, dict) else c)
+        _d = (' — <span style="color:#666;font-size:13px;">' + esc(c["desc"]) + "</span>") if isinstance(c, dict) and c.get("desc") else ""
+        _cl_parts.append(f"<li style='margin:6px 0;'><b>{_t}</b>{_d}</li>")
+    cl_items = "".join(_cl_parts)
 
     page_url_esc  = _html.escape(page_url)
     pages_url_esc = _html.escape(_PAGES_URL)
