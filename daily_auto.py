@@ -40,6 +40,11 @@ def _resolve_topic():
 TOPIC             = _resolve_topic()
 REPO_DIR          = os.path.dirname(os.path.abspath(__file__))
 IS_CI             = os.environ.get("GITHUB_ACTIONS") == "true"
+# ── 네이버 블로그 환경 변수 ─────────────────────────────────────
+_NAVER_CLIENT_ID     = os.environ.get("NAVER_CLIENT_ID", "")
+_NAVER_CLIENT_SECRET = os.environ.get("NAVER_CLIENT_SECRET", "")
+_NAVER_REFRESH_TOKEN = os.environ.get("NAVER_REFRESH_TOKEN", "")
+
 
 KST      = timezone(timedelta(hours=9))
 TODAY    = datetime.now(KST).strftime("%Y-%m-%d")
@@ -624,6 +629,156 @@ def _update_sitemap():
     log("sitemap.xml 업데이트")
     return sitemap_path
 
+# ── 네이버 블로그 통합 ───────────────────────────────────────────
+def _naver_get_access_token():
+    """Refresh Token으로 Naver Access Token 발급 (1회 실행당 1번 호출)."""
+    if not (_NAVER_CLIENT_ID and _NAVER_CLIENT_SECRET and _NAVER_REFRESH_TOKEN):
+        return None
+    try:
+        params = urllib.parse.urlencode({
+            "grant_type":    "refresh_token",
+            "client_id":     _NAVER_CLIENT_ID,
+            "client_secret": _NAVER_CLIENT_SECRET,
+            "refresh_token": _NAVER_REFRESH_TOKEN,
+        }).encode("utf-8")
+        req = urllib.request.Request(
+            "https://nid.naver.com/oauth2.0/token",
+            data=params,
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=15) as r:
+            data = json.loads(r.read().decode("utf-8"))
+        if "error" in data:
+            log(f"[NAVER] 토큰 갱신 오류: {data.get('error_description', data.get('error'))}")
+            return None
+        return data.get("access_token")
+    except Exception as e:
+        log(f"[NAVER] 토큰 갱신 실패: {e}")
+        return None
+
+
+def _naver_blog_html(analysis: dict, cfg: dict, page_url: str) -> str:
+    """네이버 블로그용 HTML 본문 생성 (body 내용만, 완전한 페이지 HTML 아님).
+    - XSS 방지: 모든 값 html.escape() 처리
+    - 네이버 블로그 렌더러 호환 태그만 사용 (h2/h3/p/ul/li/table/blockquote/hr)
+    """
+    def esc(v):
+        return _html.escape(str(v)) if v else ""
+
+    thesis  = esc(analysis.get("thesis_title", ""))
+    one_ln  = esc(analysis.get("one_line", ""))
+    why     = esc(analysis.get("why_important", ""))
+    closing = esc(analysis.get("closing", analysis.get("one_line", "")))
+    metrics = analysis.get("metrics", [])
+    sa = analysis.get("scenario_a", {})
+    sb = analysis.get("scenario_b", {})
+    checklist = analysis.get("checklist", [])
+    if isinstance(sa, str): sa = {"title": sa, "points": []}
+    if isinstance(sb, str): sb = {"title": sb, "points": []}
+    if not isinstance(sa, dict): sa = {}
+    if not isinstance(sb, dict): sb = {}
+
+    # 메트릭 테이블
+    rows = "".join(
+        f"<tr><td><b>{esc(m.get('label',''))}</b></td>"
+        f"<td>{esc(m.get('value',''))}</td>"
+        f"<td>{esc(m.get('meaning',''))}</td></tr>"
+        for m in metrics if isinstance(m, dict)
+    )
+    metrics_html = (
+        "<table border=\"1\" style=\"border-collapse:collapse;width:100%;font-size:14px;\">"
+        "<thead><tr style=\"background:#f5f5f5;\"><th>지표</th><th>수치</th><th>의미</th></tr></thead>"
+        f"<tbody>{rows}</tbody></table>"
+    ) if rows else ""
+
+    sa_pts = "".join(f"<li>{esc(p)}</li>" for p in sa.get("points", []))
+    sb_pts = "".join(f"<li>{esc(p)}</li>" for p in sb.get("points", []))
+    cl_items = "".join(
+        f"<li><b>{esc(c.get('title','') if isinstance(c,dict) else c)}</b>"
+        f"{(' — ' + esc(c['desc'])) if isinstance(c,dict) and c.get('desc') else ''}</li>"
+        for c in checklist
+    )
+
+    pages_url_esc = _html.escape(_PAGES_URL)
+    page_url_esc  = _html.escape(page_url)
+
+    return (
+        f"<p><b>{cfg['icon']} {cfg['name']} 데일리 테제 | {TODAY_KR}</b></p>\n"
+        f"<p>※ 이 글은 <a href=\"{page_url_esc}\" target=\"_blank\">JAYCE 데일리 테제</a>에서 자동 발행됩니다.</p>\n"
+        "<hr/>\n"
+        f"<h2>{thesis}</h2>\n"
+        f"<p>{one_ln}</p>\n"
+        "<hr/>\n"
+        "<h3>왜 이게 중요한가</h3>\n"
+        f"<p>{why}</p>\n"
+        "<hr/>\n"
+        "<h3>숫자로 보는 근거</h3>\n"
+        f"{metrics_html}\n"
+        "<hr/>\n"
+        "<h3>시나리오 분기</h3>\n"
+        f"<h4>✅ 시나리오 A: {esc(sa.get('title',''))}</h4>\n"
+        f"<ul>{sa_pts}</ul>\n"
+        f"<h4>⚠️ 시나리오 B: {esc(sb.get('title',''))}</h4>\n"
+        f"<ul>{sb_pts}</ul>\n"
+        "<hr/>\n"
+        "<h3>체크리스트</h3>\n"
+        f"<ul>{cl_items}</ul>\n"
+        "<hr/>\n"
+        f"<blockquote><p><i>{closing}</i></p></blockquote>\n"
+        f"<p>🔗 <a href=\"{page_url_esc}\" target=\"_blank\">전체 분석 보기 (차트·데이터 포함)</a></p>\n"
+        f"<p><a href=\"{pages_url_esc}\" target=\"_blank\">JAYCE 데일리 테제 아카이브</a></p>\n"
+        f"<p>{cfg.get('tg_hashtag','').replace('#','#')}</p>\n"
+    )
+
+
+def _post_to_naver_blog(analysis: dict, cfg: dict, page_url: str) -> bool:
+    """네이버 블로그에 포스팅.
+    - 실패해도 예외를 올리지 않음 (텔레그램·GitHub 발행은 이미 완료)
+    - Refresh Token 방식으로 Access Token 자동 갱신
+    """
+    access_token = _naver_get_access_token()
+    if not access_token:
+        log("[NAVER] 자격증명 없음 — 블로그 포스팅 스킵 (NAVER_CLIENT_ID/SECRET/REFRESH_TOKEN 설정 필요)")
+        return False
+    try:
+        title_str = f"{cfg['icon']} {cfg['name']} 데일리 테제 | {TODAY_KR} — {analysis.get('thesis_title','')}"
+        contents  = _naver_blog_html(analysis, cfg, page_url)
+        # 네이버 태그: 최대 10개, 각 15자 이내
+        raw_tags  = [t[:15] for t in cfg.get("tags", [])][:9] + ["데일리테제"]
+        tags_str  = ",".join(dict.fromkeys(raw_tags))  # 중복 제거
+
+        body = urllib.parse.urlencode({
+            "title":    title_str,
+            "contents": contents,
+            "tags":     tags_str,
+        }).encode("utf-8")
+
+        req = urllib.request.Request(
+            "https://openapi.naver.com/blog/writePost.json",
+            data=body,
+            headers={
+                "Authorization":  f"Bearer {access_token}",
+                "Content-Type":   "application/x-www-form-urlencoded",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=20) as r:
+            resp = json.loads(r.read().decode("utf-8"))
+
+        if resp.get("resultcode") == "00":
+            blog_url = resp.get("blogUrl", "")
+            log(f"[NAVER] 블로그 포스팅 완료: {blog_url}")
+            return True
+        else:
+            log(f"[NAVER] 포스팅 실패: {resp}")
+            return False
+    except Exception as e:
+        log(f"[NAVER] 포스팅 오류 (무시): {e}")
+        return False
+
+
+
 
 def build_html(a, cfg, cover_svg="", chart_svg="", page_url=""):
     if not page_url:
@@ -889,6 +1044,8 @@ def publish(html_content, analysis, cfg):
 
     _extra_files = ["feed.xml", "sitemap.xml"]
 
+    _did_push = False  # 실제로 새 커밋이 push됐는지 추적 (Naver 중복 방지)
+
     if not IS_CI:
         os.chdir(REPO_DIR)
         subprocess.run(["git", "fetch", "origin"], check=True)
@@ -909,6 +1066,7 @@ def publish(html_content, analysis, cfg):
         if staged.returncode != 0:
             subprocess.run(["git", "commit", "-m", f"{cfg['name']} 데일리 테제 {TODAY_KR}"], check=True)
             subprocess.run(["git", "push", "origin", "main"], check=True)
+            _did_push = True
     else:
         # CI 환경: 이전 토픽 push 반영 후 현재 파일 직접 커밋
         # → daily.yml의 git pull --rebase 도달 시 이미 committed 상태라 충돌 없음
@@ -921,6 +1079,7 @@ def publish(html_content, analysis, cfg):
             subprocess.run(["git", "commit", "-m", f"{cfg['name']} 데일리 테제 {TODAY_KR} [자동]"],
                            capture_output=True, check=False)
             subprocess.run(["git", "push", "origin", "main"], check=False)
+            _did_push = True
 
     log("GitHub Pages 게시 완료")
     log(f"→ {page_url}")
@@ -969,6 +1128,10 @@ def publish(html_content, analysis, cfg):
             log(f"텔레그램 오류: {result}")
     except Exception as e:
         log(f"텔레그램 알림 실패 (무시): {e}")
+
+    # 네이버 블로그 (신규 발행 시만 — _did_push=False면 중복이므로 스킵)
+    if _did_push:
+        _post_to_naver_blog(analysis, cfg, page_url)
 
 # ── 메인 ─────────────────────────────────────────────────────
 def main():
