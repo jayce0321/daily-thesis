@@ -47,6 +47,7 @@ _FRED_API_KEY         = os.environ.get("FRED_API_KEY", "")
 _ECOS_API_KEY         = os.environ.get("ECOS_API_KEY", "")
 _INDEXNOW_KEY         = os.environ.get("INDEXNOW_KEY", "")
 _GA4_ID               = os.environ.get("GA4_ID", "")
+_BING_VERIFY_KEY      = os.environ.get("BING_VERIFY_KEY", "")
 
 
 KST      = timezone(timedelta(hours=9))
@@ -1129,6 +1130,11 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
             '</script>'
         )
 
+    _bing_meta = (
+        f'<meta name="msvalidate.01" content="{_BING_VERIFY_KEY}"/>'
+        if _BING_VERIFY_KEY else ""
+    )
+
     # ── JS 블록 ──────────────────────────────────────────────────
     _js_block = (
         "<script>"
@@ -1204,6 +1210,7 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
 <head>
   <meta charset="UTF-8"/>
   <meta name="google-site-verification" content="LqVw-ScH1iEw7FKHSwyzzlYH2CZnQ_1TOmVCP8PHxMw"/>
+  {_bing_meta}
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{_seo_title}</title>
   <meta name="description" content="{_seo_desc}"/>
@@ -1373,6 +1380,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="LqVw-ScH1iEw7FKHSwyzzlYH2CZnQ_1TOmVCP8PHxMw"/>
+  {{bing_meta}}
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{index_title}}</title>
   <script type="application/ld+json">
@@ -1422,7 +1430,8 @@ def ensure_index(cfg):
             .replace("{{index_title}}", cfg["index_title"])
             .replace("{{icon}}", cfg["icon"])
             .replace("{{topic_name}}", cfg["name"])
-            .replace("{{subtitle}}", cfg["index_subtitle"]))
+            .replace("{{subtitle}}", cfg["index_subtitle"])
+            .replace("{{bing_meta}}", f'<meta name="msvalidate.01" content="{_BING_VERIFY_KEY}"/>' if _BING_VERIFY_KEY else ""))
         with open(index_path, "w", encoding="utf-8") as f:
             f.write(content)
         log(f"인덱스 페이지 생성: {cfg['index_file']}")
@@ -1584,10 +1593,16 @@ def build_weekly_html(a, cfg):
             f'</a>'
         )
 
+    _bing_meta_w = (
+        f'<meta name="msvalidate.01" content="{_BING_VERIFY_KEY}"/>'
+        if _BING_VERIFY_KEY else ""
+    )
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
+  <meta name="google-site-verification" content="LqVw-ScH1iEw7FKHSwyzzlYH2CZnQ_1TOmVCP8PHxMw"/>
+  {_bing_meta_w}
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{_seo_title}</title>
   <meta name="description" content="{_seo_desc}"/>
