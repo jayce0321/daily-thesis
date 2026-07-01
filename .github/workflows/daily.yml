@@ -50,6 +50,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
@@ -81,6 +82,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
           TOPIC: politics
@@ -110,6 +112,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
           TOPIC: culture
@@ -136,6 +139,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
           TOPIC: weekly
@@ -150,3 +154,45 @@ jobs:
           git diff --staged --quiet || git commit -m "주간 다이제스트 $(date +'%Y-W%V') [자동]"
           git pull --rebase origin main
           git push
+
+      # ── 발행 실패 텔레그램 알림 ────────────────────────────────
+      - name: 🚨 발행 실패 알림
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 - <<'PYEOF'
+          import os, json, urllib.request
+          from datetime import datetime, timezone, timedelta
+
+          KST = timezone(timedelta(hours=9))
+          now = datetime.now(KST).strftime('%Y-%m-%d %H:%M')
+          repo = os.environ.get('GITHUB_REPOSITORY', 'jayce0321/daily-thesis')
+          run_id = os.environ.get('GITHUB_RUN_ID', '')
+          run_url = f"https://github.com/{repo}/actions/runs/{run_id}"
+
+          msg = (
+              "🚨 데일리 테제 발행 실패\n\n"
+              f"⏰ {now} KST\n"
+              f"🔗 {run_url}\n\n"
+              "위 링크에서 실패 단계를 확인하세요."
+          )
+
+          data = json.dumps({
+              "chat_id": os.environ["TELEGRAM_CHAT_ID"],
+              "text": msg,
+              "disable_web_page_preview": True,
+          }).encode("utf-8")
+
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN']}/sendMessage",
+              data=data,
+              headers={"Content-Type": "application/json"}
+          )
+          try:
+              urllib.request.urlopen(req, timeout=10)
+              print("✅ 실패 알림 전송 완료")
+          except Exception as e:
+              print(f"⚠️ 실패 알림 전송 오류: {e}")
+          PYEOF
