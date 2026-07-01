@@ -55,6 +55,7 @@ jobs:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
+          BING_VERIFY_KEY: ${{ secrets.BING_VERIFY_KEY }}
           TOPIC: economy
         run: python daily_auto.py
 
@@ -85,6 +86,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
+          BING_VERIFY_KEY: ${{ secrets.BING_VERIFY_KEY }}
           TOPIC: politics
         run: python daily_auto.py
 
@@ -115,6 +117,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
+          BING_VERIFY_KEY: ${{ secrets.BING_VERIFY_KEY }}
           TOPIC: culture
         run: python daily_auto.py
 
@@ -142,6 +145,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
+          BING_VERIFY_KEY: ${{ secrets.BING_VERIFY_KEY }}
           TOPIC: weekly
         run: python daily_auto.py
 
