@@ -1,0 +1,54 @@
+name: 실패 알림 테스트 (1회용)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 의도적 실패 유발
+        run: |
+          echo "테스트: 실패 알림 동작 검증"
+          exit 1
+
+      - name: 🚨 발행 실패 알림
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 - <<'PYEOF'
+          import os, json, urllib.request
+          from datetime import datetime, timezone, timedelta
+
+          KST = timezone(timedelta(hours=9))
+          now = datetime.now(KST).strftime('%Y-%m-%d %H:%M')
+          repo = os.environ.get('GITHUB_REPOSITORY', 'jayce0321/daily-thesis')
+          run_id = os.environ.get('GITHUB_RUN_ID', '')
+          run_url = f"https://github.com/{repo}/actions/runs/{run_id}"
+
+          msg = (
+              "🚨 데일리 테제 발행 실패\n\n"
+              f"⏰ {now} KST\n"
+              f"🔗 {run_url}\n\n"
+              "위 링크에서 실패 단계를 확인하세요."
+          )
+
+          data = json.dumps({
+              "chat_id": os.environ["TELEGRAM_CHAT_ID"],
+              "text": msg,
+              "disable_web_page_preview": True,
+          }).encode("utf-8")
+
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN']}/sendMessage",
+              data=data,
+              headers={"Content-Type": "application/json"}
+          )
+          try:
+              res = urllib.request.urlopen(req, timeout=10)
+              print("✅ 실패 알림 전송 완료:", res.status)
+          except Exception as e:
+              print(f"⚠️ 실패 알림 전송 오류: {e}")
+          PYEOF
