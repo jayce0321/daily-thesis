@@ -4,29 +4,35 @@
     <loc>https://jayce0321.github.io/daily-thesis/index.html</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/politics.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/culture.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/weekly.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/weekly-2026-W27.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayce0321.github.io/daily-thesis/2026-07-03.html</loc>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -386,55 +392,55 @@
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/index.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/글로벌시장.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/글로벌정치.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/글로벌트렌드.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/데일리테제.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/매크로.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/오후마감.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/한국문화.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jayce0321.github.io/daily-thesis/tag/한국정치.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
