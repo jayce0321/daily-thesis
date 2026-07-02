@@ -11,6 +11,10 @@ on:
         description: '발행할 토픽 (economy / politics / culture / all / weekly)'
         required: false
         default: 'all'
+      extra_headlines:
+        description: '추가 뉴스 (호야봇 채널 데이터)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -56,6 +60,7 @@ jobs:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
           BING_VERIFY_KEY: ${{ secrets.BING_VERIFY_KEY }}
+          EXTRA_HEADLINES: ${{ github.event.inputs.extra_headlines }}
           TOPIC: economy
         run: python daily_auto.py
 
@@ -87,6 +92,7 @@ jobs:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
           BING_VERIFY_KEY: ${{ secrets.BING_VERIFY_KEY }}
+          EXTRA_HEADLINES: ${{ github.event.inputs.extra_headlines }}
           TOPIC: politics
         run: python daily_auto.py
 
@@ -118,6 +124,7 @@ jobs:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
           BING_VERIFY_KEY: ${{ secrets.BING_VERIFY_KEY }}
+          EXTRA_HEADLINES: ${{ github.event.inputs.extra_headlines }}
           TOPIC: culture
         run: python daily_auto.py
 
@@ -146,6 +153,7 @@ jobs:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           GA4_ID: ${{ secrets.GA4_ID }}
           BING_VERIFY_KEY: ${{ secrets.BING_VERIFY_KEY }}
+          EXTRA_HEADLINES: ${{ github.event.inputs.extra_headlines }}
           TOPIC: weekly
         run: python daily_auto.py
 
