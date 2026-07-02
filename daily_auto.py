@@ -48,6 +48,7 @@ _ECOS_API_KEY         = os.environ.get("ECOS_API_KEY", "")
 _INDEXNOW_KEY         = os.environ.get("INDEXNOW_KEY", "")
 _GA4_ID               = os.environ.get("GA4_ID", "")
 _BING_VERIFY_KEY      = os.environ.get("BING_VERIFY_KEY", "")
+_EXTRA_HEADLINES      = os.environ.get("EXTRA_HEADLINES", "")
 
 
 KST      = timezone(timedelta(hours=9))
@@ -492,6 +493,7 @@ def call_claude(news_headlines, cfg, live_data=None):
             "content": (
             f"{instruction}\n\n수집된 뉴스:\n{headlines_text}"
             + (f"\n\n실시간 공식 경제 수치 (FRED/ECOS API):\n" + "\n".join(live_data) if live_data else "")
+            + (f"\n\n📡 실시간 채널 데이터 (호야봇 수집):\n{_EXTRA_HEADLINES}" if _EXTRA_HEADLINES else "")
         )
         }]
     }).encode("utf-8")
