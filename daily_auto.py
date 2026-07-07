@@ -15,8 +15,9 @@ import hashlib
 from datetime import datetime, timezone, timedelta
 
 # ── 환경 변수 ─────────────────────────────────────────────────
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-BOT_TOKEN         = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+ANTHROPIC_API_KEY     = os.environ.get("ANTHROPIC_API_KEY", "")
+BOT_TOKEN             = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+PUBLIC_CHANNEL_ID     = os.environ.get("TELEGRAM_PUBLIC_CHANNEL_ID", "")  # 공개 채널 (설정 시 자동 포스팅)
 def _resolve_topic():
     _VALID = ("economy", "economy_pm", "politics", "culture", "weekly")
     # 1순위: 파일 큐 (_pending_topic.txt) — Railway가 economy_pm 등 세부 topic 지정 시 사용
@@ -1974,6 +1975,46 @@ def publish(html_content, analysis, cfg):
     except Exception as e:
         log(f"텔레그램 알림 실패 (무시): {e}")
 
+    # ── 공개 채널 포스팅 (TELEGRAM_PUBLIC_CHANNEL_ID 설정 시) ──────
+    if PUBLIC_CHANNEL_ID and BOT_TOKEN:
+        channel_text = (
+            f"{cfg['icon']} <b>데일리 테제 | {cfg['name']}</b>  {TODAY_KR}\n\n"
+            f"<b>{analysis.get('thesis_title', analysis.get('weekly_title', ''))}</b>\n\n"
+            f"{analysis.get('one_line', analysis.get('key_insight', ''))}\n\n"
+            "━━━━━━━━━━━━\n"
+            "✅ 핵심 체크리스트\n"
+            + "\n".join(
+                f"• {c['title'] if isinstance(c, dict) else c}"
+                for c in analysis.get("checklist", [])[:4]
+            )
+            + f"\n\n{cfg['tg_hashtag']}"
+        )
+        channel_data = json.dumps({
+            "chat_id": PUBLIC_CHANNEL_ID,
+            "text": channel_text,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": False,
+            "reply_markup": {
+                "inline_keyboard": [[
+                    {"text": "📖 전문 보기", "url": page_url}
+                ]]
+            }
+        }).encode("utf-8")
+        ch_req = urllib.request.Request(
+            f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+            data=channel_data,
+            headers={"Content-Type": "application/json"}
+        )
+        try:
+            with urllib.request.urlopen(ch_req, timeout=15) as r:
+                ch_result = json.loads(r.read())
+            if ch_result.get("ok"):
+                log(f"공개 채널 포스팅 완료 → {PUBLIC_CHANNEL_ID}")
+            else:
+                log(f"공개 채널 오류: {ch_result.get('description', ch_result)}")
+        except Exception as e:
+            log(f"공개 채널 포스팅 실패 (무시): {e}")
+
     # 네이버 블로그 (신규 발행 시만 — _did_push=False면 중복이므로 스킵)
     if _did_push:
         _post_to_tistory(analysis, cfg, page_url)
@@ -2033,3 +2074,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
