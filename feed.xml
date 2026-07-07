@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 07 Jul 2026 23:01:11 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 23:03:08 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.08]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-08-politics.html</link>
+    <description><![CDATA["한미일 삼각동맹의 재편: 협력의 심화와 국내 정치의 파열" — 한미일이 SMR·조선·안보 협력으로 동맹을 제도화하는 사이, 한국 국내 정치는 국회 파행·지방의회 보이콧·후보 자작극 등 구조적 신뢰 위기에 직면했다.]]></description>
+    <pubDate>Tue, 07 Jul 2026 23:03:08 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-08-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.08]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-08.html</link>
     <description><![CDATA["스태그플레이션의 귀환: 전쟁發 인플레+고용 균열" — 미-이란 충돌로 촉발된 공급발 인플레이션과 고용 급랭이 동시에 덮치며 시장은 '스태그플레이션 공포'를 가격에 반영하기 시작했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 29 Jun 2026 08:56:41 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-06-29.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 (오후) 데일리 테제 | 2026.06.29]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-06-29-pm.html</link>
-    <description><![CDATA["매크로 역풍 속 반도체 홀로 버팀목" — 연준 금리인상 재점화·호르무즈 불안·메모리 대란이 동시 압박하는 가운데, 국내 증시는 SK하이닉스 대규모 투자 가속화를 앞세운 반도체 수급 쏠림으로 오전 낙관론에서 오후 '외국인 이탈 + 코스닥 소외'의 이중구조로 심화됐다.]]></description>
-    <pubDate>Mon, 29 Jun 2026 06:18:48 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-06-29-pm.html</guid>
-    <category><![CDATA[경제·투자 (오후)]]></category>
   </item>
   </channel>
 </rss>
