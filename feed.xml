@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 08 Jul 2026 23:01:20 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 23:03:04 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.09]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-09-politics.html</link>
+    <description><![CDATA["힘의 정치 시대, 한국의 선택" — 이재명 정부의 다자외교 행보와 트럼프발 군사·사법 충격 속에서, 한국은 미·중·일·북 사이 전방위 균형 외교의 기로에 서 있다.]]></description>
+    <pubDate>Wed, 08 Jul 2026 23:03:04 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-09-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.09]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-09.html</link>
     <description><![CDATA["전쟁발 인플레와 Fed 분열, 이중 충격의 시대" — 미·이란 충돌로 호르무즈 해협이 봉쇄 위기에 처하며 유가·금리 동반 상승 압력이 커지는 가운데, Fed 내부 금리 방향 분열과 고용 둔화가 겹쳐 시장은 '스태그플레이션 공포'와 싸우고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 29 Jun 2026 23:00:59 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-06-30.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.06.29]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-06-29-culture.html</link>
-    <description><![CDATA["K-컬처, 팝에서 라이프스타일 제국으로" — K-팝·드라마를 넘어 음식·문학·뷰티·스포츠까지 확장되는 한류 2.0이 글로벌 문화 주도권을 재편하고 있다.]]></description>
-    <pubDate>Mon, 29 Jun 2026 14:49:23 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-06-29-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
