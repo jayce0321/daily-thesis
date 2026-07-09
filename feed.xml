@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 09 Jul 2026 23:03:10 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 23:05:10 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.07.10]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-10-culture.html</link>
+    <description><![CDATA["K-콘텐츠, 팝컬처를 넘어 문명 수출로" — K-드라마·K팝이 글로벌 OTT·SNS·셀럽 문화를 관통하며 단순 '한류 붐'을 넘어 하나의 글로벌 문화 표준으로 자리잡는 전환점에 섰다.]]></description>
+    <pubDate>Thu, 09 Jul 2026 23:05:10 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-10-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.10]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-10-politics.html</link>
     <description><![CDATA["실용 노선의 시험대: 이재명 정부의 '중도 질서 재편' 실험" — 이재명 정부가 노동·안보·외교 전선에서 동시에 '제3의 길'을 시도하는 가운데, 국내 여야 갈등·북한 위협 강화·트럼프식 동맹 재편이라는 삼중 압력이 한국 정치의 방향성을 시험하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 30 Jun 2026 23:03:07 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-01-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.01]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-01.html</link>
-    <description><![CDATA["AI발 인플레 공포, 매파 Fed가 시장을 누른다" — AI 인프라 수요 폭발이 오히려 인플레이션 재점화 우려를 키우며, Fed의 금리 인하 기대를 압살하고 글로벌 리스크 자산 전반에 역풍을 만들고 있다.]]></description>
-    <pubDate>Tue, 30 Jun 2026 23:01:09 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-01.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
