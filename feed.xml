@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 09 Jul 2026 23:01:21 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 23:03:10 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.10]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-10-politics.html</link>
+    <description><![CDATA["실용 노선의 시험대: 이재명 정부의 '중도 질서 재편' 실험" — 이재명 정부가 노동·안보·외교 전선에서 동시에 '제3의 길'을 시도하는 가운데, 국내 여야 갈등·북한 위협 강화·트럼프식 동맹 재편이라는 삼중 압력이 한국 정치의 방향성을 시험하고 있다.]]></description>
+    <pubDate>Thu, 09 Jul 2026 23:03:10 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-10-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.10]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-10.html</link>
     <description><![CDATA["전쟁발 인플레+노동 냉각 = 스태그플레이션 공포" — 중동 지정학 리스크로 유가·금리가 동반 급등하는 가운데 미 고용이 급격히 냉각되며, 시장은 '성장 둔화 + 물가 상승'이라는 스태그플레이션 공포 국면에 진입했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 30 Jun 2026 23:01:09 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-01.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 (오후) 데일리 테제 | 2026.06.30]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-06-30-pm.html</link>
-    <description><![CDATA["반도체가 코스피를 끌고, 금리가 미국을 막는다" — 국내 증시는 반도체 주도로 6월 마지막 날 1% 상승 마감했지만, 미국 시장은 핵심 인플레·금리 경계선에서 AI 거품 우려가 재부상하며 상승 동력이 제한된 디커플링 국면에 진입했다.]]></description>
-    <pubDate>Tue, 30 Jun 2026 09:25:25 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-06-30-pm.html</guid>
-    <category><![CDATA[경제·투자 (오후)]]></category>
   </item>
   </channel>
 </rss>
