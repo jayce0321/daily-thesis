@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Sun, 12 Jul 2026 23:01:22 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 23:03:05 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.13]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-13-politics.html</link>
+    <description><![CDATA["권력 공백의 연쇄: 한·미 동시 정치 재편" — 한국의 국회 권력 재편과 미국의 상원 공백이 동시에 발생하며, '헤게모니 없는 이행기'라는 글로벌 정치 질서의 균열이 한반도 안보·외교에 직접 투사되고 있다.]]></description>
+    <pubDate>Sun, 12 Jul 2026 23:03:05 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-13-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.13]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-13.html</link>
     <description><![CDATA["공포에서 기회로: SK하이닉스 ADR이 쏘아올린 AI 메모리 재평가" — SK하이닉스의 미국 ADR 상장이 촉매가 되어, 글로벌 AI 인프라 투자 사이클의 무게중심이 '빅테크 플랫폼'에서 '메모리·반도체 소부장'으로 이동하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 01 Jul 2026 23:03:05 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-02-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.02]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-02.html</link>
-    <description><![CDATA["매파 FOMC의 귀환 — 금리 인하 기대의 붕괴" — 워시 Fed 의장 후보의 매파 발언과 예상 하회 고용 데이터가 충돌하며, 시장은 '인플레 vs 경기둔화' 사이에서 새로운 균형점을 찾고 있다.]]></description>
-    <pubDate>Wed, 01 Jul 2026 23:01:21 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-02.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
