@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 13 Jul 2026 23:01:19 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2026 23:03:12 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.14]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-14-politics.html</link>
+    <description><![CDATA["권력 재편의 교차로: 한국 정치 정상화와 글로벌 패권 공백의 동시 진행" — 한국은 선거 신뢰 회복과 국회 권력 재편을 동시에 시도하는 가운데, 트럼프發 일방주의와 글로벌 패권 공백이 겹치며 국내외 정치 모두 '구조적 불안정' 국면에 진입했다.]]></description>
+    <pubDate>Mon, 13 Jul 2026 23:03:12 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-14-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.14]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-14.html</link>
     <description><![CDATA["호르무즈 충격 — 전쟁 리스크가 Fed 금리인상 카드를 소환하다" — 미·이란 공습으로 호르무즈 해협이 사실상 마비되며, 에너지발 인플레이션 재점화가 Fed의 금리인상 가능성을 되살리는 '지정학→물가→통화정책' 연결고리가 오늘 시장의 핵심 구조다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 02 Jul 2026 23:03:05 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-03-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.03]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-03.html</link>
-    <description><![CDATA["고용 쇼크 + 매파 Fed = 달러·금리 역설의 시장" — 예상을 반토막 낸 美 6월 고용(5.7만 명)이 경기침체 공포와 Fed 긴축 장기화 우려를 동시에 촉발하며, 원화 약세·채권 혼조·위험자산 변동성 확대라는 '삼각 파열음'을 내고 있다.]]></description>
-    <pubDate>Thu, 02 Jul 2026 23:01:09 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-03.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
