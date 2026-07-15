@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 15 Jul 2026 23:01:22 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 23:03:06 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.16]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-16-politics.html</link>
+    <description><![CDATA["권력 재편의 이중주: 이재명 정부의 제도 장악과 트럼프의 군사·정치 압박" — 한국은 새 정부의 입법·수사 권력 재편이 가속화되고, 글로벌은 미국의 이란 군사 압박과 중국 AI 굴기가 맞물리며 '패권 없는 혼돈'의 시대로 진입 중이다.]]></description>
+    <pubDate>Wed, 15 Jul 2026 23:03:06 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-16-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.16]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-16.html</link>
     <description><![CDATA["워시의 매파 발언 vs. 약한 중국 성장 — 금리·지정학 교차로에서 시장이 방향을 묻다" — Fed 신임 의장 워시의 긴축 시그널과 중국 경기 둔화, 미·이란 긴장 재고조가 동시에 충돌하며 '유동성 파티 종료' 공포가 시장 전반을 흔들고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 06 Jul 2026 23:03:05 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-07-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.07]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-07.html</link>
-    <description><![CDATA["스태그플레이션 공포 vs. 유동성 기대의 줄다리기" — 6월 미 고용 쇼크(+5.7만)와 매파 워시 FOMC 충격이 겹치며, 시장은 '경기침체+고금리 장기화'라는 최악의 조합을 가격에 반영하기 시작했다.]]></description>
-    <pubDate>Mon, 06 Jul 2026 23:01:21 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-07.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
