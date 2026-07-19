@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Sun, 19 Jul 2026 23:01:28 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 23:03:00 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.20]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-20-politics.html</link>
+    <description><![CDATA["권력 집중과 분산의 충돌: 이재명 정부의 과제" — 이재명 대통령의 행정·입법 통합 권력 구조가 당내 분열·야당 저항·글로벌 무질서와 맞부딪히며 통치 정당성 시험대에 오르고 있다.]]></description>
+    <pubDate>Sun, 19 Jul 2026 23:03:00 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-20-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.20]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-20.html</link>
     <description><![CDATA["AI 실적 시험대 + 중동 충격: 두 불확실성이 시장을 누른다" — 빅테크 AI 투자 성과 검증 주간에 미·이란 충돌發 유가 급등과 Fed 매파 기조가 겹치며, 시장은 '기대 → 검증' 국면의 변곡점에 섰다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 08 Jul 2026 23:05:40 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-09-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.09]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-09-politics.html</link>
-    <description><![CDATA["힘의 정치 시대, 한국의 선택" — 이재명 정부의 다자외교 행보와 트럼프발 군사·사법 충격 속에서, 한국은 미·중·일·북 사이 전방위 균형 외교의 기로에 서 있다.]]></description>
-    <pubDate>Wed, 08 Jul 2026 23:03:04 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-09-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
