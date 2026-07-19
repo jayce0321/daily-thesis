@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 17 Jul 2026 10:41:06 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 23:01:28 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.20]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-20.html</link>
+    <description><![CDATA["AI 실적 시험대 + 중동 충격: 두 불확실성이 시장을 누른다" — 빅테크 AI 투자 성과 검증 주간에 미·이란 충돌發 유가 급등과 Fed 매파 기조가 겹치며, 시장은 '기대 → 검증' 국면의 변곡점에 섰다.]]></description>
+    <pubDate>Sun, 19 Jul 2026 23:01:28 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-20.html</guid>
+    <category><![CDATA[경제·투자]]></category>
+  </item>
+<item>
     <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.07.17]]></title>
     <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W29.html</link>
     <description><![CDATA[지정학 충격·긴축 재점화·K컬처 인프라화 — 호르무즈 긴장이 유가·금리·정치 리스크를 동시에 연쇄 점화하며, 시장은 거시 불확실성을 개별 기업 실적과 반도체 수급으로 버티는 '실적 장세'로 대응 중이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 08 Jul 2026 23:03:04 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-09-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.09]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-09.html</link>
-    <description><![CDATA["전쟁발 인플레와 Fed 분열, 이중 충격의 시대" — 미·이란 충돌로 호르무즈 해협이 봉쇄 위기에 처하며 유가·금리 동반 상승 압력이 커지는 가운데, Fed 내부 금리 방향 분열과 고용 둔화가 겹쳐 시장은 '스태그플레이션 공포'와 싸우고 있다.]]></description>
-    <pubDate>Wed, 08 Jul 2026 23:01:20 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-09.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
