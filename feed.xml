@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Sun, 19 Jul 2026 23:03:00 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 23:05:12 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.07.20]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-20-culture.html</link>
+    <description><![CDATA["K-컬처, 팬덤을 넘어 글로벌 생활문화로" — BTS 월드컵 하프타임·유럽 투어 71만 명 동원, K-드라마 넷플릭스 장악, 한식·한국어까지 확산—K-컬처가 '소비 콘텐츠'에서 MZ 세대의 '글로벌 생활양식'으로 진화하고 있다.]]></description>
+    <pubDate>Sun, 19 Jul 2026 23:05:12 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-20-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.20]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-20-politics.html</link>
     <description><![CDATA["권력 집중과 분산의 충돌: 이재명 정부의 과제" — 이재명 대통령의 행정·입법 통합 권력 구조가 당내 분열·야당 저항·글로벌 무질서와 맞부딪히며 통치 정당성 시험대에 오르고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 09 Jul 2026 06:11:19 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-09-pm.html</guid>
     <category><![CDATA[경제·투자 (오후)]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.07.09]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-09-culture.html</link>
-    <description><![CDATA["K-컬처, 글로벌 무대의 '주인공'이 되다" — BTS 월드컵 하프타임쇼·윤여정 에미상 후보 동시 등판 — K-컬처가 글로벌 팝컬처의 중심축으로 완전히 편입됐음을 2026년 7월이 선언한다.]]></description>
-    <pubDate>Wed, 08 Jul 2026 23:05:40 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-09-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
