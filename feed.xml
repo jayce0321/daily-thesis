@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 20 Jul 2026 23:03:13 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 23:05:10 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.07.21]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-21-culture.html</link>
+    <description><![CDATA["K-컬처, 팬덤을 넘어 외교·산업 인프라로" — K-팝·K-드라마·K-푸드가 단순 '문화 수출'을 넘어 외교 프로토콜·관광 행동·소비 프리미엄을 바꾸는 실질 인프라로 진화하고 있다.]]></description>
+    <pubDate>Mon, 20 Jul 2026 23:05:10 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-21-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.21]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-21-politics.html</link>
     <description><![CDATA["입법 과잉과 패권 공백: 한국 정치 개편과 글로벌 질서 재편의 교차점" — 민주당의 사법·입법 독주가 국내 권력 구조를 재편하는 동시에, 트럼프의 관세 공세와 글로벌 패권 공백이 한국의 대외 리스크를 중첩 가중시키고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Fri, 10 Jul 2026 06:01:32 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-10-pm.html</guid>
     <category><![CDATA[경제·투자 (오후)]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.07.10]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-10-culture.html</link>
-    <description><![CDATA["K-콘텐츠, 팝컬처를 넘어 문명 수출로" — K-드라마·K팝이 글로벌 OTT·SNS·셀럽 문화를 관통하며 단순 '한류 붐'을 넘어 하나의 글로벌 문화 표준으로 자리잡는 전환점에 섰다.]]></description>
-    <pubDate>Thu, 09 Jul 2026 23:05:10 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-10-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
