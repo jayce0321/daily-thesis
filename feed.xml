@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 20 Jul 2026 23:01:16 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 23:03:13 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.21]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-21-politics.html</link>
+    <description><![CDATA["입법 과잉과 패권 공백: 한국 정치 개편과 글로벌 질서 재편의 교차점" — 민주당의 사법·입법 독주가 국내 권력 구조를 재편하는 동시에, 트럼프의 관세 공세와 글로벌 패권 공백이 한국의 대외 리스크를 중첩 가중시키고 있다.]]></description>
+    <pubDate>Mon, 20 Jul 2026 23:03:13 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-21-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.21]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-21.html</link>
     <description><![CDATA["중동 지정학 재점화, 시장은 금리와 전쟁 사이에서 표류" — 미·이란 충돌이 호르무즈·홍해 양대 해협을 동시에 위협하면서 에너지 가격·인플레·금리 경로가 모두 불확실해졌고, 나스닥 -4.18% 급락과 반도체 시총 1조 달러 증발이 이를 증명했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 09 Jul 2026 23:05:10 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-10-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.10]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-10-politics.html</link>
-    <description><![CDATA["실용 노선의 시험대: 이재명 정부의 '중도 질서 재편' 실험" — 이재명 정부가 노동·안보·외교 전선에서 동시에 '제3의 길'을 시도하는 가운데, 국내 여야 갈등·북한 위협 강화·트럼프식 동맹 재편이라는 삼중 압력이 한국 정치의 방향성을 시험하고 있다.]]></description>
-    <pubDate>Thu, 09 Jul 2026 23:03:10 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-10-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
