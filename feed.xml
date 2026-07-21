@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 21 Jul 2026 23:01:23 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 23:03:04 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.22]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-22-politics.html</link>
+    <description><![CDATA["사법·입법·외교가 동시에 흔들리는 한국 정치의 복합 격랑" — 김건희 특검 소환·선관위 국조·원 구성 파행이 동시에 진행되는 가운데, 한미일 외교 공조와 글로벌 패권 공백이 한국의 대외 선택지를 압박하고 있다.]]></description>
+    <pubDate>Tue, 21 Jul 2026 23:03:04 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-22-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.22]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-22.html</link>
     <description><![CDATA["미·이란 전쟁이 바꾸는 금리 게임" — 중동 전쟁 리스크가 에너지 가격·인플레·금리 경로를 동시에 뒤흔들며, 시장은 '지정학 쇼크 vs. 실적·밸류에이션 매력' 사이에서 방향성을 탐색 중이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Sun, 12 Jul 2026 23:03:05 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-13-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.13]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-13.html</link>
-    <description><![CDATA["공포에서 기회로: SK하이닉스 ADR이 쏘아올린 AI 메모리 재평가" — SK하이닉스의 미국 ADR 상장이 촉매가 되어, 글로벌 AI 인프라 투자 사이클의 무게중심이 '빅테크 플랫폼'에서 '메모리·반도체 소부장'으로 이동하고 있다.]]></description>
-    <pubDate>Sun, 12 Jul 2026 23:01:22 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-13.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
