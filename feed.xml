@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 22 Jul 2026 23:01:27 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 23:03:06 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.23]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-23-politics.html</link>
+    <description><![CDATA["권력 재편기의 한국 정치, 안팎으로 시험대에" — 이재명 정부 출범 후 국내 권력 구조 재편(국회 원 구성·민주당 전대·부동산 정책)이 동시에 진행되는 가운데, 미-이란 충돌·한미 투자 협상·G2 기술 패권 경쟁 등 글로벌 변수가 한국 정치의 결정 공간을 급속히 압박하고 있다.]]></description>
+    <pubDate>Wed, 22 Jul 2026 23:03:06 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-23-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.23]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-23.html</link>
     <description><![CDATA["긴축 재점화 vs 지정학 공포: 유동성 파티의 끝?" — Fed 긴축 재점화 신호 + 중동 확전 + 미·중 AI 패권 충돌이 동시에 터지며, 시장은 '위험자산 매도 / 실물자산 재평가' 구도로 급격히 재편되고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 13 Jul 2026 23:03:12 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-14-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.14]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-14.html</link>
-    <description><![CDATA["호르무즈 충격 — 전쟁 리스크가 Fed 금리인상 카드를 소환하다" — 미·이란 공습으로 호르무즈 해협이 사실상 마비되며, 에너지발 인플레이션 재점화가 Fed의 금리인상 가능성을 되살리는 '지정학→물가→통화정책' 연결고리가 오늘 시장의 핵심 구조다.]]></description>
-    <pubDate>Mon, 13 Jul 2026 23:01:19 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-14.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
