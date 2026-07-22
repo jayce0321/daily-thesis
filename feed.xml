@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 22 Jul 2026 23:03:06 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 23:05:03 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.07.23]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-23-culture.html</link>
+    <description><![CDATA["K-컬처, 외교·스포츠를 삼키다" — BTS 월드컵 하프타임쇼·K드라마 일본 상륙·K콘텐츠 수출 역대 최대가 동시에 터지며, K-컬처는 '소프트파워'를 넘어 국가 성장 엔진으로 격상되는 변곡점을 맞았다.]]></description>
+    <pubDate>Wed, 22 Jul 2026 23:05:03 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-23-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.23]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-23-politics.html</link>
     <description><![CDATA["권력 재편기의 한국 정치, 안팎으로 시험대에" — 이재명 정부 출범 후 국내 권력 구조 재편(국회 원 구성·민주당 전대·부동산 정책)이 동시에 진행되는 가운데, 미-이란 충돌·한미 투자 협상·G2 기술 패권 경쟁 등 글로벌 변수가 한국 정치의 결정 공간을 급속히 압박하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 13 Jul 2026 23:05:15 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-14-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.14]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-14-politics.html</link>
-    <description><![CDATA["권력 재편의 교차로: 한국 정치 정상화와 글로벌 패권 공백의 동시 진행" — 한국은 선거 신뢰 회복과 국회 권력 재편을 동시에 시도하는 가운데, 트럼프發 일방주의와 글로벌 패권 공백이 겹치며 국내외 정치 모두 '구조적 불안정' 국면에 진입했다.]]></description>
-    <pubDate>Mon, 13 Jul 2026 23:03:12 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-14-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
