@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 23 Jul 2026 23:01:21 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 23:03:09 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.24]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-24-politics.html</link>
+    <description><![CDATA["대전환의 외교·사법: 이재명 정부의 이중 도박" — 이재명 대통령이 남미·미국 순방으로 경제외교를 가동하는 동시에, 민주당은 검찰 보완수사권 폐지라는 사법 개혁을 밀어붙이며 권력 재편과 외교 실리를 동시에 추구하는 '이중 승부수'를 던졌다.]]></description>
+    <pubDate>Thu, 23 Jul 2026 23:03:09 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-24-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.24]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-24.html</link>
     <description><![CDATA["유가 100달러 충격 — 지정학·인플레·금리 삼각 폭풍" — 유가가 배럴당 100달러를 돌파하며 '인플레 재점화 → Fed 금리인상 가능성 부상 → 위험자산 급락'이라는 연쇄 충격이 동시에 시장을 강타했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 14 Jul 2026 23:03:12 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-15-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.15]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-15.html</link>
-    <description><![CDATA["워시의 매파 선언 + 엔비디아 H200 중국 출하: 유동성 조임 속 AI만 산다" — Fed 신임 의장 워시의 매파적 통화정책 '체제 전환' 선언이 달러·금리를 자극하는 동시에, 엔비디아 H200 중국 출하 확인으로 AI 반도체 수혜주만 차별적으로 부각되는 '유동성 긴축 속 AI 선택적 강세' 장세다.]]></description>
-    <pubDate>Tue, 14 Jul 2026 23:01:30 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-15.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
