@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 29 Jul 2026 23:01:08 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 23:03:10 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.30]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-07-30-politics.html</link>
+    <description><![CDATA["입법 강행과 제도 재편 — 한국 정치의 질주" — 민주당의 형소법·패트법 강행 처리 시도와 당 대표 경선, 여기에 트럼프발 AI·사법 논란이 맞물리며 '입법권력 vs. 제도 규범' 충돌이 한·미 양국에서 동시에 가시화되고 있다.]]></description>
+    <pubDate>Wed, 29 Jul 2026 23:03:10 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-30-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.30]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-07-30.html</link>
     <description><![CDATA["연준 매파적 동결: 금리 인상의 그림자" — 연준이 5연속 동결을 유지했지만 '매파적 신호'를 강화하면서, 시장은 인상 리스크를 본격 가격에 반영하기 시작했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 20 Jul 2026 23:03:13 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-21-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.21]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-21.html</link>
-    <description><![CDATA["중동 지정학 재점화, 시장은 금리와 전쟁 사이에서 표류" — 미·이란 충돌이 호르무즈·홍해 양대 해협을 동시에 위협하면서 에너지 가격·인플레·금리 경로가 모두 불확실해졌고, 나스닥 -4.18% 급락과 반도체 시총 1조 달러 증발이 이를 증명했다.]]></description>
-    <pubDate>Mon, 20 Jul 2026 23:01:16 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-21.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
