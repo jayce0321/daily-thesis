@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 03 Aug 2026 23:01:26 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 23:03:10 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.04]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-04-politics.html</link>
+    <description><![CDATA["권력의 재편: 국내 정책 드라이브와 글로벌 헤게모니 공백" — 이재명 정부의 고강도 국내 정책 드라이브와 트럼프발 글로벌 질서 균열이 동시에 진행되며, '리더십 공백 시대'의 각자도생 정치가 본격화되고 있다.]]></description>
+    <pubDate>Mon, 03 Aug 2026 23:03:10 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-04-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.04]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-04.html</link>
     <description><![CDATA["전쟁·인플레·Fed 삼각파고 속 시장 내성 테스트" — 이란 전쟁 리스크 + 스태그플레이션 공포 + 분열된 Fed — 세 개의 파고가 동시에 시장을 강타하며, 투자자는 지금 '위험 회피'와 '역발상 매수' 사이의 선택을 강요받고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 23 Jul 2026 23:05:11 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-24-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.24]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-24-politics.html</link>
-    <description><![CDATA["대전환의 외교·사법: 이재명 정부의 이중 도박" — 이재명 대통령이 남미·미국 순방으로 경제외교를 가동하는 동시에, 민주당은 검찰 보완수사권 폐지라는 사법 개혁을 밀어붙이며 권력 재편과 외교 실리를 동시에 추구하는 '이중 승부수'를 던졌다.]]></description>
-    <pubDate>Thu, 23 Jul 2026 23:03:09 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-24-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
