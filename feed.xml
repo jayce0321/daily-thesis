@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 04 Aug 2026 23:01:35 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 23:03:17 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.05]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-05-politics.html</link>
+    <description><![CDATA["권력 재편의 계절: 이재명 정부의 내치·외교 동시 드라이브와 글로벌 헤게모니 공백" — 이재명 대통령이 외교·안보·검경 업무보고와 3대 메가프로젝트를 동시 가동하는 사이, 미국 주도 질서의 균열(THAAD 재고 소진·美-브라질 외교 갈등)이 한국의 전략적 선택지를 좁히고 있다.]]></description>
+    <pubDate>Tue, 04 Aug 2026 23:03:17 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-05-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.05]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-05.html</link>
     <description><![CDATA["지정학 해빙 + AI 실적 = 위험자산 랠리, 그러나 균열은 진행 중" — 미·이란 협상 진전으로 유가가 급락하고 AI 기업 실적 서프라이즈가 겹치며 나스닥·반도체가 급등했지만, 인플레 재점화·Fed 긴축 압력·마이클 버리의 1987형 폭락 경고가 동시에 부상하는 '낙관 속 리스크 축적' 국면이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Sun, 26 Jul 2026 23:03:05 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-27-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.27]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-27.html</link>
-    <description><![CDATA["AI 자본지출 vs. 금리 인상: 빅테크의 딜레마" — AI 과잉투자 우려 + 연준 금리 인상 시그널이 동시에 폭발하며, 시장은 '성장 vs. 긴축'의 이중 충격에 놓였다.]]></description>
-    <pubDate>Sun, 26 Jul 2026 23:01:18 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-27.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
