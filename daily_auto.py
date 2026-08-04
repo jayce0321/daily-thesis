@@ -374,6 +374,38 @@ def fetch_live_data():
                 r = rows[-1]
                 results.append(f"한국 기준금리: {r.get('DATA_VALUE','?')}% ({r.get('TIME','?')})")
 
+    # Yahoo Finance 비공식 API — 실시간에 가까운 주가·환율
+    YF_SYMBOLS = [
+        ("^KS11",  "코스피"),
+        ("^IXIC",  "나스닥"),
+        ("^SOX",   "필라델피아반도체(SOX)"),
+        ("KRW=X",  "원달러 환율(시장가)"),
+        ("GC=F",   "금 선물"),
+        ("CL=F",   "WTI 원유"),
+    ]
+    from datetime import datetime as _dt
+    for sym, label in YF_SYMBOLS:
+        url = (f"https://query1.finance.yahoo.com/v8/finance/chart/"
+               f"{urllib.parse.quote(sym)}?interval=1d&range=2d")
+        d = _get(url, label)
+        if not d:
+            continue
+        try:
+            meta = (d.get("chart", {}).get("result") or [{}])[0].get("meta", {})
+            price = meta.get("regularMarketPrice") or meta.get("previousClose")
+            ts    = meta.get("regularMarketTime")
+            if price and ts:
+                dt_str    = _dt.utcfromtimestamp(ts).strftime("%Y-%m-%d")
+                prev_close = meta.get("chartPreviousClose") or meta.get("previousClose")
+                change_str = ""
+                if prev_close and prev_close > 0:
+                    pct = (price - prev_close) / prev_close * 100
+                    change_str = f" ({pct:+.2f}%)"
+                fmt = f"{price:,.2f}" if price > 100 else f"{price:.4f}"
+                results.append(f"{label}: {fmt}{change_str} ({dt_str})")
+        except Exception as e:
+            log(f"  야후파이낸스 파싱 오류 ({label}): {e}")
+
     if results:
         log(f"실시간 데이터 {len(results)}개 수집: {', '.join(results)}")
     return results
@@ -401,11 +433,19 @@ def call_claude(news_headlines, cfg, live_data=None):
     # RSS description이 있는 기사는 수치 신뢰도 강조
     desc_count = sum(1 for a in news_headlines
                      if isinstance(a, dict) and a.get("desc"))
+    instruction += (
+        f"\n\n⚠️ 수치 정확도 규칙 (필수):\n"
+        f"1. 모든 metrics 수치는 date(기준일)·source(출처)를 반드시 명시할 것\n"
+        f"2. 오늘({TODAY_KR}) 데이터가 없는 지표는 가장 최근 날짜를 date에 명시\n"
+        f"3. FRED/야후 API 실시간 수치가 제공된 경우 해당 수치를 우선 사용\n"
+        f"4. 뉴스 헤드라인에만 등장하는 수치는 source에 출처 언론사·날짜를 명시\n"
+        f"5. 출처·날짜 불명확한 수치는 value='확인 필요', date='날짜 미확인'으로 표기 — 임의 추정 금지\n"
+        f"6. 나스닥·코스피 등 일간 등락률은 반드시 해당 일자를 date에 명시할 것"
+    )
     if desc_count > 0:
         instruction += (
             f"\n\n※ {desc_count}개 기사는 RSS 요약문이 포함되어 있습니다. "
-            "metrics의 수치는 반드시 기사 정보에서 확인된 것만 사용하고, "
-            "없으면 '확인 필요'로 표기하세요."
+            "metrics의 수치는 반드시 기사 정보에서 확인된 것만 사용하세요."
         )
 
     tool_def = {
@@ -424,11 +464,13 @@ def call_claude(news_headlines, cfg, live_data=None):
                         "properties": {
                             "label":   {"type": "string"},
                             "value":   {"type": "string"},
+                            "date":    {"type": "string", "description": "수치 기준 날짜. FRED/야후 API 데이터는 API가 반환한 날짜. 뉴스 기반 수치는 기사 날짜. 불명확 시 '날짜 미확인'"},
+                            "source":  {"type": "string", "description": "출처 (예: FRED API, 야후파이낸스, 연합뉴스, Google News)"},
                             "meaning": {"type": "string"}
                         },
-                        "required": ["label", "value", "meaning"]
+                        "required": ["label", "value", "date", "source", "meaning"]
                     },
-                    "description": "숫자 근거 3~4개"
+                    "description": "숫자 근거 3~4개. 반드시 date·source 명시 — 확인 불가 수치는 value='확인 필요', date='날짜 미확인'으로 표기"
                 },
                 "scenario_a": {
                     "type": "object",
@@ -744,6 +786,7 @@ def _tistory_blog_html(analysis: dict, cfg: dict, page_url: str) -> str:
     rows = "".join(
         f"<tr><td style='padding:8px 12px;border:1px solid #ddd;'><b>{esc(m.get('label',''))}</b></td>"
         f"<td style='padding:8px 12px;border:1px solid #ddd;font-weight:700;'>{esc(m.get('value',''))}</td>"
+        f"<td style='padding:8px 12px;border:1px solid #ddd;color:#888;font-size:12px;'>{esc(m.get('date',''))}</td>"
         f"<td style='padding:8px 12px;border:1px solid #ddd;color:#555;'>{esc(m.get('meaning',''))}</td></tr>"
         for m in metrics if isinstance(m, dict)
     )
@@ -752,6 +795,7 @@ def _tistory_blog_html(analysis: dict, cfg: dict, page_url: str) -> str:
         "<thead><tr style='background:#f8f8f8;'>"
         "<th style='padding:8px 12px;border:1px solid #ddd;text-align:left;'>지표</th>"
         "<th style='padding:8px 12px;border:1px solid #ddd;text-align:left;'>수치</th>"
+        "<th style='padding:8px 12px;border:1px solid #ddd;text-align:left;'>기준일</th>"
         "<th style='padding:8px 12px;border:1px solid #ddd;text-align:left;'>의미</th></tr></thead>"
         f"<tbody>{rows}</tbody></table>"
     ) if rows else ""
@@ -1188,6 +1232,7 @@ def build_html(a, cfg, cover_svg="", chart_svg="", page_url="", source_log=None)
     metrics_rows = "".join(
         f"<tr><td>{_safe(m.get('label',''))}</td>"
         f"<td>{_safe(m.get('value',''))}</td>"
+        f"<td style='color:#888;font-size:12px;'>{_safe(m.get('date',''))}</td>"
         f"<td>{_safe(m.get('meaning',''))}</td></tr>"
         for m in a.get("metrics", []) if isinstance(m, dict)
     )
@@ -2074,4 +2119,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
