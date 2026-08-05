@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 05 Aug 2026 23:01:30 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 23:03:13 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.06]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-06-politics.html</link>
+    <description><![CDATA["권력 재편의 계절: 국내 입법 공세와 글로벌 패권 공백" — 이재명 정부·민주당의 입법·사법 구조 재편이 가속화되는 가운데, 트럼프의 대이란 협상 시그널과 글로벌 패권 공백론이 맞물리며 한국 외교·경제의 새로운 방정식을 요구하고 있다.]]></description>
+    <pubDate>Wed, 05 Aug 2026 23:03:13 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-06-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.06]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-06.html</link>
     <description><![CDATA["Fed 매파 vs 시장 강세, 균열의 전야" — 연준 내 금리 인상 소수의견 3인 등장과 쿡 이사의 매파 발언에도 주식·금·반도체가 동반 급등 — 시장은 아직 연준을 믿지 않는다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 27 Jul 2026 23:03:08 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-28-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.28]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-28.html</link>
-    <description><![CDATA["워시 FOMC·유가 급등, 긴축 공포의 귀환" — 이스라엘-이란 충돌發 유가 급등 + 워시 체제 연준의 매파적 신호가 겹치며, AI·반도체 레버리지 포지션이 집중 청산되는 '이중 긴축 충격'이 시장을 관통하고 있다.]]></description>
-    <pubDate>Mon, 27 Jul 2026 23:01:24 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-28.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
