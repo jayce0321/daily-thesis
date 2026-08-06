@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 06 Aug 2026 23:01:29 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2026 23:03:21 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.07]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-07-politics.html</link>
+    <description><![CDATA["압박의 교차로: 대내 개혁과 대외 간섭의 충돌" — 이재명 정부의 정책 드라이브가 미국발 외압·북한 도발·군 내부 반발에 동시에 직면하며, 한국 정치는 대내외 이중 압박 속에서 새로운 권력 구조를 시험받고 있다.]]></description>
+    <pubDate>Thu, 06 Aug 2026 23:03:21 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-07-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.07]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-07.html</link>
     <description><![CDATA["인플레 공포의 귀환: 호르무즈 리스크가 Fed를 옥죈다" — 호르무즈해협 봉쇄 장기화 → 유가·모기지금리 동반 급등 → Fed 긴축 재개 우려 → 주식·채권 동반 압박이라는 2026년판 스태그플레이션 공포가 시장 전체를 지배하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 28 Jul 2026 23:03:11 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-29-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.29]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-29.html</link>
-    <description><![CDATA["전쟁 리스크 + 매파 Fed = 위험자산 재정가" — 이란의 미군 기지 미사일 공격과 Fed 매파 신호가 겹치며 시장은 '지정학 프리미엄 + 금리 불확실성' 이중 충격을 소화 중이다.]]></description>
-    <pubDate>Tue, 28 Jul 2026 23:01:18 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-29.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
