@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 07 Aug 2026 09:54:38 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 23:01:26 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.10]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-10.html</link>
+    <description><![CDATA["고용 쇼크가 Fed 경로를 흔든다" — 7월 미국 비농업 고용이 -2만3천명으로 예상을 완전히 빗나가며, Fed 금리 인상 기대가 급속히 후퇴하고 달러 약세·금 강세·위험자산 혼조의 3중 구도가 형성됐다.]]></description>
+    <pubDate>Sun, 09 Aug 2026 23:01:26 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-10.html</guid>
+    <category><![CDATA[경제·투자]]></category>
+  </item>
+<item>
     <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.08.07]]></title>
     <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W32.html</link>
     <description><![CDATA[균열의 시대 — 반도체·Fed·K-컬처가 그린 이중 노출 — Fed 매파 충격과 지정학 리스크가 반도체 사이클의 펀더멘털 강세를 압도하기 시작했으며, 이는 단순 조정이 아닌 '고금리 장기화 2라운드'라는 새로운 국면의 신호탄일 수 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 29 Jul 2026 23:03:10 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-30-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.07.30]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-30.html</link>
-    <description><![CDATA["연준 매파적 동결: 금리 인상의 그림자" — 연준이 5연속 동결을 유지했지만 '매파적 신호'를 강화하면서, 시장은 인상 리스크를 본격 가격에 반영하기 시작했다.]]></description>
-    <pubDate>Wed, 29 Jul 2026 23:01:08 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-30.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
