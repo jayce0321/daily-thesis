@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Sun, 09 Aug 2026 23:03:12 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 23:05:12 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.08.10]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-10-culture.html</link>
+    <description><![CDATA["K-콘텐츠, 수출품에서 글로벌 문화 표준으로" — K-드라마·K팝이 단순 한류 콘텐츠를 넘어 글로벌 문화 문법 자체를 재편하는 '표준화 단계'에 진입했다.]]></description>
+    <pubDate>Sun, 09 Aug 2026 23:05:12 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-10-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.10]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-10-politics.html</link>
     <description><![CDATA["제도 신뢰의 균열 — 선거·개헌·패권 공백이 수렴하다" — 한국에서는 선관위 조작 의혹·개헌 갈등이 민주주의 제도 신뢰를 흔들고, 글로벌에서는 미국의 대이란 압박·네타냐후-트럼프 균열·AOC 대권 시동이 '패권 없는 혼돈 전환기'를 가속화하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 30 Jul 2026 06:01:25 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-30-pm.html</guid>
     <category><![CDATA[경제·투자 (오후)]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.07.30]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-30-culture.html</link>
-    <description><![CDATA["K-컬처, 팬덤을 넘어 글로벌 생활문화로" — BTS 그래미 보이콧·스키즈 굿즈 美 1위·일본 배우의 K-드라마 진출까지, K-컬처는 팬덤 소비를 넘어 글로벌 일상·산업 인프라로 재편되고 있다.]]></description>
-    <pubDate>Wed, 29 Jul 2026 23:05:16 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-30-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
