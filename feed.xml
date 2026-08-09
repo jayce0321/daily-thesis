@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Sun, 09 Aug 2026 23:01:26 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 23:03:12 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.10]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-10-politics.html</link>
+    <description><![CDATA["제도 신뢰의 균열 — 선거·개헌·패권 공백이 수렴하다" — 한국에서는 선관위 조작 의혹·개헌 갈등이 민주주의 제도 신뢰를 흔들고, 글로벌에서는 미국의 대이란 압박·네타냐후-트럼프 균열·AOC 대권 시동이 '패권 없는 혼돈 전환기'를 가속화하고 있다.]]></description>
+    <pubDate>Sun, 09 Aug 2026 23:03:12 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-10-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.10]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-10.html</link>
     <description><![CDATA["고용 쇼크가 Fed 경로를 흔든다" — 7월 미국 비농업 고용이 -2만3천명으로 예상을 완전히 빗나가며, Fed 금리 인상 기대가 급속히 후퇴하고 달러 약세·금 강세·위험자산 혼조의 3중 구도가 형성됐다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 29 Jul 2026 23:05:16 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-30-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.07.30]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-07-30-politics.html</link>
-    <description><![CDATA["입법 강행과 제도 재편 — 한국 정치의 질주" — 민주당의 형소법·패트법 강행 처리 시도와 당 대표 경선, 여기에 트럼프발 AI·사법 논란이 맞물리며 '입법권력 vs. 제도 규범' 충돌이 한·미 양국에서 동시에 가시화되고 있다.]]></description>
-    <pubDate>Wed, 29 Jul 2026 23:03:10 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-07-30-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
