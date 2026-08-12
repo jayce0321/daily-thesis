@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 12 Aug 2026 23:01:19 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 23:03:10 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.13]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-13-politics.html</link>
+    <description><![CDATA["권력 재편기, 안보 균열과 정책 실험의 교차점" — 이재명 정부의 '3대 메가프로젝트' 드라이브와 세제·대출 논란이 국내 정치를 흔드는 가운데, 북 미사일·중화권 스파이·후티 공격 등 안보 변수가 한미동맹의 재정의를 압박하고 있다.]]></description>
+    <pubDate>Wed, 12 Aug 2026 23:03:10 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-13-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.13]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-13.html</link>
     <description><![CDATA["AI 실적은 완벽, 시장은 다음을 묻는다" — AI 인프라 밸류체인 전방위 어닝 서프라이즈에도 주가 반응이 엇갈리는 것은 '실적 확인→다음 성장 내러티브 검증' 국면으로의 전환 신호다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 03 Aug 2026 23:03:10 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-04-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.04]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-04.html</link>
-    <description><![CDATA["전쟁·인플레·Fed 삼각파고 속 시장 내성 테스트" — 이란 전쟁 리스크 + 스태그플레이션 공포 + 분열된 Fed — 세 개의 파고가 동시에 시장을 강타하며, 투자자는 지금 '위험 회피'와 '역발상 매수' 사이의 선택을 강요받고 있다.]]></description>
-    <pubDate>Mon, 03 Aug 2026 23:01:26 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-04.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
