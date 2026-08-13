@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 13 Aug 2026 23:01:26 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 23:03:16 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.14]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-14-politics.html</link>
+    <description><![CDATA["권력 재편의 교차로: 한국 국정 드라이브와 글로벌 헤게모니 공백" — 이재명 정부의 '3대 메가프로젝트·주택공급' 드라이브와 트럼프의 일방적 외교·통상 재편이 맞물리며, 헤게모니 공백 시대 한국의 전략적 선택지가 좁아지고 있다.]]></description>
+    <pubDate>Thu, 13 Aug 2026 23:03:16 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-14-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.14]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-14.html</link>
     <description><![CDATA["인플레 둔화 + 마진 확장 = 골디락스 랠리" — 미국 PPI 예상 하회·기업 마진 사상 최고치가 맞물리며, 침체 없는 금리 인하 기대(골디락스)가 글로벌 위험자산 랠리를 견인하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 04 Aug 2026 23:03:17 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-05-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.05]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-05.html</link>
-    <description><![CDATA["지정학 해빙 + AI 실적 = 위험자산 랠리, 그러나 균열은 진행 중" — 미·이란 협상 진전으로 유가가 급락하고 AI 기업 실적 서프라이즈가 겹치며 나스닥·반도체가 급등했지만, 인플레 재점화·Fed 긴축 압력·마이클 버리의 1987형 폭락 경고가 동시에 부상하는 '낙관 속 리스크 축적' 국면이다.]]></description>
-    <pubDate>Tue, 04 Aug 2026 23:01:35 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-05.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
