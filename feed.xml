@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 17 Aug 2026 23:01:33 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 23:03:15 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.18]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-18-politics.html</link>
+    <description><![CDATA["한미훈련 축소·여야 교체기: 동맹 재편과 국내 권력 재편이 교차하는 분기점" — 트럼프의 한미연합훈련 축소 지시와 한국 여야 동반 리더십 교체가 맞물리며, 한반도 안보 방정식과 국내 정치 역학이 동시에 재구성되는 이중 변곡점에 진입했다.]]></description>
+    <pubDate>Mon, 17 Aug 2026 23:03:15 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-18-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.18]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-18.html</link>
     <description><![CDATA["긴축 공포 재점화 vs. AI 베팅 — 시장의 두 얼굴" — Fed 매파 발언·유가 급등·재정적자 폭증이 긴축 공포를 재점화하는 동시에, 빅테크·반도체의 AI 자본 베팅은 멈추지 않아 시장이 두 개의 축을 중심으로 갈등하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 06 Aug 2026 23:05:20 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-07-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.07]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-07-politics.html</link>
-    <description><![CDATA["압박의 교차로: 대내 개혁과 대외 간섭의 충돌" — 이재명 정부의 정책 드라이브가 미국발 외압·북한 도발·군 내부 반발에 동시에 직면하며, 한국 정치는 대내외 이중 압박 속에서 새로운 권력 구조를 시험받고 있다.]]></description>
-    <pubDate>Thu, 06 Aug 2026 23:03:21 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-07-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
