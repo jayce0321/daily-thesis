@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 17 Aug 2026 23:03:15 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 23:05:10 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.08.18]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-18-culture.html</link>
+    <description><![CDATA["K-컬처, 팝에서 라이프스타일 전체로 확장" — K-팝·K-드라마를 넘어 한식·공연예술·뷰티까지, K-컬처가 '단일 장르'에서 '전방위 라이프스타일 플랫폼'으로 진화하고 있다.]]></description>
+    <pubDate>Mon, 17 Aug 2026 23:05:10 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-18-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.18]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-18-politics.html</link>
     <description><![CDATA["한미훈련 축소·여야 교체기: 동맹 재편과 국내 권력 재편이 교차하는 분기점" — 트럼프의 한미연합훈련 축소 지시와 한국 여야 동반 리더십 교체가 맞물리며, 한반도 안보 방정식과 국내 정치 역학이 동시에 재구성되는 이중 변곡점에 진입했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Fri, 07 Aug 2026 06:01:31 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-07-pm.html</guid>
     <category><![CDATA[경제·투자 (오후)]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.08.07]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-07-culture.html</link>
-    <description><![CDATA["K컬처, 배움의 대상이 되다" — K팝·K드라마·K공연예술이 글로벌 '팝컬처 소비재'를 넘어 미국 교과서·세계 3대 연극제·프리미엄 브랜드로 격상되며, 한국 문화가 MZ세대의 글로벌 공용어로 자리매김하는 전환점에 섰다.]]></description>
-    <pubDate>Thu, 06 Aug 2026 23:05:20 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-07-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
