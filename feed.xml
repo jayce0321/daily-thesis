@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 18 Aug 2026 23:03:08 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 23:05:11 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.08.19]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-19-culture.html</link>
+    <description><![CDATA["K-컬처, 팝·드라마를 넘어 '일상 문화 전반'으로 확장" — K-팝·K-드라마의 글로벌 팬덤이 한식·공연예술·패션으로 영역을 넓히며, 한류는 '장르 콘텐츠'에서 '생활 문화 플랫폼'으로 진화하고 있다.]]></description>
+    <pubDate>Tue, 18 Aug 2026 23:05:11 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-19-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.19]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-19-politics.html</link>
     <description><![CDATA["동맹 재편의 교차로: 한미훈련 축소와 왕이 방한이 만나다" — 트럼프의 한미연합훈련 축소 지시와 중국 왕이 외교부장의 방한이 같은 날 겹치며, 한국 외교·안보의 구조적 선택 압박이 가시화됐다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Sun, 09 Aug 2026 23:05:12 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-10-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.10]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-10-politics.html</link>
-    <description><![CDATA["제도 신뢰의 균열 — 선거·개헌·패권 공백이 수렴하다" — 한국에서는 선관위 조작 의혹·개헌 갈등이 민주주의 제도 신뢰를 흔들고, 글로벌에서는 미국의 대이란 압박·네타냐후-트럼프 균열·AOC 대권 시동이 '패권 없는 혼돈 전환기'를 가속화하고 있다.]]></description>
-    <pubDate>Sun, 09 Aug 2026 23:03:12 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-10-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
