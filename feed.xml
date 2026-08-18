@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 18 Aug 2026 23:01:41 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 23:03:08 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.19]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-19-politics.html</link>
+    <description><![CDATA["동맹 재편의 교차로: 한미훈련 축소와 왕이 방한이 만나다" — 트럼프의 한미연합훈련 축소 지시와 중국 왕이 외교부장의 방한이 같은 날 겹치며, 한국 외교·안보의 구조적 선택 압박이 가시화됐다.]]></description>
+    <pubDate>Tue, 18 Aug 2026 23:03:08 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-19-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.19]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-19.html</link>
     <description><![CDATA["빅테크 AI 투자發 국채 발작 — 고금리 장기화의 새 진원지" — AI 군비경쟁을 위한 빅테크의 폭발적 차입이 국채 시장을 압박하고, 이란 전쟁·재정적자 급증까지 겹치며 '고금리 장기화' 내러티브가 증시·실물경제 전반을 짓누르고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Sun, 09 Aug 2026 23:03:12 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-10-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.10]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-10.html</link>
-    <description><![CDATA["고용 쇼크가 Fed 경로를 흔든다" — 7월 미국 비농업 고용이 -2만3천명으로 예상을 완전히 빗나가며, Fed 금리 인상 기대가 급속히 후퇴하고 달러 약세·금 강세·위험자산 혼조의 3중 구도가 형성됐다.]]></description>
-    <pubDate>Sun, 09 Aug 2026 23:01:26 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-10.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
