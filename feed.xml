@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 19 Aug 2026 23:01:26 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 23:03:11 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.20]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-20-politics.html</link>
+    <description><![CDATA["권력 재편의 교차로: 한국 정치 내부 충돌과 외교 변수의 동시 폭발" — 국내 여야 권력 재편이 동시에 진행되는 가운데, 이재명 대통령의 왕이 접견과 미-캐나다 관세 협상이 한국 외교·경제의 향방을 가를 분수령으로 떠올랐다.]]></description>
+    <pubDate>Wed, 19 Aug 2026 23:03:11 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-20-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.20]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-20.html</link>
     <description><![CDATA["Fed 매파 신호 + 빅테크 부채 = 반도체 패닉셀" — FOMC 의사록이 촉발한 금리 불안이 AI·반도체 밸류에이션을 직격하며, 빅테크 부채 확대와 맞물려 고금리 장기화 공포가 시장을 지배하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 10 Aug 2026 23:03:14 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-11-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.11]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-11.html</link>
-    <description><![CDATA["약한 고용 + AI 자본 폭주: 연준의 딜레마가 시장을 지배한다" — 7월 미국 비농업 고용이 예상을 완전히 빗나가며 '침체 공포 vs. 인플레 경계' 사이에서 연준의 행보가 불투명해진 가운데, 엔비디아가 월가와 손잡은 710조 원 AI 인프라 베팅이 시장의 방향타를 쥐고 있다.]]></description>
-    <pubDate>Mon, 10 Aug 2026 23:01:28 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-11.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
