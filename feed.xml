@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 21 Aug 2026 09:29:48 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 23:01:20 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.24]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-24.html</link>
+    <description><![CDATA["베센트의 딜레마: 美 국채 시장이 흔들린다" — 美 재무장관 베센트의 국채 시장 안정화 시도가 역설적으로 인플레이션 우려를 자극하며, FOMC 의사록 발표를 앞두고 글로벌 자금 흐름이 요동치는 분기점에 서 있다.]]></description>
+    <pubDate>Sun, 23 Aug 2026 23:01:20 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-24.html</guid>
+    <category><![CDATA[경제·투자]]></category>
+  </item>
+<item>
     <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.08.21]]></title>
     <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W34.html</link>
     <description><![CDATA[균열의 시대, 버티는 시장과 흔들리는 동맹 — 고금리 장기화·지정학 리스크·동맹 재편이 동시에 맞물린 '복합 균열의 시대'에, 반도체·AI와 K-컬처만이 유일한 방어선으로 남았다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 12 Aug 2026 23:03:10 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-13-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.13]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-13.html</link>
-    <description><![CDATA["AI 실적은 완벽, 시장은 다음을 묻는다" — AI 인프라 밸류체인 전방위 어닝 서프라이즈에도 주가 반응이 엇갈리는 것은 '실적 확인→다음 성장 내러티브 검증' 국면으로의 전환 신호다.]]></description>
-    <pubDate>Wed, 12 Aug 2026 23:01:19 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-13.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
