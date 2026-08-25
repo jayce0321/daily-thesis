@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 25 Aug 2026 23:01:15 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 23:03:15 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.26]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-26-politics.html</link>
+    <description><![CDATA["정치 질서 재편: 한국 야당 분열과 글로벌 세력 재정렬" — 국내 야권 구심점 약화와 미·러 비밀접촉·대이란 정책전환이 맞물리며, 기존 정치 질서가 동시에 흔들리는 '이중 재편'의 국면이 열렸다.]]></description>
+    <pubDate>Tue, 25 Aug 2026 23:03:15 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-26-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.26]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-26.html</link>
     <description><![CDATA["베센트의 도박: 국채 개입이 시장을 구할 수 있나?" — 미 재무부의 장기금리 억제 시도 vs 시장의 불신 — 이 긴장이 오늘 모든 자산가격의 진짜 배경이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Sun, 16 Aug 2026 23:03:09 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-17-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.17]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-17.html</link>
-    <description><![CDATA["AI 금융화 — 엔비디아가 은행이 되는 날" — 엔비디아의 700조 순환금융, 골드만의 AI 인프라 대출, 버크셔의 알파벳 베팅까지 — AI 투자 열기가 실물 금융 구조 자체를 재편하고 있다.]]></description>
-    <pubDate>Sun, 16 Aug 2026 23:01:24 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-17.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
