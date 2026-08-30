@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Sun, 30 Aug 2026 23:01:28 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 23:03:13 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.31]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-08-31-politics.html</link>
+    <description><![CDATA["균열하는 질서: 국내 권력 재편과 미·이란 충돌의 교차" — 한국 정치는 여야 권력 구조 재편 경쟁에 몰입한 사이, 글로벌 무대에서는 미·이란 군사 충돌과 패권 공백이 동시에 폭발하며 '지도자 없는 혼돈의 시대'가 가시화되고 있다.]]></description>
+    <pubDate>Sun, 30 Aug 2026 23:03:13 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-31-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.08.31]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-08-31.html</link>
     <description><![CDATA["Fed 매파 복귀, 금리인상이 현실이 된다" — 잭슨홀 이후 연준 매파 발언이 연쇄 점화되며 '금리인상 재개' 가능성이 시장의 새 기준선으로 부상했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 20 Aug 2026 06:01:34 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-20-pm.html</guid>
     <category><![CDATA[경제·투자 (오후)]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.08.20]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-20-culture.html</link>
-    <description><![CDATA["K-컬처, 팝에서 일상文化 전방위 확장" — K-팝·K-드라마를 넘어 공연예술·식문화·뷰티까지 확산되는 K-컬처의 '라이프스타일 제국화'가 2026년 하반기 문화 트렌드의 핵심 축으로 부상했다.]]></description>
-    <pubDate>Wed, 19 Aug 2026 23:05:21 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-20-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
