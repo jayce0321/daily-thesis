@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 01 Sep 2026 23:03:17 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 23:05:12 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.09.02]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-02-culture.html</link>
+    <description><![CDATA["K-콘텐츠, 문화 수출을 넘어 글로벌 표준이 되다" — K-팝·K-드라마가 단순 한류 콘텐츠를 넘어 글로벌 팝컬처의 문법 자체를 재편하고 있으며, 숏폼·틱톡 바이럴이 그 속도를 가속화하는 구조적 전환점에 도달했다.]]></description>
+    <pubDate>Tue, 01 Sep 2026 23:05:12 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-02-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.02]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-02-politics.html</link>
     <description><![CDATA["균열하는 질서 — 한국 정치 재편과 글로벌 힘의 공백" — 국내에선 정기국회를 앞두고 여야 대치가 격화되는 가운데, 글로벌 무대에서는 미·이란 충돌 확전·AI 규제 전선 형성 등 '패권 없는 혼돈'이 동시에 심화되고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 24 Aug 2026 06:01:30 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-24-pm.html</guid>
     <category><![CDATA[경제·투자 (오후)]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.08.24]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-24-culture.html</link>
-    <description><![CDATA["K팝 시스템의 국경 소멸" — 캣츠아이 빌보드 200 1위로 증명된 'K팝 시스템의 글로벌 OS화' — 한국산 제작 문법이 국적을 초월한 팝컬처 표준이 되고 있다.]]></description>
-    <pubDate>Sun, 23 Aug 2026 23:05:14 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-24-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
