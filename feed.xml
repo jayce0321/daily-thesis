@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 01 Sep 2026 23:01:31 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 23:03:17 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.02]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-02-politics.html</link>
+    <description><![CDATA["균열하는 질서 — 한국 정치 재편과 글로벌 힘의 공백" — 국내에선 정기국회를 앞두고 여야 대치가 격화되는 가운데, 글로벌 무대에서는 미·이란 충돌 확전·AI 규제 전선 형성 등 '패권 없는 혼돈'이 동시에 심화되고 있다.]]></description>
+    <pubDate>Tue, 01 Sep 2026 23:03:17 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-02-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.02]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-02.html</link>
     <description><![CDATA["중동 전쟁발 인플레 재점화 — 금리 고점 연장 공포" — 이란-미국 충돌로 유가가 급등하며 글로벌 채권금리가 동반 급등, '금리 더 오래 더 높게(Higher for Longer)' 시나리오가 2026년 9월 시장을 지배하기 시작했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Sun, 23 Aug 2026 23:05:14 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-24-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.24]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-24-politics.html</link>
-    <description><![CDATA["권력 재편의 교차로: 한국 여야 동시 지도부 교체와 트럼프발 동맹 재설계" — 한국 여야가 동시에 새 지도부를 구성하며 내부 권력 재편에 돌입한 가운데, 트럼프 행정부의 대북·대한 외교 압박이 겹치며 한반도 정치 지형이 다층적 변환점에 진입했다.]]></description>
-    <pubDate>Sun, 23 Aug 2026 23:03:08 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-24-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
