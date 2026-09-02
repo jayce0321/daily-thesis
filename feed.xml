@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 02 Sep 2026 23:01:23 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 23:03:15 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.03]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-03-politics.html</link>
+    <description><![CDATA["권력 재편의 교차로: 한국 내부 정치 지형 변동과 글로벌 패권 공백의 동시 진행" — 한국은 특별감찰관 지명·선관위 개혁·장관 후보 논란으로 권력 감시 체계를 재구축하는 동시에, 미·중 정상회담 임박과 트럼프발 동맹 재편 속에서 북핵 협상 배제 우려까지 직면한 '이중 압박' 국면에 놓였다.]]></description>
+    <pubDate>Wed, 02 Sep 2026 23:03:15 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-03-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.03]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-03.html</link>
     <description><![CDATA["긴축 재점화 — 전쟁·인플레가 금리 상단을 다시 열다" — 중동 전쟁 재확전으로 에너지 가격이 오르고, Fed·ECB 모두 추가 인상 신호를 보내며 '9월 긴축 재점화'가 오늘 시장의 핵심 압력이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 24 Aug 2026 23:05:14 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-25-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.25]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-25-politics.html</link>
-    <description><![CDATA["동맹 재편 압박 속 한국의 자율성 시험대" — 트럼프 2기의 대북·대한 압박과 이재명 정부의 내부 권력 재편이 동시에 진행되며, 한국의 외교·정치 자율성이 안팎에서 도전받고 있다.]]></description>
-    <pubDate>Mon, 24 Aug 2026 23:03:15 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-25-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
