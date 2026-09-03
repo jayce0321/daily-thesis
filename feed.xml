@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 03 Sep 2026 23:01:05 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 23:03:08 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.04]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-04-politics.html</link>
+    <description><![CDATA["권력 재편의 계절: 한국 연임 개헌 논쟁과 글로벌 동맹 균열" — 한국에서는 대통령 연임 개헌 논쟁과 내각 공백이 권력 구조를 흔들고, 글로벌에서는 트럼프의 동맹 이탈과 머스크의 중간선거 개입이 자유주의 국제질서를 동시에 압박하고 있다.]]></description>
+    <pubDate>Thu, 03 Sep 2026 23:03:08 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-04-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.04]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-04.html</link>
     <description><![CDATA["Fed 독립성 균열 속, 시장은 인플레 재점화를 가격에 담는다" — 연준 금리 동결 vs 인상 분열, 중동발 유가 급등, 금 사상 최고 — 시장은 '인플레이션 재점화 리스크'를 조용히 가격에 반영 중이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 25 Aug 2026 23:05:12 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-26-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.08.26]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-08-26-politics.html</link>
-    <description><![CDATA["정치 질서 재편: 한국 야당 분열과 글로벌 세력 재정렬" — 국내 야권 구심점 약화와 미·러 비밀접촉·대이란 정책전환이 맞물리며, 기존 정치 질서가 동시에 흔들리는 '이중 재편'의 국면이 열렸다.]]></description>
-    <pubDate>Tue, 25 Aug 2026 23:03:15 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-08-26-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
