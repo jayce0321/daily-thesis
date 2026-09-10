@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 10 Sep 2026 23:01:23 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 23:03:13 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.11]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-11-politics.html</link>
+    <description><![CDATA["동맹 압박·개헌 공방·헤게모니 공백의 삼중 교차" — 한국은 국내 개헌·사법·청년정책 전선을 동시에 치르면서, 미국의 호르무즈 파병 압박과 글로벌 리더십 공백이라는 외부 변수에도 동시에 노출된 '다중 전선의 정치 과부하' 국면에 진입했다.]]></description>
+    <pubDate>Thu, 10 Sep 2026 23:03:13 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-11-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.11]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-11.html</link>
     <description><![CDATA["유가·금리 동반 급등, 시장의 새 공포" — WTI 8% 급등과 미 10년물 4.83% 고공행진이 맞물리며 '인플레 재점화 → Fed 금리 인상' 공포가 글로벌 자산시장 전체를 흔들고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 01 Sep 2026 23:03:17 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-02-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.02]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-02.html</link>
-    <description><![CDATA["중동 전쟁발 인플레 재점화 — 금리 고점 연장 공포" — 이란-미국 충돌로 유가가 급등하며 글로벌 채권금리가 동반 급등, '금리 더 오래 더 높게(Higher for Longer)' 시나리오가 2026년 9월 시장을 지배하기 시작했다.]]></description>
-    <pubDate>Tue, 01 Sep 2026 23:01:31 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-02.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
