@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 10 Sep 2026 23:03:13 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 23:05:13 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.09.11]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-11-culture.html</link>
+    <description><![CDATA["K-컬처, 팝을 넘어 문명 표준으로" — BTS 스타디움 흥행·K드라마 해외 리메이크·아비뇽 한국어 공연까지, K-컬처가 특정 장르를 초월해 글로벌 문화 문법 자체를 재편하고 있다.]]></description>
+    <pubDate>Thu, 10 Sep 2026 23:05:13 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-11-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.11]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-11-politics.html</link>
     <description><![CDATA["동맹 압박·개헌 공방·헤게모니 공백의 삼중 교차" — 한국은 국내 개헌·사법·청년정책 전선을 동시에 치르면서, 미국의 호르무즈 파병 압박과 글로벌 리더십 공백이라는 외부 변수에도 동시에 노출된 '다중 전선의 정치 과부하' 국면에 진입했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 01 Sep 2026 23:05:12 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-02-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.02]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-02-politics.html</link>
-    <description><![CDATA["균열하는 질서 — 한국 정치 재편과 글로벌 힘의 공백" — 국내에선 정기국회를 앞두고 여야 대치가 격화되는 가운데, 글로벌 무대에서는 미·이란 충돌 확전·AI 규제 전선 형성 등 '패권 없는 혼돈'이 동시에 심화되고 있다.]]></description>
-    <pubDate>Tue, 01 Sep 2026 23:03:17 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-02-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
