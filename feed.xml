@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 11 Sep 2026 13:09:47 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 00:31:31 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.14]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-14.html</link>
+    <description><![CDATA["인플레 재점화 vs. 긴축 사이클 — 시장의 갈림길" — 미국 물가 재가속·소비자심리 급락·국채금리 5% 임박이 맞물리며, 국내 반도체주까지 동반 급락하는 '긴축 재점화 쇼크' 국면이 전개되고 있다.]]></description>
+    <pubDate>Mon, 14 Sep 2026 00:31:31 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-14.html</guid>
+    <category><![CDATA[경제·투자]]></category>
+  </item>
+<item>
     <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.09.11]]></title>
     <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W37.html</link>
     <description><![CDATA[긴축 귀환·동맹 균열·한류 제도화의 삼중 전환점 — Fed 금리 인상 재개 공포가 글로벌 자산 가격의 새로운 기준점을 강제하는 가운데, 한국은 경제·정치·문화 세 축 모두에서 '기존 질서의 종료'와 '새 질서의 미확정' 사이 가장 불안한 구간을 통과하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 02 Sep 2026 23:03:15 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-03-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.03]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-03.html</link>
-    <description><![CDATA["긴축 재점화 — 전쟁·인플레가 금리 상단을 다시 열다" — 중동 전쟁 재확전으로 에너지 가격이 오르고, Fed·ECB 모두 추가 인상 신호를 보내며 '9월 긴축 재점화'가 오늘 시장의 핵심 압력이다.]]></description>
-    <pubDate>Wed, 02 Sep 2026 23:01:23 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-03.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
