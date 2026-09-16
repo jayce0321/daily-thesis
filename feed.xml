@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 16 Sep 2026 00:53:00 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 00:54:00 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.16]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-16-politics.html</link>
+    <description><![CDATA["권력 재편의 시대: 국내 인준 갈등과 글로벌 패권 공백의 교차" — 한국은 법무장관 인준 갈등·탄핵 경고로 정치 리스크가 고조되는 가운데, 글로벌 무대에서는 미국 주도의 대이란 공조와 후티 자립화가 새로운 불안정 축으로 부상하고 있다.]]></description>
+    <pubDate>Wed, 16 Sep 2026 00:54:00 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-16-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.16]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-16.html</link>
     <description><![CDATA["Fed 인상 공포가 시장 판을 바꾼다" — 미국 인플레이션 재가속 → Fed 추가 금리 인상 92% 베팅 → 반도체·성장주 급락, 달러·유가 급등으로 글로벌 자금 지형 전면 재편]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Fri, 04 Sep 2026 13:04:11 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/weekly-2026-W36.html</guid>
     <category><![CDATA[주간 다이제스트]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 (오후) 데일리 테제 | 2026.09.04]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-04-pm.html</link>
-    <description><![CDATA["공포지수 진정 + 반도체 수출 트리플 — 코스피 랠리의 지속 가능성 테스트" — VKOSPI 40선 붕괴·원화 강세·반도체 수출 급증이 맞물리며 코스피가 6,700선을 돌파했지만, 미국 연준 매파 기조와 8월 고용보고서 경계가 저녁 랠리의 '천장'이 될 수 있다.]]></description>
-    <pubDate>Fri, 04 Sep 2026 06:01:36 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-04-pm.html</guid>
-    <category><![CDATA[경제·투자 (오후)]]></category>
   </item>
   </channel>
 </rss>
