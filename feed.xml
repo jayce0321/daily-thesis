@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 18 Sep 2026 00:54:32 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 00:55:31 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.09.18]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-18-culture.html</link>
+    <description><![CDATA["K-콘텐츠, 팬덤을 넘어 제도권 문화로" — K팝·K드라마·K뷰티가 글로벌 '취향'에서 '학문·산업 표준'으로 격상되는 문화 제도화의 변곡점에 진입했다.]]></description>
+    <pubDate>Fri, 18 Sep 2026 00:55:31 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-18-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.18]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-18-politics.html</link>
     <description><![CDATA["권력의 균열: 지지율 하락과 인사 갈등 속 이재명 정부의 국정 동력 시험대" — 이재명 대통령의 지지율 하락과 법무장관 인사 강행 논란이 국내 정치 갈등을 심화시키는 가운데, EU-중국 무역 담판·미국 대(對)이란 제재 강화 등 글로벌 권력 재편이 한국의 외교·통상 환경을 동시에 압박하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 07 Sep 2026 23:05:13 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-08-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.08]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-08-politics.html</link>
-    <description><![CDATA["권력 재편의 교차로: 한국의 제도 설계와 글로벌 우경화" — 이재명 정부의 중수청·개헌·핵잠 등 권력 재설계가 본격화되는 동시에, 독일 AfD 압승·트럼프 관세 압박으로 글로벌 정치 질서가 우경화·블록화 국면으로 가속되고 있다.]]></description>
-    <pubDate>Mon, 07 Sep 2026 23:03:12 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-08-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
