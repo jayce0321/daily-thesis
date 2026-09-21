@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 21 Sep 2026 00:37:32 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 00:38:30 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.21]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-21-politics.html</link>
+    <description><![CDATA["권력 재편기의 지지율 정치: 한국·글로벌 동시 흔들림" — 이재명 대통령 지지율이 10주 만에 반등했지만 복수 조사 간 격차가 크고, 글로벌에선 독일 AfD 2연승·러시아 집권당 전쟁선거 승리로 '기성 권력 약화·반체제 부상'이 동시다발 진행 중이다.]]></description>
+    <pubDate>Mon, 21 Sep 2026 00:38:30 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-21-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.21]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-21.html</link>
     <description><![CDATA["Fed 금리 인상 충격 속, 시장은 반도체·AI로 돌파구를 찾는다" — Fed의 추가 금리 인상 경고에도 나스닥·반도체가 급등한 '공포 속 역발상 랠리'가 오늘 시장의 핵심이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 08 Sep 2026 23:03:11 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-09-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.09]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-09.html</link>
-    <description><![CDATA["Fed 매파 재점화 vs. 유가 충격 — 시장은 지금 두 갈래 불 위에 서 있다" — 워시 Fed 이사의 매파 발언과 중동발 유가 100달러 위협이 동시에 터지며, 금리 인하 기대와 인플레 재점화 우려가 정면충돌하는 변곡점에 시장이 놓였다.]]></description>
-    <pubDate>Tue, 08 Sep 2026 23:01:33 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-09.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
