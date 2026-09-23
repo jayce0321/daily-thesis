@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 23 Sep 2026 01:02:25 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 01:03:25 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.09.23]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-23-culture.html</link>
+    <description><![CDATA["K-Everything 시대, 콘텐츠가 국가 브랜드다" — K드라마·K팝·K뷰티를 넘어 공연예술·스포츠·AI 콘텐츠 전략까지 — 한국 문화는 이제 '장르'가 아닌 '글로벌 표준'으로 진화 중이다.]]></description>
+    <pubDate>Wed, 23 Sep 2026 01:03:25 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-23-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.23]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-23-politics.html</link>
     <description><![CDATA["권력 재편의 이중 압력: 이재명 정부의 내부 균열과 트럼프의 유엔 독주" — 이재명 대통령은 지지율 최저·특검 갈등·개헌 논란의 삼중 압박을 받는 동시에, 트럼프는 유엔총회를 무대로 종전론·그린란드 군사협정·AI 패권을 일방 드라이브하며 글로벌 권력 재편을 가속하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 10 Sep 2026 23:01:23 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-11.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 (오후) 데일리 테제 | 2026.09.10]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-10-pm.html</link>
-    <description><![CDATA["코스피 7,000 재탈환 vs 나스닥 하락 괴리" — 국내 증시가 코스피 7,060으로 7,000선을 재탈환했으나, 전일 나스닥 약세(-0.96%)와 미-캐나다 무역전쟁 격화라는 야간 리스크가 오늘 저녁 포지션의 핵심 변수다.]]></description>
-    <pubDate>Thu, 10 Sep 2026 06:01:29 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-10-pm.html</guid>
-    <category><![CDATA[경제·투자 (오후)]]></category>
   </item>
   </channel>
 </rss>
