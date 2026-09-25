@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 25 Sep 2026 01:01:24 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 01:02:25 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.09.25]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-25-culture.html</link>
+    <description><![CDATA["K컬처, 배움의 대상이 되다" — K팝·K드라마·K뷰티가 글로벌 팝컬처의 소비 대상을 넘어 학문적·산업적 표준으로 제도화되는 전환점에 섰다.]]></description>
+    <pubDate>Fri, 25 Sep 2026 01:02:25 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-25-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.25]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-25-politics.html</link>
     <description><![CDATA["권력의 정당성 전쟁: 임기·지지율·국회 파행" — 이재명 대통령은 임기 완수 의지를 재확인했지만, 역대 최저 지지율·국회 원 구성 파행·글로벌 외교 변수가 겹치며 권력 기반의 삼중 압박이 심화되고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 14 Sep 2026 00:32:31 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-14-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.14]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-14.html</link>
-    <description><![CDATA["인플레 재점화 vs. 긴축 사이클 — 시장의 갈림길" — 미국 물가 재가속·소비자심리 급락·국채금리 5% 임박이 맞물리며, 국내 반도체주까지 동반 급락하는 '긴축 재점화 쇼크' 국면이 전개되고 있다.]]></description>
-    <pubDate>Mon, 14 Sep 2026 00:31:31 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-14.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
