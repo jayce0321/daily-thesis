@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 30 Sep 2026 01:44:49 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 01:45:56 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.09.30]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-09-30-culture.html</link>
+    <description><![CDATA["K-컬처 2.0: 팝에서 전방위 문화 제국으로" — K팝·드라마를 넘어 K뷰티·K공연예술·K게임까지 — 한류가 특정 장르 콘텐츠에서 '글로벌 생활문화 플랫폼'으로 진화하고 있다.]]></description>
+    <pubDate>Wed, 30 Sep 2026 01:45:56 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-30-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.30]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-09-30-politics.html</link>
     <description><![CDATA["권력 재편의 계절: 개헌·북핵·미국 사법 충돌" — 한국은 연임 개헌 논쟁과 국회 파행으로 권력 구조가 흔들리고, 글로벌 무대에선 미국 사법부·트럼프 행정부 충돌과 中日 갈등이 맞물려 '헤게모니 공백 시대'가 가시화되고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 17 Sep 2026 00:59:39 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-17-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.09.17]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-17-politics.html</link>
-    <description><![CDATA["권력의 균열: 지지율 하락과 헤게모니 없는 전환기" — 이재명 정부의 지지율 최저치 경신과 트럼프의 다자질서 흔들기가 겹치며, 한국과 글로벌 모두 '권력의 정당성 위기'라는 동일한 문제에 직면했다.]]></description>
-    <pubDate>Thu, 17 Sep 2026 00:58:39 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-17-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
