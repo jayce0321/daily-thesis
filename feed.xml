@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 02 Oct 2026 01:52:30 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 01:53:30 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.02]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-02-politics.html</link>
+    <description><![CDATA["외교 충돌·개헌 논쟁·미중 패권 공백의 삼중 교차" — 이재명 대통령의 우크라이나 정면 충돌·연임 개헌 파장이 국내 권력 구조를 흔드는 동시에, 글로벌 패권 공백 속에서 한국의 전략적 자율성 시험대가 가동되고 있다.]]></description>
+    <pubDate>Fri, 02 Oct 2026 01:53:30 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-02-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.02]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-02.html</link>
     <description><![CDATA["금리 발작 속 시장의 분열: 채권 vs 위험자산" — 미 10년물 국채금리 5.29%의 고공행진과 Fed 매파 기조 재확인이 글로벌 자산시장을 '금리 발작' 구도로 재편하는 중, 한국 증시는 독자적 강세로 역주행 중이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 21 Sep 2026 00:37:32 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-21.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.09.18]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W38.html</link>
-    <description><![CDATA[균열의 시대 — 긴축·권력·문화 표준이 동시에 재편되다 — Fed 긴축 재개·권력 정당성 위기·K-문화 표준화가 동시에 진행되는 이 국면은, 낡은 질서가 균열하는 속도만큼 새로운 표준이 빠르게 자리를 채우고 있음을 보여준다.]]></description>
-    <pubDate>Fri, 18 Sep 2026 13:18:24 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/weekly-2026-W38.html</guid>
-    <category><![CDATA[주간 다이제스트]]></category>
   </item>
   </channel>
 </rss>
