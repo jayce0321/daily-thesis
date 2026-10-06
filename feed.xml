@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 06 Oct 2026 02:35:31 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 02:36:33 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.06]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-06-politics.html</link>
+    <description><![CDATA["권력의 균열: 지지율 하락과 국감 충돌" — 이재명 대통령 지지율이 42%로 최저치를 기록한 가운데, 여야는 국정감사에서 정면충돌하고 트럼프는 중간선거를 앞두고 농심(農心) 달래기에 나서며 한·미 양국 모두 '권력의 내부 균열'이 가시화되고 있다.]]></description>
+    <pubDate>Tue, 06 Oct 2026 02:36:33 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-06-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.06]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-06.html</link>
     <description><![CDATA["고용 쇼크 속 Fed 관망, 금리 피크아웃인가 함정인가" — 9월 미국 비농업 고용이 29,000건으로 예상치의 3분의 1 수준에 그치며 '경기 균열' 신호를 보냈지만, 미 10년물 금리가 5.28%에 고착되고 Fed는 데이터 의존 관망을 유지해 — 투자자는 '금리 피크아웃 기대'와 '인플레 재점화 리스크' 사이 극단적 선택의 기로에 섰다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 23 Sep 2026 01:02:25 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-23-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.23]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-23.html</link>
-    <description><![CDATA["Fed 금리 인상 충격, 시장은 왜 오르는가" — 연준이 2026년 금리 전망을 4.1%로 상향했음에도 나스닥·코스피가 동반 급등한 역설 — '긴축 속 성장 베팅'이 오늘 시장의 핵심 테제다.]]></description>
-    <pubDate>Wed, 23 Sep 2026 01:01:17 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-23.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
