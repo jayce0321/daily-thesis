@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 07 Oct 2026 01:53:26 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 01:54:27 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.07]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-07-politics.html</link>
+    <description><![CDATA["국감 정국과 지지율 균열 — 이재명 정부의 첫 번째 시험대" — 국정감사 개막과 함께 이 대통령 지지율이 42%로 역대 최저를 기록하며, 부동산 정책 실패 논란·선관위 신뢰 위기·북한 MDL 침범이 맞물려 여야 대립이 격화되고 있다.]]></description>
+    <pubDate>Wed, 07 Oct 2026 01:54:27 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-07-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.07]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-07.html</link>
     <description><![CDATA["AI 자본지출 폭증 + 연준 인내 = 소프트웨어·테크 재평가 국면" — 연준의 데이터 의존적 동결 기조 속, AI 하이퍼스케일러의 천문학적 투자가 소프트웨어·테크 섹터의 재평가를 이끌며 나스닥은 신고점을 향하고 있다 — 단, 미 10년물 5.31%·WTI 90달러라는 이중 역풍이 상승 속도를 제한한다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 24 Sep 2026 00:58:41 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-24-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.24]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-24.html</link>
-    <description><![CDATA["미중 휴전 연장, 그러나 매파 Fed가 발목 잡는다" — 트럼프-시진핑 국빈 회담으로 무역 휴전이 1월까지 연장됐지만, 인플레 3%대 고착과 Fed 매파 기조가 실질 위험자산 랠리를 억제하는 구도다.]]></description>
-    <pubDate>Thu, 24 Sep 2026 00:57:43 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-24.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
