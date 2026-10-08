@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 08 Oct 2026 02:21:42 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 02:22:40 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.08]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-08-politics.html</link>
+    <description><![CDATA["국감 정국과 글로벌 권력 재편: 협치냐 대결이냐" — 이재명 대통령이 국정감사 정국에서 '합리적 수용·정치공세 지양'을 주문하는 사이, 글로벌 무대에선 미국의 반(反)DEI 드라이브·브라질 정치 지형 변동·프랑스 재정 압박이 동시에 권력 구조를 흔들고 있다.]]></description>
+    <pubDate>Thu, 08 Oct 2026 02:22:40 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-08-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.08]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-08.html</link>
     <description><![CDATA["금리 고원(高原) 장기화 vs. 시장의 내성" — 미 10년물 국채금리 5.27%의 고공행진 속 FOMC 의사록이 추가 긴축 신호를 내비치며, 시장은 '금리 고원 장기화'를 얼마나 버틸 수 있는가가 오늘 시장을 관통하는 핵심 질문이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Fri, 25 Sep 2026 01:01:24 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-25-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.25]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-25.html</link>
-    <description><![CDATA["매파 Fed + 미중 휴전 연장 = 달러 강세 속 위험자산 줄타기" — Fed 추가 인상 경계감이 달러·금리를 끌어올리는 가운데, 미중 무역 휴전 2개월 연장이 위험자산의 유일한 버팀목이 되고 있다.]]></description>
-    <pubDate>Fri, 25 Sep 2026 01:00:26 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-25.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
