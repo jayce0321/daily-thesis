@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 09 Oct 2026 02:38:59 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 02:39:59 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.09]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-09-politics.html</link>
+    <description><![CDATA["지지율 하락과 안보 균열: 이재명 정부의 이중 압박" — 이재명 대통령 지지율이 출범 후 최저치를 기록하는 가운데, 북한 지뢰 도발·미국과의 외교 잡음·글로벌 안보 재편이 동시에 한국 정치를 압박하고 있다.]]></description>
+    <pubDate>Fri, 09 Oct 2026 02:39:59 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-09-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.09]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-09.html</link>
     <description><![CDATA["관세발 인플레 재점화 — 금리 고원 장기화의 귀환" — 뉴욕 연준이 관세가 인플레를 2.9%p 끌어올렸다고 확인한 가운데, 소비자 기대인플레 3.9%·미 10년물 5.28%가 동시에 치솟으며 '금리 고원 장기화(Higher for Longer 2.0)' 국면이 재개되고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 28 Sep 2026 01:16:11 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-28.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.09.25]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W39.html</link>
-    <description><![CDATA[균열의 시대: 권력·시장·문화의 동시 재편 — 기성 권력·기성 시장·기성 문화 모두가 동시에 균열하는 국면에서, 균열의 방향을 먼저 읽는 쪽이 다음 사이클의 주도권을 쥔다.]]></description>
-    <pubDate>Fri, 25 Sep 2026 14:21:49 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/weekly-2026-W39.html</guid>
-    <category><![CDATA[주간 다이제스트]]></category>
   </item>
   </channel>
 </rss>
