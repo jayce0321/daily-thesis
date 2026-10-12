@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 12 Oct 2026 01:54:13 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 01:55:10 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.12]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-12-politics.html</link>
+    <description><![CDATA["압박의 계절: 한국·글로벌 권력재편" — 이재명 정부 국감 2주차·북 미사일·트럼프의 우크라 '에너지 휴전'·중국 군사활동이 동시 분출하며, 한국 안팎의 권력구조가 동시에 흔들리고 있다.]]></description>
+    <pubDate>Mon, 12 Oct 2026 01:55:10 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-12-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.12]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-12.html</link>
     <description><![CDATA["인플레 재점화 공포가 시장을 다시 흔든다" — 관세발 인플레이션 재점화 + 미 장기금리 5%대 고착화 우려가 글로벌 위험자산을 동시에 압박하는 '복합 긴축 충격'이 오늘 시장을 지배했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 29 Sep 2026 02:23:32 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-29-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.29]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-29.html</link>
-    <description><![CDATA["채권 금리 폭등이 모든 자산을 재정렬한다" — 미 10년물 국채금리 5.17%의 고공행진이 AI·주식·금·달러 전 자산군의 가격 체계를 동시에 흔들고 있다.]]></description>
-    <pubDate>Tue, 29 Sep 2026 02:22:31 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-29.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
