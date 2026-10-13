@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 13 Oct 2026 03:16:06 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 03:17:08 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.13]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-13-politics.html</link>
+    <description><![CDATA["흔들리는 중심: 국내외 권력 재편의 교차점" — 이재명 대통령 지지율 42% 최저 기록 속 국정감사 공방이 격화되는 한편, 트럼프의 러시아 유화와 머스크의 중간선거 초대형 지출이 글로벌 권력 지형을 동시에 흔들고 있다.]]></description>
+    <pubDate>Tue, 13 Oct 2026 03:17:08 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-13-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.13]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-13.html</link>
     <description><![CDATA["고금리 장기화 공포가 시장을 갈랐다" — Fed 매파 기조 재확인 속 미 10년물 국채 5.22% 돌파 — 코스피 급락·반도체 패닉, 금·달러만 피난처로 부상]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 30 Sep 2026 01:44:49 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-30-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.09.30]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-09-30.html</link>
-    <description><![CDATA["Fed 긴축 공포의 귀환 — 금리·채권·위험자산 삼각 충격" — 미 10년물 국채금리 5.24% 돌파와 Fed 추가 인상 베팅이 글로벌 위험자산 전반을 압박하는 가운데, 고용지표와 다음 주 FOMC가 방향을 결정할 분기점이다.]]></description>
-    <pubDate>Wed, 30 Sep 2026 01:43:42 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-09-30.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
