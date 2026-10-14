@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 14 Oct 2026 01:29:34 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 01:30:29 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.10.14]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-14-culture.html</link>
+    <description><![CDATA["한류, K팝을 넘어 일상 라이프스타일 전방위 확산" — K팝·드라마를 넘어 음식·문학·스포츠·패션까지 침투한 '생활 밀착형 한류'가 글로벌 문화 판도를 바꾸고 있다.]]></description>
+    <pubDate>Wed, 14 Oct 2026 01:30:29 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-14-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.14]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-14-politics.html</link>
     <description><![CDATA["권력 재편 vs. 외압 차단: 한국 정치·외교의 이중 긴장" — 이재명 대통령은 국감 국면에서 야당의 특검 공세를 방어하는 동시에 트럼프발 LNG·무역 압박에 대응하며 '국내 권력 안정'과 '대외 실리 확보'라는 이중 과제를 동시에 떠안았다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 01 Oct 2026 01:41:17 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-01-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.01]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-01-politics.html</link>
-    <description><![CDATA["사법 권력 재편과 안보 균열, 한국 정치의 이중 진통" — 중대범죄수사청 출범·개헌 논쟁·대북 기조 충돌이 동시 분출하며 이재명 정부의 권력 구조 재편 실험이 국내외 정치 지형을 동시에 흔들고 있다.]]></description>
-    <pubDate>Thu, 01 Oct 2026 01:40:17 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-01-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
