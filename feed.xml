@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 15 Oct 2026 01:04:09 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 01:05:07 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.10.15]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-15-culture.html</link>
+    <description><![CDATA["한류, K팝을 넘어 풀스펙트럼 문화제국으로" — K팝·드라마를 넘어 푸드·문학·AI창작·글로벌 공연까지 확장하는 '한류 다변화'가 2026년 문화 산업의 핵심 메가트렌드로 부상했다.]]></description>
+    <pubDate>Thu, 15 Oct 2026 01:05:07 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-15-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.15]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-15-politics.html</link>
     <description><![CDATA["국감·한미·CPTPP: 이재명 정부의 3중 시험대" — 이재명 대통령이 국정감사 정치공세, 한미 경제협력 재정비, CPTPP 정책 번복이라는 세 축의 동시 압박을 받으며 국정 주도권과 외교 신뢰를 동시에 검증받고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Fri, 02 Oct 2026 01:54:31 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-02-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.02]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-02-politics.html</link>
-    <description><![CDATA["외교 충돌·개헌 논쟁·미중 패권 공백의 삼중 교차" — 이재명 대통령의 우크라이나 정면 충돌·연임 개헌 파장이 국내 권력 구조를 흔드는 동시에, 글로벌 패권 공백 속에서 한국의 전략적 자율성 시험대가 가동되고 있다.]]></description>
-    <pubDate>Fri, 02 Oct 2026 01:53:30 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-02-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
