@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 16 Oct 2026 00:53:04 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 00:54:07 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.16]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-16-politics.html</link>
+    <description><![CDATA["사법·헌법 긴장과 글로벌 포퓰리즘 동시 분출" — 한국은 조희대 대법원장 탄핵 공방·개헌 논의로 권력 구조 재편 압박을 받는 가운데, 미국 중간선거·독일 극우 약진·우크라 전비 분담 갈등 등 글로벌 포퓰리즘 파고가 동시에 출렁이고 있다.]]></description>
+    <pubDate>Fri, 16 Oct 2026 00:54:07 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-16-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.16]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-16.html</link>
     <description><![CDATA["물가 재점화, 금리 재인상 공포가 시장을 집어삼키다" — 미국 PPI 6.3% 급등·10년물 국채금리 5.19% 돌파가 Fed 추가 금리 인상 공포를 현실화시키며, 코스피·나스닥·반도체 전 자산군을 동반 급락시키는 '긴축 공포의 귀환' 국면이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 05 Oct 2026 01:22:28 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-05.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.10.03]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W40.html</link>
-    <description><![CDATA[긴축 충격 속 K-컬처의 제도화, 권력 재편의 진통 — Fed 긴축이 금융시장을 압박하고 정치가 권력을 재편하는 동안, K-컬처는 '유행'에서 '구조'로 이동하며 가장 지속 가능한 한국의 글로벌 자산으로 부상하고 있다.]]></description>
-    <pubDate>Fri, 02 Oct 2026 15:15:02 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/weekly-2026-W40.html</guid>
-    <category><![CDATA[주간 다이제스트]]></category>
   </item>
   </channel>
 </rss>
