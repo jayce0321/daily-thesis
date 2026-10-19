@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 19 Oct 2026 00:35:18 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 00:36:22 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.19]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-19-politics.html</link>
+    <description><![CDATA["개헌 드라이브와 미·이란 긴장: 권력 재편의 교차로" — 이재명 정부의 헌법 전문 개정 추진과 글로벌 군사·외교 긴장이 맞물리며, 국내외 권력 구조가 동시에 재편 압력을 받고 있다.]]></description>
+    <pubDate>Mon, 19 Oct 2026 00:36:22 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-19-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.19]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-19.html</link>
     <description><![CDATA["인플레 재점화 vs. 연준 독립성 — 금리 불확실성이 시장을 흔든다" — 미국 PPI 예상 상회·재정적자 2조 달러 돌파·10년물 5.1% 돌파가 맞물리며 '연준의 추가 인상 가능성'이 오늘 글로벌 시장 전체를 지배하는 단 하나의 테제다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 06 Oct 2026 02:36:33 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-06-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.06]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-06.html</link>
-    <description><![CDATA["고용 쇼크 속 Fed 관망, 금리 피크아웃인가 함정인가" — 9월 미국 비농업 고용이 29,000건으로 예상치의 3분의 1 수준에 그치며 '경기 균열' 신호를 보냈지만, 미 10년물 금리가 5.28%에 고착되고 Fed는 데이터 의존 관망을 유지해 — 투자자는 '금리 피크아웃 기대'와 '인플레 재점화 리스크' 사이 극단적 선택의 기로에 섰다.]]></description>
-    <pubDate>Tue, 06 Oct 2026 02:35:31 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-06.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
