@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 21 Oct 2026 01:05:33 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 01:06:34 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.21]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-21-politics.html</link>
+    <description><![CDATA["권력 재편의 계절: 헌법·동맹·무역의 동시 균열" — 한국은 개헌 요구·경찰청장 공백·여당 내 잡음으로 내부 권력 재편이 진행 중이고, 글로벌 무대에서는 미국 주도의 관세·동맹 압박이 각국의 자율적 대응을 강제하고 있다.]]></description>
+    <pubDate>Wed, 21 Oct 2026 01:06:34 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-21-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.21]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-21.html</link>
     <description><![CDATA["금리 인상 공포와 재정 팽창의 역설" — 미 재정적자 2조 달러 돌파·CPI 상회 충격 속에서도 시장은 '매파 FOMC → 정점 금리 베팅'으로 역설적 랠리를 시도 중이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 08 Oct 2026 02:22:40 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-08-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.08]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-08.html</link>
-    <description><![CDATA["금리 고원(高原) 장기화 vs. 시장의 내성" — 미 10년물 국채금리 5.27%의 고공행진 속 FOMC 의사록이 추가 긴축 신호를 내비치며, 시장은 '금리 고원 장기화'를 얼마나 버틸 수 있는가가 오늘 시장을 관통하는 핵심 질문이다.]]></description>
-    <pubDate>Thu, 08 Oct 2026 02:21:42 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-08.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
