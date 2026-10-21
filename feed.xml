@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 21 Oct 2026 01:06:34 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 01:07:36 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.10.21]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-21-culture.html</link>
+    <description><![CDATA["K-콘텐츠, 수출에서 현지화로 진화" — K-콘텐츠가 단순 수출을 넘어 현지 포맷 리메이크·현지 배우 캐스팅·글로벌 OTT 오디션으로 '현지화 2.0' 단계에 진입했다.]]></description>
+    <pubDate>Wed, 21 Oct 2026 01:07:36 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-21-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.21]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-21-politics.html</link>
     <description><![CDATA["권력 재편의 계절: 헌법·동맹·무역의 동시 균열" — 한국은 개헌 요구·경찰청장 공백·여당 내 잡음으로 내부 권력 재편이 진행 중이고, 글로벌 무대에서는 미국 주도의 관세·동맹 압박이 각국의 자율적 대응을 강제하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 08 Oct 2026 02:23:39 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-08-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.08]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-08-politics.html</link>
-    <description><![CDATA["국감 정국과 글로벌 권력 재편: 협치냐 대결이냐" — 이재명 대통령이 국정감사 정국에서 '합리적 수용·정치공세 지양'을 주문하는 사이, 글로벌 무대에선 미국의 반(反)DEI 드라이브·브라질 정치 지형 변동·프랑스 재정 압박이 동시에 권력 구조를 흔들고 있다.]]></description>
-    <pubDate>Thu, 08 Oct 2026 02:22:40 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-08-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
