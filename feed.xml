@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 22 Oct 2026 01:04:14 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 01:05:22 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.22]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-22-politics.html</link>
+    <description><![CDATA["경계선 위기: 北압박·헌법논쟁·헤게모니 공백" — 남북 군사 긴장 재고조 속 이재명 정부 500일 국정 갈등과 글로벌 헤게모니 공백이 동시에 교차하며, '경계선(Border)'을 둘러싼 권력 재편이 한반도·국제 질서 양축에서 동시 진행 중이다.]]></description>
+    <pubDate>Thu, 22 Oct 2026 01:05:22 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-22-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.22]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-22.html</link>
     <description><![CDATA["금리 정점 논쟁 속, 시장은 피벗을 선반영한다" — 한은 금리동결·Fed 매파 불확실성에도 코스피·나스닥이 동반 상승한 것은 시장이 '긴축 사이클 종료'를 먼저 베팅하고 있다는 신호다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Fri, 09 Oct 2026 02:39:59 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-09-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.09]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-09.html</link>
-    <description><![CDATA["관세발 인플레 재점화 — 금리 고원 장기화의 귀환" — 뉴욕 연준이 관세가 인플레를 2.9%p 끌어올렸다고 확인한 가운데, 소비자 기대인플레 3.9%·미 10년물 5.28%가 동시에 치솟으며 '금리 고원 장기화(Higher for Longer 2.0)' 국면이 재개되고 있다.]]></description>
-    <pubDate>Fri, 09 Oct 2026 02:38:59 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-09.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
