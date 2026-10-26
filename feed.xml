@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 26 Oct 2026 00:49:59 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 00:51:03 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.26]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-26-politics.html</link>
+    <description><![CDATA["권력의 재편: 안으로 흔들리고 밖으로 뒤집힌다" — 이재명 정부의 지지율 하락과 제도 권력 갈등이 심화되는 가운데, 브라질·세르비아의 정치 지형 격변과 미 중간선거 변수가 맞물리며 국내외 '권력 재편'이 동시에 진행 중이다.]]></description>
+    <pubDate>Mon, 26 Oct 2026 00:51:03 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-26-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.26]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-26.html</link>
     <description><![CDATA["Fed 추가 긴축 공포 vs. 고용 견고함 — 금리 고점 논쟁이 시장을 가른다" — 미 10년물 금리 4.96%, FOMC 추가 인상 시그널 속에서도 신규 실업수당 청구 19.4만 건 역대급 저점 — '고금리 장기화'가 오늘 시장의 단 하나의 축이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 13 Oct 2026 03:17:08 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-13-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.13]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-13.html</link>
-    <description><![CDATA["고금리 장기화 공포가 시장을 갈랐다" — Fed 매파 기조 재확인 속 미 10년물 국채 5.22% 돌파 — 코스피 급락·반도체 패닉, 금·달러만 피난처로 부상]]></description>
-    <pubDate>Tue, 13 Oct 2026 03:16:06 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-13.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
