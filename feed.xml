@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 27 Oct 2026 01:40:51 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 01:41:52 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.27]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-27-politics.html</link>
+    <description><![CDATA["권력 재편의 시대: 한국의 국정 재건과 글로벌 패권 공백" — 이재명 정부가 중수청 출범·전작권 환수·농지조사 등 전방위 국정 드라이브를 걸며 권력 구조를 재편하는 동시에, 글로벌 무대에서는 패권 공백 속 중러의 북극 장악·브라질 정권 교체 등 질서 재편이 동시 진행 중이다.]]></description>
+    <pubDate>Tue, 27 Oct 2026 01:41:52 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-27-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.27]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-27.html</link>
     <description><![CDATA["금리 고원 속 AI·반도체가 시장을 끌어올린다" — 미 10년물 5%대 고금리가 지속되는 가운데, AI·반도체 랠리가 매크로 역풍을 상쇄하며 글로벌 증시를 지탱하는 '금리 면역 장세'가 펼쳐지고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Wed, 14 Oct 2026 01:29:34 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-14-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.14]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-14.html</link>
-    <description><![CDATA["금리 고원(High-for-Longer)의 균열 — 시장은 다음 피벗을 탐색 중" — Fed 추가 인상 우려와 인플레 재가속 신호가 충돌하는 가운데, 국채금리 급등 리스크가 주식·채권·원자재를 동시에 흔들고 있다.]]></description>
-    <pubDate>Wed, 14 Oct 2026 01:28:34 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-14.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
