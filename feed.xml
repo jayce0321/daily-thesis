@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 28 Oct 2026 01:53:25 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 01:54:26 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.28]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-28-politics.html</link>
+    <description><![CDATA["사법·선거·외교, 권력 재편의 삼각파도" — 한국은 사법부 독립 논쟁과 이재명 정부의 당내 통합 행보가 권력 구조를 흔드는 가운데, 이스라엘 선거 불확실성·트럼프 리스크가 글로벌 정치 불안을 동시에 가중시키고 있다.]]></description>
+    <pubDate>Wed, 28 Oct 2026 01:54:26 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-28-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.28]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-28.html</link>
     <description><![CDATA["AI가 금리 공포를 삼켰다" — Fed 추가 긴축 시그널에도 AI 기술주·반도체가 시장을 견인하며, 금리 리스크보다 AI 성장 기대가 투자 판단의 무게추를 장악한 하루.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 15 Oct 2026 01:04:09 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-15-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.15]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-15.html</link>
-    <description><![CDATA["AI 수익성 회의론이 반도체를 강타하다" — AI 투자 수익성 논란 재점화 → 반도체 급락 → 코스피 5,600대 붕괴, 글로벌 위험자산 전반의 재평가 국면 진입]]></description>
-    <pubDate>Thu, 15 Oct 2026 01:03:10 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-15.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
