@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 29 Oct 2026 02:01:28 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 02:02:32 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.10.29]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-29-culture.html</link>
+    <description><![CDATA["K-컬처, 팝에서 문명으로" — K-팝·K-드라마를 넘어 관광·뷰티·의료까지 확장되는 K-컬처가 단순 한류 콘텐츠를 넘어 '문화 자본(Cultural Capital)'으로 전환되는 임계점에 도달했다.]]></description>
+    <pubDate>Thu, 29 Oct 2026 02:02:32 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-29-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.29]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-29-politics.html</link>
     <description><![CDATA["권력 재편기의 이중 진자: 한국의 헌법적 전환과 글로벌 패권 공백" — 이재명 정부의 전작권 환수·헌법 개정 드라이브와 미국발 패권 공백이 맞물리며, 한국 정치는 내부 권력 재편과 외부 질서 불안 사이에서 전례 없는 전략적 선택을 강요받고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Fri, 16 Oct 2026 00:55:06 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-16-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.16]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-16-politics.html</link>
-    <description><![CDATA["사법·헌법 긴장과 글로벌 포퓰리즘 동시 분출" — 한국은 조희대 대법원장 탄핵 공방·개헌 논의로 권력 구조 재편 압박을 받는 가운데, 미국 중간선거·독일 극우 약진·우크라 전비 분담 갈등 등 글로벌 포퓰리즘 파고가 동시에 출렁이고 있다.]]></description>
-    <pubDate>Fri, 16 Oct 2026 00:54:07 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-16-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
