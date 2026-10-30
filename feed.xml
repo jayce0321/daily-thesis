@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 30 Oct 2026 02:15:44 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 02:16:40 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.10.30]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-30-culture.html</link>
+    <description><![CDATA["K-컬처, 팝에서 문화자본으로" — K-팝·K-드라마로 쌓은 글로벌 팬덤이 이제 '소프트파워 자본'으로 전환되는 임계점에 도달했다.]]></description>
+    <pubDate>Fri, 30 Oct 2026 02:16:40 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-30-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.30]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-30-politics.html</link>
     <description><![CDATA["지지율 균열과 외교 재편 사이에서" — 이재명 정부의 국정 지지율이 여야 오차 내 최소 격차로 수렴하는 가운데, 한미일 외교 공조·전작권 환수·미국 중간선거 후 대이란 군사 재개 가능성이 한국의 외교·안보 선택지를 동시에 압박하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 19 Oct 2026 00:36:22 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-19-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.19]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-19.html</link>
-    <description><![CDATA["인플레 재점화 vs. 연준 독립성 — 금리 불확실성이 시장을 흔든다" — 미국 PPI 예상 상회·재정적자 2조 달러 돌파·10년물 5.1% 돌파가 맞물리며 '연준의 추가 인상 가능성'이 오늘 글로벌 시장 전체를 지배하는 단 하나의 테제다.]]></description>
-    <pubDate>Mon, 19 Oct 2026 00:35:18 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-19.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
