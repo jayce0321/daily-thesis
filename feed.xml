@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 30 Oct 2026 02:14:51 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 02:15:44 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.30]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-10-30-politics.html</link>
+    <description><![CDATA["지지율 균열과 외교 재편 사이에서" — 이재명 정부의 국정 지지율이 여야 오차 내 최소 격차로 수렴하는 가운데, 한미일 외교 공조·전작권 환수·미국 중간선거 후 대이란 군사 재개 가능성이 한국의 외교·안보 선택지를 동시에 압박하고 있다.]]></description>
+    <pubDate>Fri, 30 Oct 2026 02:15:44 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-30-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.30]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-10-30.html</link>
     <description><![CDATA["금리·성장 딜레마: 高성장이 부른 금리 공포" — 미국 GDP 3.4% 서프라이즈와 PCE 인플레 재가속이 '금리 더 오래 높게(Higher for Longer)' 공포를 재점화하며, 글로벌 자산시장이 동시 조정 압력에 노출됐다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 19 Oct 2026 00:35:18 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-19.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.10.16]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W42.html</link>
-    <description><![CDATA[고금리 충격파, 정치·문화 생태계를 재편하다 — 금리 5% 시대는 자산시장만의 문제가 아니라, 각국 정부의 재정·외교·정치적 선택지를 동시에 압축시키는 '구조적 재편의 트리거'다.]]></description>
-    <pubDate>Fri, 16 Oct 2026 13:41:07 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/weekly-2026-W42.html</guid>
-    <category><![CDATA[주간 다이제스트]]></category>
   </item>
   </channel>
 </rss>
