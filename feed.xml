@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 02 Nov 2026 01:58:04 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 01:59:05 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.02]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-02-politics.html</link>
+    <description><![CDATA["821조 예산·선관위 특검: 이재명 정부의 권력 집중과 견제의 역설" — 이재명 대통령이 역대 최대 821조 슈퍼예산으로 '모두의 성장' 어젠다를 선점하는 사이, 특검의 선관위 압수수색과 야권 반발이 맞물리며 새 정부의 국정 동력과 견제 구도가 동시에 시험대에 올랐다.]]></description>
+    <pubDate>Mon, 02 Nov 2026 01:59:05 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-02-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.11.02]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-02.html</link>
     <description><![CDATA["AI 버블 공포, 빅테크 과잉투자의 부메랑" — 빅테크의 AI 데이터센터 과잉투자 우려가 나스닥 급락과 반도체 패닉셀링을 촉발하며, 시장은 'AI 성장 내러티브'의 지속 가능성을 본격 재검증하는 국면에 진입했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 20 Oct 2026 01:22:04 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-20-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.20]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-20.html</link>
-    <description><![CDATA["Fed 매파 재점화, 긴축 장기화 공포가 시장을 흔든다" — CPI 예상 상회 + Warsh 의장의 모호한 금리 경로 발언이 '10월 동결 후 추가 인상' 시나리오를 현실화시키며, 위험자산 전반을 압박하고 있다.]]></description>
-    <pubDate>Tue, 20 Oct 2026 01:21:04 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-20.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
