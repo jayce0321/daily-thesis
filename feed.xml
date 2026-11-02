@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 02 Nov 2026 01:59:05 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 02:00:02 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.11.02]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-02-culture.html</link>
+    <description><![CDATA["K-컬처, 팬덤을 넘어 글로벌 문화 인프라로" — BTS 남미 85만 동원·버추얼 아이돌 사회공헌·일본 배우의 K드라마 진출까지, K-컬처는 이제 단순 팬덤 소비를 넘어 글로벌 문화 생태계를 재편하는 인프라로 진화하고 있다.]]></description>
+    <pubDate>Mon, 02 Nov 2026 02:00:02 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-02-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.02]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-02-politics.html</link>
     <description><![CDATA["821조 예산·선관위 특검: 이재명 정부의 권력 집중과 견제의 역설" — 이재명 대통령이 역대 최대 821조 슈퍼예산으로 '모두의 성장' 어젠다를 선점하는 사이, 특검의 선관위 압수수색과 야권 반발이 맞물리며 새 정부의 국정 동력과 견제 구도가 동시에 시험대에 올랐다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 20 Oct 2026 01:23:06 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-20-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.10.20]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-20-politics.html</link>
-    <description><![CDATA["헤게모니 공백 시대, 한국의 헌법 재설계" — 미국의 글로벌 리더십 후퇴와 국제질서 재편 속에서, 이재명 정부는 개헌·주택·성장률 담론으로 국내 권력 재편을 가속화하고 있다.]]></description>
-    <pubDate>Tue, 20 Oct 2026 01:22:04 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-20-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
