@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 04 Nov 2026 02:48:58 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 02:49:56 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.04]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-04-politics.html</link>
+    <description><![CDATA["예산·특검·헌법: 한국 권력 재편의 삼중 충돌" — 이재명 대통령의 821조 '공룡 예산' 시정연설·조작기소 특검 추진·헌법 재조명이 맞물리며, 한국 정치는 행정-입법 주도권 재편 국면에 진입했고 미국 중간선거 블루웨이브 가능성이 글로벌 권력 지형에도 변수를 더하고 있다.]]></description>
+    <pubDate>Wed, 04 Nov 2026 02:49:56 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-04-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.11.04]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-04.html</link>
     <description><![CDATA["금리 불확실성이 시장을 지배한다" — 미 중간선거·FOMC·한은 금리 결정이 동시에 맞물린 '슈퍼위크' 앞에서, 코스피는 -6.11% 급락하며 시장이 불확실성을 가격에 반영하고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 22 Oct 2026 01:05:22 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-22-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.22]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-22.html</link>
-    <description><![CDATA["금리 정점 논쟁 속, 시장은 피벗을 선반영한다" — 한은 금리동결·Fed 매파 불확실성에도 코스피·나스닥이 동반 상승한 것은 시장이 '긴축 사이클 종료'를 먼저 베팅하고 있다는 신호다.]]></description>
-    <pubDate>Thu, 22 Oct 2026 01:04:14 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-22.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
