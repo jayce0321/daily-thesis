@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 06 Nov 2026 02:58:27 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 02:59:24 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.11.06]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-06-culture.html</link>
+    <description><![CDATA["K컬처, 콘텐츠를 넘어 플랫폼이 되다" — K팝·K드라마·K뷰티가 개별 콘텐츠 수출을 넘어 넷플릭스·게임·패션·관광까지 연결되는 '문화 인프라 플랫폼'으로 진화하고 있다.]]></description>
+    <pubDate>Fri, 06 Nov 2026 02:59:24 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-06-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.06]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-06-politics.html</link>
     <description><![CDATA["권력 재편의 교차로: 한국 사법 정치화와 글로벌 중간선거 충격파" — 한국에선 조작기소 특검법·청와대 정무수석 교체로 이재명 정권의 사법·인사 집중이 가속화되고, 미국 중간선거 여파는 트럼프의 대중 공급망 전략과 희토류 구상 전반을 뒤흔들고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 26 Oct 2026 00:51:03 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-26-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.26]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-26.html</link>
-    <description><![CDATA["Fed 추가 긴축 공포 vs. 고용 견고함 — 금리 고점 논쟁이 시장을 가른다" — 미 10년물 금리 4.96%, FOMC 추가 인상 시그널 속에서도 신규 실업수당 청구 19.4만 건 역대급 저점 — '고금리 장기화'가 오늘 시장의 단 하나의 축이다.]]></description>
-    <pubDate>Mon, 26 Oct 2026 00:49:59 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-26.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
