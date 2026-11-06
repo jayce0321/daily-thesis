@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 06 Nov 2026 02:57:31 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 02:58:27 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.06]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-06-politics.html</link>
+    <description><![CDATA["권력 재편의 교차로: 한국 사법 정치화와 글로벌 중간선거 충격파" — 한국에선 조작기소 특검법·청와대 정무수석 교체로 이재명 정권의 사법·인사 집중이 가속화되고, 미국 중간선거 여파는 트럼프의 대중 공급망 전략과 희토류 구상 전반을 뒤흔들고 있다.]]></description>
+    <pubDate>Fri, 06 Nov 2026 02:58:27 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-06-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.11.06]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-06.html</link>
     <description><![CDATA["중간선거 충격 + 금리 불안 = 복합 리스크 폭풍" — 미국 중간선거 민주당 압승 → 트럼프 정책 동력 약화 + 금리 인상 우려 재점화 → 글로벌 위험자산 동반 급락]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 26 Oct 2026 00:49:59 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-26.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.10.23]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W43.html</link>
-    <description><![CDATA[불확실성의 삼각파도: 금리·권력·문화 동시 재편 — 금리의 천장이 사라진 세계에서, 권력은 재설계되고 문화는 인프라가 된다.]]></description>
-    <pubDate>Fri, 23 Oct 2026 13:59:53 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/weekly-2026-W43.html</guid>
-    <category><![CDATA[주간 다이제스트]]></category>
   </item>
   </channel>
 </rss>
