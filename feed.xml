@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 09 Nov 2026 02:11:19 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 02:12:15 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.09]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-09-politics.html</link>
+    <description><![CDATA["권력 재편기, 국내외 정치 지형의 동시 균열" — 이재명 대통령 취임 1주년·820조 예산안·개헌론이 맞물리는 가운데, 미 중간선거발 트럼프 레임덕과 미·중 패권 갈등이 한국 정치의 대외 변수를 가중시키고 있다.]]></description>
+    <pubDate>Mon, 09 Nov 2026 02:12:15 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-09-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.11.09]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-09.html</link>
     <description><![CDATA["AI 거품 균열, 고금리 장기화 공포가 시장을 뒤흔든다" — AI 과잉투자 경고 + 미국 고용 호조 → 금리 인하 기대 소멸 → 기술주·반도체 패닉셀, 안전자산 금 홀로 상승]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 27 Oct 2026 01:41:52 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-27-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.27]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-27.html</link>
-    <description><![CDATA["금리 고원 속 AI·반도체가 시장을 끌어올린다" — 미 10년물 5%대 고금리가 지속되는 가운데, AI·반도체 랠리가 매크로 역풍을 상쇄하며 글로벌 증시를 지탱하는 '금리 면역 장세'가 펼쳐지고 있다.]]></description>
-    <pubDate>Tue, 27 Oct 2026 01:40:51 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-27.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
