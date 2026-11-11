@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 11 Nov 2026 02:21:00 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 02:21:55 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.11]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-11-politics.html</link>
+    <description><![CDATA["입법 공세와 예산 협치의 충돌" — 이재명 정부가 821조 역대 최대 예산안 협조를 요청한 날, 국회는 '조작기소 특검법'을 통과시키며 여야 간 협치와 대결이 동시에 폭발했다.]]></description>
+    <pubDate>Wed, 11 Nov 2026 02:21:55 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-11-politics.html</guid>
+    <category><![CDATA[정치]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.11.11]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-11.html</link>
     <description><![CDATA["연준 12월 인상 공포 속, AI·반도체가 시장을 구한다" — 10월 CPI 쇼크로 연준 12월 금리인상 가능성이 부상했음에도, AI 인프라 투자 서사가 반도체·기술주를 끌어올리며 시장의 하방을 막는 '분열된 강세'가 연출되고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 29 Oct 2026 02:01:28 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-29-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.10.29]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-10-29.html</link>
-    <description><![CDATA["FOMC 동결 속 매파 신호, 시장은 AI·기술주로 돌파구를 찾는다" — Fed가 10월 금리를 동결했지만 추가 인상 가능성을 열어두는 가운데, 시장은 AI·반도체 랠리로 불확실성을 넘어서고 있다.]]></description>
-    <pubDate>Thu, 29 Oct 2026 02:00:27 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-10-29.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
