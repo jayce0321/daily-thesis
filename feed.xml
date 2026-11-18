@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 18 Nov 2026 03:57:35 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 03:58:33 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.11.18]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-18-culture.html</link>
+    <description><![CDATA["K컬처, 플랫폼을 삼키다" — 넷플릭스의 K팝 걸그룹 발굴, CJ ENM의 미국 24시간 무료 채널, 스크린 상영 확대까지 — K컬처가 단순 콘텐츠를 넘어 글로벌 플랫폼 생태계 자체를 재편하고 있다.]]></description>
+    <pubDate>Wed, 18 Nov 2026 03:58:33 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-18-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.18]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-18-politics.html</link>
     <description><![CDATA["한국·글로벌 정치 재편: 대화외교와 권력 충돌의 교차점" — 이재명 대통령의 적극적 다자외교와 국내 사법·정치 충돌이 맞물리며, 미·중·러 빅딜 구도 속 한국의 전략적 선택지가 압축되고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 05 Nov 2026 02:59:12 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-05-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.05]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-11-05-politics.html</link>
-    <description><![CDATA["권력 재편의 교차로: 한국 입법 충돌과 미국 중간선거 블루웨이브" — 한국은 '조작기소 특검법'·821조 슈퍼예산을 둘러싼 여야 충돌이 임계점에 달했고, 미국 민주당의 중간선거 압승은 한미·미중·미이스라엘 관계 전반을 재조정 국면으로 밀어 넣었다.]]></description>
-    <pubDate>Thu, 05 Nov 2026 02:58:13 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-05-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
