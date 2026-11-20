@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 20 Nov 2026 03:48:15 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 03:49:13 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.11.20]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-20-culture.html</link>
+    <description><![CDATA["K컬처, 글로벌 장르가 되다" — K팝·K드라마를 넘어 'K컬처' 자체가 하나의 독립 장르로 세계 시장에 안착하며, 콘텐츠·플랫폼·여행·뷰티를 아우르는 복합 산업 생태계로 진화 중이다.]]></description>
+    <pubDate>Fri, 20 Nov 2026 03:49:13 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-20-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.20]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-20-politics.html</link>
     <description><![CDATA["권력의 정당성 전쟁: 입법·사법·외교 삼각 충돌" — 한국 여야가 특검·예산·입법 전선에서 정면충돌하는 사이, 트럼프의 아세안 외교와 미·중 반도체 갈등이 한국의 대외 선택지를 좁히고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Mon, 09 Nov 2026 02:12:15 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-09-politics.html</guid>
     <category><![CDATA[정치]]></category>
-  </item>
-<item>
-    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.11.09]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-11-09.html</link>
-    <description><![CDATA["AI 거품 균열, 고금리 장기화 공포가 시장을 뒤흔든다" — AI 과잉투자 경고 + 미국 고용 호조 → 금리 인하 기대 소멸 → 기술주·반도체 패닉셀, 안전자산 금 홀로 상승]]></description>
-    <pubDate>Mon, 09 Nov 2026 02:11:19 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-09.html</guid>
-    <category><![CDATA[경제·투자]]></category>
   </item>
   </channel>
 </rss>
