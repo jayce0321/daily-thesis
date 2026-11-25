@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 25 Nov 2026 05:09:33 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 05:10:31 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.11.25]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-25-culture.html</link>
+    <description><![CDATA["한류 문법의 대전환: K-콘텐츠, 팝컬처를 넘어 라이프스타일 전방위 침투" — K-팝·드라마 중심이던 한류가 문학·관광·소비재·도시 브랜드로 확장되며 '문화 수출'에서 '생활양식 수출'로 패러다임이 전환되고 있다.]]></description>
+    <pubDate>Wed, 25 Nov 2026 05:10:31 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-25-culture.html</guid>
+    <category><![CDATA[컬처]]></category>
+  </item>
+<item>
     <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.25]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-25-politics.html</link>
     <description><![CDATA["예산 국정 vs. 탄핵 정쟁: 이재명 정부의 양면 시험대" — 이재명 대통령이 821조 초대형 예산안으로 민생 드라이브를 걸면서도, 조희대 대법원장 탄핵·민주당 내부 계파 갈등이 동시에 폭발해 국정 동력과 정치 소모전이 정면 충돌하는 국면에 진입했다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Thu, 12 Nov 2026 03:30:46 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-12-culture.html</guid>
     <category><![CDATA[컬처]]></category>
-  </item>
-<item>
-    <title><![CDATA[🏛️ 정치 데일리 테제 | 2026.11.12]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-11-12-politics.html</link>
-    <description><![CDATA["권력 재편기, 국내외 정치 지형의 동시 균열" — 이재명 정부의 국정 주도권 공고화 시도와 글로벌 정치 질서의 복합 균열이 동시에 진행되며, 한국 정치는 내부 통합과 외부 불확실성을 동시에 관리해야 하는 이중 과제에 직면했다.]]></description>
-    <pubDate>Thu, 12 Nov 2026 03:29:48 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-12-politics.html</guid>
-    <category><![CDATA[정치]]></category>
   </item>
   </channel>
 </rss>
