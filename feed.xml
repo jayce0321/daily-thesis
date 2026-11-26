@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 26 Nov 2026 04:36:52 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 16:14:30 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.11.27]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/2026-11-27.html</link>
+    <description><![CDATA["AI 생산성 혁명 vs. 인플레 재점화 — 연준의 딜레마가 시장을 흔든다" — Fed PCE 3.8% 재가속·추가 금리인상 신호 속에서 AI 붐이 만들어낸 반도체·기술주 고평가 거품이 한꺼번에 흔들리며, 시장은 '성장 내러티브'와 '긴축 현실' 사이의 균형점을 다시 찾고 있다.]]></description>
+    <pubDate>Thu, 26 Nov 2026 16:14:30 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-27.html</guid>
+    <category><![CDATA[경제·투자]]></category>
+  </item>
+<item>
     <title><![CDATA[🎬 컬처 데일리 테제 | 2026.11.26]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-26-culture.html</link>
     <description><![CDATA["K-컬처, 팬덤을 넘어 글로벌 인프라로" — K-팝·K-드라마가 소비 콘텐츠를 넘어 스탠퍼드 강좌·넷플릭스 스튜디오 인수·CJ ENM 미국 무료 채널 등 글로벌 문화 인프라로 제도화되고 있다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Fri, 13 Nov 2026 16:53:26 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/weekly-2026-W46.html</guid>
     <category><![CDATA[주간 다이제스트]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.11.13]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-11-13-culture.html</link>
-    <description><![CDATA["K컬처, 장르를 넘어 글로벌 기본값이 되다" — K팝·드라마·영화를 하나의 생태계로 묶는 'K컬처 플랫폼화'가 가속되며, 한국적 감성이 전 세계 MZ세대의 문화 디폴트로 자리잡고 있다.]]></description>
-    <pubDate>Fri, 13 Nov 2026 03:03:20 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-13-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
