@@ -7,10 +7,18 @@
     <link>https://jayce0321.github.io/daily-thesis</link>
     <description>경제·투자·정치·컬처 — 시장을 관통하는 하나의 테제 by Jayce</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 27 Nov 2026 15:59:37 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 18:37:51 -0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://jayce0321.github.io/daily-thesis/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title><![CDATA[📅 주간 다이제스트 데일리 테제 | 2026.11.28]]></title>
+    <link>https://jayce0321.github.io/daily-thesis/weekly-2026-W48.html</link>
+    <description><![CDATA[AI 쇼크·K컬처 제도화·권력 재편의 삼중 충돌 — AI·반도체가 석유를 대체하는 경제 전환, 사법·예산이 충돌하는 정치 균열, K컬처의 제도화라는 세 흐름이 모두 '기존 질서의 교체'라는 하나의 서사로 수렴한다.]]></description>
+    <pubDate>Fri, 27 Nov 2026 18:37:51 -0000</pubDate>
+    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/weekly-2026-W48.html</guid>
+    <category><![CDATA[주간 다이제스트]]></category>
+  </item>
+<item>
     <title><![CDATA[📊 경제·투자 데일리 테제 | 2026.11.28]]></title>
     <link>https://jayce0321.github.io/daily-thesis/2026-11-28.html</link>
     <description><![CDATA["AI·반도체가 오일을 대체한다 — 슈퍼위크를 앞둔 시장의 선택" — 반도체 수출이 처음으로 석유를 추월한 2026년, AI 주도 성장 내러티브가 금리 불확실성을 압도하며 글로벌 위험자산 랠리를 견인 중이다.]]></description>
@@ -241,14 +249,6 @@
     <pubDate>Tue, 17 Nov 2026 04:51:19 -0000</pubDate>
     <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-17.html</guid>
     <category><![CDATA[경제·투자]]></category>
-  </item>
-<item>
-    <title><![CDATA[🎬 컬처 데일리 테제 | 2026.11.16]]></title>
-    <link>https://jayce0321.github.io/daily-thesis/2026-11-16-culture.html</link>
-    <description><![CDATA["K컬처, 장르를 넘어 글로벌 디폴트가 되다" — K팝·드라마·영화를 넘어 문학·음식·여행까지 확산된 K컬처가 '특정 장르'에서 '글로벌 표준 문화'로 격상되는 임계점에 도달했다.]]></description>
-    <pubDate>Mon, 16 Nov 2026 02:29:31 -0000</pubDate>
-    <guid isPermaLink="true">https://jayce0321.github.io/daily-thesis/2026-11-16-culture.html</guid>
-    <category><![CDATA[컬처]]></category>
   </item>
   </channel>
 </rss>
